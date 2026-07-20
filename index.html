@@ -150,9 +150,14 @@ $('urlForm').addEventListener('submit',async ev=>{
   ev.preventDefault();
   let u=$('siteUrl').value.trim();
   if(!/^https?:\/\//i.test(u))u='https://'+u;
+  u=u.replace(/\/+$/,'');
   const origin=new URL(u).origin;
+  // BUG FIX 2026-07-20: well-known files were only checked at the domain root, wrong
+  // for subpath-hosted sites (GitHub Pages project sites etc). Try both, either counts.
+  const siteRoot=u;
+  const tryWellKnown=async(path)=>{const a=await tryFetch(origin+path);if(a.ok||origin===siteRoot)return a;const b=await tryFetch(siteRoot+path);return b.ok?b:a;};
   const btn=ev.target.querySelector('button');btn.textContent='Checking...';btn.disabled=true;
-  const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryFetch(origin+'/llms.txt'),tryFetch(origin+'/robots.txt'),tryFetch(origin+'/sitemap.xml')]);
+  const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryWellKnown('/llms.txt'),tryWellKnown('/robots.txt'),tryWellKnown('/sitemap.xml')]);
   let checks=[];
   if(home.ok){checks=analyzeHtml(home.text);}
   else{checks.push({name:'Homepage content checks',weight:100,pass:null,
