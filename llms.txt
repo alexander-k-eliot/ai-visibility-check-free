@@ -7,6 +7,7 @@
 - [robots.txt Generator](https://alexander-k-eliot.github.io/ai-visibility-check-free/robots-txt-generator/): set an explicit AI-crawler policy for GPTBot, ClaudeBot, PerplexityBot and more. Free.
 - [llms.txt Generator](https://alexander-k-eliot.github.io/ai-visibility-check-free/llms-txt-generator/): fill in your business, get a ready-to-upload llms.txt file. Free.
 - [JSON-LD Schema Generator](https://alexander-k-eliot.github.io/ai-visibility-check-free/schema-generator/): generates Organization or LocalBusiness structured data, paste-ready. Free.
+- [FAQ Schema Generator](https://alexander-k-eliot.github.io/ai-visibility-check-free/faq-schema-generator/): turn real Q&A into FAQPage JSON-LD. Free.
 - [Reseller Fee Calculator](https://alexander-k-eliot.github.io/ai-visibility-check-free/fee-calculator/): net profit and margin on Etsy, eBay, Poshmark, Mercari, Depop. Free. (Adjacent product: the Reseller Profit Tracker spreadsheet on Etsy.)
 
 ## Services

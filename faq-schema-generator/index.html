@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free FAQ Schema Generator — turn your Q&amp;A into JSON-LD FAQPage markup</title>
+<meta name="description" content="Paste your questions and answers, get ready-to-paste FAQPage JSON-LD. AI assistants and search engines can quote your answers directly. Free, no signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"FAQ Schema Generator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Converts questions and answers into FAQPage JSON-LD structured data."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FAQPage schema?","acceptedAnswer":{"@type":"Answer","text":"FAQPage is a schema.org structured-data type that marks up a list of questions and their answers so search engines and AI assistants can extract and quote them directly, instead of guessing which paragraph answers a question."}},{"@type":"Question","name":"Do the questions on the page have to match the schema exactly?","acceptedAnswer":{"@type":"Answer","text":"Yes. Only mark up questions you genuinely answer visibly on the same page, with the same wording. Structured data that does not match the visible page content is a policy violation for search engines and misleads AI assistants."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:10px 0 4px;font-size:.9rem;color:var(--dim)}
+input,textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{min-height:60px}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer;margin-top:14px}
+button:hover{filter:brightness(1.1)}
+#out{width:100%;min-height:240px;font-family:ui-monospace,Menlo,monospace;font-size:13px;margin-top:10px}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+.copied{color:var(--amber)}
+.qa{background:#052b32;border:1px solid #1d5c6b;border-radius:8px;padding:14px;margin:10px 0}
+.qa .rm{float:right;background:none;border:0;color:var(--coral);font:bold 14px Georgia,serif;cursor:pointer;padding:0;margin:0}
+.addbtn{background:#0a4552;color:var(--mint);font-size:14px;padding:9px 16px}
+.count{color:var(--dim);font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>FAQ Schema Generator</h1>
+<p class="sub">FAQPage markup lets AI assistants and search engines quote your answers directly instead of guessing which paragraph answers a question. Add your real Q&amp;A, generate the code, paste it in your &lt;head&gt;. Free, runs in your browser.</p>
+
+<div id="qaList"></div>
+<button id="add" class="addbtn" type="button">+ Add another question</button>
+<p class="count" id="count"></p>
+
+<button id="gen">Generate FAQ schema</button>
+<button id="copy" style="background:#0a4552;color:var(--mint)">Copy</button>
+<span id="msg" class="small"></span>
+<textarea id="out" readonly placeholder="Your FAQPage JSON-LD appears here..."></textarea>
+
+<div class="cta">
+<strong>One rule that matters more than the code.</strong>
+<p>Only mark up questions you genuinely answer, visibly, on the same page — with matching wording. Mismatched schema is a policy violation for search engines and misleads AI assistants, the opposite of what we sell. Then add <a href="../schema-generator/">Organization schema</a>, <a href="../llms-txt-generator/">llms.txt</a>, and a <a href="../robots-txt-generator/">robots.txt AI-crawler policy</a> to round out the basics, and verify with the free <a href="../">AI visibility checker</a>.</p>
+</div>
+
+<h2>Why this matters</h2>
+<p class="small">Question-shaped headings with a clear answer are one of the strongest signals AI assistants use to extract quotable content. FAQPage schema makes that structure explicit and machine-readable instead of implicit in your prose. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. No citation guarantees — nobody can promise AI rankings; this gives assistants the clean facts that make citation possible. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const list=$('qaList');
+  let n=0;
+
+  function addRow(q,a){
+    n++;
+    const id=n;
+    const div=document.createElement('div');
+    div.className='qa';
+    div.dataset.id=id;
+    div.innerHTML=`<button class="rm" type="button" title="Remove">&times;</button>
+      <label>Question ${id}</label>
+      <input class="q" placeholder="What does a kitchen remodel cost in Austin?" value="${q?escapeAttr(q):''}">
+      <label>Answer</label>
+      <textarea class="a" placeholder="A full kitchen remodel in Austin typically runs $25,000 to $60,000 depending on scope.">${a?escapeHtml(a):''}</textarea>`;
+    list.appendChild(div);
+    div.querySelector('.rm').addEventListener('click',()=>{div.remove();updateCount();build();});
+    div.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('input',build));
+    updateCount();
+  }
+  function escapeAttr(s){return s.replace(/"/g,'&quot;');}
+  function escapeHtml(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+  function updateCount(){
+    const c=list.children.length;
+    $('count').textContent=c+' question'+(c===1?'':'s');
+  }
+
+  function build(){
+    const rows=[...list.querySelectorAll('.qa')];
+    const items=rows.map(r=>({
+      q:r.querySelector('.q').value.trim(),
+      a:r.querySelector('.a').value.trim()
+    })).filter(x=>x.q && x.a);
+    if(!items.length){ $('out').value=''; return; }
+    const obj={
+      '@context':'https://schema.org',
+      '@type':'FAQPage',
+      mainEntity: items.map(it=>({
+        '@type':'Question', name: it.q,
+        acceptedAnswer: {'@type':'Answer', text: it.a}
+      }))
+    };
+    $('out').value = '<script type="application/ld+json">\n'+JSON.stringify(obj,null,2)+'\n<\/script>';
+  }
+
+  $('add').addEventListener('click',()=>addRow());
+  $('gen').addEventListener('click',build);
+  $('copy').addEventListener('click',()=>{
+    if(!$('out').value) build();
+    if(!$('out').value){ $('msg').textContent=' add at least one Q&A first'; $('msg').className='small'; return; }
+    $('out').select(); document.execCommand('copy');
+    $('msg').textContent=' copied to clipboard'; $('msg').className='small copied';
+    setTimeout(()=>{$('msg').textContent='';},2500);
+  });
+
+  addRow('What does a kitchen remodel cost in Austin?','A full kitchen remodel in Austin typically runs $25,000 to $60,000 depending on scope.');
+  addRow('How long does the project take?','Most kitchen remodels take 6 to 10 weeks from demo to final walkthrough.');
+  build();
+})();
+</script>
+</body>
+</html>
