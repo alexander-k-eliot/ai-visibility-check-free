@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free robots.txt Generator — set your AI-crawler policy for ChatGPT, Perplexity, Claude and Google</title>
+<meta name="description" content="Generate a robots.txt with an explicit AI-crawler policy in 60 seconds. Choose which AI assistants can read your site, keep your sitemap and disallow rules. Free, no signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"robots.txt Generator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generates a robots.txt file with an explicit AI-crawler access policy for ChatGPT, Perplexity, Claude and other assistants."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does robots.txt affect AI assistants?","acceptedAnswer":{"@type":"Answer","text":"Yes. Crawlers like GPTBot, ClaudeBot, PerplexityBot and Google-Extended check robots.txt before reading your site. If you block them, or never decide, you may be invisible to AI answers that would otherwise cite you."},{"@type":"Question","name":"Where do I put robots.txt?","acceptedAnswer":{"@type":"Answer","text":"Upload it to the root of your website so it is served at https://yourdomain.com/robots.txt."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+input,textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer;margin-top:14px}
+button:hover{filter:brightness(1.1)}
+#out{width:100%;min-height:260px;font-family:ui-monospace,Menlo,monospace;font-size:13px;margin-top:10px}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.copied{color:var(--amber)}
+.bots{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.bot{display:flex;align-items:center;gap:8px;background:#052b32;border:1px solid #1d5c6b;border-radius:6px;padding:9px 10px;font-size:14px;cursor:pointer}
+.bot input{width:auto;accent-color:var(--mint)}
+.presetrow{display:flex;gap:8px;margin:10px 0}
+.presetrow button{margin:0;flex:1;background:#0a4552;color:var(--dim);font-size:13px;padding:9px}
+.presetrow button.active{background:var(--mint);color:#04251f}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>robots.txt Generator</h1>
+<p class="sub">robots.txt is the first thing every crawler checks, including the AI ones. Decide who gets in, generate the file, done. Free, no signup, runs in your browser.</p>
+
+<h2>Quick policy</h2>
+<div class="presetrow">
+  <button id="pAllow" class="active">Allow AI assistants (recommended)</button>
+  <button id="pBlock">Block AI assistants</button>
+  <button id="pCustom">Choose per-bot</button>
+</div>
+<p class="small" id="policyNote">Every listed AI crawler can read your site. Traditional search engines are always allowed. Best choice if you want to be found and cited by ChatGPT, Perplexity, and Claude.</p>
+
+<div id="botList" class="bots" style="display:none"></div>
+
+<label>Sitemap URL (optional)</label>
+<input id="sitemap" placeholder="https://yoursite.com/sitemap.xml">
+<label>Paths to disallow for everyone, one per line (optional — e.g. /admin, /cart)</label>
+<textarea id="disallow" placeholder="/admin&#10;/cart&#10;/checkout"></textarea>
+
+<button id="gen">Generate robots.txt</button>
+<button id="copy" style="background:#0a4552;color:var(--mint)">Copy</button>
+<span id="msg" class="small"></span>
+<textarea id="out" readonly placeholder="Your robots.txt appears here..."></textarea>
+
+<div class="cta">
+<strong>Now finish the job.</strong>
+<p>robots.txt decides who can crawl. It doesn't tell them what you offer — that's <a href="../llms-txt-generator/">llms.txt</a>. It doesn't state your business facts — that's <a href="../schema-generator/">structured data</a>. Do all three, then verify with the free <a href="../">AI visibility checker</a>. Want it all done and confirmed? See the <a href="https://www.fiverr.com/alexanderkeliot">agent-ready retrofit</a> ($60-175).</p>
+</div>
+
+<h2>Why this matters</h2>
+<p class="small">AI crawlers — GPTBot (OpenAI), ClaudeBot and Claude-User (Anthropic), PerplexityBot, OAI-SearchBot, Google-Extended, anthropic-ai — check robots.txt before reading anything. Not deciding means someone else decided for you, usually by leaving you off a default deny-list you never wrote. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const BOTS = [
+    ['GPTBot','OpenAI (ChatGPT training)'],
+    ['OAI-SearchBot','OpenAI (ChatGPT search/citations)'],
+    ['ChatGPT-User','OpenAI (live browsing on a user\\'s behalf)'],
+    ['ClaudeBot','Anthropic (Claude training)'],
+    ['Claude-User','Anthropic (Claude live browsing)'],
+    ['anthropic-ai','Anthropic (general)'],
+    ['PerplexityBot','Perplexity (search/citations)'],
+    ['Google-Extended','Google (Gemini/AI Overviews training)'],
+  ];
+  let mode='allow';
+  const listEl=$('botList');
+  BOTS.forEach(([name,desc])=>{
+    const d=document.createElement('label');
+    d.className='bot';
+    d.innerHTML=`<input type="checkbox" data-bot="${name}" checked> <span><b>${name}</b><br><span class="small">${desc}</span></span>`;
+    listEl.appendChild(d);
+  });
+
+  function setMode(m){
+    mode=m;
+    $('pAllow').className = m==='allow' ? 'active':'';
+    $('pBlock').className = m==='block' ? 'active':'';
+    $('pCustom').className = m==='custom' ? 'active':'';
+    listEl.style.display = m==='custom' ? 'grid' : 'none';
+    $('policyNote').textContent =
+      m==='allow' ? 'Every listed AI crawler can read your site. Traditional search engines are always allowed. Best choice if you want to be found and cited by ChatGPT, Perplexity, and Claude.' :
+      m==='block' ? 'Every listed AI crawler is blocked. Traditional search engines are still allowed. Choose this only if you deliberately do not want AI assistants citing you.' :
+      'Check the boxes for the AI crawlers you want to allow. Unchecked ones are blocked.';
+    build();
+  }
+  $('pAllow').addEventListener('click',()=>setMode('allow'));
+  $('pBlock').addEventListener('click',()=>setMode('block'));
+  $('pCustom').addEventListener('click',()=>setMode('custom'));
+
+  function build(){
+    const sitemap=$('sitemap').value.trim();
+    const disallows=$('disallow').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    let allowed;
+    if(mode==='allow') allowed=BOTS.map(b=>b[0]);
+    else if(mode==='block') allowed=[];
+    else allowed=[...listEl.querySelectorAll('input:checked')].map(i=>i.dataset.bot);
+
+    let t='User-agent: *\n';
+    if(disallows.length) disallows.forEach(p=>t+=`Disallow: ${p}\n`); else t+='Disallow:\n';
+    t+='\n# AI assistant crawler policy\n';
+    BOTS.forEach(([name])=>{
+      t+=`User-agent: ${name}\n`;
+      if(allowed.includes(name)){
+        t+='Allow: /\n\n';
+      } else {
+        t+='Disallow: /\n\n';
+      }
+    });
+    if(sitemap) t+=`Sitemap: ${sitemap}\n`;
+    t+=`\n# Generated free at alexander-k-eliot.github.io/ai-visibility-check-free/robots-txt-generator/\n`;
+    $('out').value=t.trim()+'\n';
+  }
+  ['sitemap','disallow'].forEach(id=>$(id).addEventListener('input',build));
+  listEl.addEventListener('change',build);
+  $('gen').addEventListener('click',build);
+  $('copy').addEventListener('click',()=>{
+    if(!$('out').value) build();
+    $('out').select(); document.execCommand('copy');
+    $('msg').textContent=' copied to clipboard'; $('msg').className='small copied';
+    setTimeout(()=>{$('msg').textContent='';},2500);
+  });
+  build();
+})();
+</script>
+</body>
+</html>
