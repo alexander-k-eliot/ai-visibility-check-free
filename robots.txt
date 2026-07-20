@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alexander-k-eliot.github.io/ai-visibility-check-free/sitemap.xml

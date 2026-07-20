@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free AI Visibility Check — is your site readable by ChatGPT and Perplexity?</title>
+<meta name="description" content="Free browser check of your website's AI visibility. See if AI assistants can read your site: structured data, metadata, answer-shaped content, no-JS legibility. No signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"Alexander K. Eliot Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. AI visibility audits, GEO content work and agent-ready retrofits.","sameAs":["https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot"]},
+{"@type":"WebApplication","name":"Free AI Visibility Check","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Client-side check of a website's readability for AI assistants and agents."}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-size:2rem;line-height:1.2;margin:24px 0 8px}
+h2{font-size:1.25rem;margin:32px 0 8px}
+.sub{color:var(--dim);margin-bottom:24px}
+.mark{color:var(--mint);font-weight:bold}
+form{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+input[type=url],textarea{flex:1;min-width:240px;padding:12px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{width:100%;height:140px;font-family:monospace;font-size:13px}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+.card{background:var(--card);border-radius:8px;padding:16px 18px;margin:10px 0}
+.pass{color:var(--mint)}.fail{color:var(--coral)}.unk{color:var(--amber)}
+.score{font-size:2.6rem;font-weight:bold}
+.small{font-size:.85rem;color:var(--dim)}
+a{color:var(--mint)}
+.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+ul{margin:8px 0 8px 20px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO</p>
+<h1>Will AI assistants find your website?</h1>
+<p class="sub">ChatGPT, Perplexity and Claude answer questions by reading websites. If they cannot read yours, they cite someone else. This free check runs in your browser and tells you part of the story. No signup. Nothing stored.</p>
+
+<h2>Check your site</h2>
+<form id="urlForm">
+<input type="url" id="siteUrl" placeholder="https://yourbusiness.com" required>
+<button type="submit">Run the check</button>
+</form>
+<p class="small">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may come back "could not check from a browser." That is a browser limit, not a verdict on your site. The paste option below always works. The <a href="https://www.fiverr.com/alexanderkeliot">$25 full audit</a> checks everything from a real server.</p>
+
+<div id="results" class="hidden">
+<div class="card"><span class="score" id="scoreNum"></span><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
+<div id="checkList"></div>
+</div>
+
+<h2>Or paste your homepage HTML</h2>
+<p class="small">View your homepage source (right-click, View Page Source), copy it all, paste here. This runs the content checks with zero network limits.</p>
+<textarea id="htmlPaste" placeholder="&lt;!doctype html&gt; ..."></textarea>
+<p><button id="pasteBtn">Check the pasted HTML</button></p>
+
+<div class="cta">
+<strong>Want the whole picture?</strong>
+<p>This free check sees what a browser can see. The full audit fetches your site the way AI crawlers do. It tests llms.txt, robots.txt AI policy, sitemap, schema depth and no-JS rendering, and it comes with a written fix list. It costs $25 and takes two days. <a href="https://www.fiverr.com/alexanderkeliot">Order it on Fiverr</a> or find "Alexander E." in the Upwork Project Catalog.</p>
+<p>Prefer to fix it yourself? Take the <a href="https://eliotwave01.gumroad.com/l/ai-visibility-checklist">free AI Visibility Checklist</a>. Pay what you want, including nothing.</p>
+</div>
+
+<h2>What this page checks</h2>
+<ul>
+<li>Title and meta description. Agents route on them.</li>
+<li>Structured data (JSON-LD). Machine-readable facts about your business.</li>
+<li>Heading structure and answer-shaped content.</li>
+<li>Text that survives without JavaScript. Many agents never run your scripts.</li>
+<li>robots.txt, llms.txt and sitemap when the browser is allowed to fetch them.</li>
+</ul>
+<p class="small">This studio is AI-operated and human-reviewed. This page practices what it sells: view source and you will find JSON-LD, an llms.txt beside this file, and full no-JS legibility. Fee-free, tracker-free. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const results=$('results'),list=$('checkList');
+
+function render(checks,mode){
+  results.classList.remove('hidden');
+  let got=0,tot=0,unk=0;
+  list.innerHTML='';
+  checks.forEach(c=>{
+    if(c.pass===null){unk+=c.weight;}else{tot+=c.weight;if(c.pass)got+=c.weight;}
+    const d=document.createElement('div');d.className='card';
+    const cls=c.pass===null?'unk':(c.pass?'pass':'fail');
+    const tag=c.pass===null?'COULD NOT CHECK':(c.pass?'PASS':'FAIL');
+    d.innerHTML='<strong class="'+cls+'">'+tag+'</strong> — <strong>'+c.name+'</strong><br>'+c.detail+(c.pass===false&&c.fix?'<br><span class="small">Fix: '+c.fix+'</span>':'');
+    list.appendChild(d);
+  });
+  const pct=tot?Math.round(got/tot*100):0;
+  $('scoreNum').textContent=pct;
+  $('scoreOf').textContent='/100 on the '+(mode==='paste'?'pasted HTML':'checks the browser could run');
+  $('scoreNote').textContent=unk?'Checks worth '+unk+' points could not run from the browser. The full audit runs them all.':'All listed checks ran.';
+  results.scrollIntoView({behavior:'smooth'});
+}
+
+function analyzeHtml(html){
+  const checks=[];
+  const title=(html.match(/<title[^>]*>([^<]*)<\/title>/i)||[])[1];
+  const desc=(html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i)||[])[1];
+  checks.push({name:'Title and meta description',weight:15,pass:!!(title&&title.trim()&&desc),
+    detail:'title: '+(title?'"'+title.trim().slice(0,60)+'"':'MISSING')+' · description: '+(desc?'present':'MISSING'),
+    fix:'Give every key page an accurate title and meta description.'});
+  const ld=(html.match(/<script[^>]+application\/ld\+json[^>]*>/gi)||[]).length;
+  checks.push({name:'Structured data (JSON-LD)',weight:20,pass:ld>0||/itemscope/i.test(html),
+    detail:ld?ld+' JSON-LD block(s) found.':'None found. Your business facts are not machine-readable.',
+    fix:'Add JSON-LD for Organization, Product with price, and FAQ where true.'});
+  const h1=(html.match(/<h1[\s>]/gi)||[]).length,h2=(html.match(/<h2[\s>]/gi)||[]).length;
+  checks.push({name:'Heading structure',weight:10,pass:h1>=1&&h2>=1,
+    detail:h1+' H1, '+h2+' H2 found.',fix:'Use one H1 and descriptive H2 sections.'});
+  const q=(html.match(/<h[23][^>]*>[^<]*\?/gi)||[]).length,faq=/"@type"\s*:\s*"FAQPage"/i.test(html);
+  checks.push({name:'Answer-shaped content',weight:15,pass:q>0||faq,
+    detail:faq?'FAQPage schema found.':q?q+' question-shaped heading(s).':'No question-shaped headings or FAQ schema.',
+    fix:'Add question headings with the answer in the first sentence below each.'});
+  const text=html.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  checks.push({name:'Readable without JavaScript',weight:25,pass:text.length>=400,
+    detail:text.length+' characters of text outside scripts.'+(text.length<400?' Looks like a JS app shell. Many agents see an empty page.':''),
+    fix:'Server-render your key content.'});
+  const contact=/mailto:|contact|tel:\+?\d/i.test(html);
+  checks.push({name:'Machine-findable contact path',weight:15,pass:contact,
+    detail:contact?'Contact path present.':'No obvious contact path in the HTML.',
+    fix:'Expose a plain-HTML contact method agents can find without executing JS.'});
+  return checks;
+}
+
+async function tryFetch(url){
+  try{const r=await fetch(url,{mode:'cors'});if(!r.ok)return{ok:false,status:r.status};return{ok:true,text:await r.text()};}
+  catch(e){return{ok:false,cors:true};}
+}
+
+$('urlForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  let u=$('siteUrl').value.trim();
+  if(!/^https?:\/\//i.test(u))u='https://'+u;
+  const origin=new URL(u).origin;
+  const btn=ev.target.querySelector('button');btn.textContent='Checking...';btn.disabled=true;
+  const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryFetch(origin+'/llms.txt'),tryFetch(origin+'/robots.txt'),tryFetch(origin+'/sitemap.xml')]);
+  let checks=[];
+  if(home.ok){checks=analyzeHtml(home.text);}
+  else{checks.push({name:'Homepage content checks',weight:100,pass:null,
+    detail:home.cors?'Your site does not allow browser cross-site reads (normal for most sites). Use the paste option below, it always works.':'Fetch failed with status '+home.status+'.',fix:''});}
+  checks.push({name:'llms.txt',weight:10,pass:llms.ok?(llms.text.trim().length>20&&!/<html/i.test(llms.text)):(llms.cors?null:false),
+    detail:llms.ok?'Found.':(llms.cors?'Could not check from a browser.':'Not found at /llms.txt.'),
+    fix:'Publish /llms.txt, a short markdown index of who you are and what you sell.'});
+  checks.push({name:'robots.txt reachable',weight:5,pass:robots.ok?true:(robots.cors?null:false),
+    detail:robots.ok?'Found.':(robots.cors?'Could not check from a browser.':'Not found.'),fix:'Publish robots.txt with an explicit AI-crawler policy.'});
+  checks.push({name:'XML sitemap',weight:5,pass:sitemap.ok?/<(urlset|sitemapindex)/i.test(sitemap.text):(sitemap.cors?null:false),
+    detail:sitemap.ok?'Found.':(sitemap.cors?'Could not check from a browser.':'Not found.'),fix:'Publish /sitemap.xml and reference it in robots.txt.'});
+  render(checks,'url');btn.textContent='Run the check';btn.disabled=false;
+});
+
+$('pasteBtn').addEventListener('click',()=>{
+  const html=$('htmlPaste').value;
+  if(html.trim().length<50){alert('Paste your full homepage HTML first.');return;}
+  render(analyzeHtml(html),'paste');
+});
+})();
+</script>
+</body>
+</html>

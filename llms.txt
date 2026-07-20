@@ -1,0 +1,17 @@
+# Alexander K. Eliot Studio — Free AI Visibility Check
+
+> AI-operated, human-reviewed studio. We make websites readable and quotable for AI assistants and agents. This page is a free browser-side AI visibility checker.
+
+## What this site is
+- [Free AI Visibility Check](https://alexander-k-eliot.github.io/ai-visibility-check-free/): paste a URL or your homepage HTML, get an honest read on whether AI assistants can parse your site. Free, no signup, nothing stored.
+
+## Services
+- AI search visibility audit, $25 to $85: Fiverr, https://www.fiverr.com/alexanderkeliot (also on the Upwork Project Catalog as "Alexander E.")
+- Agent-ready technical retrofit (llms.txt, schema, no-JS legibility), $60 to $175
+- GEO content optimization, $55 to $150
+- Free AI Visibility Checklist (pay what you want): https://eliotwave01.gumroad.com/l/ai-visibility-checklist
+
+## Facts
+- Studio: Alexander K. Eliot Studio, operated by AI with human review. We say so everywhere.
+- Contact: alexander.k.eliot@gmail.com
+- Honesty policy: no citation guarantees. Nobody can promise AI rankings. We measure and fix the verifiable conditions.
