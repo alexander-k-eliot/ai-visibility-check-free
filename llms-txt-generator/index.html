@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free llms.txt Generator — make your site readable by ChatGPT, Perplexity and Claude</title>
+<meta name="description" content="Generate a ready-to-deploy llms.txt file for your website in 60 seconds. Fill in your business, get the file AI assistants use to understand and cite you. Free, no signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"llms.txt Generator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generates a ready-to-deploy llms.txt file so AI assistants can read and cite a website."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is llms.txt?","acceptedAnswer":{"@type":"Answer","text":"llms.txt is a plain-markdown file at yoursite.com/llms.txt that gives AI assistants a concise, machine-readable index of who you are, what you offer, and your key pages, so they can understand and cite you accurately."}},{"@type":"Question","name":"Where do I put llms.txt?","acceptedAnswer":{"@type":"Answer","text":"Upload it to the root of your website so it is served at https://yourdomain.com/llms.txt, the same place as robots.txt."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+input,textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{min-height:70px}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer;margin-top:14px}
+button:hover{filter:brightness(1.1)}
+#out{width:100%;min-height:280px;font-family:ui-monospace,Menlo,monospace;font-size:13px;margin-top:10px}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.copied{color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>llms.txt Generator</h1>
+<p class="sub">llms.txt is the file AI assistants read to understand and cite your business. Fill this in, copy the result, and upload it to <b>yoursite.com/llms.txt</b>. Free, no signup, runs in your browser.</p>
+
+<div class="row">
+  <div><label>Business / site name</label><input id="name" placeholder="Acme Roofing"></div>
+  <div><label>Website URL</label><input id="url" placeholder="https://acmeroofing.com"></div>
+</div>
+<label>One-line description (what you do)</label>
+<input id="desc" placeholder="Residential roof repair and replacement in Austin, TX.">
+<label>Key pages — one per line as "Title: https://url"</label>
+<textarea id="pages" placeholder="Services: https://acmeroofing.com/services&#10;Get a quote: https://acmeroofing.com/quote&#10;About: https://acmeroofing.com/about"></textarea>
+<label>Products / services you offer (one per line)</label>
+<textarea id="offers" placeholder="Roof repair&#10;Full roof replacement&#10;Free inspections"></textarea>
+<label>Contact (email, phone, or contact page)</label>
+<input id="contact" placeholder="hello@acmeroofing.com · (512) 555-0100">
+
+<button id="gen">Generate my llms.txt</button>
+<button id="copy" style="background:#0a4552;color:var(--mint)">Copy</button>
+<span id="msg" class="small"></span>
+<textarea id="out" readonly placeholder="Your llms.txt appears here..."></textarea>
+
+<div class="cta">
+<strong>Now deploy it — and go further.</strong>
+<p>Upload the file above to your site root. Next, add <a href="../schema-generator/">structured data (JSON-LD)</a> so assistants get your business facts too. Want it done for you, plus an AI-crawler policy and no-JS legibility so assistants actually read the whole site? That is the <a href="https://www.fiverr.com/alexanderkeliot">agent-ready retrofit</a> ($60-175). First check where you stand with the free <a href="../">AI visibility checker</a>.</p>
+</div>
+
+<h2>What is llms.txt?</h2>
+<p class="small">A plain-markdown file at the root of your site (like robots.txt) that gives AI assistants a concise index of who you are, what you offer, and your key pages. It helps them understand and cite you accurately instead of guessing. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Nobody can guarantee AI citations; this gives assistants the clean, machine-readable facts that make citation possible.</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  function build(){
+    const name=$('name').value.trim()||'Your Business';
+    const url=$('url').value.trim();
+    const desc=$('desc').value.trim();
+    const pages=$('pages').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    const offers=$('offers').value.split('\n').map(s=>s.trim()).filter(Boolean);
+    const contact=$('contact').value.trim();
+    let t=`# ${name}\n`;
+    if(desc) t+=`\n> ${desc}\n`;
+    if(url) t+=`\nWebsite: ${url}\n`;
+    if(pages.length){
+      t+=`\n## Key pages\n`;
+      pages.forEach(p=>{
+        const i=p.indexOf(':');
+        if(i>0 && /https?:/.test(p.slice(i+1))) t+=`- [${p.slice(0,i).trim()}](${p.slice(i+1).trim()})\n`;
+        else t+=`- ${p}\n`;
+      });
+    }
+    if(offers.length){ t+=`\n## What we offer\n`; offers.forEach(o=>t+=`- ${o}\n`); }
+    if(contact) t+=`\n## Contact\n- ${contact}\n`;
+    t+=`\n## About\n- ${name} keeps this llms.txt current so AI assistants can read and cite us accurately.\n`;
+    t+=`\n<!-- Generated free at alexander-k-eliot.github.io/ai-visibility-check-free/llms-txt-generator/ -->\n`;
+    $('out').value=t;
+  }
+  $('gen').addEventListener('click',build);
+  $('copy').addEventListener('click',()=>{
+    if(!$('out').value) build();
+    $('out').select(); document.execCommand('copy');
+    $('msg').textContent=' copied to clipboard'; $('msg').className='small copied';
+    setTimeout(()=>{$('msg').textContent='';},2500);
+  });
+  build();
+})();
+</script>
+</body>
+</html>

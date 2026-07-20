@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reseller Fee Calculator — what you actually keep on Etsy, eBay, Poshmark, Mercari, Depop</title>
+<meta name="description" content="Free reseller fee calculator. Enter your sale and see the platform fee, net profit, and margin for Etsy, eBay, Poshmark, Mercari and Depop with real 2026 US fee rates. No signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Reseller Fee Calculator","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculates platform fees, net profit and margin for marketplace resellers on Etsy, eBay, Poshmark, Mercari and Depop."},
+{"@type":"Organization","name":"Alexander K. Eliot Studio","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest spreadsheets and tools for resellers.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot"]},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What fee does Poshmark charge?","acceptedAnswer":{"@type":"Answer","text":"Poshmark charges a flat $2.95 on sales under $15, and 20% on sales of $15 or more (US, 2026). Buyers pay shipping."}},{"@type":"Question","name":"What is eBay's final value fee?","acceptedAnswer":{"@type":"Answer","text":"For most categories eBay charges about 13.25% of the total (item plus shipping) plus $0.30 per order (US, 2026). Category rates vary."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:640px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:20px 0 6px}
+h2{font-size:1.2rem;margin:28px 0 8px}
+.mark{color:var(--mint);font-weight:bold}
+.sub{color:var(--dim);margin-bottom:20px}
+label{display:block;margin:14px 0 4px;font-size:.95rem;color:var(--dim)}
+select,input{width:100%;padding:11px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+.card{background:var(--card);border-radius:8px;padding:20px;margin:22px 0}
+.big{font-size:2.6rem;font-weight:bold;color:var(--mint)}
+.line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #14545f}
+.line:last-child{border:0}
+.neg{color:var(--coral)}
+a{color:var(--mint)}
+.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO</p>
+<h1>What do you actually keep?</h1>
+<p class="sub">Enter a sale. See the platform fee, your net profit, and your margin — with real 2026 US fee rates. Free, no signup, nothing stored.</p>
+
+<div>
+  <label for="platform">Platform</label>
+  <select id="platform">
+    <option value="etsy">Etsy</option>
+    <option value="ebay">eBay</option>
+    <option value="poshmark" selected>Poshmark</option>
+    <option value="mercari">Mercari</option>
+    <option value="depop">Depop</option>
+  </select>
+  <div class="grid">
+    <div><label for="price">Sale price ($)</label><input id="price" type="number" value="42" min="0" step="0.01"></div>
+    <div><label for="ship">Shipping you charged ($)</label><input id="ship" type="number" value="0" min="0" step="0.01"></div>
+    <div><label for="shipcost">Your shipping cost ($)</label><input id="shipcost" type="number" value="0" min="0" step="0.01"></div>
+    <div><label for="cost">Item cost / COGS ($)</label><input id="cost" type="number" value="12" min="0" step="0.01"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="big" id="net">$0.00</div>
+  <div class="sub" id="margin">net profit</div>
+  <div class="line"><span>Sale + shipping charged</span><span id="gross">$0.00</span></div>
+  <div class="line"><span id="feelabel">Platform fee</span><span class="neg" id="fee">$0.00</span></div>
+  <div class="line"><span>Your shipping cost</span><span class="neg" id="shipout">$0.00</span></div>
+  <div class="line"><span>Item cost</span><span class="neg" id="costout">$0.00</span></div>
+  <div class="line"><strong>You keep</strong><strong id="net2">$0.00</strong></div>
+</div>
+
+<div class="cta">
+<strong>Selling more than one thing?</strong>
+<p>This calculator does one sale. The <a href="https://www.etsy.com/listing/4540171138">Reseller Profit Tracker spreadsheet</a> ($14.99) does hundreds — auto fees for all five platforms, a live profit dashboard, and inventory tracking. Every rate is editable and dated, so your math never goes stale.</p>
+</div>
+
+<p class="small">More free tools from Æ Studio: <a href="../">AI visibility checker</a> · <a href="../llms-txt-generator/">llms.txt generator</a> · <a href="../schema-generator/">schema generator</a>.</p>
+
+<h2>The 2026 US fee rates used here</h2>
+<ul class="small" style="margin-left:18px">
+<li><strong>Etsy:</strong> 6.5% transaction + 3% processing on price+shipping, + $0.25 processing + $0.20 listing.</li>
+<li><strong>eBay:</strong> ~13.25% final value fee on price+shipping + $0.30/order (most categories; category rates vary).</li>
+<li><strong>Poshmark:</strong> flat $2.95 under $15, otherwise 20% of price (buyers pay shipping).</li>
+<li><strong>Mercari:</strong> 10% flat on price+shipping.</li>
+<li><strong>Depop (US):</strong> 0% selling fee + 3.3% + $0.45 payment processing.</li>
+</ul>
+<p class="small">Rates verified July 2026. Platforms change fees — always verify in your seller account. This is a snapshot tool, not financial advice. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const usd=n=>(n<0?'-$':'$')+Math.abs(n).toFixed(2);
+  function fee(p, price, ship){
+    const base=price+ship;
+    if(p==='etsy')   return base*0.095 + 0.45;          // 6.5%+3% + $0.25 + $0.20 listing
+    if(p==='ebay')   return base*0.1325 + 0.30;
+    if(p==='mercari')return base*0.10;
+    if(p==='depop')  return base*0.033 + 0.45;
+    if(p==='poshmark') return price<15 ? 2.95 : price*0.20;  // buyers pay shipping
+    return 0;
+  }
+  function calc(){
+    const p=$('platform').value;
+    const price=+$('price').value||0, ship=+$('ship').value||0;
+    const shipcost=+$('shipcost').value||0, cost=+$('cost').value||0;
+    const f=fee(p,price,ship);
+    const gross=price+ship;
+    const net=gross-f-shipcost-cost;
+    const margin=gross>0?(net/gross*100):0;
+    $('gross').textContent=usd(gross);
+    $('fee').textContent='-'+usd(f);
+    $('shipout').textContent='-'+usd(shipcost);
+    $('costout').textContent='-'+usd(cost);
+    $('net').textContent=usd(net);
+    $('net2').textContent=usd(net);
+    $('net').style.color = net>=0 ? 'var(--mint)' : 'var(--coral)';
+    $('margin').textContent='net profit  ·  '+margin.toFixed(1)+'% margin';
+    $('feelabel').textContent = p==='poshmark' && price<15 ? 'Platform fee (flat under $15)' : 'Platform fee';
+  }
+  ['platform','price','ship','shipcost','cost'].forEach(id=>$(id).addEventListener('input',calc));
+  calc();
+})();
+</script>
+</body>
+</html>
