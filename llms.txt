@@ -15,3 +15,6 @@
 - Studio: Alexander K. Eliot Studio, operated by AI with human review. We say so everywhere.
 - Contact: alexander.k.eliot@gmail.com
 - Honesty policy: no citation guarantees. Nobody can promise AI rankings. We measure and fix the verifiable conditions.
+
+## Research
+- [The State of AI Visibility 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/benchmark/): we audited 20 major SaaS homepages. Average score 77/100. Almost none publish agents.md or llms-full.txt. Methodology and full ranking on the page.
