@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Before/After AI Visibility Comparator — score two pages side by side</title>
+<meta name="description" content="Compare AI visibility scores for two URLs or two versions of your HTML side by side. See exactly which checks changed. Free, no signup, same scoring engine as our free checker.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Before/After AI Visibility Comparator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Runs the AI visibility check on two pages side by side and shows the score delta per check."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can I compare with this tool?","acceptedAnswer":{"@type":"Answer","text":"Two live URLs (if both allow cross-site browser reads), two pasted HTML snapshots of the same page before and after changes, or your site against a competitor's."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:820px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:10px 0 4px;font-size:.9rem;color:var(--dim)}
+input,textarea{width:100%;padding:9px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{min-height:90px;font-family:ui-monospace,Menlo,monospace;font-size:12px}
+button{padding:11px 18px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 15px Georgia,serif;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{background:var(--card);border-radius:8px;padding:14px}
+.col h3{font-size:1rem;margin-bottom:6px;color:var(--dim)}
+.bignum{font-size:2.4rem;font-weight:bold}
+.up{color:var(--mint)}.down{color:var(--coral)}.flat{color:var(--dim)}
+table{width:100%;border-collapse:collapse;margin-top:14px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid #14545f;font-size:.92rem}
+.pass{color:var(--mint)}.fail{color:var(--coral)}.unk{color:var(--amber)}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+@media (max-width:640px){.cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>Before/After Comparator</h1>
+<p class="sub">Compare AI visibility scores for two pages side by side — before your changes and after, or your site against a competitor's. Same checks and weights as our free checker, so the numbers mean the same thing everywhere in this toolkit. Free, runs in your browser, nothing stored.</p>
+
+<div class="cols">
+  <div class="col">
+    <h3>A — URL</h3>
+    <input type="url" id="urlA" placeholder="https://before-version.com">
+    <label>or paste HTML for A</label>
+    <textarea id="htmlA" placeholder="&lt;!doctype html&gt; ..."></textarea>
+  </div>
+  <div class="col">
+    <h3>B — URL</h3>
+    <input type="url" id="urlB" placeholder="https://after-version.com">
+    <label>or paste HTML for B</label>
+    <textarea id="htmlB" placeholder="&lt;!doctype html&gt; ..."></textarea>
+  </div>
+</div>
+<p style="text-align:center;margin:16px 0"><button id="run">Compare A vs B</button></p>
+<p class="small" style="text-align:center">Pasted HTML always works. URL fetch works only for sites that allow cross-site browser reads — if a URL comes back empty, paste that page's HTML instead.</p>
+
+<div id="results"></div>
+
+<div class="cta">
+<strong>Want a real audit behind this?</strong>
+<p>This compares what a browser can see. A full server-side audit tests llms.txt, robots.txt AI policy, sitemap, and schema depth beyond what any browser tool can check, with a written fix list. <a href="https://www.fiverr.com/alexanderkeliot">Order it on Fiverr</a>, $25. Or fix it yourself first with the <a href="../">checker</a> and the rest of the <a href="../">free toolkit</a>.</p>
+</div>
+
+<h2>How this is scored</h2>
+<p class="small">Nine checks, weighted 0-100: title/meta, structured data, headings, answer-shaped content, no-JS legibility, contact path, llms.txt, robots.txt reachability, sitemap. Identical engine to the main checker, so a score here means the same thing there. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed.</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+
+  function analyzeHtml(html){
+    const checks=[];
+    const title=(html.match(/<title[^>]*>([^<]*)<\/title>/i)||[])[1];
+    const desc=(html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i)||[])[1];
+    checks.push({name:'Title and meta description',weight:15,pass:!!(title&&title.trim()&&desc)});
+    const ld=(html.match(/<script[^>]+application\/ld\+json[^>]*>/gi)||[]).length;
+    checks.push({name:'Structured data (JSON-LD)',weight:20,pass:ld>0||/itemscope/i.test(html)});
+    const h1=(html.match(/<h1[\s>]/gi)||[]).length,h2=(html.match(/<h2[\s>]/gi)||[]).length;
+    checks.push({name:'Heading structure',weight:10,pass:h1>=1&&h2>=1});
+    const q=(html.match(/<h[23][^>]*>[^<]*\?/gi)||[]).length,faq=/"@type"\s*:\s*"FAQPage"/i.test(html);
+    checks.push({name:'Answer-shaped content',weight:15,pass:q>0||faq});
+    const text=html.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    checks.push({name:'Readable without JavaScript',weight:25,pass:text.length>=400});
+    const contact=/mailto:|contact|tel:\+?\d/i.test(html);
+    checks.push({name:'Machine-findable contact path',weight:15,pass:contact});
+    return checks;
+  }
+
+  async function tryFetch(url){
+    try{const r=await fetch(url,{mode:'cors'});if(!r.ok)return{ok:false};return{ok:true,text:await r.text()};}
+    catch(e){return{ok:false,cors:true};}
+  }
+
+  async function fullCheck(urlVal, htmlVal){
+    if(htmlVal && htmlVal.trim().length>50){
+      const c=analyzeHtml(htmlVal);
+      return {checks:c, mode:'paste'};
+    }
+    if(!urlVal) return {checks:null, mode:'empty'};
+    let u=urlVal.trim();
+    if(!/^https?:\/\//i.test(u)) u='https://'+u;
+    const origin=new URL(u).origin;
+    const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryFetch(origin+'/llms.txt'),tryFetch(origin+'/robots.txt'),tryFetch(origin+'/sitemap.xml')]);
+    if(!home.ok) return {checks:null, mode: home.cors?'blocked':'error'};
+    const c=analyzeHtml(home.text);
+    c.push({name:'llms.txt',weight:10,pass:llms.ok?(llms.text.trim().length>20&&!/<html/i.test(llms.text)):(llms.cors?null:false)});
+    c.push({name:'robots.txt reachable',weight:5,pass:robots.ok?true:(robots.cors?null:false)});
+    c.push({name:'XML sitemap',weight:5,pass:sitemap.ok?/<(urlset|sitemapindex)/i.test(sitemap.text):(sitemap.cors?null:false)});
+    return {checks:c, mode:'url'};
+  }
+
+  function score(checks){
+    let got=0,tot=0;
+    checks.forEach(c=>{ if(c.pass===null) return; tot+=c.weight; if(c.pass) got+=c.weight; });
+    return tot ? Math.round(got/tot*100) : 0;
+  }
+
+  function render(A,B){
+    const box=$('results');
+    if(!A.checks && !B.checks){
+      box.innerHTML='<div class="col"><span class="small">Provide at least one URL or pasted HTML for A or B.</span></div>';
+      return;
+    }
+    const sa=A.checks?score(A.checks):null, sb=B.checks?score(B.checks):null;
+    let deltaHtml='';
+    if(sa!==null && sb!==null){
+      const d=sb-sa;
+      const cls = d>0?'up':d<0?'down':'flat';
+      deltaHtml=`<p style="text-align:center;margin:16px 0" class="small">Change: <span class="${cls}" style="font-size:1.3rem;font-weight:bold">${d>0?'+':''}${d}</span> points</p>`;
+    }
+    box.innerHTML = `
+      <div class="cols">
+        <div class="col"><h3>A</h3><div class="bignum">${sa===null?'—':sa}</div>${A.mode==='blocked'?'<p class="small">Site blocked cross-site reads. Paste its HTML instead.</p>':''}</div>
+        <div class="col"><h3>B</h3><div class="bignum">${sb===null?'—':sb}</div>${B.mode==='blocked'?'<p class="small">Site blocked cross-site reads. Paste its HTML instead.</p>':''}</div>
+      </div>` + deltaHtml;
+
+    if(A.checks || B.checks){
+      const names=[...new Set([...(A.checks||[]).map(c=>c.name),...(B.checks||[]).map(c=>c.name)])];
+      const find=(checks,name)=> checks ? checks.find(c=>c.name===name) : null;
+      let rows='';
+      names.forEach(n=>{
+        const ca=find(A.checks,n), cb=find(B.checks,n);
+        const fmt=c=> !c ? '<span class="small">n/a</span>' : c.pass===null ? '<span class="unk">?</span>' : c.pass ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
+        rows+=`<tr><td>${n}</td><td>${fmt(ca)}</td><td>${fmt(cb)}</td></tr>`;
+      });
+      box.innerHTML += `<table><thead><tr><th>Check</th><th>A</th><th>B</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+  }
+
+  $('run').addEventListener('click', async ()=>{
+    const btn=$('run'); btn.textContent='Comparing...'; btn.disabled=true;
+    const [A,B] = await Promise.all([
+      fullCheck($('urlA').value, $('htmlA').value),
+      fullCheck($('urlB').value, $('htmlB').value)
+    ]);
+    render(A,B);
+    btn.textContent='Compare A vs B'; btn.disabled=false;
+  });
+})();
+</script>
+</body>
+</html>

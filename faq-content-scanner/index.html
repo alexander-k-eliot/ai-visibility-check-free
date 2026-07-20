@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free FAQ Content Scanner — find the question-shaped headings already on your page</title>
+<meta name="description" content="Paste your page HTML or a URL. We scan for question-shaped headings you already have and turn them into ready FAQ pairs. Free, no signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"FAQ Content Scanner","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Scans a page for question-shaped headings and drafts FAQ pairs from existing content."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a question-shaped heading?","acceptedAnswer":{"@type":"Answer","text":"A heading (H2 or H3) phrased as a question a buyer would actually ask, such as 'How much does X cost?' or 'What does Y include?'. AI assistants extract these more reliably than statement headings."}},{"@type":"Question","name":"Does this scanner store my content?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser. Nothing is uploaded or saved."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:740px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+input,textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{min-height:120px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+button{padding:11px 20px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 15px Georgia,serif;cursor:pointer}
+button:hover{filter:brightness(1.1)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
+.card{background:var(--card);border-radius:8px;padding:16px 18px;margin:10px 0}
+.found{color:var(--mint);font-weight:bold}
+.editable{width:100%;background:#052b32;border:1px solid #1d5c6b;border-radius:6px;padding:8px;color:var(--ink);font:inherit;margin-top:6px}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+.copied{color:var(--amber)}
+#out{width:100%;min-height:180px;font-family:ui-monospace,Menlo,monospace;font-size:13px;margin-top:10px;display:none}
+.empty{color:var(--dim);font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>FAQ Content Scanner</h1>
+<p class="sub">Before you write new FAQ content, check what you already have. This scans your page for question-shaped headings — the ones AI assistants already look for — and drafts them into FAQ pairs you can edit and export. Free, runs in your browser, nothing stored.</p>
+
+<div class="row">
+<input type="url" id="siteUrl" placeholder="https://yourbusiness.com/faq-or-services-page" style="flex:1;min-width:220px">
+<button id="scanUrl">Scan URL</button>
+</div>
+<p class="small">Most sites block cross-site reads from a browser (normal, not a problem with your site). If the URL scan comes back empty, use paste below — it always works.</p>
+
+<label>Or paste your page HTML (View Page Source, copy all, paste here)</label>
+<textarea id="htmlPaste" placeholder="&lt;!doctype html&gt; ..."></textarea>
+<button id="scanPaste">Scan pasted HTML</button>
+
+<div id="results"></div>
+
+<div class="cta" id="exportBox" style="display:none">
+<strong>Found some. Now make them official.</strong>
+<p>Edit any question or answer above, then export and paste straight into the <a href="../faq-schema-generator/">FAQ Schema Generator</a> to get FAQPage JSON-LD.</p>
+<button id="export" style="margin-top:8px">Export edited pairs</button>
+<textarea id="out" readonly></textarea>
+<button id="copy" style="background:#0a4552;color:var(--mint);margin-top:8px;display:none">Copy</button>
+<span id="msg" class="small"></span>
+</div>
+
+<h2>What counts as a question-shaped heading</h2>
+<p class="small">Any H2 or H3 that ends in "?" or opens with what, how, why, when, where, who, which, can, does, is, or are. We pull the heading plus the text immediately after it as a draft answer — read it, trim it, make sure it is actually true and actually on your page before you publish schema for it.</p>
+<p class="small">Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const QSTART=/^(what|how|why|when|where|who|which|can|do|does|is|are)\b/i;
+
+  function extractCandidates(html){
+    const doc=new DOMParser().parseFromString(html,'text/html');
+    const heads=[...doc.querySelectorAll('h2,h3')];
+    const out=[];
+    heads.forEach(h=>{
+      const t=(h.textContent||'').trim();
+      if(!t) return;
+      const looksQ = /\?\s*$/.test(t) || QSTART.test(t);
+      if(!looksQ) return;
+      let answer='';
+      let n=h.nextElementSibling;
+      let hops=0;
+      while(n && hops<4 && answer.length<400){
+        if(/^H[1-6]$/.test(n.tagName)) break;
+        const nt=(n.textContent||'').trim();
+        if(nt) answer+=(answer?' ':'')+nt;
+        n=n.nextElementSibling; hops++;
+      }
+      out.push({q:t, a:answer.slice(0,400)});
+    });
+    return out;
+  }
+
+  function render(pairs, sourceNote){
+    const box=$('results');
+    if(!pairs.length){
+      box.innerHTML=`<div class="card"><span class="empty">No question-shaped H2/H3 found${sourceNote?(' — '+sourceNote):''}. That itself is a finding: add a few, then use the <a href="../faq-schema-generator/">FAQ Schema Generator</a> directly with your own Q&amp;A.</span></div>`;
+      $('exportBox').style.display='none';
+      return;
+    }
+    box.innerHTML = `<div class="card"><span class="found">${pairs.length} candidate${pairs.length===1?'':'s'} found.</span> Edit any of these before exporting.</div>` +
+      pairs.map((p,i)=>`
+        <div class="card">
+          <label>Question ${i+1}</label>
+          <input class="cq editable" data-i="${i}" value="${p.q.replace(/"/g,'&quot;')}">
+          <label>Draft answer (from the page — verify and trim)</label>
+          <textarea class="ca editable" data-i="${i}" rows="3">${p.a}</textarea>
+        </div>`).join('');
+    $('exportBox').style.display='block';
+    $('out').style.display='none';
+    $('copy').style.display='none';
+  }
+
+  function doScanHtml(html){
+    render(extractCandidates(html));
+  }
+
+  async function tryFetch(url){
+    try{const r=await fetch(url,{mode:'cors'});if(!r.ok)return{ok:false};return{ok:true,text:await r.text()};}
+    catch(e){return {ok:false,cors:true};}
+  }
+
+  $('scanUrl').addEventListener('click', async ()=>{
+    let u=$('siteUrl').value.trim();
+    if(!u) return;
+    if(!/^https?:\/\//i.test(u)) u='https://'+u;
+    const btn=$('scanUrl'); btn.textContent='Scanning...'; btn.disabled=true;
+    const r=await tryFetch(u);
+    btn.textContent='Scan URL'; btn.disabled=false;
+    if(r.ok) doScanHtml(r.text);
+    else render([], r.cors ? 'this site blocks cross-site browser reads, try paste instead' : 'could not fetch that URL');
+  });
+
+  $('scanPaste').addEventListener('click', ()=>{
+    const html=$('htmlPaste').value;
+    if(html.trim().length<50){ alert('Paste your full page HTML first.'); return; }
+    doScanHtml(html);
+  });
+
+  $('export').addEventListener('click', ()=>{
+    const qs=[...document.querySelectorAll('.cq')], as=[...document.querySelectorAll('.ca')];
+    const lines=[];
+    qs.forEach((q,i)=>{
+      const a=as[i].value.trim();
+      if(q.value.trim() && a) lines.push('Q: '+q.value.trim()+'\nA: '+a);
+    });
+    $('out').value = lines.join('\n\n') || '(no complete Q&A pairs — fill in a question and answer above)';
+    $('out').style.display='block';
+    $('copy').style.display='inline-block';
+  });
+  $('copy').addEventListener('click', ()=>{
+    $('out').select(); document.execCommand('copy');
+    $('msg').textContent=' copied — paste into the FAQ Schema Generator'; $('msg').className='small copied';
+    setTimeout(()=>{$('msg').textContent='';},3000);
+  });
+})();
+</script>
+</body>
+</html>
