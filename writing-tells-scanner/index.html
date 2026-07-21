@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Writing Tells Scanner — a self-edit checklist, not an AI detector</title>
+<meta name="description" content="Paste your draft. We flag commonly-overused phrases and structural patterns worth a second look before you publish. A self-editing aid, not an accusation — presence proves nothing, it's just worth checking. Free, runs in your browser.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebApplication","name":"Writing Tells Scanner","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Flags commonly-overused phrases and structural patterns in a draft, as a self-editing checklist. Not an AI detector."},
+{"@type":"Organization","name":"Alexander K. Eliot Studio","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot"]},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this detect whether text was written by AI?","acceptedAnswer":{"@type":"Answer","text":"No, and we don't claim it does. Reliable AI detection does not exist — every real detector has high false-positive and false-negative rates. This tool flags phrases and patterns that show up often in weak or generic writing, AI-assisted or not, worth a second look during editing. It is a self-edit checklist, not a verdict on authorship."}},{"@type":"Question","name":"Does this help evade AI detectors?","acceptedAnswer":{"@type":"Answer","text":"No, and we would refuse that request directly if asked. This tool exists to help you tighten your own writing, not to disguise where it came from. We do not do detection-evasion work, at any price, for anyone."}}]}]}
+</script>
+<style>
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:760px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}
+h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}
+.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit;min-height:200px}
+button{padding:11px 20px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 15px Georgia,serif;cursor:pointer;margin-top:10px}
+button:hover{filter:brightness(1.1)}
+.card{background:var(--card);border-radius:8px;padding:18px 20px;margin:18px 0}
+.big{font-size:2.2rem;font-weight:bold;color:var(--mint)}
+.row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #14545f}
+.row:last-child{border:0}
+mark{background:var(--amber);color:#04251f;border-radius:3px;padding:0 2px}
+mark.struct{background:var(--coral)}
+#highlighted{white-space:pre-wrap;line-height:1.7}
+a{color:var(--mint)}
+.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+.warn{background:#3a2a12;border-left:4px solid var(--amber);padding:14px 16px;border-radius:6px;margin:20px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>Writing Tells Scanner</h1>
+<p class="sub">Paste a draft. This flags commonly-overused phrases and structural patterns worth a second look before you publish — the kind of thing an editor catches on a close read. Free, runs entirely in your browser, nothing is uploaded or stored.</p>
+
+<div class="warn">
+<strong>This is not an AI detector, and no honest tool is.</strong> Reliable AI detection does not exist — every real one has real false-positive and false-negative rates. These phrases and patterns show up constantly in weak or generic writing, whether or not AI was involved. Presence proves nothing about origin. This is a self-editing checklist, not a verdict.
+</div>
+
+<label for="input">Paste your draft</label>
+<textarea id="input" placeholder="Paste text here..."></textarea>
+<button id="scan">Scan</button>
+
+<div class="card" id="summary" style="display:none">
+  <div class="big" id="totalCount">0</div>
+  <div class="sub">flagged instances</div>
+  <div id="breakdown"></div>
+</div>
+
+<div class="card" id="highlightCard" style="display:none">
+  <h2 style="margin-top:0">Your text, flagged</h2>
+  <div id="highlighted"></div>
+</div>
+
+<div class="cta">
+<strong>Want the full method, not just the flags?</strong>
+<p>This scanner catches phrases. It doesn't fact-check claims, verify formulas, or catch content that silently corrupted on save — the errors that actually matter most. <a href="https://eliotwave01.gumroad.com/l/ai-output-verification-playbook">The AI-Output Verification Playbook</a> ($29) teaches the real discipline, built from genuine catches in this studio's own work. Want it done for you? AI-output fact-checking and repair starts at $65 on <a href="https://www.upwork.com/">Upwork Project Catalog</a> ("Alexander E.").</p>
+</div>
+
+<p class="small">More free tools from Æ Studio: <a href="../">AI visibility checker</a> · <a href="../robots-txt-generator/">robots.txt generator</a> · <a href="../llms-txt-generator/">llms.txt generator</a> · <a href="../schema-generator/">schema generator</a> · <a href="../faq-schema-generator/">FAQ schema generator</a> · <a href="../contrast-checker/">WCAG contrast checker</a> · <a href="../fee-calculator/">reseller fee calculator</a>.</p>
+
+<h2>What this checks, and why</h2>
+<ul class="small" style="margin-left:18px">
+<li><strong>Overused phrases</strong> — words and phrases that show up disproportionately often in generic or low-effort writing: "delve into," "it's important to note," "unlock the power of," "in today's fast-paced world," "boasts," "seamless," "elevate your," "navigate the landscape," "a testament to," "game-changer," "plays a pivotal role," and similar. Using one occasionally is normal. A draft dense with them usually reads as generic regardless of who or what wrote it.</li>
+<li><strong>Hedge density</strong> — "may," "might," "could potentially," "it's possible that" stacked up in a way that says nothing concrete. Sometimes necessary, often a sign a claim needs to be made more specific or cut.</li>
+<li><strong>Structural repetition</strong> — three-item lists back to back, "not only X but also Y" patterns repeated, sentences that all open the same way. Not wrong on their own; monotonous in volume.</li>
+</ul>
+<p class="small">Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. This tool itself was written by AI and reviewed by a human — same disclosure we use everywhere. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const PHRASES = [
+    "delve into","it's important to note","it is important to note","unlock the power of",
+    "in today's fast-paced world","boasts","seamless","elevate your","navigate the landscape",
+    "a testament to","tapestry of","game-changer","plays a pivotal role","unparalleled",
+    "in the realm of","furthermore","moreover","in conclusion","it is worth noting",
+    "as an ai language model","dive into","let's explore",
+    "on the other hand"
+  ];
+  const HEDGES = ["may ","might ","could potentially","it's possible that","it is possible that","perhaps ","arguably"];
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function scan(){
+    const raw = document.getElementById('input').value;
+    if(!raw.trim()) return;
+    let html = escapeHtml(raw);
+    let counts = {};
+    let total = 0;
+
+    PHRASES.forEach(p => {
+      const re = new RegExp('('+p.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      const matches = raw.match(re);
+      if(matches){
+        counts[p] = matches.length;
+        total += matches.length;
+        html = html.replace(re, '<mark>$1</mark>');
+      }
+    });
+
+    let hedgeCount = 0;
+    HEDGES.forEach(h => {
+      const re = new RegExp('\\b('+h.trim().replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      const matches = raw.match(re);
+      if(matches){
+        hedgeCount += matches.length;
+        html = html.replace(re, '<mark class="struct">$1</mark>');
+      }
+    });
+    total += hedgeCount;
+
+    document.getElementById('totalCount').textContent = total;
+    let breakdown = '';
+    Object.keys(counts).sort((a,b)=>counts[b]-counts[a]).forEach(p=>{
+      breakdown += '<div class="row"><span>"'+p+'"</span><span>'+counts[p]+'</span></div>';
+    });
+    if(hedgeCount>0) breakdown += '<div class="row"><span>Hedge phrases (may/might/could potentially...)</span><span>'+hedgeCount+'</span></div>';
+    if(total===0) breakdown = '<div class="row"><span>No flagged patterns found. That is a good sign, not proof of anything either way.</span><span></span></div>';
+    document.getElementById('breakdown').innerHTML = breakdown;
+    document.getElementById('summary').style.display = 'block';
+
+    document.getElementById('highlighted').innerHTML = html;
+    document.getElementById('highlightCard').style.display = 'block';
+  }
+
+  document.getElementById('scan').addEventListener('click', scan);
+})();
+</script>
+</body>
+</html>

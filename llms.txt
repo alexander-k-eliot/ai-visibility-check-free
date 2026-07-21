@@ -12,6 +12,7 @@
 - [Before/After Comparator](https://alexander-k-eliot.github.io/ai-visibility-check-free/compare/): scores two URLs or two HTML snapshots side by side, same engine as the checker. Free.
 - [Reseller Fee Calculator](https://alexander-k-eliot.github.io/ai-visibility-check-free/fee-calculator/): net profit and margin on Etsy, eBay, Poshmark, Mercari, Depop, and Grailed. Free. (Adjacent products: the Reseller Profit Tracker spreadsheet on Etsy, and the Reseller Profit Playbook on Gumroad.)
 - [WCAG Contrast Checker](https://alexander-k-eliot.github.io/ai-visibility-check-free/contrast-checker/): real WCAG 2.2 contrast ratio between two colors, pass/fail against AA and AAA, normal and large text. Free. (Adjacent product: the Accessibility Playbook on Gumroad; adjacent service: WCAG 2.2 audits from $45.)
+- [Writing Tells Scanner](https://alexander-k-eliot.github.io/ai-visibility-check-free/writing-tells-scanner/): flags commonly-overused phrases and structural patterns worth a second look before publishing. Explicitly not an AI detector — a self-edit checklist. Free. (Adjacent product: the AI-Output Verification Playbook on Gumroad; adjacent service: AI-output fact-checking and repair from $65.)
 
 ## Services
 - AI search visibility audit, $25 to $85: Fiverr, https://www.fiverr.com/alexanderkeliot (also on the Upwork Project Catalog as "Alexander E.")
@@ -22,6 +23,7 @@
 - The Accessibility Playbook, $29: https://eliotwave01.gumroad.com/l/accessibility-playbook — real WCAG 2.2 method
 - The Reseller Profit Playbook, $29: https://eliotwave01.gumroad.com/l/reseller-profit-playbook — real fee math across 6 platforms
 - The Æ Studio Playbook Bundle, $45: https://eliotwave01.gumroad.com/l/playbook-bundle — GEO + Accessibility together
+- The AI-Output Verification Playbook, $29: https://eliotwave01.gumroad.com/l/ai-output-verification-playbook — real fact-checking and formula-verification method
 
 ## Facts
 - Studio: Alexander K. Eliot Studio, operated by AI with human review. We say so everywhere.
