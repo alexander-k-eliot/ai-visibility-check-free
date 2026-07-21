@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free JSON-LD Schema Validator — check your structured data, not just generate it</title>
+<meta name="description" content="Paste your existing JSON-LD and see exactly which required fields are missing, per schema.org type. Free, no signup, runs in your browser.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"Alexander K. Eliot Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},
+{"@type":"WebApplication","name":"JSON-LD Schema Validator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Validates existing JSON-LD structured data against schema.org required and recommended fields per type."},
+{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does this check?","acceptedAnswer":{"@type":"Answer","text":"It parses your pasted JSON-LD and checks each block's @type against the fields schema.org and AI systems actually expect for that type, then reports what's present, missing, or empty."}},{"@type":"Question","name":"Is this the same as Google's Rich Results Test?","acceptedAnswer":{"@type":"Answer","text":"No. Google's tool checks eligibility for specific search-result rich snippets. This tool checks general completeness for AI-assistant readability, a different and broader bar."}}]}]}
+</script>
+<style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:13px/1.5 ui-monospace,Menlo,monospace;min-height:180px}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer;margin-top:14px}
+button:hover{filter:brightness(1.1)}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim)}
+#results{margin-top:18px}
+.block{background:var(--card);border-radius:8px;padding:14px 16px;margin-bottom:12px;border:1px solid #0f5865}
+.block h3{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.typebadge{background:#052b32;color:var(--amber);font-size:.75rem;padding:2px 8px;border-radius:10px;font-family:ui-monospace,Menlo,monospace}
+.check{display:flex;gap:8px;align-items:flex-start;padding:4px 0;font-size:.92rem}
+.ok{color:var(--mint)}.bad{color:var(--coral)}
+.msg{color:var(--amber);font-size:.9rem;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="8" width="32" height="36" rx="3" stroke="var(--mint)" stroke-width="2.5"/>
+<line x1="16" y1="18" x2="36" y2="18" stroke="var(--mint)" stroke-width="2"/>
+<line x1="16" y1="25" x2="30" y2="25" stroke="var(--amber)" stroke-width="2"/>
+<path d="M16 33 L20 37 L28 29" stroke="var(--mint)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<div>
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>JSON-LD Schema Validator</h1>
+</div>
+</div>
+<p class="sub">Paste the structured data your site already has. This checks it against the fields schema.org and AI systems actually expect per type, not just whether the JSON parses. Free, no signup, nothing leaves your browser.</p>
+
+<label>Paste your JSON-LD (the contents of a &lt;script type="application/ld+json"&gt; block, or several)</label>
+<textarea id="input" placeholder='{"@context":"https://schema.org","@type":"Organization","name":"Acme Roofing","url":"https://acmeroofing.com"}'></textarea>
+
+<button id="check">Validate</button>
+<span id="msg" class="small"></span>
+
+<div id="results"></div>
+
+<div class="cta">
+<strong>Missing fields? Don't hand-write the fix.</strong>
+<p>The free <a href="../schema-generator/">JSON-LD Schema Generator</a> builds paste-ready Organization or LocalBusiness markup. Got FAQ content but no FAQPage schema? The <a href="../faq-schema-generator/">FAQ Schema Generator</a> and <a href="../faq-content-scanner/">FAQ Content Scanner</a> handle that pair. Then run the main <a href="../">AI visibility checker</a> to confirm it's actually detected on the live page.</p>
+<p>Schema breaks silently. A CMS update or theme change can strip it with no visible symptom. <a href="https://eliotwave01.gumroad.com/l/pulse">Pulse</a> re-checks it monthly or weekly and emails you if it disappears, from $9/mo.</p>
+<p>Want the reasoning, not just the checklist? <a href="https://eliotwave01.gumroad.com/l/geo-playbook">The GEO Playbook</a> covers structured data in depth, $29.</p>
+</div>
+
+<h2>What "required" means here</h2>
+<p class="small">Schema.org itself makes almost every property optional. The fields flagged here as required are the ones AI systems and search engines consistently need to use a block at all, based on published guidance and this studio's own audit work, not an official schema.org mandate. A block that "passes" here is complete enough to be useful. It is not a guarantee of any specific ranking or citation. Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+
+  const RULES = {
+    Organization: {required:['name','url'], recommended:['description','logo','sameAs','email']},
+    LocalBusiness: {required:['name','address'], recommended:['description','telephone','url','openingHours']},
+    Product: {required:['name','offers'], recommended:['description','image','brand','aggregateRating']},
+    Offer: {required:['price','priceCurrency'], recommended:['availability']},
+    FAQPage: {required:['mainEntity'], recommended:[]},
+    Question: {required:['name','acceptedAnswer'], recommended:[]},
+    Person: {required:['name'], recommended:['jobTitle','url','sameAs','worksFor']},
+    Service: {required:['name'], recommended:['description','provider','areaServed']},
+    WebSite: {required:['name','url'], recommended:['description']},
+    BreadcrumbList: {required:['itemListElement'], recommended:[]},
+    Article: {required:['headline'], recommended:['author','datePublished','image']},
+    Review: {required:['reviewRating','author'], recommended:['itemReviewed']},
+    FinancialService: {required:['name','url'], recommended:['description','logo','sameAs']}
+  };
+
+  function isEmpty(v){
+    if (v === undefined || v === null) return true;
+    if (typeof v === 'string') return v.trim() === '';
+    if (Array.isArray(v)) return v.length === 0;
+    return false;
+  }
+
+  function checkBlock(obj, out){
+    const type = obj['@type'];
+    if (!type) return;
+    const types = Array.isArray(type) ? type : [type];
+    types.forEach(t => {
+      const rule = RULES[t];
+      if (!rule) { out.push({type: t, unknown: true}); return; }
+      const required = rule.required.map(f => ({field: f, ok: !isEmpty(obj[f])}));
+      const recommended = rule.recommended.map(f => ({field: f, ok: !isEmpty(obj[f])}));
+      out.push({type: t, required, recommended});
+    });
+    // recurse into nested objects that themselves carry an @type (offers, address, mainEntity, etc)
+    Object.keys(obj).forEach(k => {
+      const v = obj[k];
+      if (v && typeof v === 'object') {
+        if (Array.isArray(v)) v.forEach(item => { if (item && typeof item === 'object' && item['@type']) checkBlock(item, out); });
+        else if (v['@type']) checkBlock(v, out);
+      }
+    });
+  }
+
+  function render(blocks){
+    const results = $('results');
+    results.innerHTML = '';
+    if (!blocks.length){
+      results.innerHTML = '<p class="msg">No @type found in the pasted JSON. Paste a full JSON-LD block, including "@type".</p>';
+      return;
+    }
+    blocks.forEach(b => {
+      const div = document.createElement('div');
+      div.className = 'block';
+      if (b.unknown){
+        div.innerHTML = '<h3>'+b.type+' <span class="typebadge">unrecognized type</span></h3><p class="small">Not one of the types this tool currently checks. Still valid JSON-LD, just not scored here.</p>';
+        results.appendChild(div);
+        return;
+      }
+      const reqFailed = b.required.filter(f => !f.ok);
+      const recFailed = b.recommended.filter(f => !f.ok);
+      let html = '<h3>'+b.type+' <span class="typebadge">'+(reqFailed.length ? reqFailed.length+' required missing' : 'required fields present')+'</span></h3>';
+      b.required.forEach(f => {
+        html += '<div class="check '+(f.ok?'ok':'bad')+'">'+(f.ok?'&#10003;':'&#10007;')+' <span>'+f.field+' <span class="small">(required)</span></span></div>';
+      });
+      b.recommended.forEach(f => {
+        html += '<div class="check '+(f.ok?'ok':'bad')+'">'+(f.ok?'&#10003;':'&#9675;')+' <span>'+f.field+' <span class="small">(recommended)</span></span></div>';
+      });
+      div.innerHTML = html;
+      results.appendChild(div);
+    });
+  }
+
+  $('check').addEventListener('click', () => {
+    const raw = $('input').value.trim();
+    $('msg').textContent = '';
+    if (!raw){ $('msg').textContent = 'Paste some JSON-LD first.'; return; }
+    let parsed;
+    try {
+      parsed = JSON.parse(raw);
+    } catch(e){
+      $('msg').textContent = 'That is not valid JSON: ' + e.message;
+      $('results').innerHTML = '';
+      return;
+    }
+    const roots = Array.isArray(parsed) ? parsed : (parsed['@graph'] ? parsed['@graph'] : [parsed]);
+    const out = [];
+    roots.forEach(r => { if (r && typeof r === 'object') checkBlock(r, out); });
+    render(out);
+  });
+})();
+</script>
+</body>
+</html>
