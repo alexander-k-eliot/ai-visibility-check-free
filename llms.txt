@@ -34,3 +34,4 @@
 
 ## Research
 - [The State of AI Visibility 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/benchmark/): we audited 20 major SaaS homepages. Average score 77/100. Almost none publish agents.md or llms-full.txt. Methodology and full ranking on the page.
+- [The State of AI Visibility: DTC & E-Commerce Brands 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/ecommerce-benchmark/): we audited 9 major direct-to-consumer e-commerce homepages. Average score 77/100, same as the SaaS benchmark, but only 56% publish product structured data, the thing a shopping agent actually needs.
