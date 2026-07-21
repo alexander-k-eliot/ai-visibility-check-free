@@ -87,7 +87,7 @@ a{color:var(--mint)}
 
 <div class="cta">
 <strong>Selling more than one thing?</strong>
-<p>This calculator does one sale. The <a href="https://www.etsy.com/listing/4540171138">Reseller Profit Tracker spreadsheet</a> ($14.99) does hundreds — auto fees for all six platforms (including Grailed), a live profit dashboard, and inventory tracking. Every rate is editable and dated, so your math never goes stale. Want the strategy behind the numbers — break-even math, which platform actually nets more per item, a real tracking system? <a href="https://eliotwave01.gumroad.com/l/reseller-profit-playbook">The Reseller Profit Playbook</a> ($29) teaches the full method.</p>
+<p>This calculator does one sale. <span id="platformListing">The <a href="https://www.etsy.com/listing/4540171138">Reseller Profit Tracker spreadsheet</a></span> ($14.99) does hundreds — auto fees, a live profit dashboard, and inventory tracking. Every rate is editable and dated, so your math never goes stale. Want the strategy behind the numbers — break-even math, which platform actually nets more per item, a real tracking system? <a href="https://eliotwave01.gumroad.com/l/reseller-profit-playbook">The Reseller Profit Playbook</a> ($29) teaches the full method.</p>
 </div>
 
 <p class="small">More free tools from Æ Studio: <a href="../">AI visibility checker</a> · <a href="../robots-txt-generator/">robots.txt generator</a> · <a href="../llms-txt-generator/">llms.txt generator</a> · <a href="../schema-generator/">schema generator</a> · <a href="../faq-schema-generator/">FAQ schema generator</a> · <a href="../contrast-checker/">WCAG contrast checker</a> · <a href="../writing-tells-scanner/">writing tells scanner</a>.</p>
@@ -116,8 +116,17 @@ a{color:var(--mint)}
     if(p==='poshmark') return price<15 ? 2.95 : price*0.20;  // buyers pay shipping
     return 0;
   }
+  const listings={
+    etsy:{url:'https://www.etsy.com/listing/4540171138',name:'Reseller Profit Tracker spreadsheet'},
+    ebay:{url:'https://www.etsy.com/listing/4540912109',name:'eBay Profit Tracker spreadsheet'},
+    poshmark:{url:'https://www.etsy.com/listing/4540908931',name:'Poshmark Profit Tracker spreadsheet'},
+    mercari:{url:'https://www.etsy.com/listing/4541054271',name:'Mercari Fee Calculator spreadsheet'},
+    depop:{url:'https://www.etsy.com/listing/4540933894',name:'Depop Fee Calculator spreadsheet'}
+  };
   function calc(){
     const p=$('platform').value;
+    const l=listings[p]||listings.etsy;
+    $('platformListing').innerHTML='The <a href="'+l.url+'">'+l.name+'</a>';
     const price=+$('price').value||0, ship=+$('ship').value||0;
     const shipcost=+$('shipcost').value||0, cost=+$('cost').value||0;
     const f=fee(p,price,ship);
