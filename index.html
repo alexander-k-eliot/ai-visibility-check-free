@@ -75,6 +75,7 @@ ul{margin:8px 0 8px 20px}
 </div>
 <div style="text-align:center"><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
 </div>
+<p style="text-align:center"><button id="downloadCard" type="button" style="background:#0a4552;color:var(--mint)">Download your score card</button> <span class="small">— a shareable image, good for posting or bragging</span></p>
 <div id="checkList"></div>
 </div>
 
@@ -118,8 +119,9 @@ ul{margin:8px 0 8px 20px}
 (function(){
 const $=id=>document.getElementById(id);
 const results=$('results'),list=$('checkList');
+let lastScore=0,lastLabel='a homepage';
 
-function render(checks,mode){
+function render(checks,mode,label){
   results.classList.remove('hidden');
   let got=0,tot=0,unk=0;
   list.innerHTML='';
@@ -132,6 +134,7 @@ function render(checks,mode){
     list.appendChild(d);
   });
   const pct=tot?Math.round(got/tot*100):0;
+  lastScore=pct;lastLabel=label||'a pasted homepage';
   $('scoreNum').textContent=pct;
   $('scoreRing').setAttribute('stroke-dasharray',(pct/100*408.4)+' 408.4');
   $('scoreRing').style.stroke = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
@@ -139,6 +142,43 @@ function render(checks,mode){
   $('scoreNote').textContent=unk?'Checks worth '+unk+' points could not run from the browser. The full audit runs them all.':'All listed checks ran.';
   results.scrollIntoView({behavior:'smooth'});
 }
+
+function drawScoreCard(pct,label){
+  const cvs=document.createElement('canvas');cvs.width=1200;cvs.height=630;
+  const ctx=cvs.getContext('2d');
+  const mint='#2ee6a8',amber='#f5b942',coral='#e86a5a',bg='#063740',card='#0a4552',ink='#eef6f4',dim='#9fbcba';
+  const tone = pct>=80?mint:(pct>=50?amber:coral);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,1200,630);
+  ctx.fillStyle=card;
+  ctx.beginPath();ctx.roundRect(40,40,1120,550,20);ctx.fill();
+  ctx.fillStyle=mint;ctx.font='bold 28px Georgia';ctx.fillText('Æ STUDIO',80,110);
+  ctx.fillStyle=dim;ctx.font='24px Georgia';ctx.fillText('AI Visibility Score',80,150);
+  ctx.fillStyle=ink;ctx.font='bold 34px Georgia';
+  const siteLine = label.length>44 ? label.slice(0,44)+'…' : label;
+  ctx.fillText(siteLine,80,470);
+  ctx.fillStyle=dim;ctx.font='20px Georgia';
+  ctx.fillText('Checked free at alexander-k-eliot.github.io/ai-visibility-check-free',80,520);
+  // ring
+  const cx=920,cy=270,r=150;
+  ctx.lineWidth=26;ctx.strokeStyle='#0c3f49';
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
+  ctx.strokeStyle=tone;ctx.lineCap='round';
+  ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+(pct/100)*Math.PI*2);ctx.stroke();
+  ctx.fillStyle=tone;ctx.font='bold 96px Georgia';ctx.textAlign='center';
+  ctx.fillText(String(pct),cx,cy+34);
+  ctx.fillStyle=dim;ctx.font='22px Georgia';
+  ctx.fillText('/ 100',cx,cy+72);
+  ctx.textAlign='left';
+  return cvs;
+}
+
+$('downloadCard').addEventListener('click',()=>{
+  const cvs=drawScoreCard(lastScore,lastLabel);
+  const a=document.createElement('a');
+  a.download='ai-visibility-score-'+lastScore+'.png';
+  a.href=cvs.toDataURL('image/png');
+  a.click();
+});
 
 function analyzeHtml(html){
   const checks=[];
@@ -197,7 +237,7 @@ $('urlForm').addEventListener('submit',async ev=>{
     detail:robots.ok?'Found.':(robots.cors?'Could not check from a browser.':'Not found.'),fix:'Publish robots.txt with an explicit AI-crawler policy.'});
   checks.push({name:'XML sitemap',weight:5,pass:sitemap.ok?/<(urlset|sitemapindex)/i.test(sitemap.text):(sitemap.cors?null:false),
     detail:sitemap.ok?'Found.':(sitemap.cors?'Could not check from a browser.':'Not found.'),fix:'Publish /sitemap.xml and reference it in robots.txt.'});
-  render(checks,'url');btn.textContent='Run the check';btn.disabled=false;
+  render(checks,'url',new URL(u).hostname);btn.textContent='Run the check';btn.disabled=false;
 });
 
 $('pasteBtn').addEventListener('click',()=>{
