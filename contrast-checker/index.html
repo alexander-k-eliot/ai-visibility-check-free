@@ -12,6 +12,10 @@
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What contrast ratio does WCAG require?","acceptedAnswer":{"@type":"Answer","text":"WCAG 2.2 level AA requires a 4.5:1 contrast ratio for normal text and 3:1 for large text (18pt+, or 14pt+ bold) and UI components. Level AAA requires 7:1 for normal text and 4.5:1 for large text."}},{"@type":"Question","name":"Does passing this checker make my site WCAG compliant?","acceptedAnswer":{"@type":"Answer","text":"No. Contrast is one success criterion among many. No single check, and no automated tool alone, can promise full compliance — this checker measures one real thing accurately, nothing more."}}]}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
+.scorewrap{position:relative;width:150px;height:150px;margin:0 auto 4px}
+.ring{position:absolute;top:0;left:0}
+.scoretext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -40,8 +44,17 @@ a{color:var(--mint)}
 </head>
 <body>
 <div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="26" cy="26" r="21" stroke="var(--mint)" stroke-width="2.5"/>
+<path d="M26 5a21 21 0 0 1 0 42Z" fill="var(--ink)"/>
+<path d="M26 5a21 21 0 0 0 0 42Z" fill="var(--coral)"/>
+</svg>
+<div>
 <p class="mark">Æ STUDIO</p>
 <h1>Does your color pass WCAG?</h1>
+</div>
+</div>
 <p class="sub">Enter a text color and a background color. Get the real contrast ratio and an honest pass/fail against every WCAG 2.2 threshold. Free, no signup, nothing stored.</p>
 
 <div class="grid">
@@ -58,8 +71,14 @@ a{color:var(--mint)}
 </div>
 
 <div class="card">
-  <div class="big" id="ratio">1.00:1</div>
-  <div class="sub">contrast ratio</div>
+  <div class="scorewrap">
+    <svg class="ring" width="150" height="150" viewBox="0 0 150 150">
+      <circle cx="75" cy="75" r="65" fill="none" stroke="#0c3f49" stroke-width="12"/>
+      <circle id="ratioRing" cx="75" cy="75" r="65" fill="none" stroke="var(--coral)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 75 75)" stroke-dasharray="0 408.4"/>
+    </svg>
+    <div class="scoretext"><span class="big" id="ratio" style="font-size:1.7rem">1.00:1</span></div>
+  </div>
+  <div class="sub" style="text-align:center">contrast ratio · WCAG scale, max 21:1</div>
   <div class="badges" id="badges"></div>
 </div>
 
@@ -128,6 +147,9 @@ a{color:var(--mint)}
     }
     $('ratio').textContent = ratio.toFixed(2)+':1';
     $('ratio').style.color = ratio>=4.5 ? 'var(--mint)' : (ratio>=3 ? 'var(--amber)' : 'var(--coral)');
+    const pct=Math.min(1, ratio/21);
+    $('ratioRing').setAttribute('stroke-dasharray',(pct*408.4)+' 408.4');
+    $('ratioRing').style.stroke = ratio>=4.5 ? 'var(--mint)' : (ratio>=3 ? 'var(--amber)' : 'var(--coral)');
     $('badges').innerHTML =
       badge('AA normal (4.5:1)', ratio>=4.5) +
       badge('AA large (3:1)', ratio>=3) +

@@ -12,6 +12,7 @@
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this detect whether text was written by AI?","acceptedAnswer":{"@type":"Answer","text":"No, and we don't claim it does. Reliable AI detection does not exist — every real detector has high false-positive and false-negative rates. This tool flags phrases and patterns that show up often in weak or generic writing, AI-assisted or not, worth a second look during editing. It is a self-edit checklist, not a verdict on authorship."}},{"@type":"Question","name":"Does this help evade AI detectors?","acceptedAnswer":{"@type":"Answer","text":"No, and we would refuse that request directly if asked. This tool exists to help you tighten your own writing, not to disguise where it came from. We do not do detection-evasion work, at any price, for anyone."}}]}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -39,8 +40,19 @@ a{color:var(--mint)}
 </head>
 <body>
 <div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="8" y1="14" x2="34" y2="14" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+<line x1="8" y1="22" x2="30" y2="22" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+<rect x="7" y="19" width="17" height="7" rx="1" fill="var(--amber)" opacity=".85"/>
+<line x1="8" y1="30" x2="26" y2="30" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+<path d="M33 41 L44 30 a3 3 0 0 1 4 4 L37 45 l-6 2Z" stroke="var(--coral)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+</svg>
+<div>
 <p class="mark">Æ STUDIO · free tool</p>
 <h1>Writing Tells Scanner</h1>
+</div>
+</div>
 <p class="sub">Paste a draft. This flags commonly-overused phrases and structural patterns worth a second look before you publish — the kind of thing an editor catches on a close read. Free, runs entirely in your browser, nothing is uploaded or stored.</p>
 
 <div class="warn">

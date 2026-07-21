@@ -11,6 +11,7 @@
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a question-shaped heading?","acceptedAnswer":{"@type":"Answer","text":"A heading (H2 or H3) phrased as a question a buyer would actually ask, such as 'How much does X cost?' or 'What does Y include?'. AI assistants extract these more reliably than statement headings."}},{"@type":"Question","name":"Does this scanner store my content?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs in your browser. Nothing is uploaded or saved."}}]}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -35,8 +36,17 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
 </head>
 <body>
 <div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="22" cy="22" r="14" stroke="var(--mint)" stroke-width="2.5"/>
+<line x1="32" y1="32" x2="45" y2="45" stroke="var(--mint)" stroke-width="3.5" stroke-linecap="round"/>
+<text x="22" y="29" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="var(--amber)" text-anchor="middle">?</text>
+</svg>
+<div>
 <p class="mark">Æ STUDIO · free tool</p>
 <h1>FAQ Content Scanner</h1>
+</div>
+</div>
 <p class="sub">Before you write new FAQ content, check what you already have. This scans your page for question-shaped headings — the ones AI assistants already look for — and drafts them into FAQ pairs you can edit and export. Free, runs in your browser, nothing stored.</p>
 
 <div class="row">

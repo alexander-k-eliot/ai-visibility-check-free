@@ -11,6 +11,10 @@
 {"@type":"WebApplication","name":"Free AI Visibility Check","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Client-side check of a website's readability for AI assistants and agents."}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
+.scorewrap{position:relative;width:150px;height:150px;margin:0 auto 8px}
+.ring{position:absolute;top:0;left:0}
+.scoretext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -36,8 +40,20 @@ ul{margin:8px 0 8px 20px}
 </head>
 <body>
 <main class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="26" cy="26" r="22" stroke="#155866" stroke-width="2.5"/>
+<circle cx="26" cy="26" r="14" stroke="#155866" stroke-width="2.5"/>
+<path d="M26 26 L26 4 A22 22 0 0 1 41.6 10.4 Z" fill="var(--mint)" fill-opacity=".3"/>
+<line x1="26" y1="26" x2="26" y2="4" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="26" cy="26" r="3" fill="var(--mint)"/>
+<circle cx="36" cy="14" r="3" fill="var(--coral)"/>
+</svg>
+<div>
 <p class="mark">Æ STUDIO</p>
 <h1>Will AI assistants find your website?</h1>
+</div>
+</div>
 <p class="sub">ChatGPT, Perplexity and Claude answer questions by reading websites. If they cannot read yours, they cite someone else. This free check runs in your browser and tells you part of the story. No signup. Nothing stored.</p>
 
 <h2>Check your site</h2>
@@ -48,7 +64,16 @@ ul{margin:8px 0 8px 20px}
 <p class="small">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may come back "could not check from a browser." That is a browser limit, not a verdict on your site. The paste option below always works. The <a href="https://www.fiverr.com/alexanderkeliot">$25 full audit</a> checks everything from a real server.</p>
 
 <div id="results" class="hidden">
-<div class="card"><span class="score" id="scoreNum"></span><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
+<div class="card">
+<div class="scorewrap">
+<svg class="ring" width="150" height="150" viewBox="0 0 150 150">
+<circle cx="75" cy="75" r="65" fill="none" stroke="#0c3f49" stroke-width="12"/>
+<circle id="scoreRing" cx="75" cy="75" r="65" fill="none" stroke="var(--mint)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 75 75)" stroke-dasharray="0 408.4"/>
+</svg>
+<div class="scoretext"><span class="score" id="scoreNum">0</span></div>
+</div>
+<div style="text-align:center"><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
+</div>
 <div id="checkList"></div>
 </div>
 
@@ -107,6 +132,8 @@ function render(checks,mode){
   });
   const pct=tot?Math.round(got/tot*100):0;
   $('scoreNum').textContent=pct;
+  $('scoreRing').setAttribute('stroke-dasharray',(pct/100*408.4)+' 408.4');
+  $('scoreRing').style.stroke = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
   $('scoreOf').textContent='/100 on the '+(mode==='paste'?'pasted HTML':'checks the browser could run');
   $('scoreNote').textContent=unk?'Checks worth '+unk+' points could not run from the browser. The full audit runs them all.':'All listed checks ran.';
   results.scrollIntoView({behavior:'smooth'});

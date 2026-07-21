@@ -11,6 +11,7 @@
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can I compare with this tool?","acceptedAnswer":{"@type":"Answer","text":"Two live URLs (if both allow cross-site browser reads), two pasted HTML snapshots of the same page before and after changes, or your site against a competitor's."}}]}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -37,8 +38,22 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
 </head>
 <body>
 <div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="4" y="10" width="18" height="32" rx="3" stroke="var(--coral)" stroke-width="2.5"/>
+<rect x="30" y="10" width="18" height="32" rx="3" stroke="var(--mint)" stroke-width="2.5"/>
+<line x1="10" y1="20" x2="16" y2="20" stroke="var(--coral)" stroke-width="2" opacity=".7"/>
+<line x1="10" y1="26" x2="16" y2="26" stroke="var(--coral)" stroke-width="2" opacity=".7"/>
+<line x1="36" y1="18" x2="42" y2="18" stroke="var(--mint)" stroke-width="2" opacity=".7"/>
+<line x1="36" y1="24" x2="42" y2="24" stroke="var(--mint)" stroke-width="2" opacity=".7"/>
+<line x1="36" y1="30" x2="42" y2="30" stroke="var(--mint)" stroke-width="2" opacity=".7"/>
+<path d="M22 26h6m0 0-3-3m3 3-3 3" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+<div>
 <p class="mark">Æ STUDIO · free tool</p>
 <h1>Before/After Comparator</h1>
+</div>
+</div>
 <p class="sub">Compare AI visibility scores for two pages side by side — before your changes and after, or your site against a competitor's. Same checks and weights as our free checker, so the numbers mean the same thing everywhere in this toolkit. Free, runs in your browser, nothing stored.</p>
 
 <div class="cols">

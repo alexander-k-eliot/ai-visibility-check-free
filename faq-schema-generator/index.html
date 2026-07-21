@@ -11,6 +11,7 @@
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FAQPage schema?","acceptedAnswer":{"@type":"Answer","text":"FAQPage is a schema.org structured-data type that marks up a list of questions and their answers so search engines and AI assistants can extract and quote them directly, instead of guessing which paragraph answers a question."}},{"@type":"Question","name":"Do the questions on the page have to match the schema exactly?","acceptedAnswer":{"@type":"Answer","text":"Yes. Only mark up questions you genuinely answer visibly on the same page, with the same wording. Structured data that does not match the visible page content is a policy violation for search engines and misleads AI assistants."}}]}]}
 </script>
 <style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
 :root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
@@ -34,8 +35,16 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
 </head>
 <body>
 <div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 10h34a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H24l-9 8v-8h-9a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Z" stroke="var(--mint)" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="23" y="28" font-family="ui-monospace,monospace" font-size="16" font-weight="bold" fill="var(--amber)" text-anchor="middle">{ }</text>
+</svg>
+<div>
 <p class="mark">Æ STUDIO · free tool</p>
 <h1>FAQ Schema Generator</h1>
+</div>
+</div>
 <p class="sub">FAQPage markup lets AI assistants and search engines quote your answers directly instead of guessing which paragraph answers a question. Add your real Q&amp;A, generate the code, paste it in your &lt;head&gt;. Free, runs in your browser.</p>
 
 <p class="small">Not sure what questions you already answer? Run the <a href="../faq-content-scanner/">FAQ Content Scanner</a> first — it finds question-shaped headings already on your page.</p>
