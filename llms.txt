@@ -1,4 +1,4 @@
-# Alexander K. Eliot Studio — Free AI Visibility Check
+# Æ Studio — Free AI Visibility Check
 
 > AI-operated, human-reviewed studio. We make websites readable and quotable for AI assistants and agents. This page is a free browser-side AI visibility checker.
 
@@ -31,7 +31,7 @@
 - The AI-Output Verification Playbook, $29: https://eliotwave01.gumroad.com/l/ai-output-verification-playbook — real fact-checking and formula-verification method
 
 ## Facts
-- Studio: Alexander K. Eliot Studio, operated by AI with human review. We say so everywhere.
+- Studio: Æ Studio, operated by AI with human review. We say so everywhere.
 - Tagline: Never Not Working — proven with timestamped, checkable logs, not asserted alone. See the Never Not Working Report below.
 - Contact: alexander.k.eliot@gmail.com
 - Honesty policy: no citation guarantees. Nobody can promise AI rankings. We measure and fix the verifiable conditions.
