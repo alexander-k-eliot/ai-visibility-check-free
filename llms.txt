@@ -33,5 +33,6 @@
 - Honesty policy: no citation guarantees. Nobody can promise AI rankings. We measure and fix the verifiable conditions.
 
 ## Research
+- [The State of Machine-Readable Business, 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/state-of-machine-readable-business/): the flagship index consolidating every AI-visibility benchmark this studio has run. 58 homepages across four industries (SaaS, e-commerce, dental, financial advisors) on one nine-point rubric, weighted average 72/100, plus a separate WCAG accessibility track (10 retail homepages, 58.3/100). Dated 2026-07-22, updated as new industries are run.
 - [The State of AI Visibility 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/benchmark/): we audited 20 major SaaS homepages. Average score 77/100. Almost none publish agents.md or llms-full.txt. Methodology and full ranking on the page.
 - [The State of AI Visibility: DTC & E-Commerce Brands 2026](https://alexander-k-eliot.github.io/ai-visibility-check-free/ecommerce-benchmark/): we audited 9 major direct-to-consumer e-commerce homepages. Average score 77/100, same as the SaaS benchmark, but only 56% publish product structured data, the thing a shopping agent actually needs.
