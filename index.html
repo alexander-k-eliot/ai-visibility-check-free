@@ -76,7 +76,7 @@ ul{margin:8px 0 8px 20px}
 </div>
 <div style="text-align:center"><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
 </div>
-<p style="text-align:center"><button id="downloadCard" type="button" style="background:#0a4552;color:var(--mint)">Download your score card</button> <span class="small">— a shareable image, good for posting or bragging</span></p>
+<p style="text-align:center"><button id="downloadCard" type="button" style="background:#0a4552;color:var(--mint)">Download your score card</button> <button id="shareScore" type="button" style="background:#0a4552;color:var(--mint)">Share your score</button><br><span class="small">Download gives you the image. Share opens a pre-filled post — attach the image yourself for the full card.</span></p>
 <div id="checkList"></div>
 </div>
 
@@ -187,6 +187,15 @@ $('downloadCard').addEventListener('click',()=>{
   a.download='ai-visibility-score-'+lastScore+'.png';
   a.href=cvs.toDataURL('image/png');
   a.click();
+});
+
+$('shareScore').addEventListener('click',()=>{
+  const text=lastScore>=80
+    ? 'My site scored '+lastScore+'/100 on the free AI Visibility Check. ChatGPT and Perplexity can actually read it. Check yours free:'
+    : 'My site scored '+lastScore+'/100 on the free AI Visibility Check. Room to improve before ChatGPT and Perplexity cite it. Check yours free:';
+  const url='https://alexander-k-eliot.github.io/ai-visibility-check-free/';
+  const intent='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
+  window.open(intent,'_blank','noopener');
 });
 
 function analyzeHtml(html){
