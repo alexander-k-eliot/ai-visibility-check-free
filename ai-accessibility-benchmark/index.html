@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The State of Web Accessibility 2026 — AI Industry Edition, 10 companies scanned</title>
+<meta name="description" content="We ran a real axe-core WCAG 2.2 scan against the AI industry's own homepages. Average score 79.1/100 among the 8 that let the scanner run. Hugging Face scored worst at 40, with a button no screen reader can name and zoom disabled outright.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Report","name":"The State of Web Accessibility 2026 — AI Industry Edition","datePublished":"2026-07-22","author":{"@type":"Organization","name":"Alexander K. Eliot Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},"about":"WCAG 2.2 automated accessibility compliance of major AI-company homepages","description":"Average accessibility score 79.1/100 across 8 scorable AI-company homepages, real axe-core scan; 2 of 10 blocked the scan outright via a strict Content-Security-Policy."}</script>
+<style>
+.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
+:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,serif;padding:24px 16px 80px}
+.wrap{max-width:780px;margin:0 auto}h1{font-size:2rem;line-height:1.2;margin:18px 0 8px}h2{font-size:1.3rem;margin:30px 0 8px}
+.mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
+.big{font-size:2.4rem;font-weight:bold;color:var(--mint)}
+table{width:100%;border-collapse:collapse;margin:10px 0}th,td{text-align:left;padding:7px 10px;border-bottom:1px solid #14545f}
+.sa{color:var(--mint);font-weight:bold}.sb{color:var(--amber);font-weight:bold}.sc{color:var(--coral);font-weight:bold}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+ul{margin:8px 0 8px 20px}.small{font-size:.85rem;color:var(--dim)}
+</style></head><body><div class="wrap">
+<div class="hero">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="14" y="10" width="24" height="32" rx="3" fill="none" stroke="#155866" stroke-width="2.5"/>
+<circle cx="26" cy="20" r="4" fill="var(--mint)"/>
+<path d="M18 34 Q26 26 34 34" stroke="var(--coral)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+</svg>
+<div>
+<p class="mark">Æ STUDIO · Never Not Working</p>
+<h1>The State of Web Accessibility 2026 — AI Industry Edition</h1>
+</div>
+</div>
+<p class="sub">We already ran our 9-point AI-visibility audit on the AI industry's own homepages and found 30% blocked our fetcher outright. This time we pointed a different, unrelated instrument at the same companies: a real axe-core WCAG 2.2 accessibility scan, run live in a browser, the same method behind our Retail Edition accessibility benchmark.</p>
+<p><span class="big">79.1/100</span> <span class="sub">average score among the 8 companies that let the scan run. Median 85. An industry that sells the software screen-reader users increasingly rely on doesn't uniformly practice what it enables.</span></p>
+<h2>Hugging Face scored worst, and not narrowly</h2>
+<p class="small">Hugging Face scored 40/100, the only company in the sample with a critical-severity failure, and it had two: a button with no discernible name (a screen reader announces it as blank, silence where a label should be) and zoom/scaling disabled outright via the page's own meta viewport tag, a direct violation of WCAG 2.2's minimum requirement that users be able to zoom text up to 500%. OpenAI and Google DeepMind tied for the best score among the group at 95, each with a single moderate finding (a missing page-level heading).</p>
+<h2>The ranking</h2>
+<table><thead><tr><th>#</th><th>Company</th><th>Score</th></tr></thead><tbody>
+<tr><td>1</td><td>OpenAI</td><td class="sa">95</td></tr>
+<tr><td>2</td><td>Google DeepMind</td><td class="sa">95</td></tr>
+<tr><td>3</td><td>Cohere</td><td class="sa">93</td></tr>
+<tr><td>4</td><td>Stability AI</td><td class="sa">90</td></tr>
+<tr><td>5</td><td>Anthropic</td><td class="sb">80</td></tr>
+<tr><td>6</td><td>Perplexity</td><td class="sc">70</td></tr>
+<tr><td>7</td><td>Mistral AI</td><td class="sc">70</td></tr>
+<tr><td>8</td><td>Hugging Face</td><td class="sc">40</td></tr>
+</tbody></table>
+<p class="small">2 of the 10 companies attempted, x.ai and GitHub, could not be scanned at all: both run a strict enough Content-Security-Policy that it blocked axe-core, a standard, widely-used, benign testing script, from loading in the browser at all. That's a different failure mode than the HTTP 403s our AI-visibility audit hit on some of these same companies, blocking a security researcher's or an assistive-technology vendor's own tooling rather than a bot's fetch request, and it's excluded from the average rather than scored as 0, the same honest-scope rule as every benchmark on this site.</p>
+<div class="cta"><strong>How accessible is your own site?</strong>
+<p>Free, real WCAG 2.2 contrast check in your browser: <a href="../contrast-checker/">run it here</a>. Full human-reviewed accessibility audit with a written fix list, from $45: <a href="https://www.fiverr.com/alexanderkeliot">order on Fiverr</a>.</p></div>
+<div class="cta"><strong>Want to know when we re-run this?</strong><p>We re-audit these benchmarks periodically and publish what changed. <a href="https://eliotwave01.gumroad.com/subscribe">Get an email when we do</a>, no spam, unsubscribe anytime.</p></div>
+<h2>Methodology</h2>
+<p class="small">One real axe-core 4.10.2 scan per public homepage, run live in a browser against the rendered DOM, dated 2026-07-22. Score = 100 minus a severity-weighted deduction per distinct violation type found (critical &minus;15, serious &minus;10, moderate &minus;5, minor &minus;2), floored at 0, identical formula to our <a href="../accessibility-benchmark/">Retail Edition</a>. Homepage-only snapshot, not a full-site audit. Public data only, no personal data, one scan per site. Scores change as sites change. This is an accessibility scan, not a legal compliance certification. This track is separate from and not comparable to our <a href="../ai-companies-benchmark/">AI-visibility audit of the same companies</a> &mdash; different rubric, different instrument, run on a different day. Both sit inside <a href="../state-of-machine-readable-business/">The State of Machine-Readable Business, 2026</a>.</p>
+<p class="small">Built by Alexander K. Eliot Studio, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com</p>
+</div></body></html>
