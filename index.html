@@ -3,266 +3,579 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free AI Visibility Check — is your site readable by ChatGPT and Perplexity?</title>
-<meta name="description" content="Free browser check of your website's AI visibility. See if AI assistants can read your site: structured data, metadata, answer-shaped content, no-JS legibility. No signup.">
+<title>AI Visibility Score — See how your site ranks across every major AI assistant</title>
+<meta name="description" content="Free check: see if ChatGPT, Claude, Perplexity, Gemini, Grok and Copilot can actually read your site. Score out of 100, with a line-by-line fix list. No signup.">
 <meta name="google-site-verification" content="PY5aGIrYB5ph1bicvmL5JmYiaS6X5CT96lQlOE3GMoA" />
 <meta name="msvalidate.01" content="AD4D6EBB690F6FDFBCD34448322CBE47" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"Organization","name":"Alexander K. Eliot Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","slogan":"Never Not Working","description":"AI-operated, human-reviewed studio. AI visibility audits, GEO content work and agent-ready retrofits.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},
-{"@type":"WebApplication","name":"Free AI Visibility Check","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Client-side check of a website's readability for AI assistants and agents."}]}
+{"@type":"Organization","name":"Æ Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","slogan":"Never Not Working","description":"AI-operated, human-reviewed studio. AI visibility audits, GEO content and agent-ready retrofits.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},
+{"@type":"WebApplication","name":"AI Visibility Score","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Client-side check of a website's readability for AI assistants. Score out of 100 with a fix list."}]}
 </script>
 <style>
-.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
-.scorewrap{position:relative;width:150px;height:150px;margin:0 auto 8px}
-.ring{position:absolute;top:0;left:0}
-.scoretext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
+:root{
+  --bg:#063740;--card:#0a4552;--card2:#0d5163;
+  --ink:#eef6f4;--dim:#9fbcba;
+  --mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a;
+  --border:#1d5c6b;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
-.wrap{max-width:760px;margin:0 auto}
-h1{font-size:2rem;line-height:1.2;margin:24px 0 8px}
-h2{font-size:1.25rem;margin:32px 0 8px}
-.sub{color:var(--dim);margin-bottom:24px}
-.mark{color:var(--mint);font-weight:bold}
-form{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
-input[type=url],textarea{flex:1;min-width:240px;padding:12px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
-textarea{width:100%;height:140px;font-family:monospace;font-size:13px}
-button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer}
-button:hover{filter:brightness(1.1)}
-.card{background:var(--card);border-radius:8px;padding:16px 18px;margin:10px 0}
-.pass{color:var(--mint)}.fail{color:var(--coral)}.unk{color:var(--amber)}
-.score{font-size:2.6rem;font-weight:bold}
-.small{font-size:.85rem;color:var(--dim)}
-a{color:var(--mint)}
-.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
-ul{margin:8px 0 8px 20px}
-.hidden{display:none}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;min-height:100vh}
+a{color:var(--mint);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── Layout ─────────────────────────────────────── */
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
+
+/* ── Brand header ───────────────────────────────── */
+.site-header{border-bottom:1px solid var(--border);padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{flex:0 0 auto}
+.brand-name{font-size:.9rem;font-weight:bold;color:var(--mint);letter-spacing:.04em}
+.brand-sub{color:var(--dim);font-weight:normal}
+
+/* ── Hero ───────────────────────────────────────── */
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.hero h1{font-size:2.6rem;line-height:1.15;margin-bottom:16px;max-width:680px}
+.hero-sub{color:var(--dim);max-width:640px;margin-bottom:36px;font-size:1.05rem}
+
+/* ── Check box ──────────────────────────────────── */
+.check-box{background:var(--card);border-radius:12px;padding:24px 28px;border:1px solid var(--border)}
+.check-box h2{font-size:1.05rem;color:var(--mint);margin-bottom:14px;font-weight:bold;letter-spacing:.03em;text-transform:uppercase;font-size:.85rem}
+form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+input[type=url]{flex:1;min-width:260px;padding:13px 16px;border:1px solid var(--border);border-radius:8px;background:#052b32;color:var(--ink);font:inherit;font-size:1rem}
+input[type=url]:focus{outline:2px solid var(--mint);border-color:transparent}
+.btn{padding:13px 24px;border:0;border-radius:8px;background:var(--mint);color:#04251f;font:bold 1rem Georgia,serif;cursor:pointer;white-space:nowrap;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--mint)}
+.btn-ghost:hover{background:var(--card2)}
+.note{font-size:.82rem;color:var(--dim);margin-top:8px}
+
+/* ── Results ────────────────────────────────────── */
+#results{padding:48px 0}
+.results-grid{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
+@media(max-width:620px){.results-grid{grid-template-columns:1fr}}
+
+/* Score column */
+.score-col{text-align:center}
+.scorewrap{position:relative;width:220px;height:220px;margin:0 auto}
+.ring{position:absolute;top:0;left:0;width:220px;height:220px}
+.scoretext{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.score-num{font-size:4rem;font-weight:bold;line-height:1;letter-spacing:-.02em}
+.score-denom{font-size:.9rem;color:var(--dim);margin-top:2px}
+.score-label{color:var(--dim);font-size:.85rem;margin:12px 0 18px;text-transform:uppercase;letter-spacing:.06em}
+.score-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.score-actions .btn{font-size:.8rem;padding:9px 14px}
+
+/* Benchmark bar */
+.benchmark{margin:8px 0 0}
+.benchmark-title{font-size:.78rem;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.bench-track{position:relative;height:8px;background:var(--card2);border-radius:4px;margin-bottom:6px}
+.bench-avg{position:absolute;top:-4px;width:2px;height:16px;background:var(--amber);border-radius:1px}
+.bench-you{position:absolute;top:-5px;width:12px;height:18px;background:var(--mint);border-radius:3px;transform:translateX(-50%);transition:left .6s ease}
+.bench-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim)}
+.bench-legend{display:flex;gap:16px;font-size:.75rem;color:var(--dim);margin-top:8px;justify-content:center}
+.bench-legend span{display:flex;align-items:center;gap:5px}
+.bench-legend .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* Check list */
+.checks-col{}
+.checks-heading{font-size:.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;font-weight:bold}
+.check-item{display:flex;gap:14px;align-items:flex-start;padding:13px 16px;border-radius:8px;margin-bottom:8px;background:var(--card);border-left:4px solid transparent}
+.check-item--pass{border-left-color:var(--mint)}
+.check-item--fail{border-left-color:var(--coral)}
+.check-item--unknown{border-left-color:var(--amber)}
+.check-status{width:22px;height:22px;flex:0 0 22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:bold;margin-top:2px}
+.check-item--pass .check-status{background:var(--mint);color:#04251f}
+.check-item--fail .check-status{background:var(--coral);color:#fff}
+.check-item--unknown .check-status{background:var(--amber);color:#04251f}
+.check-name{font-weight:bold;font-size:.9rem;margin-bottom:2px}
+.check-detail{font-size:.82rem;color:var(--dim);line-height:1.4}
+.check-fix{font-size:.8rem;color:var(--mint);margin-top:4px}
+
+/* Paste section */
+.paste-section{padding:0 0 40px;border-top:1px solid var(--border)}
+.paste-section .inner{background:var(--card);border-radius:12px;padding:24px 28px;margin-top:32px}
+.paste-section h2{font-size:1.05rem;margin-bottom:10px}
+textarea{width:100%;height:140px;padding:12px;border:1px solid var(--border);border-radius:8px;background:#052b32;color:var(--ink);font-family:monospace;font-size:.82rem;margin:10px 0 14px;resize:vertical}
+textarea:focus{outline:2px solid var(--mint);border-color:transparent}
+
+/* ── Product cards ──────────────────────────────── */
+.products{padding:56px 0;border-top:1px solid var(--border)}
+.section-kicker{font-size:.8rem;color:var(--mint);text-transform:uppercase;letter-spacing:.08em;font-weight:bold;margin-bottom:10px}
+.section-heading{font-size:1.7rem;font-weight:bold;margin-bottom:8px}
+.section-sub{color:var(--dim);margin-bottom:32px;max-width:580px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.product-card{background:var(--card);border-radius:12px;padding:24px 22px;border:1px solid var(--border);display:flex;flex-direction:column;gap:10px;transition:border-color .2s}
+.product-card:hover{border-color:var(--mint)}
+.product-card--featured{border-color:var(--mint);position:relative}
+.product-badge{position:absolute;top:-11px;left:20px;background:var(--mint);color:#04251f;font:bold .7rem Georgia,serif;padding:3px 10px;border-radius:4px;letter-spacing:.04em}
+.product-price{font-size:1.6rem;font-weight:bold;color:var(--mint)}
+.product-name{font-size:1rem;font-weight:bold}
+.product-desc{font-size:.85rem;color:var(--dim);line-height:1.5;flex:1}
+.product-link{display:inline-block;margin-top:6px;font-size:.85rem;font-weight:bold;color:var(--mint);padding:8px 16px;border:1px solid var(--mint);border-radius:6px;text-align:center}
+.product-link:hover{background:var(--mint);color:#04251f;text-decoration:none}
+
+/* ── Reports grid ───────────────────────────────── */
+.reports{padding:48px 0;border-top:1px solid var(--border)}
+.report-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.report-card{background:var(--card);border-radius:8px;padding:16px 18px;border:1px solid var(--border);display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
+.report-card:hover{border-color:var(--mint)}
+.report-card a{color:var(--ink);font-weight:bold;font-size:.88rem;line-height:1.3}
+.report-card a:hover{color:var(--mint);text-decoration:none}
+.report-score{font-size:.78rem;color:var(--dim)}
+.report-score .num{color:var(--amber);font-weight:bold}
+
+/* ── Tools grid ─────────────────────────────────── */
+.tools{padding:48px 0;border-top:1px solid var(--border)}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tool-card{background:var(--card);border-radius:8px;padding:14px 16px;border:1px solid var(--border);display:flex;flex-direction:column;gap:4px;transition:border-color .2s}
+.tool-card:hover{border-color:var(--mint)}
+.tool-card a{color:var(--ink);font-weight:bold;font-size:.88rem;line-height:1.3}
+.tool-card a:hover{color:var(--mint);text-decoration:none}
+.tool-sub{font-size:.76rem;color:var(--dim)}
+
+/* ── Footer ─────────────────────────────────────── */
+.site-footer{border-top:1px solid var(--border);padding:32px 0 48px;margin-top:16px}
+.footer-note{font-size:.8rem;color:var(--dim);line-height:1.6;max-width:640px}
+.footer-note a{color:var(--dim);text-decoration:underline}
+.footer-note a:hover{color:var(--mint)}
+
+/* ── Score note ─────────────────────────────────── */
+#scoreNoteWrap{margin-top:10px;font-size:.8rem;color:var(--dim)}
 </style>
 </head>
 <body>
-<main class="wrap">
-<div class="hero">
-<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="26" cy="26" r="22" stroke="#155866" stroke-width="2.5"/>
-<circle cx="26" cy="26" r="14" stroke="#155866" stroke-width="2.5"/>
-<path d="M26 26 L26 4 A22 22 0 0 1 41.6 10.4 Z" fill="var(--mint)" fill-opacity=".3"/>
-<line x1="26" y1="26" x2="26" y2="4" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round"/>
-<circle cx="26" cy="26" r="3" fill="var(--mint)"/>
-<circle cx="36" cy="14" r="3" fill="var(--coral)"/>
-</svg>
-<div>
-<p class="mark">Æ STUDIO &middot; Never Not Working</p>
-<h1>Will AI assistants find your website?</h1>
-</div>
-</div>
-<p class="sub">ChatGPT, Perplexity and Claude answer questions by reading websites. If they cannot read yours, they cite someone else. This free check runs in your browser and tells you part of the story. No signup. Nothing stored.</p>
 
-<h2>Check your site</h2>
-<form id="urlForm">
-<input type="url" id="siteUrl" placeholder="https://yourbusiness.com" required>
-<button type="submit">Run the check</button>
-</form>
-<p class="small">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may come back "could not check from a browser." That is a browser limit, not a verdict on your site. The paste option below always works. The <a href="https://www.fiverr.com/alexanderkeliot">$25 full audit</a> checks everything from a real server.</p>
-
-<div id="results" class="hidden">
-<div class="card">
-<div class="scorewrap">
-<svg class="ring" width="150" height="150" viewBox="0 0 150 150">
-<circle cx="75" cy="75" r="65" fill="none" stroke="#0c3f49" stroke-width="12"/>
-<circle id="scoreRing" cx="75" cy="75" r="65" fill="none" stroke="var(--mint)" stroke-width="12" stroke-linecap="round" transform="rotate(-90 75 75)" stroke-dasharray="0 408.4"/>
-</svg>
-<div class="scoretext"><span class="score" id="scoreNum">0</span></div>
+<!-- Brand header -->
+<header class="site-header">
+<div class="wrap">
+  <div class="brand">
+    <svg class="brand-icon" width="38" height="38" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="26" cy="26" r="22" stroke="#155866" stroke-width="2.5"/>
+      <circle cx="26" cy="26" r="14" stroke="#155866" stroke-width="2.5"/>
+      <path d="M26 26 L26 4 A22 22 0 0 1 41.6 10.4 Z" fill="var(--mint)" fill-opacity=".3"/>
+      <line x1="26" y1="26" x2="26" y2="4" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="26" cy="26" r="3" fill="var(--mint)"/>
+      <circle cx="36" cy="14" r="3" fill="var(--coral)"/>
+    </svg>
+    <div>
+      <div class="brand-name">Æ STUDIO <span class="brand-sub">· Never Not Working</span></div>
+    </div>
+  </div>
 </div>
-<div style="text-align:center"><span id="scoreOf">/100 checked from the browser</span><p class="small" id="scoreNote"></p></div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+<div class="wrap">
+  <h1>Will AI assistants find your website?</h1>
+  <p class="hero-sub">ChatGPT, Claude, Perplexity, Gemini, Grok, and Copilot answer questions by reading websites. If they cannot read yours, they cite someone else. This free check runs in your browser and tells you exactly where you stand. No signup. Nothing stored.</p>
+
+  <div class="check-box">
+    <p class="checks-heading">Check your site</p>
+    <form id="urlForm">
+      <input type="url" id="siteUrl" placeholder="https://yourbusiness.com" required>
+      <button class="btn" type="submit" id="runBtn">Run the check</button>
+    </form>
+    <p class="note">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may return "could not check from a browser" — that is a browser limit, not a verdict on your site. The paste option below always works. The <a href="https://www.fiverr.com/alexanderkeliot">$25 full audit</a> runs everything from a real server.</p>
+  </div>
 </div>
-<p style="text-align:center"><button id="downloadCard" type="button" style="background:#0a4552;color:var(--mint)">Download your score card</button> <button id="shareScore" type="button" style="background:#0a4552;color:var(--mint)">Share your score</button><br><span class="small">Download gives you the image. Share opens a pre-filled post — attach the image yourself for the full card.</span></p>
-<div id="checkList"></div>
+</section>
+
+<!-- Results -->
+<section id="results" class="hidden">
+<div class="wrap">
+  <div class="results-grid">
+
+    <!-- Score column -->
+    <div class="score-col">
+      <div class="scorewrap">
+        <svg class="ring" width="220" height="220" viewBox="0 0 220 220">
+          <!-- Track ring -->
+          <circle cx="110" cy="110" r="90" fill="none" stroke="#0c3f49" stroke-width="18"/>
+          <!-- Score arc -->
+          <circle id="scoreRing" cx="110" cy="110" r="90" fill="none"
+            stroke="var(--mint)" stroke-width="18" stroke-linecap="round"
+            transform="rotate(-90 110 110)" stroke-dasharray="0 565.5"/>
+        </svg>
+        <div class="scoretext">
+          <span class="score-num" id="scoreNum">0</span>
+          <span class="score-denom">/100</span>
+        </div>
+      </div>
+      <!-- Label is BELOW the ring, never inside it -->
+      <p class="score-label" id="scoreLabelText">AI visibility score</p>
+
+      <!-- Industry benchmark -->
+      <div class="benchmark">
+        <p class="benchmark-title">vs. industry average</p>
+        <div class="bench-track">
+          <div class="bench-avg" id="benchAvg" style="left:67%"></div>
+          <div class="bench-you" id="benchYou" style="left:0%"></div>
+        </div>
+        <div class="bench-labels"><span>0</span><span>50</span><span>100</span></div>
+        <div class="bench-legend">
+          <span><span class="dot" style="background:var(--amber)"></span>Avg: 67</span>
+          <span><span class="dot" style="background:var(--mint)"></span>Your site</span>
+        </div>
+      </div>
+
+      <div id="scoreNoteWrap"></div>
+
+      <div class="score-actions">
+        <button id="downloadCard" class="btn btn-ghost" type="button">Download scorecard</button>
+        <button id="shareScore" class="btn btn-ghost" type="button">Share on X</button>
+      </div>
+    </div>
+
+    <!-- Checks column -->
+    <div class="checks-col">
+      <p class="checks-heading">Check by check</p>
+      <div id="checkList"></div>
+    </div>
+
+  </div>
 </div>
+</section>
 
-<h2>Or paste your homepage HTML</h2>
-<p class="small">View your homepage source (right-click, View Page Source), copy it all, paste here. This runs the content checks with zero network limits.</p>
-<textarea id="htmlPaste" placeholder="&lt;!doctype html&gt; ..."></textarea>
-<p><button id="pasteBtn">Check the pasted HTML</button></p>
-
-<div class="cta">
-<strong>Want the whole picture?</strong>
-<p>This free check sees what a browser can see. The full audit fetches your site the way AI crawlers do. It tests llms.txt, robots.txt AI policy, sitemap, schema depth and no-JS rendering, and it comes with a written fix list. It costs $25 and takes two days. <a href="https://www.fiverr.com/alexanderkeliot">Order it on Fiverr</a> or find "Alexander E." in the Upwork Project Catalog.</p>
-<p>Prefer to fix it yourself? Take the <a href="https://eliotwave01.gumroad.com/l/ai-visibility-checklist">free AI Visibility Checklist</a>. Pay what you want, including nothing. Want the deep version with the actual how-to, code, and a 30-day plan? <a href="https://eliotwave01.gumroad.com/l/geo-playbook">The GEO Playbook</a>, $29. Run a financial advisory practice? This edition ships with our own 16-firm audit built in: <a href="https://eliotwave01.gumroad.com/l/geo-playbook-financial-advisors">The GEO Playbook for Financial Advisors</a>, $29. Run a dental or healthcare practice? This edition ships with our own 13-brand audit built in: <a href="https://eliotwave01.gumroad.com/l/geo-playbook-dental">The GEO Playbook for Dental &amp; Healthcare Practices</a>, $29.</p>
-<p>Scores drift. New pages ship, engines update, competitors catch up. You checking once a quarter is not enough, and we don't expect you to remember to. <a href="https://eliotwave01.gumroad.com/l/pulse">Pulse</a> is the "never not working" part on our end: it re-runs this exact check monthly or weekly and emails you the moment something changes, from $9/mo.</p>
-<p>Curious how the big players score? Read <a href="benchmark/">The State of AI Visibility 2026</a> — we audited 20 major SaaS homepages (average 77/100). Sell online? Read <a href="ecommerce-benchmark/">the DTC &amp; e-commerce edition</a> — 9 major brands, same average, a completely different failure pattern. Run a dental or healthcare practice? Read <a href="dental-benchmark/">the Dental &amp; Healthcare edition</a> — 13 major brands and DSOs, average 67.7/100, only 23% have an llms.txt file. Financial advisor or wealth manager? Read <a href="financial-benchmark/">the Financial Services edition</a> — 16 real firms, average 67.2/100, some of the biggest names scored worst. Real estate brokerage or listing site? Read <a href="real-estate-benchmark/">the Real Estate edition</a> — 14 real brokerages and portals, average 58.5/100 among the ones that let our fetcher in, and 4 of 14 (including Zillow and Realtor.com) blocked it outright. Five more editions just shipped: <a href="legal-benchmark/">Legal Services</a> (14 top firms, nobody cleared 70, Jones Day blocks GPTBot outright), <a href="hospitality-benchmark/">Hospitality</a> (14 hotel brands, 10 blocked our fetcher — the highest block rate we've measured), <a href="automotive-benchmark/">Automotive</a> (14 manufacturers, Hyundai led at 95 while Tesla, BMW, Mercedes-Benz, Audi, GM and Honda all blocked us), <a href="higher-ed-benchmark/">Higher Education</a> (14 universities, MIT scored lowest of any school at 35), and <a href="healthcare-benchmark/">Healthcare Systems</a> (14 hospital systems, Mayo Clinic and Johns Hopkins both blocked our fetcher). Want the whole picture in one place? Read <a href="state-of-machine-readable-business/">The State of Machine-Readable Business, 2026</a> — every industry we have scored, 113 homepages across ten industries, one rubric, average 67/100. Curious if the AI industry itself passes its own test? Read <a href="ai-companies-benchmark/">We Scored AI Companies' Own Websites for AI-Readiness</a> — 30% of the ones we tried blocked our fetcher outright. Curious whether "Never Not Working" is a slogan or a fact? Read <a href="never-not-working/">the receipts from one real day</a> — 10 reports shipped, 18 journalists pitched by name, 2 mistakes we caught ourselves and fixed.</p>
-<p>Making changes and want to prove they worked? Use the <a href="compare/">Before/After Comparator</a> to score two versions of a page side by side.</p>
-<p>Also free: the <a href="contrast-checker/">Contrast Checker</a> (WCAG 2.2 ratios) pairs with the <a href="https://eliotwave01.gumroad.com/l/accessibility-playbook">Accessibility Playbook</a> for the full fix list. The <a href="writing-tells-scanner/">Writing Tells Scanner</a> pairs with the <a href="https://eliotwave01.gumroad.com/l/ai-output-verification-playbook">AI Output Verification Playbook</a> for a repeatable self-edit process. Curious how accessible the sites you shop at actually are? Read <a href="accessibility-benchmark/">The State of Web Accessibility 2026</a> — a real axe-core scan of 10 major US retailers, average 58.3/100, one scored a perfect 100 and one scored 6. We ran the same scan on the AI industry itself: <a href="ai-accessibility-benchmark/">the AI Industry Edition</a> — average 79.1/100 among the 8 we could scan, Hugging Face scored worst at 40.</p>
+<!-- Paste option -->
+<section class="paste-section">
+<div class="wrap">
+  <div class="inner">
+    <h2>Or paste your homepage HTML</h2>
+    <p class="note">Right-click your homepage → View Page Source → select all → paste here. Runs all content checks with zero network limits.</p>
+    <textarea id="htmlPaste" placeholder="&lt;!doctype html&gt; ..."></textarea>
+    <button class="btn" id="pasteBtn">Check the pasted HTML</button>
+  </div>
 </div>
+</section>
 
-<div class="cta"><strong>Want to know when we ship something new?</strong><p>We're never not working on this, on no fixed schedule &mdash; new free tools, new industry benchmarks, and re-runs of the ones already here, whenever the real data changes. <a href="https://eliotwave01.gumroad.com/subscribe">Get an email when we do</a>, no spam, unsubscribe anytime.</p></div>
-<h2>Free tools</h2>
-<ul>
-<li><a href="robots-txt-generator/">robots.txt Generator</a> — set your AI-crawler policy for GPTBot, ClaudeBot, PerplexityBot and more.</li>
-<li><a href="llms-txt-generator/">llms.txt Generator</a> — fill in your business, get a ready-to-upload llms.txt.</li>
-<li><a href="schema-generator/">JSON-LD Schema Generator</a> — Organization or LocalBusiness structured data, paste-ready.</li>
-<li><a href="schema-validator/">JSON-LD Schema Validator</a> — paste your existing markup, see exactly which fields are missing.</li>
-<li><a href="faq-schema-generator/">FAQ Schema Generator</a> — turn your real Q&amp;A into FAQPage JSON-LD.</li>
-<li><a href="faq-content-scanner/">FAQ Content Scanner</a> — finds the question-shaped headings you already have.</li>
-<li><a href="answer-first-checker/">Answer-First Structure Checker</a> — flags paragraphs that bury the answer instead of leading with it.</li>
-<li><a href="compare/">Before/After Comparator</a> — score two pages side by side, see exactly what changed.</li>
-<li><a href="fee-calculator/">Reseller Fee Calculator</a> — what you actually keep on Etsy, eBay, Poshmark, Mercari, Depop.</li>
-<li><a href="reseller-fee-guide/">Reseller Platform Fees Compared</a> — every platform's fee structure, side by side, updated for 2026.</li>
-<li><a href="contrast-checker/">Contrast Checker</a> — real WCAG 2.2 contrast ratios, instantly, no signup.</li>
-<li><a href="writing-tells-scanner/">Writing Tells Scanner</a> — a self-edit checklist for AI-sounding prose, not an AI detector.</li>
-<li><a href="https://github.com/alexander-k-eliot/downloads/raw/main/ai-visibility-check.zip">WordPress Plugin</a> — run these same 8 checks from your own wp-admin, free, GPL-2.0, no data collection.</li>
-</ul>
+<!-- Product cards -->
+<section class="products">
+<div class="wrap">
+  <p class="section-kicker">Fix what this check finds</p>
+  <h2 class="section-heading">The complete GEO toolkit</h2>
+  <p class="section-sub">Every fix this check surfaces has a matching resource — free, paid, or done-for-you.</p>
 
-<h2>What this page checks</h2>
-<ul>
-<li>Title and meta description. Agents route on them.</li>
-<li>Structured data (JSON-LD). Machine-readable facts about your business.</li>
-<li>Heading structure and answer-shaped content.</li>
-<li>Text that survives without JavaScript. Many agents never run your scripts.</li>
-<li>robots.txt, llms.txt and sitemap when the browser is allowed to fetch them.</li>
-</ul>
-<p class="small">Full weights and rationale for every check: <a href="methodology/">the published methodology</a>.</p>
-<p class="small">This studio is AI-operated and human-reviewed, and runs on one operating principle: never not working. That's not a slogan we're asking you to take on faith &mdash; <a href="never-not-working/">we published a real, timestamped log</a> of what it actually shipped in a single day, every claim linked to its own receipt. This page practices the narrower version of the same idea: view source and you will find JSON-LD, an llms.txt beside this file, and full no-JS legibility. Fee-free, tracker-free. Contact: alexander.k.eliot@gmail.com</p>
-</main>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="product-price">Free</div>
+      <div class="product-name">AI Visibility Checklist</div>
+      <p class="product-desc">The 16-point checklist behind this score. Download, share with your dev, tick it off. Pay what you want, including nothing.</p>
+      <a class="product-link" href="https://eliotwave01.gumroad.com/l/ai-visibility-checklist">Get the checklist →</a>
+    </div>
+
+    <div class="product-card product-card--featured">
+      <div class="product-badge">Most popular</div>
+      <div class="product-price">$29</div>
+      <div class="product-name">GEO Playbook</div>
+      <p class="product-desc">The exact how-to, with code and a 30-day fix plan, built from our benchmark audits across 158 real homepages. Industry-specific editions for Financial Advisors and Dental &amp; Healthcare.</p>
+      <a class="product-link" href="https://eliotwave01.gumroad.com/l/geo-playbook">Get the Playbook →</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-price">$9<span style="font-size:1rem;font-weight:normal">/mo</span></div>
+      <div class="product-name">Pulse — monthly monitoring</div>
+      <p class="product-desc">Scores drift. New pages ship, engines update, competitors catch up. Pulse re-runs this check monthly and emails you the moment something changes.</p>
+      <a class="product-link" href="https://eliotwave01.gumroad.com/l/pulse">Start Pulse →</a>
+    </div>
+
+  </div>
+
+  <p style="margin-top:24px;font-size:.85rem;color:var(--dim)">Need it done for you? The <a href="https://www.fiverr.com/alexanderkeliot">$25 full server-side audit</a> includes a written fix list and runs everything this browser check cannot.</p>
+</div>
+</section>
+
+<!-- Industry reports -->
+<section class="reports">
+<div class="wrap">
+  <p class="section-kicker">Benchmark data</p>
+  <h2 class="section-heading">How does your industry score?</h2>
+  <p class="section-sub">We audited 158 homepages across 10 industries. Average score: 67/100. See exactly where your competitors stand.</p>
+
+  <div class="report-grid">
+    <div class="report-card"><a href="state-of-machine-readable-business/">State of Machine-Readable Business 2026</a><p class="report-score">158 homepages · <span class="num">avg 67/100</span></p></div>
+    <div class="report-card"><a href="benchmark/">SaaS &amp; Software</a><p class="report-score">20 companies · <span class="num">avg 77/100</span></p></div>
+    <div class="report-card"><a href="ecommerce-benchmark/">DTC &amp; E-commerce</a><p class="report-score">9 brands · <span class="num">avg 77/100</span></p></div>
+    <div class="report-card"><a href="dental-benchmark/">Dental &amp; Healthcare</a><p class="report-score">13 brands · <span class="num">avg 68/100</span></p></div>
+    <div class="report-card"><a href="financial-benchmark/">Financial Services</a><p class="report-score">16 firms · <span class="num">avg 67/100</span></p></div>
+    <div class="report-card"><a href="real-estate-benchmark/">Real Estate</a><p class="report-score">14 brokerages · <span class="num">avg 59/100</span></p></div>
+    <div class="report-card"><a href="legal-benchmark/">Legal Services</a><p class="report-score">14 top firms · <span class="num">avg 62/100</span></p></div>
+    <div class="report-card"><a href="hospitality-benchmark/">Hospitality</a><p class="report-score">14 hotel brands · <span class="num">avg 61/100</span></p></div>
+    <div class="report-card"><a href="automotive-benchmark/">Automotive</a><p class="report-score">14 manufacturers · <span class="num">avg 58/100</span></p></div>
+    <div class="report-card"><a href="higher-ed-benchmark/">Higher Education</a><p class="report-score">14 universities · <span class="num">avg 64/100</span></p></div>
+    <div class="report-card"><a href="healthcare-benchmark/">Healthcare Systems</a><p class="report-score">14 hospital systems · <span class="num">avg 65/100</span></p></div>
+    <div class="report-card"><a href="ai-companies-benchmark/">AI Industry</a><p class="report-score">AI companies audited · <span class="num">avg 79/100</span></p></div>
+  </div>
+</div>
+</section>
+
+<!-- Free tools -->
+<section class="tools">
+<div class="wrap">
+  <p class="section-kicker">Free tools</p>
+  <h2 class="section-heading">Everything to fix your score</h2>
+  <p class="section-sub">30+ free tools. No signup, no tracker, no catch.</p>
+
+  <div class="tool-grid">
+    <div class="tool-card"><a href="llms-txt-generator/">llms.txt Generator</a><p class="tool-sub">AI crawler file for your site</p></div>
+    <div class="tool-card"><a href="robots-txt-generator/">robots.txt Generator</a><p class="tool-sub">Set your AI-crawler policy</p></div>
+    <div class="tool-card"><a href="schema-generator/">JSON-LD Schema Generator</a><p class="tool-sub">Organization structured data</p></div>
+    <div class="tool-card"><a href="schema-validator/">JSON-LD Schema Validator</a><p class="tool-sub">Find missing fields in your markup</p></div>
+    <div class="tool-card"><a href="faq-schema-generator/">FAQ Schema Generator</a><p class="tool-sub">Turn Q&amp;A into FAQPage JSON-LD</p></div>
+    <div class="tool-card"><a href="faq-content-scanner/">FAQ Content Scanner</a><p class="tool-sub">Find question headings you have</p></div>
+    <div class="tool-card"><a href="answer-first-checker/">Answer-First Checker</a><p class="tool-sub">Flag buried answers in copy</p></div>
+    <div class="tool-card"><a href="compare/">Before/After Comparator</a><p class="tool-sub">Score two page versions side-by-side</p></div>
+    <div class="tool-card"><a href="contrast-checker/">Contrast Checker</a><p class="tool-sub">WCAG 2.2 ratios, instantly</p></div>
+    <div class="tool-card"><a href="writing-tells-scanner/">Writing Tells Scanner</a><p class="tool-sub">Self-edit AI-sounding prose</p></div>
+    <div class="tool-card"><a href="fee-calculator/">Reseller Fee Calculator</a><p class="tool-sub">Etsy, eBay, Poshmark, Mercari, Depop</p></div>
+    <div class="tool-card"><a href="https://github.com/alexander-k-eliot/downloads/raw/main/ai-visibility-check.zip">WordPress Plugin</a><p class="tool-sub">These 8 checks in your wp-admin</p></div>
+  </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+<div class="wrap">
+  <p class="footer-note">Æ Studio is AI-operated and human-reviewed, and runs on one principle: never not working. <a href="never-not-working/">We published the receipts from one real day</a> — 10 reports shipped, 18 journalists pitched, 2 mistakes caught and fixed. This page practices what it measures: view source and you will find JSON-LD, an llms.txt beside this file, and full no-JS legibility. Fee-free, tracker-free. Methodology: <a href="methodology/">published and versioned</a>. Contact: alexander.k.eliot@gmail.com</p>
+  <p style="margin-top:16px;font-size:.78rem;color:var(--dim)">© Æ Studio · <a href="https://eliotwave01.gumroad.com/subscribe">Email updates</a> · <a href="https://x.com/alexanderKeliot">@alexanderKeliot</a></p>
+</div>
+</footer>
 
 <script>
 (function(){
 const $=id=>document.getElementById(id);
-const results=$('results'),list=$('checkList');
 let lastScore=0,lastLabel='a homepage';
 
-function render(checks,mode,label){
-  results.classList.remove('hidden');
-  let got=0,tot=0,unk=0;
-  list.innerHTML='';
-  checks.forEach(c=>{
-    if(c.pass===null){unk+=c.weight;}else{tot+=c.weight;if(c.pass)got+=c.weight;}
-    const d=document.createElement('div');d.className='card';
-    const cls=c.pass===null?'unk':(c.pass?'pass':'fail');
-    const tag=c.pass===null?'COULD NOT CHECK':(c.pass?'PASS':'FAIL');
-    d.innerHTML='<strong class="'+cls+'">'+tag+'</strong> — <strong>'+c.name+'</strong><br>'+c.detail+(c.pass===false&&c.fix?'<br><span class="small">Fix: '+c.fix+'</span>':'');
-    list.appendChild(d);
-  });
-  const pct=tot?Math.round(got/tot*100):0;
-  lastScore=pct;lastLabel=label||'a pasted homepage';
-  $('scoreNum').textContent=pct;
-  $('scoreRing').setAttribute('stroke-dasharray',(pct/100*408.4)+' 408.4');
-  $('scoreRing').style.stroke = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
-  $('scoreOf').textContent='/100 on the '+(mode==='paste'?'pasted HTML':'checks the browser could run');
-  $('scoreNote').textContent=unk?'Checks worth '+unk+' points could not run from the browser. The full audit runs them all.':'All listed checks ran.';
-  results.scrollIntoView({behavior:'smooth'});
+function setRingColor(pct){
+  const tone = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
+  $('scoreRing').style.stroke = tone;
+  $('scoreNum').style.color = tone;
+  return tone;
 }
 
-function drawScoreCard(pct,label){
-  const cvs=document.createElement('canvas');cvs.width=1200;cvs.height=630;
-  const ctx=cvs.getContext('2d');
-  const mint='#2ee6a8',amber='#f5b942',coral='#e86a5a',bg='#063740',card='#0a4552',ink='#eef6f4',dim='#9fbcba';
-  const tone = pct>=80?mint:(pct>=50?amber:coral);
-  ctx.fillStyle=bg;ctx.fillRect(0,0,1200,630);
-  ctx.fillStyle=card;
-  ctx.beginPath();ctx.roundRect(40,40,1120,550,20);ctx.fill();
-  ctx.fillStyle=mint;ctx.font='bold 28px Georgia';ctx.fillText('Æ STUDIO',80,110);
-  ctx.fillStyle=dim;ctx.font='24px Georgia';ctx.fillText('AI Visibility Score',80,150);
-  ctx.fillStyle=ink;ctx.font='bold 34px Georgia';
-  const siteLine = label.length>44 ? label.slice(0,44)+'…' : label;
-  ctx.fillText(siteLine,80,470);
-  ctx.fillStyle=dim;ctx.font='20px Georgia';
-  ctx.fillText('Checked free at alexander-k-eliot.github.io/ai-visibility-check-free',80,520);
-  // ring
-  const cx=920,cy=270,r=150;
-  ctx.lineWidth=26;ctx.strokeStyle='#0c3f49';
-  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.stroke();
-  ctx.strokeStyle=tone;ctx.lineCap='round';
-  ctx.beginPath();ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+(pct/100)*Math.PI*2);ctx.stroke();
-  ctx.fillStyle=tone;ctx.font='bold 96px Georgia';ctx.textAlign='center';
-  ctx.fillText(String(pct),cx,cy+34);
-  ctx.fillStyle=dim;ctx.font='22px Georgia';
-  ctx.fillText('/ 100',cx,cy+72);
-  ctx.textAlign='left';
+function render(checks, mode, label){
+  $('results').classList.remove('hidden');
+  let got=0, tot=0, unkPts=0;
+  const list = $('checkList');
+  list.innerHTML = '';
+
+  checks.forEach(c => {
+    if(c.pass === null){ unkPts += c.weight; }
+    else { tot += c.weight; if(c.pass) got += c.weight; }
+
+    const item = document.createElement('div');
+    const state = c.pass === null ? 'unknown' : c.pass ? 'pass' : 'fail';
+    const icon  = c.pass === null ? '?' : c.pass ? '✓' : '✗';
+    item.className = 'check-item check-item--' + state;
+    item.innerHTML =
+      '<div class="check-status">' + icon + '</div>' +
+      '<div class="check-content">' +
+        '<div class="check-name">' + c.name + '</div>' +
+        '<div class="check-detail">' + c.detail + '</div>' +
+        (c.pass === false && c.fix ? '<div class="check-fix">Fix: ' + c.fix + '</div>' : '') +
+      '</div>';
+    list.appendChild(item);
+  });
+
+  const pct = tot ? Math.round(got / tot * 100) : 0;
+  lastScore = pct; lastLabel = label || 'a pasted homepage';
+
+  $('scoreNum').textContent = pct;
+  // Circumference for r=90: 2π*90 ≈ 565.5
+  $('scoreRing').setAttribute('stroke-dasharray', (pct / 100 * 565.5) + ' 565.5');
+  setRingColor(pct);
+
+  // Benchmark position
+  $('benchYou').style.left = Math.min(pct, 99) + '%';
+
+  $('scoreLabelText').textContent = mode === 'paste' ? 'score on pasted HTML' : 'AI visibility score';
+
+  const noteEl = $('scoreNoteWrap');
+  if(unkPts > 0){
+    noteEl.innerHTML = '<p>' + unkPts + ' pts could not run from the browser. The <a href="https://www.fiverr.com/alexanderkeliot">$25 full audit</a> runs them all.</p>';
+  } else {
+    noteEl.innerHTML = '<p style="color:var(--mint)">All checks ran.</p>';
+  }
+
+  $('results').scrollIntoView({behavior:'smooth'});
+}
+
+// Canvas scorecard for download
+function drawScoreCard(pct, label){
+  const cvs = document.createElement('canvas');
+  cvs.width = 1200; cvs.height = 630;
+  const ctx = cvs.getContext('2d');
+  const mint='#2ee6a8', amber='#f5b942', coral='#e86a5a',
+        bg='#063740', card='#0a4552', ink='#eef6f4', dim='#9fbcba';
+  const tone = pct>=80 ? mint : (pct>=50 ? amber : coral);
+
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, 1200, 630);
+  // Top bar
+  ctx.fillStyle = mint; ctx.fillRect(0, 0, 1200, 7);
+  // Card
+  ctx.fillStyle = card;
+  ctx.beginPath(); ctx.roundRect(40, 40, 1120, 550, 16); ctx.fill();
+
+  // Kicker
+  ctx.fillStyle = mint; ctx.font = 'bold 22px Georgia';
+  ctx.fillText('Æ STUDIO  ·  AI VISIBILITY SCORE', 80, 105);
+  // Site label
+  ctx.fillStyle = ink; ctx.font = 'bold 36px Georgia';
+  const siteLine = label.length > 42 ? label.slice(0, 42) + '…' : label;
+  ctx.fillText(siteLine, 80, 480);
+  // Sub
+  ctx.fillStyle = dim; ctx.font = '19px Georgia';
+  ctx.fillText('Free check at aestudio.pro  ·  Score out of 100', 80, 524);
+
+  // Ring
+  const cx=900, cy=295, r=170;
+  ctx.lineWidth = 24; ctx.strokeStyle = '#0c3f49';
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+  ctx.strokeStyle = tone; ctx.lineCap = 'round';
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, -Math.PI/2, -Math.PI/2 + (pct/100)*Math.PI*2);
+  ctx.stroke();
+
+  // Score number
+  ctx.fillStyle = tone; ctx.font = 'bold 110px Georgia';
+  ctx.textAlign = 'center';
+  ctx.fillText(String(pct), cx, cy + 40);
+  // /100 label BELOW number (inside ring is fine for canvas)
+  ctx.fillStyle = dim; ctx.font = '26px Georgia';
+  ctx.fillText('/ 100', cx, cy + 80);
+  // "AI visibility score" — positioned clearly below ring, outside circle
+  ctx.fillStyle = dim; ctx.font = '20px Georgia';
+  ctx.fillText('AI visibility score', cx, cy + r + 40);
+
+  ctx.textAlign = 'left';
+
+  // Industry avg note
+  ctx.fillStyle = amber; ctx.font = 'bold 18px Georgia';
+  ctx.fillText('Industry average: 67/100', 80, 380);
+  const diff = pct - 67;
+  ctx.fillStyle = diff >= 0 ? mint : coral;
+  ctx.fillText((diff >= 0 ? '+' : '') + diff + ' vs. average', 80, 410);
+
   return cvs;
 }
 
-$('downloadCard').addEventListener('click',()=>{
-  const cvs=drawScoreCard(lastScore,lastLabel);
-  const a=document.createElement('a');
-  a.download='ai-visibility-score-'+lastScore+'.png';
-  a.href=cvs.toDataURL('image/png');
+$('downloadCard').addEventListener('click', () => {
+  const cvs = drawScoreCard(lastScore, lastLabel);
+  const a = document.createElement('a');
+  a.download = 'ai-visibility-score-' + lastScore + '.png';
+  a.href = cvs.toDataURL('image/png');
   a.click();
 });
 
-$('shareScore').addEventListener('click',()=>{
-  const text=lastScore>=80
-    ? 'My site scored '+lastScore+'/100 on the free AI Visibility Check. ChatGPT and Perplexity can actually read it. Check yours free:'
-    : 'My site scored '+lastScore+'/100 on the free AI Visibility Check. Room to improve before ChatGPT and Perplexity cite it. Check yours free:';
-  const url='https://alexander-k-eliot.github.io/ai-visibility-check-free/';
-  const intent='https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url);
-  window.open(intent,'_blank','noopener');
+$('shareScore').addEventListener('click', () => {
+  const text = lastScore >= 80
+    ? 'My site scored ' + lastScore + '/100 on the free AI Visibility Check. ChatGPT, Claude and Perplexity can read it. Check yours:'
+    : 'My site scored ' + lastScore + '/100 on the free AI Visibility Check — below the 67/100 industry average. Fixing it now. Check yours:';
+  const url = 'https://alexander-k-eliot.github.io/ai-visibility-check-free/';
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank', 'noopener');
 });
 
+// HTML analysis
 function analyzeHtml(html){
-  const checks=[];
-  const title=(html.match(/<title[^>]*>([^<]*)<\/title>/i)||[])[1];
-  const desc=(html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i)||[])[1];
-  checks.push({name:'Title and meta description',weight:15,pass:!!(title&&title.trim()&&desc),
-    detail:'title: '+(title?'"'+title.trim().slice(0,60)+'"':'MISSING')+' · description: '+(desc?'present':'MISSING'),
-    fix:'Give every key page an accurate title and meta description.'});
-  const ld=(html.match(/<script[^>]+application\/ld\+json[^>]*>/gi)||[]).length;
-  checks.push({name:'Structured data (JSON-LD)',weight:20,pass:ld>0||/itemscope/i.test(html),
-    detail:ld?ld+' JSON-LD block(s) found.':'None found. Your business facts are not machine-readable.',
-    fix:'Add JSON-LD for Organization, Product with price, and FAQ where true.'});
-  const h1=(html.match(/<h1[\s>]/gi)||[]).length,h2=(html.match(/<h2[\s>]/gi)||[]).length;
-  checks.push({name:'Heading structure',weight:10,pass:h1>=1&&h2>=1,
-    detail:h1+' H1, '+h2+' H2 found.',fix:'Use one H1 and descriptive H2 sections.'});
-  const q=(html.match(/<h[23][^>]*>[^<]*\?/gi)||[]).length,faq=/"@type"\s*:\s*"FAQPage"/i.test(html);
-  checks.push({name:'Answer-shaped content',weight:15,pass:q>0||faq,
-    detail:faq?'FAQPage schema found.':q?q+' question-shaped heading(s).':'No question-shaped headings or FAQ schema.',
-    fix:'Add question headings with the answer in the first sentence below each.'});
-  const text=html.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-  checks.push({name:'Readable without JavaScript',weight:25,pass:text.length>=400,
-    detail:text.length+' characters of text outside scripts.'+(text.length<400?' Looks like a JS app shell. Many agents see an empty page.':''),
-    fix:'Server-render your key content.'});
-  const contact=/mailto:|contact|tel:\+?\d/i.test(html);
-  checks.push({name:'Machine-findable contact path',weight:15,pass:contact,
-    detail:contact?'Contact path present.':'No obvious contact path in the HTML.',
-    fix:'Expose a plain-HTML contact method agents can find without executing JS.'});
+  const checks = [];
+  const title = (html.match(/<title[^>]*>([^<]*)<\/title>/i)||[])[1];
+  const desc  = (html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i)||[])[1];
+  checks.push({name:'Title and meta description', weight:15,
+    pass: !!(title && title.trim() && desc),
+    detail: 'title: '+(title?'"'+title.trim().slice(0,60)+'"':'MISSING')+' · description: '+(desc?'present':'MISSING'),
+    fix: 'Give every key page an accurate title and meta description.'});
+  const ld = (html.match(/<script[^>]+application\/ld\+json[^>]*>/gi)||[]).length;
+  checks.push({name:'Structured data (JSON-LD)', weight:20,
+    pass: ld > 0 || /itemscope/i.test(html),
+    detail: ld ? ld+' JSON-LD block(s) found.' : 'None found. Your business facts are not machine-readable.',
+    fix: 'Add JSON-LD for Organization, Product with price, and FAQ where true.'});
+  const h1=(html.match(/<h1[\s>]/gi)||[]).length, h2=(html.match(/<h2[\s>]/gi)||[]).length;
+  checks.push({name:'Heading structure', weight:10,
+    pass: h1>=1 && h2>=1,
+    detail: h1+' H1, '+h2+' H2 found.',
+    fix: 'Use one H1 and descriptive H2 sections.'});
+  const q=(html.match(/<h[23][^>]*>[^<]*\?/gi)||[]).length, faq=/"@type"\s*:\s*"FAQPage"/i.test(html);
+  checks.push({name:'Answer-shaped content', weight:15,
+    pass: q > 0 || faq,
+    detail: faq?'FAQPage schema found.': q?q+' question-shaped heading(s).':'No question-shaped headings or FAQ schema.',
+    fix: 'Add question headings with the answer in the first sentence below each.'});
+  const text = html.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<style[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+  checks.push({name:'Readable without JavaScript', weight:25,
+    pass: text.length >= 400,
+    detail: text.length+' characters of text outside scripts.'+(text.length<400?' Looks like a JS app shell. Many agents see an empty page.':''),
+    fix: 'Server-render your key content.'});
+  const contact = /mailto:|contact|tel:\+?\d/i.test(html);
+  checks.push({name:'Machine-findable contact', weight:15,
+    pass: contact,
+    detail: contact?'Contact path present.':'No obvious contact path in the HTML.',
+    fix: 'Expose a plain-HTML contact method agents can find without executing JS.'});
   return checks;
 }
 
 async function tryFetch(url){
-  try{const r=await fetch(url,{mode:'cors'});if(!r.ok)return{ok:false,status:r.status};return{ok:true,text:await r.text()};}
-  catch(e){return{ok:false,cors:true};}
+  try{
+    const r = await fetch(url, {mode:'cors'});
+    if(!r.ok) return {ok:false, status:r.status};
+    return {ok:true, text: await r.text()};
+  } catch(e){ return {ok:false, cors:true}; }
 }
 
-$('urlForm').addEventListener('submit',async ev=>{
+$('urlForm').addEventListener('submit', async ev => {
   ev.preventDefault();
-  let u=$('siteUrl').value.trim();
-  if(!/^https?:\/\//i.test(u))u='https://'+u;
-  u=u.replace(/\/+$/,'');
-  const origin=new URL(u).origin;
-  // BUG FIX 2026-07-20: well-known files were only checked at the domain root, wrong
-  // for subpath-hosted sites (GitHub Pages project sites etc). Try both, either counts.
-  const siteRoot=u;
-  const tryWellKnown=async(path)=>{const a=await tryFetch(origin+path);if(a.ok||origin===siteRoot)return a;const b=await tryFetch(siteRoot+path);return b.ok?b:a;};
-  const btn=ev.target.querySelector('button');btn.textContent='Checking...';btn.disabled=true;
-  const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryWellKnown('/llms.txt'),tryWellKnown('/robots.txt'),tryWellKnown('/sitemap.xml')]);
-  let checks=[];
-  if(home.ok){checks=analyzeHtml(home.text);}
-  else{checks.push({name:'Homepage content checks',weight:100,pass:null,
-    detail:home.cors?'Your site does not allow browser cross-site reads (normal for most sites). Use the paste option below, it always works.':'Fetch failed with status '+home.status+'.',fix:''});}
-  checks.push({name:'llms.txt',weight:10,pass:llms.ok?(llms.text.trim().length>20&&!/<html/i.test(llms.text)):(llms.cors?null:false),
-    detail:llms.ok?'Found.':(llms.cors?'Could not check from a browser.':'Not found at /llms.txt.'),
-    fix:'Publish /llms.txt, a short markdown index of who you are and what you sell.'});
-  checks.push({name:'robots.txt reachable',weight:5,pass:robots.ok?true:(robots.cors?null:false),
-    detail:robots.ok?'Found.':(robots.cors?'Could not check from a browser.':'Not found.'),fix:'Publish robots.txt with an explicit AI-crawler policy.'});
-  checks.push({name:'XML sitemap',weight:5,pass:sitemap.ok?/<(urlset|sitemapindex)/i.test(sitemap.text):(sitemap.cors?null:false),
-    detail:sitemap.ok?'Found.':(sitemap.cors?'Could not check from a browser.':'Not found.'),fix:'Publish /sitemap.xml and reference it in robots.txt.'});
-  render(checks,'url',new URL(u).hostname);btn.textContent='Run the check';btn.disabled=false;
+  let u = $('siteUrl').value.trim();
+  if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+  u = u.replace(/\/+$/, '');
+  const origin = new URL(u).origin;
+  const tryWellKnown = async path => {
+    const a = await tryFetch(origin + path);
+    if(a.ok || origin === u) return a;
+    const b = await tryFetch(u + path);
+    return b.ok ? b : a;
+  };
+  const btn = $('runBtn');
+  btn.textContent = 'Checking…'; btn.disabled = true;
+  const [home, llms, robots, sitemap] = await Promise.all([
+    tryFetch(u), tryWellKnown('/llms.txt'), tryWellKnown('/robots.txt'), tryWellKnown('/sitemap.xml')
+  ]);
+  let checks = [];
+  if(home.ok){ checks = analyzeHtml(home.text); }
+  else {
+    checks.push({name:'Homepage content checks', weight:100, pass:null,
+      detail: home.cors
+        ? 'Your site does not allow browser cross-site reads (normal for most sites). Use the paste option below — it always works.'
+        : 'Fetch failed with status '+home.status+'.',
+      fix:''});
+  }
+  checks.push({name:'llms.txt', weight:10,
+    pass: llms.ok ? (llms.text.trim().length>20 && !/<html/i.test(llms.text)) : (llms.cors?null:false),
+    detail: llms.ok?'Found.':(llms.cors?'Could not check from a browser.':'Not found at /llms.txt.'),
+    fix:'Publish /llms.txt — a short markdown index of who you are and what you sell.'});
+  checks.push({name:'robots.txt reachable', weight:5,
+    pass: robots.ok ? true : (robots.cors ? null : false),
+    detail: robots.ok?'Found.':(robots.cors?'Could not check from a browser.':'Not found.'),
+    fix:'Publish robots.txt with an explicit AI-crawler policy.'});
+  checks.push({name:'XML sitemap', weight:5,
+    pass: sitemap.ok ? /<(urlset|sitemapindex)/i.test(sitemap.text) : (sitemap.cors?null:false),
+    detail: sitemap.ok?'Found.':(sitemap.cors?'Could not check from a browser.':'Not found.'),
+    fix:'Publish /sitemap.xml and reference it in robots.txt.'});
+  render(checks, 'url', new URL(u).hostname);
+  btn.textContent = 'Run the check'; btn.disabled = false;
 });
 
-$('pasteBtn').addEventListener('click',()=>{
-  const html=$('htmlPaste').value;
-  if(html.trim().length<50){alert('Paste your full homepage HTML first.');return;}
-  render(analyzeHtml(html),'paste');
+$('pasteBtn').addEventListener('click', () => {
+  const html = $('htmlPaste').value;
+  if(html.trim().length < 50){ alert('Paste your full homepage HTML first.'); return; }
+  render(analyzeHtml(html), 'paste');
 });
 })();
 </script>
