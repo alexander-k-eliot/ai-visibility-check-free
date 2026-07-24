@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
 <title>Free Writing Tells Scanner — a self-edit checklist, not an AI detector</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free Writing Tells Scanner — a self-edit checklist, not an AI detector">
+<meta property="og:description" content="Paste your draft. We flag commonly-overused phrases and structural patterns worth a second look before you publish. A self-editing aid, not an accusation — presence proves nothing, it's just worth checking. Free, runs in your browser.">
+<meta property="og:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Writing Tells Scanner — a self-edit checklist, not an AI detector">
+<meta name="twitter:description" content="Paste your draft. We flag commonly-overused phrases and structural patterns worth a second look before you publish. A self-editing aid, not an accusation — presence proves nothing, it's just worth checking. Free, runs in your browser.">
+<meta name="twitter:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
 <meta name="description" content="Paste your draft. We flag commonly-overused phrases and structural patterns worth a second look before you publish. A self-editing aid, not an accusation — presence proves nothing, it's just worth checking. Free, runs in your browser.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -11,11 +20,15 @@
 {"@type":"Organization","name":"Æ Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this detect whether text was written by AI?","acceptedAnswer":{"@type":"Answer","text":"No, and we don't claim it does. Reliable AI detection does not exist — every real detector has high false-positive and false-negative rates. This tool flags phrases and patterns that show up often in weak or generic writing, AI-assisted or not, worth a second look during editing. It is a self-edit checklist, not a verdict on authorship."}},{"@type":"Question","name":"Does this help evade AI detectors?","acceptedAnswer":{"@type":"Answer","text":"No, and we would refuse that request directly if asked. This tool exists to help you tighten your own writing, not to disguise where it came from. We do not do detection-evasion work, at any price, for anyone."}}]}]}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
 <style>
-.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
-:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.doc-head{display:flex;gap:14px;align-items:flex-start}.doc-head svg{flex:0 0 auto;margin-top:3px}
+
+
+
 .wrap{max-width:760px;margin:0 auto}
 h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}
 h2{font-size:1.15rem;margin:26px 0 8px}
@@ -36,11 +49,15 @@ a{color:var(--mint)}
 .cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
 .small{font-size:.85rem;color:var(--dim)}
 .warn{background:#3a2a12;border-left:4px solid var(--amber);padding:14px 16px;border-radius:6px;margin:20px 0}
+.wrap{padding:24px 16px 80px}
+h1,h2{font-family:var(--serif)}
+.mark{font-family:var(--mono)}
+.small{font-family:var(--sans)}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="hero">
+<div class="doc-head">
 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <line x1="8" y1="14" x2="34" y2="14" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
 <line x1="8" y1="22" x2="30" y2="22" stroke="var(--mint)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>

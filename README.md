@@ -1,3 +1,5 @@
+![Free AI Visibility Check — Æ Studio](assets/readme-banner.png)
+
 # Free AI Visibility Check
 
 A single-file, client-side checker: will AI assistants (ChatGPT, Perplexity, Claude) be able to read your website?

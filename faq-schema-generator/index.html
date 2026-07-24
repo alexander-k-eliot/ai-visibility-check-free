@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
 <title>Free FAQ Schema Generator — turn your Q&amp;A into JSON-LD FAQPage markup</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free FAQ Schema Generator — turn your Q&amp;A into JSON-LD FAQPage markup">
+<meta property="og:description" content="Paste your questions and answers, get ready-to-paste FAQPage JSON-LD. AI assistants and search engines can quote your answers directly. Free, no signup.">
+<meta property="og:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free FAQ Schema Generator — turn your Q&amp;A into JSON-LD FAQPage markup">
+<meta name="twitter:description" content="Paste your questions and answers, get ready-to-paste FAQPage JSON-LD. AI assistants and search engines can quote your answers directly. Free, no signup.">
+<meta name="twitter:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
 <meta name="description" content="Paste your questions and answers, get ready-to-paste FAQPage JSON-LD. AI assistants and search engines can quote your answers directly. Free, no signup.">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -11,11 +20,15 @@
 {"@type":"WebApplication","name":"FAQ Schema Generator","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Converts questions and answers into FAQPage JSON-LD structured data."},
 {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FAQPage schema?","acceptedAnswer":{"@type":"Answer","text":"FAQPage is a schema.org structured-data type that marks up a list of questions and their answers so search engines and AI assistants can extract and quote them directly, instead of guessing which paragraph answers a question."}},{"@type":"Question","name":"Do the questions on the page have to match the schema exactly?","acceptedAnswer":{"@type":"Answer","text":"Yes. Only mark up questions you genuinely answer visibly on the same page, with the same wording. Structured data that does not match the visible page content is a policy violation for search engines and misleads AI assistants."}}]}]}
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
 <style>
-.hero{display:flex;gap:14px;align-items:flex-start}.hero svg{flex:0 0 auto;margin-top:3px}
-:root{--bg:#063740;--card:#0a4552;--ink:#eef6f4;--dim:#9fbcba;--mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Georgia,'Times New Roman',serif;padding:24px 16px 80px}
+.doc-head{display:flex;gap:14px;align-items:flex-start}.doc-head svg{flex:0 0 auto;margin-top:3px}
+
+
+
 .wrap{max-width:720px;margin:0 auto}
 h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px}h2{font-size:1.15rem;margin:26px 0 8px}
 .mark{color:var(--mint);font-weight:bold}.sub{color:var(--dim);margin-bottom:18px}
@@ -32,11 +45,15 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
 .qa .rm{float:right;background:none;border:0;color:var(--coral);font:bold 14px Georgia,serif;cursor:pointer;padding:0;margin:0}
 .addbtn{background:#0a4552;color:var(--mint);font-size:14px;padding:9px 16px}
 .count{color:var(--dim);font-size:.85rem}
+.wrap{padding:24px 16px 80px}
+h1,h2{font-family:var(--serif)}
+.mark{font-family:var(--mono)}
+.small{font-family:var(--sans)}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="hero">
+<div class="doc-head">
 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M6 10h34a4 4 0 0 1 4 4v18a4 4 0 0 1-4 4H24l-9 8v-8h-9a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Z" stroke="var(--mint)" stroke-width="2.5" stroke-linejoin="round"/>
 <text x="23" y="28" font-family="ui-monospace,monospace" font-size="16" font-weight="bold" fill="var(--amber)" text-anchor="middle">{ }</text>
