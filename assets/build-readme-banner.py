@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the GitHub README banner image on the AAA visual system."""
 import os, sys
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "assets_lib"))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, MINT, CORAL, INK, DIM
 
 OUT = os.path.dirname(os.path.abspath(__file__))

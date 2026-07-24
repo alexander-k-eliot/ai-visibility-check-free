@@ -1,38 +1,15 @@
 #!/usr/bin/env python3
 """
-Rebuild the org chart image with the full AAA visual system:
-Fraunces-style serif headlines (Georgia fallback), IBM Plex Mono-style
-kickers/labels (Menlo fallback), dot-grid texture, same content/layout
-as the original chart.
+Rebuild the org chart image with the full AAA visual system, using the
+shared rendering lib for background/fonts/tokens.
 """
-import os
-from PIL import Image, ImageDraw, ImageFont
-
-BG    = (6,  55,  64)
-CARD  = (10, 69,  82)
-INK   = (244,238,225)
-DIM   = (159,188,186)
-MINT  = (46, 230,168)
-AMBER = (245,185, 66)
-CORAL = (232,106, 90)
-GRID  = (60, 110, 105)
+import os, sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "assets"))
+from aaa_render import new_canvas, serif, mono, sans, MINT, AMBER, CORAL, INK, DIM, CARD, GRID
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 W, H = 1800, 1400
 
-def serif(size, bold=True):
-    p = "/System/Library/Fonts/Supplemental/Georgia Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Georgia.ttf"
-    return ImageFont.truetype(p, size)
-
-def mono(size, bold=False):
-    try:
-        return ImageFont.truetype("/System/Library/Fonts/Supplemental/Courier New Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Courier New.ttf", size)
-    except Exception:
-        return ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", size)
-
-def sans(size, bold=False):
-    idx = 1 if bold else 0
-    return ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size, index=idx)
 
 def centered(d, cx, y, text, f, fill):
     bb = d.textbbox((0, 0), text, font=f)
@@ -43,15 +20,8 @@ def centered(d, cx, y, text, f, fill):
 def card(d, x, y, w, h, border_color, radius=10):
     d.rounded_rectangle([x, y, x + w, y + h], radius=radius, outline=border_color, width=2, fill=CARD)
 
-def dot_grid(d):
-    for gx in range(0, W, 42):
-        for gy in range(0, H, 42):
-            d.ellipse([gx - 1, gy - 1, gx + 1, gy + 1], fill=GRID)
-
 def build():
-    img = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(img)
-    dot_grid(d)
+    img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 6], fill=MINT)
 
