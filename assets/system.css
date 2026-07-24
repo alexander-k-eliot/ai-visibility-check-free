@@ -88,6 +88,14 @@ input[type=url]:focus{outline:2px solid var(--mint);border-color:transparent}
 .score-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
 .score-actions .btn{font-size:.8rem;padding:9px 14px}
 
+/* Optional lead capture -- shown only after the score above, never before */
+.lead-capture{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);text-align:center}
+.lead-capture-text{font-size:.82rem;color:var(--dim);margin-bottom:10px;line-height:1.4}
+.lead-capture-form{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.lead-capture-form input[type=email]{font-family:var(--mono);font-size:.82rem;padding:9px 12px;border:1px solid var(--border);border-radius:6px;background:var(--card2);color:var(--ink);min-width:200px}
+.lead-capture-form .btn{font-size:.8rem;padding:9px 14px}
+.lead-capture-note{font-size:.76rem;color:var(--mint);margin-top:8px}
+
 /* Benchmark bar */
 .benchmark{margin:8px 0 0}
 .benchmark-title{font-family:var(--mono);font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}

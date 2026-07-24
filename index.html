@@ -108,6 +108,16 @@
         <button id="downloadCard" class="btn btn-ghost" type="button">Download scorecard</button>
         <button id="shareScore" class="btn btn-ghost" type="button">Share on X</button>
       </div>
+
+      <!-- Optional, skippable. Never gates the score above -- it has already rendered. -->
+      <div id="leadCapture" class="lead-capture hidden">
+        <p class="lead-capture-text">Want your score emailed, plus a free monthly re-check? Drop your email. No spam, unsubscribe any time.</p>
+        <form id="leadCaptureForm" class="lead-capture-form">
+          <input type="email" id="leadEmail" placeholder="you@example.com" required>
+          <button class="btn btn-ghost" type="submit" id="leadCaptureBtn">Email me my score</button>
+        </form>
+        <p id="leadCaptureNote" class="lead-capture-note"></p>
+      </div>
     </div>
 
     <!-- Checks column -->
@@ -230,6 +240,10 @@
 const $=id=>document.getElementById(id);
 let lastScore=0,lastLabel='a homepage';
 
+// Optional lead-capture endpoint (Apps Script Web App, see ops/lead-capture-api/Code.gs).
+// Empty string = feature stays fully hidden, zero behavior change until this is set.
+const LEAD_CAPTURE_ENDPOINT = '';
+
 function setRingColor(pct){
   const tone = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
   $('scoreRing').style.stroke = tone;
@@ -281,7 +295,42 @@ function render(checks, mode, label){
     noteEl.innerHTML = '<p style="color:var(--mint)">All checks ran.</p>';
   }
 
+  // Optional, skippable lead capture -- only shown if an endpoint is configured.
+  // The score above has already rendered in full; this never gates it.
+  if(LEAD_CAPTURE_ENDPOINT){
+    $('leadCapture').classList.remove('hidden');
+    $('leadCaptureNote').textContent = '';
+    $('leadEmail').value = '';
+    $('leadCaptureBtn').disabled = false;
+    $('leadCaptureBtn').textContent = 'Email me my score';
+  }
+
   $('results').scrollIntoView({behavior:'smooth'});
+}
+
+if($('leadCaptureForm')){
+  $('leadCaptureForm').addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    if(!LEAD_CAPTURE_ENDPOINT) return;
+    const email = $('leadEmail').value.trim();
+    if(!email) return;
+    $('leadCaptureBtn').disabled = true;
+    $('leadCaptureBtn').textContent = 'Sending...';
+    try{
+      await fetch(LEAD_CAPTURE_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script Web Apps don't return CORS headers; fire-and-forget
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify({email, url: lastLabel, score: lastScore, timestamp: new Date().toISOString()})
+      });
+      $('leadCaptureNote').textContent = "Sent. We'll email your score and check back in a month.";
+      $('leadCaptureBtn').textContent = 'Sent';
+    } catch(err){
+      $('leadCaptureNote').textContent = "Couldn't reach the capture service -- your score above is unaffected.";
+      $('leadCaptureBtn').disabled = false;
+      $('leadCaptureBtn').textContent = 'Email me my score';
+    }
+  });
 }
 
 // Canvas scorecard for download
