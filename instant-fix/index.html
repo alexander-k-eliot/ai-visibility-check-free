@@ -100,6 +100,7 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
 <div class="cta">
 <strong>Now deploy it.</strong>
 <p>Upload llms.txt and agents.md to your site root (same place as robots.txt). Add the robots.txt lines to your existing file — don't replace it. Paste the JSON-LD snippet into your homepage's &lt;head&gt;. Then re-run the <a href="../">free checker</a> to see your new score.</p>
+<p id="ctaRecommend" style="font-weight:600"></p>
 <p>Want it verified and installed for you instead of doing it yourself? The <a href="https://eliotwave01.gumroad.com/l/zarfs">AI-Readiness Retrofit</a> ($49 founding rate) covers install plus a written before/after score.</p>
 <p>Want to catch it if your score drops later? <a href="https://eliotwave01.gumroad.com/l/pulse">Pulse</a> re-checks monthly and emails you if something breaks, from $9/mo.</p>
 </div>
@@ -173,6 +174,20 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
     return '<script type="application/ld+json">\n'+JSON.stringify(block, null, 2)+'\n<'+'/script>\n';
   }
 
+  function updateCtaRecommendation(a){
+    const el = $('ctaRecommend');
+    if(!el) return;
+    let gaps = 0;
+    if(!a.links.length) gaps++;
+    if(!a.hasContact) gaps++;
+    if(a.description.startsWith('[')) gaps++;
+    if(gaps === 0){
+      el.textContent = 'Everything came through clean — no placeholders needed filling in. The real risk now is this drifting out of date as pages change. Pulse catches that before you do.';
+    } else {
+      el.textContent = gaps + ' placeholder' + (gaps > 1 ? 's' : '') + ' above still ' + (gaps > 1 ? 'need' : 'needs') + ' your real details filled in by hand. The GEO Playbook walks through exactly what goes in each one, or the Retrofit does it for you.';
+    }
+  }
+
   function render(a){
     $('results').classList.remove('hidden');
     $('scoreLine').innerHTML = 'Generated from <b>'+a.name+'</b>' + (a.links.length ? ' — found '+a.links.length+' real page link(s) on your homepage.' : ' — no nav links confidently found, filled with a placeholder.');
@@ -180,6 +195,7 @@ a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);pa
     $('out-agents').value = buildAgentsMd(a);
     $('out-robots').value = buildRobotsPatch();
     $('out-jsonld').value = buildJsonLd(a);
+    updateCtaRecommendation(a);
     $('results').scrollIntoView({behavior:'smooth'});
   }
 
