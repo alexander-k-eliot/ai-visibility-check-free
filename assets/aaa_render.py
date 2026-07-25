@@ -215,13 +215,19 @@ def playbook_cover(out_path, kicker_text, headline_lines, price, body_lines, sta
     print(f"saved {out_path}")
 
 
-def playbook_thumb(out_path, headline_lines, price, kicker_text="THE PLAYBOOK"):
+def playbook_thumb(out_path, headline_lines, price, kicker_text="THE PLAYBOOK",
+                    stamp_top=None, stamp_bottom=None, stamp_color=None):
+    """Thumb: kicker, serif headline, price pill, footer, plus a real audited-stamp
+    badge (same stat shown on the product's own cover) so the composition has a
+    genuine focal visual element instead of empty space below the price pill."""
     W = H = 1200
     img, d = new_canvas(W, H)
     top_bottom_bars(d, W, H, MINT)
     kicker(d, 70, 80, kicker_text, size=22)
     headline(d, 70, 130, headline_lines, size=64)
     price_pill(d, 70, 500, price)
+    if stamp_top and stamp_bottom:
+        audited_stamp(d, W - 190, 640, 150, stamp_top, stamp_bottom, stamp_color or MINT)
     footer(d, 70, H - 70, "Æ STUDIO", size=22)
     img.save(out_path, quality=95)
     print(f"saved {out_path}")
