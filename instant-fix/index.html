@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
+<title>Instant AI-Readiness Fix — generate llms.txt, agents.md, JSON-LD and a robots.txt patch from your real site</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Instant AI-Readiness Fix — generate your fix files from your real site">
+<meta property="og:description" content="Paste your homepage HTML (or try a live URL) and get real llms.txt, agents.md, a robots.txt AI-crawler patch, and a JSON-LD block, built from your actual page content. Free, no signup.">
+<meta property="og:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Instant AI-Readiness Fix — generate your fix files from your real site">
+<meta name="twitter:description" content="Paste your homepage HTML (or try a live URL) and get real llms.txt, agents.md, a robots.txt AI-crawler patch, and a JSON-LD block, built from your actual page content. Free, no signup.">
+<meta name="twitter:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="description" content="Paste your homepage HTML (or try a live URL) and get real llms.txt, agents.md, a robots.txt AI-crawler patch, and a JSON-LD block, built from your actual page content. Free, no signup.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","name":"Æ Studio","url":"https://alexander-k-eliot.github.io/ai-visibility-check-free/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://github.com/alexander-k-eliot","https://eliotwave01.gumroad.com"]},
+{"@type":"WebApplication","name":"Instant AI-Readiness Fix","applicationCategory":"DeveloperApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Generates real llms.txt, agents.md, a robots.txt AI-crawler patch, and a JSON-LD block from a site's actual homepage content."}]}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
+<style>
+.doc-head{display:flex;gap:14px;align-items:flex-start}.doc-head svg{flex:0 0 auto;margin-top:3px}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 80px}
+h1{font-size:1.9rem;line-height:1.2;margin:18px 0 6px;font-family:var(--serif)}
+h2{font-size:1.15rem;margin:26px 0 8px;font-family:var(--serif)}
+.mark{color:var(--mint);font-weight:bold;font-family:var(--mono)}.sub{color:var(--dim);margin-bottom:18px}
+label{display:block;margin:12px 0 4px;font-size:.92rem;color:var(--dim)}
+input,textarea{width:100%;padding:10px;border:1px solid #1d5c6b;border-radius:6px;background:#052b32;color:var(--ink);font:inherit}
+textarea{min-height:110px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+button{padding:12px 22px;border:0;border-radius:6px;background:var(--mint);color:#04251f;font:bold 16px Georgia,serif;cursor:pointer;margin-top:14px}
+button:hover{filter:brightness(1.1)}
+button.ghost{background:#0a4552;color:var(--mint)}
+a{color:var(--mint)}.cta{background:#0d5163;border-left:4px solid var(--mint);padding:14px 16px;border-radius:6px;margin:24px 0}
+.small{font-size:.85rem;color:var(--dim);font-family:var(--sans)}
+.note{background:#052b32;border:1px solid #1d5c6b;border-radius:6px;padding:12px 14px;font-size:.85rem;color:var(--dim);margin:14px 0}
+.file-block{margin-top:26px}
+.file-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.file-head h3{font-size:1rem;font-family:var(--mono);color:var(--ink);margin:0}
+.copied{color:var(--amber)}
+.hidden{display:none}
+#scoreLine{font-size:.95rem;margin:10px 0}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:bold;font-family:var(--mono)}
+.tag--warn{background:#3a2410;color:var(--amber)}
+.tag--ok{background:#0c3f2f;color:var(--mint)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="doc-head">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 4h18l9 9v31a2 2 0 0 1-2 2H13a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="var(--mint)" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M31 4v9h9" stroke="var(--mint)" stroke-width="2.5" stroke-linejoin="round"/>
+<line x1="16" y1="26" x2="34" y2="26" stroke="var(--mint)" stroke-width="2" opacity=".6"/>
+<line x1="16" y1="32" x2="34" y2="32" stroke="var(--mint)" stroke-width="2" opacity=".6"/>
+<line x1="16" y1="38" x2="27" y2="38" stroke="var(--mint)" stroke-width="2" opacity=".6"/>
+<path d="M41 12l1.6 3.4L46 17l-3.4 1.6L41 22l-1.6-3.4L36 17l3.4-1.6Z" fill="var(--amber)"/>
+</svg>
+<div>
+<p class="mark">Æ STUDIO · free tool</p>
+<h1>Instant AI-Readiness Fix</h1>
+</div>
+</div>
+<p class="sub">Paste your homepage HTML and get real llms.txt, agents.md, a robots.txt AI-crawler patch, and a JSON-LD block — built from your actual page content, not a blank form. Nothing invented: anything we can't confidently read from your page is left as a clear placeholder for you to fill in. Free, no signup, runs in your browser.</p>
+
+<label>Your homepage URL (for reference in the generated files)</label>
+<input id="url" placeholder="https://yourbusiness.com">
+<label>Paste your homepage HTML — right-click your homepage → View Page Source → select all → paste here</label>
+<textarea id="html" placeholder="&lt;!doctype html&gt; ..."></textarea>
+<div class="note">Browsers can't reliably fetch most other sites directly (a security rule called CORS), so paste is the reliable path — it always works, same reason the free checker above offers it too. If your site happens to allow cross-site reads, <a href="#" id="tryUrl">try fetching it live instead</a>.</div>
+
+<button id="gen">Generate my fix files</button>
+
+<div id="results" class="hidden">
+<p id="scoreLine"></p>
+
+<div class="file-block">
+  <div class="file-head"><h3>llms.txt</h3><button class="ghost" data-copy="out-llms">Copy</button></div>
+  <textarea id="out-llms" readonly></textarea>
+</div>
+<div class="file-block">
+  <div class="file-head"><h3>agents.md</h3><button class="ghost" data-copy="out-agents">Copy</button></div>
+  <textarea id="out-agents" readonly></textarea>
+</div>
+<div class="file-block">
+  <div class="file-head"><h3>robots.txt patch</h3><button class="ghost" data-copy="out-robots">Copy</button></div>
+  <textarea id="out-robots" readonly></textarea>
+</div>
+<div class="file-block">
+  <div class="file-head"><h3>JSON-LD snippet</h3><button class="ghost" data-copy="out-jsonld">Copy</button></div>
+  <textarea id="out-jsonld" readonly></textarea>
+</div>
+<span id="msg" class="small"></span>
+</div>
+
+<div class="cta">
+<strong>Now deploy it.</strong>
+<p>Upload llms.txt and agents.md to your site root (same place as robots.txt). Add the robots.txt lines to your existing file — don't replace it. Paste the JSON-LD snippet into your homepage's &lt;head&gt;. Then re-run the <a href="../">free checker</a> to see your new score.</p>
+<p>Want it verified and installed for you instead of doing it yourself? The <a href="https://eliotwave01.gumroad.com/l/zarfs">AI-Readiness Retrofit</a> ($49 founding rate) covers install plus a written before/after score.</p>
+<p>Want to catch it if your score drops later? <a href="https://eliotwave01.gumroad.com/l/pulse">Pulse</a> re-checks monthly and emails you if something breaks, from $9/mo.</p>
+</div>
+
+<h2>Why this matters</h2>
+<p class="small">AI assistants (ChatGPT, Claude, Perplexity) route real customers to businesses whose sites they can actually read. llms.txt and agents.md are the plain-text files they check first; JSON-LD gives them your business facts in a structured form; an open robots.txt policy means they aren't blocked from reading you at all. Built by Æ Studio, AI-operated and human-reviewed. Nobody can guarantee AI citations — this makes citation possible, it doesn't buy a ranking.</p>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+
+  function escAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+
+  function extractNavLinks(html, origin){
+    const links = []; const seen = new Set();
+    const re = /<a\s+[^>]*href=["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+    let m;
+    while((m = re.exec(html)) && links.length < 12){
+      const text = m[2].replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      if(!text || text.length > 40) continue;
+      let href;
+      try { href = new URL(m[1], origin || 'https://example.com').href; } catch(e){ continue; }
+      if(origin && !href.startsWith(origin)) continue;
+      if(/\.(png|jpg|jpeg|svg|pdf|css|js)$/i.test(href)) continue;
+      const key = text+'|'+href;
+      if(seen.has(key)) continue;
+      seen.add(key); links.push({text, href});
+    }
+    return links;
+  }
+
+  function analyze(html, url){
+    const title = (html.match(/<title[^>]*>([^<]*)<\/title>/i)||[])[1];
+    const desc = (html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i)||[])[1];
+    const hasContact = /mailto:|contact|tel:\+?\d/i.test(html);
+    let origin = '';
+    try { origin = new URL(url).origin; } catch(e){}
+    const links = extractNavLinks(html, origin);
+    const name = (title && title.trim()) || (origin || 'Your Business');
+    const description = (desc && desc.trim()) || '[add a one-sentence description of what this business does]';
+    return { name, description, url: url || origin || '[your homepage URL]', hasContact, links };
+  }
+
+  function buildLlmsTxt(a){
+    let t = '# '+a.name+'\n\n'+a.description+'\n\nSite: '+a.url+'\n\n## Pages\n';
+    if(a.links.length){ a.links.forEach(l=>{ t += '- ['+l.text+']('+l.href+')\n'; }); }
+    else { t += '- [add key page links here — we could not confidently extract them]\n'; }
+    t += '\n## Contact\n' + (a.hasContact ? '[a contact/action path exists on the homepage — link it here]' : '[add a phone, email, or contact page link]') + '\n';
+    t += '\n<!-- Generated free at alexander-k-eliot.github.io/ai-visibility-check-free/instant-fix/ -->\n';
+    return t;
+  }
+
+  function buildAgentsMd(a){
+    return '# agents.md\n\nThis file gives AI agents guidance on interacting with '+a.name+' ('+a.url+').\n\n'
+      + '## What this business does\n' + a.description + '\n\n'
+      + '## How to find things\n- Key pages are listed in /llms.txt at this site\'s root.\n- Prefer /llms-full.txt (if published) over parsing rendered HTML for page content.\n\n'
+      + '## Constraints\n- Do not submit forms or make purchases on a visitor\'s behalf without explicit confirmation.\n- [add any business-specific constraints — booking rules, service area, etc.]\n';
+  }
+
+  function buildRobotsPatch(){
+    const bots = ['GPTBot','ClaudeBot','Claude-User','PerplexityBot','Google-Extended','OAI-SearchBot','anthropic-ai'];
+    let t = '# Add these blocks to your existing robots.txt (do not replace the whole file).\n# They explicitly allow the AI agents/crawlers this check looks for.\n\n';
+    bots.forEach(b=>{ t += 'User-agent: '+b+'\nAllow: /\n\n'; });
+    return t.trim()+'\n';
+  }
+
+  function buildJsonLd(a){
+    const block = { '@context':'https://schema.org', '@type':'LocalBusiness', name: a.name, url: a.url };
+    if(a.description && !a.description.startsWith('[')) block.description = a.description;
+    return '<script type="application/ld+json">\n'+JSON.stringify(block, null, 2)+'\n<'+'/script>\n';
+  }
+
+  function render(a){
+    $('results').classList.remove('hidden');
+    $('scoreLine').innerHTML = 'Generated from <b>'+a.name+'</b>' + (a.links.length ? ' — found '+a.links.length+' real page link(s) on your homepage.' : ' — no nav links confidently found, filled with a placeholder.');
+    $('out-llms').value = buildLlmsTxt(a);
+    $('out-agents').value = buildAgentsMd(a);
+    $('out-robots').value = buildRobotsPatch();
+    $('out-jsonld').value = buildJsonLd(a);
+    $('results').scrollIntoView({behavior:'smooth'});
+  }
+
+  $('gen').addEventListener('click', ()=>{
+    const html = $('html').value;
+    const url = $('url').value.trim();
+    if(html.trim().length < 50){ alert('Paste your homepage HTML first (or use "try fetching it live" above).'); return; }
+    render(analyze(html, url));
+  });
+
+  $('tryUrl').addEventListener('click', async (ev)=>{
+    ev.preventDefault();
+    let u = $('url').value.trim();
+    if(!u){ alert('Enter your homepage URL first.'); return; }
+    if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    const btn = $('tryUrl');
+    const prevText = btn.textContent;
+    btn.textContent = 'fetching…';
+    try{
+      const r = await fetch(u, {mode:'cors'});
+      if(!r.ok) throw new Error('status '+r.status);
+      const text = await r.text();
+      $('html').value = text;
+      $('url').value = u;
+      render(analyze(text, u));
+    } catch(e){
+      alert('Could not fetch that site directly from the browser (normal for most sites). Use View Page Source and paste instead.');
+    }
+    btn.textContent = prevText;
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const ta = $(btn.getAttribute('data-copy'));
+      ta.select(); document.execCommand('copy');
+      $('msg').textContent = ' copied to clipboard'; $('msg').className = 'small copied';
+      setTimeout(()=>{ $('msg').textContent=''; }, 2500);
+    });
+  });
+})();
+</script>
+</body>
+</html>
