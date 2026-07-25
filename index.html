@@ -93,12 +93,12 @@
       <div class="benchmark">
         <p class="benchmark-title">vs. industry average</p>
         <div class="bench-track">
-          <div class="bench-avg" id="benchAvg" style="left:67%"></div>
+          <div class="bench-avg" id="benchAvg" style="left:65%"></div>
           <div class="bench-you" id="benchYou" style="left:0%"></div>
         </div>
         <div class="bench-labels"><span>0</span><span>50</span><span>100</span></div>
         <div class="bench-legend">
-          <span><span class="dot" style="background:var(--amber)"></span>Avg: 67</span>
+          <span><span class="dot" style="background:var(--amber)"></span>Avg: 65</span>
           <span><span class="dot" style="background:var(--mint)"></span>Your site</span>
         </div>
       </div>
@@ -185,10 +185,10 @@
 <div class="wrap">
   <p class="section-kicker">Benchmark data</p>
   <h2 class="section-heading">How does your industry score?</h2>
-  <p class="section-sub">We audited 158 homepages across 10 industries. Average score: 67/100. See exactly where your competitors stand.</p>
+  <p class="section-sub">We audited 158 homepages across 10 industries. Average score: 65/100. See exactly where your competitors stand.</p>
 
   <div class="report-grid">
-    <div class="report-card"><a href="state-of-machine-readable-business/">State of Machine-Readable Business 2026</a><p class="report-score">158 homepages · <span class="num">avg 67/100</span></p></div>
+    <div class="report-card"><a href="state-of-machine-readable-business/">State of Machine-Readable Business 2026</a><p class="report-score">158 homepages · <span class="num">avg 65/100</span></p></div>
     <div class="report-card"><a href="benchmark/">SaaS &amp; Software</a><p class="report-score">20 companies · <span class="num">avg 77/100</span></p></div>
     <div class="report-card"><a href="ecommerce-benchmark/">DTC &amp; E-commerce</a><p class="report-score">9 brands · <span class="num">avg 77/100</span></p></div>
     <div class="report-card"><a href="dental-benchmark/">Dental &amp; Healthcare</a><p class="report-score">13 brands · <span class="num">avg 68/100</span></p></div>
@@ -385,8 +385,8 @@ function drawScoreCard(pct, label){
 
   // Industry avg note
   ctx.fillStyle = amber; ctx.font = 'bold 18px Georgia';
-  ctx.fillText('Industry average: 67/100', 80, 380);
-  const diff = pct - 67;
+  ctx.fillText('Industry average: 65/100', 80, 380);
+  const diff = pct - 65;
   ctx.fillStyle = diff >= 0 ? mint : coral;
   ctx.fillText((diff >= 0 ? '+' : '') + diff + ' vs. average', 80, 410);
 
@@ -404,7 +404,7 @@ $('downloadCard').addEventListener('click', () => {
 $('shareScore').addEventListener('click', () => {
   const text = lastScore >= 80
     ? 'My site scored ' + lastScore + '/100 on the free AI Visibility Check. ChatGPT, Claude and Perplexity can read it. Check yours:'
-    : 'My site scored ' + lastScore + '/100 on the free AI Visibility Check — below the 67/100 industry average. Fixing it now. Check yours:';
+    : 'My site scored ' + lastScore + '/100 on the free AI Visibility Check — below the 65/100 industry average. Fixing it now. Check yours:';
   const url = 'https://alexander-k-eliot.github.io/ai-visibility-check-free/';
   window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank', 'noopener');
 });
