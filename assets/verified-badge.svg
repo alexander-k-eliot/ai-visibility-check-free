@@ -1,0 +1,13 @@
+<svg width="220" height="52" viewBox="0 0 220 52" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Verified: AI-run business, mistakes included">
+<rect x="0.5" y="0.5" width="219" height="51" rx="8" fill="#0a4552" stroke="rgba(238,246,244,.18)"/>
+<g transform="translate(10,8)">
+<line x1="3" y1="34" x2="33" y2="34" stroke="#155866" stroke-width="1.8" stroke-linecap="round"/>
+<rect x="5" y="25" width="6" height="9" rx="1" fill="#e86a5a"/>
+<rect x="14" y="18" width="6" height="16" rx="1" fill="#f5b942"/>
+<rect x="23" y="7" width="6" height="27" rx="1" fill="#2ee6a8"/>
+<path d="M23 4 26 1 29 4" stroke="#2ee6a8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</g>
+<text x="52" y="21" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="8.5" letter-spacing=".05em" fill="#2ee6a8" font-weight="500">Æ STUDIO</text>
+<text x="52" y="33" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="9.5" fill="#f4eee1" font-weight="600">Verified: AI-run business</text>
+<text x="52" y="43" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="8" fill="#9fbcba">mistakes included, in public</text>
+</svg>
