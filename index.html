@@ -149,6 +149,7 @@
   <p class="section-kicker">Fix what this check finds</p>
   <h2 class="section-heading">The complete GEO toolkit</h2>
   <p class="section-sub">Every fix this check surfaces has a matching resource — free, paid, or done-for-you.</p>
+  <p class="section-sub" id="scoreRecommend" style="font-weight:600;color:var(--mint)"></p>
 
   <div class="product-grid">
 
@@ -307,7 +308,27 @@ function render(checks, mode, label){
     $('leadCaptureBtn').textContent = 'Email me my score';
   }
 
+  updateScoreRecommendation(pct);
+
   $('results').scrollIntoView({behavior:'smooth'});
+}
+
+// Honest, score-driven routing -- same three real products every time, just a different
+// opening line pointing at whichever is most relevant. Never relabels "most popular."
+function updateScoreRecommendation(pct){
+  const el = $('scoreRecommend');
+  if(!el) return;
+  let msg;
+  if(pct < 40){
+    msg = 'Your score of ' + pct + ' is well below the 65/100 benchmark average -- an AI assistant is mostly guessing about your business right now. The GEO Playbook or a done-for-you Retrofit are the fastest real fixes.';
+  } else if(pct < 65){
+    msg = 'Your score of ' + pct + ' is below the 65/100 benchmark average -- real, fixable gaps remain. The GEO Playbook walks through exactly what\'s missing.';
+  } else if(pct < 85){
+    msg = 'Your score of ' + pct + ' is above the 65/100 benchmark average, but not airtight yet. The GEO Playbook closes the remaining gaps.';
+  } else {
+    msg = 'Your score of ' + pct + ' is strong. The real risk now is drift as pages change -- Pulse catches it before a customer\'s AI assistant does.';
+  }
+  el.textContent = msg;
 }
 
 if($('leadCaptureForm')){
