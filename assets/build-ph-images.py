@@ -1,40 +1,27 @@
 #!/usr/bin/env python3
 """
 Build Product Hunt gallery images + thumbnail for the AI Visibility Checker.
-Visual system: matches alexander-k-eliot.github.io exactly.
-Score: 62/100 (below industry avg of 67 — urgency framing, near-miss psychology).
+Uses the shared aaa_render lib so background (gradient + glows + dot-grid +
+line-grid), palette, and fonts exactly match every other asset on the site —
+this file used to carry its own slightly-drifted color copies and a plain
+flat background with no dot-grid at all.
+Score: 62/100 (below our own 158-homepage benchmark average of 65 — real, cited number, not invented).
 """
-import os, math
-from PIL import Image, ImageDraw, ImageFont
+import os, sys, math
+from PIL import Image
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from aaa_render import new_canvas, serif, mono, sans, MINT, AMBER, CORAL, INK, DIM, CARD, CARD2
 
-# ── Brand colors (exact site values) ────────────────────────────────────────
-BG    = (6,  55,  64)   # #063740
-CARD  = (10, 69,  82)   # #0a4552
-CARD2 = (8,  48,  58)   # slightly darker card
-INK   = (238,246,244)   # #eef6f4
-DIM   = (159,188,186)   # #9fbcba
-MINT  = (46, 230,168)   # #2ee6a8
-AMBER = (245,185, 66)   # #f5b942
-CORAL = (232,106, 90)   # #e86a5a
-
-SCORE = 62  # Optimal: below industry avg (67), near-miss motivator
+SCORE = 62  # Below our own 158-homepage benchmark average (65/100, ../state-of-machine-readable-business/)
 
 OUT = os.path.dirname(os.path.abspath(__file__))
 
-# ── Fonts ────────────────────────────────────────────────────────────────────
+
 def font(size, bold=False):
-    paths = [
-        "/System/Library/Fonts/Supplemental/Georgia Bold.ttf" if bold else
-        "/System/Library/Fonts/Supplemental/Georgia.ttf",
-        "/System/Library/Fonts/Helvetica.ttc",
-    ]
-    for p in paths:
-        try:
-            idx = 1 if (bold and "Helvetica" in p) else 0
-            return ImageFont.truetype(p, size, index=idx)
-        except:
-            continue
-    return ImageFont.load_default()
+    """This file always rendered in Georgia (bold and regular); aaa_render's
+    serif() is the same Georgia face, so keep using it for both weights to
+    preserve the original layout's text metrics exactly."""
+    return serif(size, bold=bold)
 
 def centered_text(d, cx, y, text, f, fill):
     bb = d.textbbox((0,0), text, font=f)
@@ -60,8 +47,7 @@ def dot_check(d, x, y, passed, r=10):
 # ── Gallery 1: Score card view ───────────────────────────────────────────────
 def build_gallery_1():
     W, H = 1270, 760
-    img = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(img)
+    img, d = new_canvas(W, H)
 
     # Accent bar top
     d.rectangle([0, 0, W, 7], fill=MINT)
@@ -105,21 +91,23 @@ def build_gallery_1():
     d.line([(div_x, cy - r - 10), (div_x, cy + r + 50)], fill=CARD2, width=2)
 
     # ── Checklist ──
+    # All 9 line items match the published methodology's actual weighted rubric
+    # exactly (../methodology/) — no invented check categories.
     checks = [
         (True,  "Crawler access (robots.txt)"),
         (True,  "JSON-LD structured data"),
         (False, "llms.txt present"),
-        (True,  "Answer-first paragraph structure"),
-        (True,  "H1 present and descriptive"),
-        (False, "FAQ / entity schema"),
         (True,  "No-JS content legibility"),
-        (True,  "Sitemap present"),
         (True,  "Title + meta description"),
+        (False, "llms-full.txt (expanded)"),
+        (False, "agents.md guidance"),
+        (True,  "Sitemap present"),
+        (True,  "Machine-findable contact path"),
     ]
     f_item = font(22)
     x0 = div_x + 40
     y0 = cy - r + 8
-    row_h = 52
+    row_h = 40  # 9 rows must fit above the benchmark bar at H-56; 52 overran it
 
     for i, (passed, text) in enumerate(checks):
         y = y0 + i * row_h
@@ -127,7 +115,7 @@ def build_gallery_1():
         d.text((x0 + 24, y - 1), text, font=f_item, fill=INK)
 
     # Industry benchmark bar at bottom
-    bench = f"Industry average: 67/100  ·  Your score: {SCORE}/100  ·  2 quick fixes could push you to 78"
+    bench = f"Industry average: 65/100 (our own 158-site benchmark)  ·  Your score: {SCORE}/100"
     d.text((60, H - 56), bench, font=font(17), fill=DIM)
 
     # MACHINE VERIFIED stamp (top right)
@@ -160,21 +148,21 @@ def build_gallery_1():
 # ── Gallery 2: Fix list ──────────────────────────────────────────────────────
 def build_gallery_2():
     W, H = 1270, 760
-    img = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(img)
+    img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 7], fill=CORAL)
     d.text((60, 36), "Æ STUDIO  ·  YOUR FIX LIST", font=font(20), fill=CORAL)
     d.text((60, 76), "Two missing signals. Here's exactly what to add.", font=font(46, bold=True), fill=INK)
-    d.text((60, 142), f"Your score: {SCORE}/100  ·  Industry average: 67/100  ·  Estimated after fix: 78/100", font=font(21), fill=DIM)
+    d.text((60, 142), f"Your score: {SCORE}/100  ·  Industry average: 65/100 (our own 158-site benchmark)", font=font(21), fill=DIM)
 
+    # Point values match the published methodology's real weights exactly (../methodology/)
     fixes = [
-        ("llms.txt missing", "+8 pts",
+        ("llms.txt missing", "+20 pts",
          "A plain-text file at /llms.txt tells AI crawlers which pages to read.",
          "Create /llms.txt listing your key pages. Takes 10 minutes."),
-        ("FAQ / entity schema missing", "+8 pts",
-         "Structured FAQ data lets AI assistants extract Q&A directly from your page.",
-         "Add FAQ schema (JSON-LD) to your homepage. Use our free generator."),
+        ("agents.md guidance missing", "+5 pts",
+         "An emerging standard telling agents how to behave on your site: key flows, constraints, contact.",
+         "Add an agents.md at your site root. Use our free llms.txt generator's companion template."),
     ]
 
     f_title = font(28, bold=True)
@@ -198,13 +186,13 @@ def build_gallery_2():
         d.text((88, y + 102), f"How to fix:     {how}", font=f_fix, fill=DIM)
 
         # CTA pill
-        pill_label = "Free llms.txt generator →" if "llms" in title else "Free FAQ schema generator →"
+        pill_label = "Free llms.txt generator →" if "llms" in title else "Free AI visibility check →"
         d.rounded_rectangle([88, y + 136, 88 + 340, y + 164], radius=6, fill=CARD2)
         d.text((96, y + 139), pill_label, font=font(17), fill=MINT)
 
         y += 200
 
-    d.text((60, H - 56), "Both fixes are free. Use the tools at aestudio.pro", font=font(18), fill=DIM)
+    d.text((60, H - 56), "Both fixes are free. Use the tools at alexander-k-eliot.github.io/ai-visibility-check-free", font=font(18), fill=DIM)
     d.rectangle([0, H-7, W, H], fill=CORAL)
 
     out = f"{OUT}/gallery-2-fixlist.png"
@@ -216,8 +204,7 @@ def build_gallery_2():
 # ── Gallery 3: Tool grid ─────────────────────────────────────────────────────
 def build_gallery_3():
     W, H = 1270, 760
-    img = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(img)
+    img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 7], fill=MINT)
     d.text((60, 36), "Æ STUDIO  ·  30+ FREE TOOLS", font=font(20), fill=MINT)
@@ -235,7 +222,7 @@ def build_gallery_3():
         (CORAL, "Accessibility\nBenchmark",      "WCAG audit"),
         (CORAL, "Industry\nBenchmarks",          "10 industries"),
         (CORAL, "Compare\nSites",               "Side-by-side"),
-        (DIM,   "Sitemap\nAnalyzer",             "Coverage check"),
+        (DIM,   "Contrast\nChecker",              "WCAG ratio check"),
         (DIM,   "GEO Content\nPlaybook →",       "$29 upgrade"),
     ]
 
@@ -263,7 +250,7 @@ def build_gallery_3():
             d.text((cx+20, cy+42), lines[1], font=f_tool, fill=INK)
         d.text((cx+20, cy+78), sub, font=f_sub, fill=DIM)
 
-    d.text((60, H-56), "aestudio.pro  ·  Never Not Working", font=font(18), fill=DIM)
+    d.text((60, H-56), "alexander-k-eliot.github.io  ·  Never Not Working", font=font(18), fill=DIM)
     d.rectangle([0, H-7, W, H], fill=MINT)
 
     out = f"{OUT}/gallery-3-toolgrid.png"
@@ -275,8 +262,7 @@ def build_gallery_3():
 # ── Thumbnail: 240×240 square ────────────────────────────────────────────────
 def build_thumbnail():
     W = H = 480  # Generate 2x, resize to 240
-    img = Image.new("RGB", (W, H), BG)
-    d = ImageDraw.Draw(img)
+    img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 7], fill=MINT)
 
