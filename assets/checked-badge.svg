@@ -1,0 +1,11 @@
+<svg width="200" height="44" viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Checked with AI Visibility Checker">
+<rect x="0.5" y="0.5" width="199" height="43" rx="7" fill="#0a4552" stroke="rgba(238,246,244,.18)"/>
+<g transform="translate(9,7)">
+<line x1="2" y1="28" x2="27" y2="28" stroke="#155866" stroke-width="1.6" stroke-linecap="round"/>
+<rect x="4" y="21" width="5" height="7" rx="1" fill="#e86a5a"/>
+<rect x="11.5" y="15" width="5" height="13" rx="1" fill="#f5b942"/>
+<rect x="19" y="6" width="5" height="22" rx="1" fill="#2ee6a8"/>
+</g>
+<text x="46" y="18" font-family="ui-monospace,'IBM Plex Mono',monospace" font-size="7.5" letter-spacing=".04em" fill="#2ee6a8" font-weight="500">CAN AI READ THIS SITE?</text>
+<text x="46" y="30" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="9" fill="#f4eee1" font-weight="600">Checked with AI Visibility Checker</text>
+</svg>
