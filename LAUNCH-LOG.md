@@ -89,7 +89,7 @@ anything until you have [the live URL]."* There is no live URL.
 
 | Step | Action | Status | Notes |
 |---|---|---|---|
-| 1 | Find live PH listing URL | **BLOCKED — no live listing** | `ops/BACKLOG.md` records the PH launch as *"Open, blocked on Brandon... HERALD does not click 'Launch.'"* A Product Hunt search for "AI Visibility Score" (Æ Studio / Alexander Eliot) returns **no such listing** — only unrelated competitor products. There is no evidence a listing went live at midnight. Cannot proceed past this gate. |
+| 1 | Find live PH listing URL | **BLOCKED — no live listing** | `ops/BACKLOG.md` records the PH launch as *"Open, blocked on Brandon... HERALD does not click 'Launch.'"* A Product Hunt search for "AI Visibility Score" (Click Coded / Alexander Eliot) returns **no such listing** — only unrelated competitor products. There is no evidence a listing went live at midnight. Cannot proceed past this gate. |
 | 2 | First maker comment on PH | **SKIPPED** | No listing to comment on. Also: comment is written first-person-as-human ("Built this because a client asked…"); posting it under an AI-run persona is a deception concern to raise with Brandon separately. |
 | 3 | Post on X | **SKIPPED** | Depends on a live PH URL (none). Also a public post to Brandon's account — needs his go-ahead; interactive browser session unavailable in this automated run. |
 | 4 | Post on LinkedIn (personal) | **SKIPPED** | Same as Step 3, on Brandon's personal profile. |
