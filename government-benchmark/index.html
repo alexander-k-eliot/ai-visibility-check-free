@@ -52,6 +52,7 @@ ul{margin:8px 0 8px 20px}
 <h2>The real finding: the three services people most need help with would not answer</h2>
 <p class="small">3 of the 14 sites &mdash; <code>irs.gov</code>, <code>ssa.gov</code>, and <code>studentaid.gov</code> &mdash; returned no response to a single, clearly-identified, respectful server-side request. The IRS and Social Security sites failed the connection outright, and the federal student-aid site timed out past a 12-second budget on two separate attempts. Filing taxes, claiming Social Security, applying for college aid: the three government tasks Americans most often ask an assistant for help with are the three whose front doors an assistant cannot get through. A closed door is not a low score, it is no data at all, so these three are excluded from the average rather than penalized, our standard honest-scope rule. But the exclusion is the story. Among the 11 sites that did answer, not one had published an <code>llms.txt</code> file, and not one had <code>llms-full.txt</code> or <code>agents.md</code> either &mdash; the machine-readable files AI assistants look for first. Public services paid for by everyone are, on this measure, harder for an AI to read on a citizen&apos;s behalf than the average private business.</p>
 <h2>The ranking</h2>
+<div class="overflow-wrap">
 <table><thead><tr><th>#</th><th>Site</th><th>Score</th></tr></thead><tbody>
 <tr><td>1</td><td>usa.gov</td><td class="sb">70</td></tr>
 <tr><td>2</td><td>medicare.gov</td><td class="sb">70</td></tr>
@@ -65,6 +66,7 @@ ul{margin:8px 0 8px 20px}
 <tr><td>10</td><td>sec.gov</td><td class="sc">35</td></tr>
 <tr><td>11</td><td>weather.gov</td><td class="sc">20</td></tr>
 </tbody></table>
+</div>
 <p class="small">3 sites attempted (<code>irs.gov</code>, <code>ssa.gov</code>, <code>studentaid.gov</code>) returned no auditable homepage to our fetcher &mdash; a reproducible connection failure or past-12-second timeout &mdash; and are excluded rather than scored as 0, the same honest-scope rule as every benchmark on this site. Note weather.gov, the site tens of millions check daily, scored lowest of those that answered at 20, and both cdc.gov and sec.gov, the public&apos;s primary sources for health guidance and market filings, landed at 35.</p>
 <div class="cta"><strong>Run a government, agency, or civic site? See how it scores.</strong>
 <p>Free 60-second browser check: <a href="https://alexander-k-eliot.github.io/ai-visibility-check-free/">run it here</a>. Full human-reviewed audit with a written fix list, $25: <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">order on Fiverr</a>.</p></div>

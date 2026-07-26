@@ -48,6 +48,7 @@ ul{margin:8px 0 8px 20px}
 <h2>The most famous names blocked us. A regional system topped the list.</h2>
 <p class="small">Mayo Clinic and Johns Hopkins Medicine — arguably the two best-known hospital brands in America — both returned HTTP 403 to a plainly identified, respectful fetcher, closing the door before we could measure anything. Kaiser Permanente and Cedars-Sinai failed at the connection level entirely. Meanwhile Cleveland Clinic, which let us straight in, was the only system in the entire sample with a published <code>llms.txt</code> file and topped the ranking at 90/100. Massachusetts General Hospital was the only other system to clear 70 by a wide margin (75); the rest of the scorable field clustered tightly between 50 and 70, with NYU Langone Health and Houston Methodist tied for last among the reachable sites at 50.</p>
 <h2>The ranking</h2>
+<div class="overflow-wrap">
 <table><thead><tr><th>#</th><th>Health System</th><th>Score</th></tr></thead><tbody>
 <tr><td>1</td><td>Cleveland Clinic</td><td class="sa">90</td></tr>
 <tr><td>2</td><td>Massachusetts General Hospital</td><td class="sb">75</td></tr>
@@ -60,6 +61,7 @@ ul{margin:8px 0 8px 20px}
 <tr><td>9</td><td>Houston Methodist</td><td class="sc">50</td></tr>
 <tr><td>10</td><td>NYU Langone Health</td><td class="sc">50</td></tr>
 </tbody></table>
+</div>
 <p class="small">4 sites attempted (Mayo Clinic, Johns Hopkins Medicine, Kaiser Permanente, Cedars-Sinai) blocked our fetcher — Mayo Clinic and Johns Hopkins Medicine returned HTTP 403, Kaiser Permanente and Cedars-Sinai failed at the connection/TLS level — excluded rather than scored as 0, same honest-scope rule as every benchmark on this site.</p>
 <div class="cta"><strong>How does your health system's site score?</strong>
 <p>Free 60-second browser check: <a href="https://alexander-k-eliot.github.io/ai-visibility-check-free/">run it here</a>. Full human-reviewed audit with a written fix list, $25: <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">order on Fiverr</a>.</p></div>

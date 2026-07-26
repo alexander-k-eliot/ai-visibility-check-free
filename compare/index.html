@@ -179,7 +179,9 @@ h1,h2{font-family:var(--serif)}
         const fmt=c=> !c ? '<span class="small">n/a</span>' : c.pass===null ? '<span class="unk">?</span>' : c.pass ? '<span class="pass">PASS</span>' : '<span class="fail">FAIL</span>';
         rows+=`<tr><td>${n}</td><td>${fmt(ca)}</td><td>${fmt(cb)}</td></tr>`;
       });
-      box.innerHTML += `<table><thead><tr><th>Check</th><th>A</th><th>B</th></tr></thead><tbody>${rows}</tbody></table>`;
+      box.innerHTML += `<div class="overflow-wrap">
+<table><thead><tr><th>Check</th><th>A</th><th>B</th></tr></thead><tbody>${rows}</tbody></table>
+</div>`;
     }
   }
 

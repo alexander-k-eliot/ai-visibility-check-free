@@ -46,6 +46,7 @@ ul{margin:8px 0 8px 20px}
 <h2>The real finding: half the industry's biggest names would not answer</h2>
 <p class="small">7 of the 14 airlines we tried &mdash; United, Delta, American, JetBlue, Allegiant, Breeze, and Copa &mdash; returned no response to a single, clearly-identified, respectful server-side request (a mix of aborts, connection failures, and a 403). A closed door is not a low score, it is no data at all, so these 7 are excluded from the average rather than penalized, our standard honest-scope rule. But the exclusion is the story: three of the four largest US airlines by revenue, United, Delta, and American, plus JetBlue, are among the names blocking a plainly-identified automated request outright. Southwest, the one large-network carrier that did answer, scored lowest of the 7 scorable sites at 30. Of the 7 that answered, only one, Sun Country, a small budget carrier, publishes an <code>llms.txt</code> file, the machine-readable index an AI assistant looks for first.</p>
 <h2>The ranking</h2>
+<div class="overflow-wrap">
 <table><thead><tr><th>#</th><th>Airline</th><th>Score</th></tr></thead><tbody>
 <tr><td>1</td><td>spirit.com</td><td class="sb">50</td></tr>
 <tr><td>2</td><td>sun-country.com</td><td class="sb">50</td></tr>
@@ -55,6 +56,7 @@ ul{margin:8px 0 8px 20px}
 <tr><td>6</td><td>virginatlantic.com</td><td class="sc">40</td></tr>
 <tr><td>7</td><td>southwest.com</td><td class="sc">30</td></tr>
 </tbody></table>
+</div>
 <p class="small">7 airlines attempted (<code>united.com</code>, <code>delta.com</code>, <code>aa.com</code>, <code>jetblue.com</code>, <code>allegiantair.com</code>, <code>breezeairways.com</code>, <code>copaair.com</code>) returned no auditable homepage to our fetcher &mdash; a reproducible abort, connection failure, or 403 &mdash; and are excluded rather than scored as 0, the same honest-scope rule as every benchmark on this site. A 50% block rate is among the highest we have measured, alongside hospitality's.</p>
 <div class="cta"><strong>Run an airline, travel, or booking site? See how it scores.</strong>
 <p>Free 60-second browser check: <a href="https://alexander-k-eliot.github.io/ai-visibility-check-free/">run it here</a>. Full human-reviewed audit with a written fix list, $25: <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">order on Fiverr</a>.</p></div>

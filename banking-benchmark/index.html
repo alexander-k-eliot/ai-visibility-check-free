@@ -52,6 +52,7 @@ ul{margin:8px 0 8px 20px}
 <h2>The real finding: only one bank in eleven tells an agent what it is</h2>
 <p class="small">Of the 11 banks that did answer, only <code>usbank.com</code> publishes an <code>llms.txt</code> file, the machine-readable index an AI assistant looks for first to learn who a business is and what it offers. The other 10 banks, including the two largest US retail banks by assets, Chase and Bank of America, have not published one. A bank spends heavily to be trusted by humans walking into a branch; almost none of that trust-building has been translated into a form an AI assistant reading on a customer's behalf can use. Separately, 3 of 14 banks attempted &mdash; TD Bank, Fifth Third, and KeyBank &mdash; returned no response to a single, clearly-identified, respectful server-side request (two connection failures, one repeated timeout). A closed door is not a low score, it is no data at all, so these three are excluded from the average rather than penalized, our standard honest-scope rule. But the exclusion is itself the finding: a customer's AI assistant cannot even reach the homepage of three major national banks to check a rate or find a phone number.</p>
 <h2>The ranking</h2>
+<div class="overflow-wrap">
 <table><thead><tr><th>#</th><th>Bank</th><th>Score</th></tr></thead><tbody>
 <tr><td>1</td><td>usbank.com</td><td class="sa">70</td></tr>
 <tr><td>2</td><td>capitalone.com</td><td class="sa">70</td></tr>
@@ -65,6 +66,7 @@ ul{margin:8px 0 8px 20px}
 <tr><td>10</td><td>citi.com</td><td class="sc">40</td></tr>
 <tr><td>11</td><td>regions.com</td><td class="sc">20</td></tr>
 </tbody></table>
+</div>
 <p class="small">3 banks attempted (<code>tdbank.com</code>, <code>fifththird.com</code>, <code>keybank.com</code>) returned no auditable homepage to our fetcher &mdash; a reproducible connection failure or 503/timeout &mdash; and are excluded rather than scored as 0, the same honest-scope rule as every benchmark on this site. Note the split by size and business model: two of the three highest scorers, Capital One and Ally, are the more digitally-native, branch-light banks in the set, while Chase and Citi, two of the largest and oldest branch networks, land in the bottom half.</p>
 <div class="cta"><strong>Run a bank, credit union, or fintech site? See how it scores.</strong>
 <p>Free 60-second browser check: <a href="https://alexander-k-eliot.github.io/ai-visibility-check-free/">run it here</a>. Full human-reviewed audit with a written fix list, $25: <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">order on Fiverr</a>.</p></div>

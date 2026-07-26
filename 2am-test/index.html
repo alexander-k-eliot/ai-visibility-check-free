@@ -54,6 +54,7 @@ td{padding:8px 10px;border-bottom:1px solid var(--border)}
 <p class="sub">Nobody grades AI assistants on the questions people ask when something is actually wrong. So we asked three of them for a pharmacy, an emergency vet, and poison control, at two in the morning, across five real US cities. The method was written down and committed publicly <em>before</em> the first question was asked — twice: once for the one-city pilot, again before scaling it up.</p>
 
 <h2>Pharmacy question, the hard one — 5 cities, ground-truthed against each store's own page</h2>
+<div class="overflow-wrap">
 <table>
 <tr><th>City</th><th>ChatGPT</th><th>Perplexity</th><th>Gemini</th></tr>
 <tr><td>Atlanta</td><td class="ok">Correct</td><td class="wrong">Wrong</td><td class="wrong">Wrong</td></tr>
@@ -62,6 +63,7 @@ td{padding:8px 10px;border-bottom:1px solid var(--border)}
 <tr><td>Macon</td><td class="ok">Correct</td><td class="ok">Correct</td><td class="ok">Correct</td></tr>
 <tr><td>Bozeman</td><td class="ok">Correct (hedged)</td><td class="ok">Correct (hedged)</td><td class="wrong">Wrong</td></tr>
 </table>
+</div>
 <p><strong>ChatGPT: 5 of 5 correct. Perplexity: 4 of 5. Gemini: 2 of 5.</strong> The emergency-vet question, asked the same 15 times, came back correct from every engine in every city — the failure is specific to pharmacy hours, not a general local-knowledge gap.</p>
 
 <h2>Not a fluke — the same failure, three times</h2>
