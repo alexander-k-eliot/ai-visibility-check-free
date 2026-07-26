@@ -3,7 +3,7 @@
   --card:rgba(238,246,244,.05);--card-solid:#0a4552;--card2:#0d5163;
   --line:rgba(238,246,244,.12);--line-soft:rgba(238,246,244,.07);
   --ink:#f4eee1;--dim:#9fbcba;
-  --mint:#2ee6a8;--amber:#f5b942;--coral:#e86a5a;
+  --mint:#2ee6a8;--amber:#f5b942;--orange:#e8863f;--coral:#e86a5a;
   --border:rgba(238,246,244,.12);
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -127,7 +127,7 @@ input[type=url]:focus{outline:2px solid var(--mint);border-color:transparent}
 .benchmark-title{font-family:var(--mono);font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
 .bench-track{position:relative;height:8px;background:var(--card2);border-radius:4px;margin-bottom:6px}
 .bench-avg{position:absolute;top:-4px;width:2px;height:16px;background:var(--amber);border-radius:1px}
-.bench-you{position:absolute;top:-5px;width:12px;height:18px;background:var(--mint);border-radius:3px;transform:translateX(-50%);transition:left .6s ease}
+.bench-you{position:absolute;top:-5px;width:12px;height:18px;background:var(--orange);border-radius:3px;transform:translateX(-50%);transition:left .6s ease}
 .bench-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;color:var(--dim)}
 .bench-legend{display:flex;gap:16px;font-family:var(--mono);font-size:.72rem;color:var(--dim);margin-top:8px;justify-content:center}
 .bench-legend span{display:flex;align-items:center;gap:5px}

@@ -92,7 +92,7 @@
         <div class="bench-labels"><span>0</span><span>50</span><span>100</span></div>
         <div class="bench-legend">
           <span><span class="dot" style="background:var(--amber)"></span>Avg: 65</span>
-          <span><span class="dot" style="background:var(--mint)"></span>Your site</span>
+          <span><span class="dot" style="background:var(--orange)"></span>Your site</span>
         </div>
       </div>
 
@@ -268,7 +268,7 @@ let lastScore=0,lastLabel='a homepage';
 const LEAD_CAPTURE_ENDPOINT = '';
 
 function setRingColor(pct){
-  const tone = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
+  const tone = pct>=80?'var(--amber)':(pct>=50?'var(--orange)':'var(--coral)');
   $('scoreRing').style.stroke = tone;
   $('scoreNum').style.color = tone;
   return tone;
@@ -381,9 +381,9 @@ function drawScoreCard(pct, label){
   const cvs = document.createElement('canvas');
   cvs.width = 1200; cvs.height = 630;
   const ctx = cvs.getContext('2d');
-  const mint='#2ee6a8', amber='#f5b942', coral='#e86a5a',
+  const mint='#2ee6a8', amber='#f5b942', orange='#e8863f', coral='#e86a5a',
         bg='#063740', card='#0a4552', ink='#eef6f4', dim='#9fbcba';
-  const tone = pct>=80 ? mint : (pct>=50 ? amber : coral);
+  const tone = pct>=80 ? amber : (pct>=50 ? orange : coral);
 
   ctx.fillStyle = bg; ctx.fillRect(0, 0, 1200, 630);
   // Top bar
@@ -429,7 +429,7 @@ function drawScoreCard(pct, label){
   ctx.fillStyle = amber; ctx.font = 'bold 18px Georgia';
   ctx.fillText('Industry average: 65/100', 80, 380);
   const diff = pct - 65;
-  ctx.fillStyle = diff >= 0 ? mint : coral;
+  ctx.fillStyle = diff >= 0 ? amber : coral;
   ctx.fillText((diff >= 0 ? '+' : '') + diff + ' vs. average', 80, 410);
 
   return cvs;
