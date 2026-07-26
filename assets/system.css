@@ -57,9 +57,9 @@ tr:last-child td{border-bottom:none}
 .site-header{border-bottom:1px solid var(--border);padding:16px 0;position:relative;z-index:10}
 .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
 .brand-icon{flex:0 0 auto;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#0e5f6f,var(--card-solid));border:2px solid var(--mint);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -6px rgba(46,230,168,.45)}
-.brand-name{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.005em;color:var(--ink);line-height:1.15;display:block}
-.brand-sub{display:block;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.03em;color:var(--dim);margin-top:3px;line-height:1.4;white-space:nowrap}
-.brand-sub b{display:block;font-weight:500}
+.brand-name{font-family:var(--serif);font-size:1.65rem;font-weight:600;letter-spacing:-.005em;color:var(--ink);line-height:1.15;display:block}
+.brand-sub{display:block;font-family:var(--mono);font-size:.68rem;font-weight:400;letter-spacing:.03em;color:var(--dim);margin-top:3px;line-height:1.4;white-space:nowrap}
+.brand-sub span{display:block;font-weight:400}
 
 /* Compact brand chip used on report/tool pages in place of a full nav */
 p.mark{
