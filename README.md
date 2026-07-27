@@ -4,7 +4,7 @@
 
 A single-file, client-side checker: will AI assistants (ChatGPT, Perplexity, Claude) be able to read your website?
 
-Live: https://alexander-k-eliot.github.io/ai-visibility-check-free/
+Live: https://clickcoded.com/ai-visibility-check-free/
 
 ## What it checks
 Title and meta description, JSON-LD structured data, heading structure, answer-shaped content, no-JS legibility, contact path. Plus llms.txt, robots.txt and sitemap when CORS allows the browser to fetch them. It is honest about what a browser cannot see, and the paste-your-HTML mode always works.
