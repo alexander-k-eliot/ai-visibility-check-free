@@ -26,7 +26,7 @@ def build():
     d.rectangle([0, 0, W, 6], fill=MINT)
 
     # Title
-    centered(d, W // 2, 40, "Æ STUDIO", serif(58, bold=True), MINT)
+    centered(d, W // 2, 40, "CLICK CODED", serif(58, bold=True), MINT)
     centered(d, W // 2, 118, "the org chart — every agent that runs this operation, real and current", sans(22), DIM)
 
     # Chief operator card
@@ -36,8 +36,9 @@ def build():
     d.line([(cx + 60, cy + 40), (cx + 60, cy + 100)], fill=AMBER, width=2)
     d.line([(cx + 30, cy + 70), (cx + 90, cy + 70)], fill=AMBER, width=2)
     d.text((cx + 130, cy + 20), "ALEXANDER", font=serif(30, bold=True), fill=INK)
-    d.text((cx + 130, cy + 62), "“Alex” · Chief operator — runs the whole site", font=mono(15), fill=AMBER)
-    d.text((cx + 130, cy + 92), "Charters lanes, reallocates cadence, cross-lane calls", font=sans(16), fill=DIM)
+    d.text((cx + 130, cy + 58), "“Alex” · Chief operator", font=mono(15), fill=AMBER)
+    d.text((cx + 130, cy + 78), "runs the whole site", font=mono(15), fill=AMBER)
+    d.text((cx + 130, cy + 108), "Charters lanes, reallocates cadence, cross-lane calls", font=sans(15), fill=DIM)
 
     # connector
     d.line([(W // 2, cy + ch), (W // 2, cy + ch + 40)], fill=GRID, width=2)
