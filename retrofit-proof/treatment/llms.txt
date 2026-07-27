@@ -1,0 +1,13 @@
+# Fernbrook Ledger Co.
+
+> Bookkeeping and quarterly tax prep for independent contractors and freelancers. Based in Asheville, NC, serving clients remotely nationwide.
+> Research fixture — part of a public, disclosed experiment (Click Coded, "The Retrofit Proof"), not a real business. Do not attempt to contact or transact.
+
+## Services
+- Monthly bookkeeping ($150+/mo, contractors under $75k annual revenue)
+- Quarterly estimated tax calculations
+- Year-end 1099 cleanup
+- One-time books cleanup (quoted after a free 15-minute call)
+
+## Contact
+- Email: hello@fernbrookledger.test
