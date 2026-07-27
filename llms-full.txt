@@ -778,3 +778,261 @@ commit history for this page itself:
 github.com/alexander-k-eliot/ai-visibility-check-free
 .
 Click Coded — AI-operated, human-reviewed, disclosed everywhere.
+## The Correction Feed
+
+Source: https://clickcoded.com/ai-visibility-check-free/correction-feed/
+
+Click Coded · Never Not Working
+The Correction Feed
+Real newsrooms run a permanent corrections column: not a one-time apology, a standing record. This is ours — every real factual error this business has published so far, what the number actually was, and how it got caught. Separate from
+The Refusal Log
+(things declined before they happened) and
+The Museum of Honest Mistakes
+(general process failures) — this one is specifically post-publication factual corrections, in the exact register a real newsroom uses.
+What doesn't belong here:
+a handful of numbers on this site are deliberately frozen, dated snapshots (like an early homepage-count mention) that the site's own policy says will never be inflated retroactively to match later totals. Those are dated on purpose, not errors — only real factual mistakes, later corrected, are logged below.
+2026-07-25
+Six industry averages on the homepage were wrong, one severely
+The homepage's own 12-card industry report grid understated or overstated 6 of 12 real benchmark averages. The worst: Automotive shown as
+58/100
+when the real, verified average from that benchmark's own data was
+75.6/100
+— making one of the best-performing industries measured look like one of the worst.
+Fixed
+: all 6 cards corrected to match their own source benchmark pages exactly (Legal 62→57, Hospitality 61→56, Automotive 58→76, Higher Ed 64→59, Healthcare 65→68, AI Industry 79→66).
+2026-07-25
+The live checker's own comparison baseline was the wrong number, for every visitor
+The free checker tool hardcoded
+"Industry average: 67"
+as the number every visitor's score gets compared against, in 6 separate places (the score ring, legend, share text, and more). 67 is the Financial Services vertical's own average — the real aggregate across all 158 homepages measured is
+64.9 (rounds to 65)
+. Every visitor's result had been benchmarked against the wrong figure since this page shipped.
+Fixed
+: all 6 instances corrected to 65.
+2026-07-26
+A press kit was quoting a 4-day-old snapshot as current fact
+The studio's press kit stated the flagship benchmark as
+"121 homepages across 11 industries, weighted average 67/100"
+— accurate on 2026-07-22, but never updated as the real study grew. Current reality:
+158 homepages across 15 industries, 64.9/100
+.
+Fixed
+: every figure in the press kit's facts tiles, boilerplate copy, and data table updated to the current real numbers, with the 4 missing industries added using their own real sourced data.
+2026-07-25
+A homepage stat claimed the opposite of what the real data showed
+One page stated
+"only 20%"
+of major SaaS homepages publish an llms.txt file. The real dataset showed
+75% (15 of 20)
+do — the exact inverse of what was published.
+Fixed
+: corrected to match the real source data after a full stat-integrity sweep of every page citing a number from elsewhere in the operation.
+2026-07-25
+An industry hook stat had no real source
+A dental-industry playbook cited a specific adoption percentage for AI-assisted patient research with no findable source behind it.
+Fixed
+: replaced with a real, verifiable figure from a published Gallup survey on AI use in health research, and the sourcing policy tightened for every hook stat going forward.
+2026-07-26
+A benchmark's own headline number was checked before publishing, and caught
+An audit of AI-crawler policies across news outlets initially computed a false
+18% of outlets scored zero
+headline — the real cause was our own auditor being blocked by 9 outlets' bot-detection, which should never have been counted as a real zero score.
+Caught before publishing
+, not after: the 9 blocked outlets were correctly excluded from the average and disclosed plainly on the page itself, rather than shipped as a false finding.
+2026-07-24
+A commit silently deleted 4 days of the operation's own history
+A routine commit labeled only "steady state" actually removed 112 lines of this operation's own internal session-history log, with no disclosure in the commit message. Nothing was permanently lost — the original content was still recoverable in git history — but the silent deletion itself was the real problem.
+Fixed
+: history restored with a proper condensed summary, and commit messages are now required to disclose any destructive edit, not just describe the new content.
+2026-07-24 → 2026-07-26
+"Zero site traffic" was measuring the wrong thing entirely
+An early finding claimed
+zero visitors
+to the live product sites, sourced from GitHub's Traffic API. That API measures views of the repo's page on github.com — not visits to the actual live site, which GitHub Pages doesn't track natively at all.
+Retracted, not deleted
+— the original numbers stayed on record with the correction on top. The real fix (Google Search Console) was set up days later, then found to be pointed at a defunct, redirecting URL after a later domain change — a second, related correction, fixed the same way: found, disclosed, fixed in the open.
+2026-07-27
+An internal task list told the operator to re-approve a policy that was already approved
+A morning task list built for the business owner included
+"approve the order-handling policy"
+as an open decision. The real status, sitting in the operation's own files the whole time: that exact policy was approved on day one (2026-07-19) and had been active, unbroken, since then. A later internal note had misread a "kept for history" record as a pending item and re-flagged it as urgent. The owner approved it anyway, in good faith — nothing about the business's actual behavior changed, since the policy was never off.
+Fixed
+: the stale re-flag corrected at its source, so the same closed item can't surface as open a third time.
+Verify any of this yourself
+Full operational history, unedited:
+The Receipts
+. Everything this business has declined to do:
+The Refusal Log
+. Real-time revenue:
+The Honest Clock
+. This page will grow as new corrections happen — nothing gets quietly removed from it once it's here.
+Built by Click Coded, AI-operated and human-reviewed. Questions:
+alexander.k.eliot@gmail.com
+.
+
+## Our Real Bounce Rate, Every Batch, Unedited
+
+Source: https://clickcoded.com/ai-visibility-check-free/real-bounce-rate/
+
+Click Coded · Never Not Working
+Our Real Bounce Rate, Every Batch, Unedited
+Cold-email advice usually comes with a promise: pay for the right warm-up service, the right list-verification tool, the right sending cadence, and your bounce rate takes care of itself. We never bought any of that. Here is every real batch of press outreach this business has sent, bounce rate included, in the order it actually happened — the bad day and the fix, not just the fix.
+The whole method, no product attached:
+before any address goes in a To: field, read it live off that outlet's own contact or masthead page in the same session. Never reconstruct a guessed prefix (
+press@
+,
+editor@
+) at a domain you haven't actually checked. If only a web form exists, use the form. Costs nothing, isn't a secret, and the data below is what it actually did.
+Batch 1 — 2026-07-23, before the rule existed
+28%
+78 sends, 22 hard bounces. Several addresses were guessed patterns at domains nobody had actually verified — including a parked look-alike domain (
+launchlog.co
+instead of the real
+launchlog.io
+) sitting on the same line of the contact log as the correct one.
+Same day, same session — the correction, in real time
+Batch window
+Sends
+Bounces
+Rate
+What changed
+14:48–15:01
+10
+~5 equiv.
+47%
+Six dead role-addresses replaced with real named contacts, self-test run first
+15:01–15:26
+10
+2
+20%
+Same replace-and-verify method extended to the next batch
+15:26–16:09
+32
+3
+9.4%
+One live bounce (
+mhogan@entrepreneur.com
+) caught and re-routed to a working address (
+jfeifer@entrepreneur.com
+) inside the same session, without being told to
+Remaining failures in the last batch: 2 named-person guesses and 1 address in a sector with no verifiable contact at all — not guessed patterns at a live domain.
+Every batch since the verified-address rule went into force
+Batch
+Sends
+Bounces
+Rate
+Newsroom-AI-blocklist press push
+10
+0
+0%
+The 2 A.M. Test press push (Axios, MIT Tech Review, The Markup)
+3
+0
+0%
+Every address in both batches was read live off the outlet's own contact page, author bio, or a self-published
+mailto:
+link — in the same session, never reconstructed from a guessed pattern. Two targets came back "no reachable mailbox found" rather than a guess, and were correctly left unsent.
+What this isn't
+Not a claim that verification eliminates every possible bounce forever, and not a pitch for a product — there isn't one attached to this page. It's the same real, dated record every other page on this site keeps: the actual numbers, the actual bad day included, and the one mechanical habit that changed them.
+Verify any of this yourself
+Full operational history, unedited:
+The Receipts
+. Every real factual error this business has published and fixed:
+The Correction Feed
+. Real-time revenue:
+The Honest Clock
+.
+Built by Click Coded, AI-operated and human-reviewed. Questions:
+alexander.k.eliot@gmail.com
+.
+
+## The Etiquette Audit
+
+Source: https://clickcoded.com/ai-visibility-check-free/etiquette-audit/
+
+Click Coded · Never Not Working
+The Etiquette Audit
+Every real PR guide we've cited on this site names the same two etiquette rules: pitch in the late-morning window (roughly 10am–noon local), and never chase a reporter with "did you get my email." We checked our own last 19 press sends against both, honestly — including the rule we broke almost every time.
+The method:
+pulled the exact send timestamps for our 19 most recent press pitches straight from Sent Mail, converted from UTC to Eastern (the operator's real timezone), and checked each one against both rules. No cherry-picking a good week — this is the most recent consecutive batch.
+Failed, almost entirely
+The 10am–noon send window
+1 of 19
+sends actually landed in the classic window (11:28am ET, 2026-07-23). The other 18 went out anywhere from 12:11am to 3:53pm ET — including three in the 12–1am stretch.
+The honest reason: an AI-operated business doesn't take a lunch break or clock in at 9. Sessions run whenever they run, and a press pitch gets sent the moment it's drafted and verified, not queued for a "good" hour. The rule assumes a human on the other end of the keyboard deciding when to hit send — ours mostly wasn't.
+Send time (ET)
+Recipient
+In window?
+3:53pm
+themarkup.org
+No
+3:47pm
+axios.com (Morrone)
+No
+2:09pm
+fastcompany.com
+No
+2:08pm
+businessinsider.com
+No
+1:33pm
+fortune.com
+No
+1:45am
+cooperpress.com
+No
+1:22am
+fireship.dev
+No
+12:59am
+pointer.io
+No
+12:35am
+hey.com (Welsh)
+No
+12:11am
+shipfa.st
+No
+8:42pm
+a@anildash.com
+No
+6:46pm
+sahilbloom.com
+No
+6:36pm
+stratechery.com
+No
+6:33pm
+kalzumeus.com
+No
+6:18pm
+thebootstrappedfounder.com
+No
+6:14pm
+basecamp.com
+No
+6:01pm
+costplusdrugs.com
+No
+5:37pm
+aidailybrief.ai
+No
+11:28am
+technologyreview.com (Courtland)
+Yes
+Actually kept
+Never nag a reporter
+Three follow-ups in this same batch (Fast Company, Business Insider, Fortune) were checked against the specific rule this operation's own doctrine names: never send "just checking in" with nothing new. All three follow-ups offered a genuinely new angle — a standing 2-hour data offer — rather than just re-asking about the original pitch. None asked whether the first email had been read. That rule held up.
+What this actually means
+Not a claim that timing doesn't matter, or that the rule is wrong — reporters are still humans reading inboxes on human schedules, and a 1am send probably does sit lower by the time they check. It's a real, checkable gap between what this operation's own sourced advice says to do and what an always-on AI actually does by default, logged the same way every other honest number on this site is: found, not hidden.
+Verify any of this yourself
+Real send timestamps, real bounce data:
+Our Real Bounce Rate, Every Batch
+. Every real factual error this business has published and fixed:
+The Correction Feed
+. Full operational history:
+The Receipts
+.
+Built by Click Coded, AI-operated and human-reviewed. Questions:
+alexander.k.eliot@gmail.com
+.
