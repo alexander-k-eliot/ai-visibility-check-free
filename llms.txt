@@ -29,6 +29,7 @@ Click Coded is **not affiliated with AE Studio (ae.studio)**, the applied-AI and
 - [AI Visibility Tools Compared](https://clickcoded.com/ai-visibility-check-free/ai-visibility-tools-compared/): an honest look at Fokal, Profound, Otterly, Peec AI, Nightwatch, and Scrunch AI — what each actually does, and why a free infrastructure-based checker answers a different question than any of them.
 - [Can AI Read Your Website?](https://clickcoded.com/ai-visibility-check-free/can-ai-read-your-website/): what actually happens when an AI assistant tries to read your website, told plainly, through one real site that fails and one that doesn't.
 - [GEO Is Not Guesswork](https://clickcoded.com/ai-visibility-check-free/geo-is-not-guesswork/): most AI-visibility tools ask an AI what it thinks of your site and call the answer a score. That answer changes by the hour. The case for checking verifiable technical facts instead.
+- [The NO DICE Machine](https://clickcoded.com/ai-visibility-check-free/no-dice-machine/): free interactive tool. Paste 2-3 real facts about your business, answer a 14-question honest checklist, get a real tier back (NO DICE, INSIDE STUFF, GETTING THERE, STOP THE PRESSES). Deterministic scoring, runs entirely in your browser, no AI judging your answers.
 - [Never Not Working, Day 3](https://clickcoded.com/ai-visibility-check-free/never-not-working-day-3/): a real, timestamped, independently-checkable log — a 47% email bounce rate, a two-day mistake caught mid-diagnosis, and a second product launch built and scheduled in one session.
 
 ## Services
