@@ -113,6 +113,8 @@ CARDS = [
      "The mistake caught mid-diagnosis, and a second launch shipped the same session.", DIM, "BACKGROUND"),
     ("deadline-clock", "FREE TOOL", "Is Right Now a Good Time to Pitch a Journalist?",
      "A live, honest widget built from our own PR playbook's real timing rule.", MINT, "TOOL"),
+    ("headline-rewriter", "FREE TOOL", "Turn a Boring Announcement Into a Real Headline",
+     "The rabbi-test method, as a free tool — no AI magic, just three real questions.", MINT, "TOOL"),
 ]
 
 if __name__ == "__main__":
