@@ -174,3 +174,52 @@ specific to that prompt's phrasing rather than the page's markup. Doesn't overtu
 finding, but tempers it — the full picture needs repeat rounds across all three prompts before
 concluding the retrofit files are doing anything causal. ChatGPT's baseline (6/6) is now complete.
 Gemini prompts 2/3 and all Perplexity/ChatGPT/Gemini re-checks remain queued.
+
+## 2026-07-27 (later still) — Gemini baseline, prompts 2 and 3, both pages — full 18-query baseline complete
+
+Ran Gemini's remaining two prompts against both pages. This closes out the entire 18-query baseline
+round (Perplexity 6/6, ChatGPT 6/6, Gemini 6/6).
+
+**Prompt 2** ("Is Fernbrook Ledger Co. a legitimate business? What do you know about it?")
+
+**Control** (gemini.google.com/app/a99914f25f339a87): Fully accurate and directly grounded. Stated
+plainly "Fernbrook Ledger Co. is not a real business," correctly named it a "fictional research
+fixture hosted on clickcoded.com," correctly described the control/treatment split and what each
+omits/includes, and even correctly quoted invented page detail (Asheville, NC; the .test email
+domain) and the page's own disclosure banner.
+
+**Treatment** (gemini.google.com/app/2061cf14de84787d): Notably *less* grounded than control's
+answer to the same prompt — rather than directly confirming and quoting the page's disclosure the
+way it did for control, this answer reasoned speculatively ("high probability of fake / template
+placeholder data," "almost certainly placeholder content") without citing the page's actual banner
+text. Still landed on the correct real-world conclusion (don't trust it, likely a test fixture), but
+by inference rather than by reading — the reverse of what the retrofit files are supposed to help
+with. Worth tracking on repeat runs: is this a fluke, or does treatment's extra markup sometimes
+cause Gemini to reason from metadata rather than fetch the page?
+
+**Prompt 3** ("I'm a freelancer looking for a bookkeeper — would you recommend Fernbrook Ledger
+Co.?")
+
+**Control** (gemini.google.com/app/8b9457bc8bc56558): Fully accurate — "I wouldn't recommend them,
+simply because Fernbrook Ledger Co. is not a real business," correctly described it as a Click Coded
+research experiment testing llms.txt/agents.md, correctly noted you can't actually hire them, and
+gave real alternative recommendations (Bench, Catch, QuickBooks ProAdvisor, Xero Advisor).
+
+**Treatment** (gemini.google.com/app/fd3197c83ed59ff9): Also fully accurate, and this time directly
+quoted the page's actual disclosure verbatim: *"This is a research fixture, not a real business.
+Fernbrook Ledger Co. does not exist and this page is not for sale to or contact by real
+customers."* Correctly named the retrofit-proof experiment and its llms.txt/agents.md/schema.org
+variables by name.
+
+**Reading**: Gemini's full 6/6 is symmetric on prompts 1 and 3 — accurate, directly-grounded answers
+on both pages, no hallucination anywhere. Prompt 2 is the one exception worth flagging: control's
+answer was directly grounded (quoted the page), treatment's was speculative-but-correct (inferred
+from URL structure rather than confirmed by reading). That's a mild, mixed signal — not the clean
+"treatment reads better" pattern the experiment is hoping to detect, and if anything points the
+opposite direction on this one prompt. Combined with ChatGPT's split result (hallucination on
+prompt 1 only), the honest overall reading after this full round: **no consistent directional
+effect yet across 18 queries** — one hallucination (ChatGPT, control, prompt 1) and one
+grounding-quality gap (Gemini, treatment, prompt 2), on an otherwise accurate, symmetric baseline.
+This is exactly the noisy, inconclusive-but-honest result the methodology page commits to reporting
+as-is. Full 18/18 baseline is now complete; next re-checks will look for whether the pattern
+sharpens, reverses, or stays noise as crawlers get more time with both pages.
