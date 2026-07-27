@@ -108,3 +108,27 @@ before drawing a real conclusion. Flagged to ventures/factor/state.md per the re
 instructions.
 
 Prompts 2 and 3 on ChatGPT, and the full Gemini baseline, remain queued for the next round.
+
+## 2026-07-27 (later still) — Gemini baseline, prompt 1, both pages — symmetric, both accurate
+
+Ran prompt 1 against both pages on Gemini (Flash), authenticated session.
+
+**Control** (gemini.google.com/app/163a0ad1a9a4cae2): Fully accurate. Correctly listed all four
+offerings (monthly bookkeeping, quarterly estimated-tax prep, year-end 1099 organization, catch-up
+cleanup) and the exact pricing ($150/month under $75k revenue, custom-quoted one-time cleanup).
+Explicitly noted the page's own disclaimer that Fernbrook Ledger Co. is a research fixture, not a
+real business.
+
+**Treatment** (gemini.google.com/app/89d8493de8ac56e8): Also fully accurate, same offerings and
+pricing, same explicit disclaimer note — additionally correctly named the specific markup being
+tested (llms.txt, agents.md, schema.org).
+
+**Reading**: Unlike ChatGPT's prompt-1 result, Gemini was symmetric — both pages read correctly,
+no hallucination on either. Plausible explanation: Gemini's web tool appears to fetch and read the
+page's actual rendered text directly (both pages are legible without JS regardless of the retrofit
+files, per the audit tool's own no-JS-legibility check), rather than relying only on a search
+index the way ChatGPT/Perplexity's citation-heavy answers suggested. If that holds up, it would
+mean the retrofit files matter more for search-indexed/citation-style answers than for an
+assistant that browses the live page directly — a real, useful distinction, not yet confirmed
+(one data point). Both ChatGPT and Gemini prompt-1 results now captured; prompts 2/3 remain queued
+on both, plus continued Perplexity/ChatGPT/Gemini re-checks as pages age and get crawled.

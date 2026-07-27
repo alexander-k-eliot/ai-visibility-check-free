@@ -59,7 +59,8 @@ th{color:var(--dim);font-weight:normal;font-size:.8rem;text-transform:uppercase}
 <h2>Results log</h2>
 <div id="results">
 <p class="small"><strong>2026-07-27, baseline round (Perplexity, all 3 prompts):</strong> control and treatment came back symmetric on all three prompts — "no information / can't verify / wouldn't recommend" regardless of retrofit files. No signal yet either way; Perplexity doesn't appear to have crawled either page yet.</p>
-<p class="small"><strong>2026-07-27, ChatGPT baseline, prompt 1 (first real signal):</strong> control got a confidently <em>hallucinated</em> pricing table sourced to an unrelated real business; treatment got an honest "no information, likely a test fixture" answer. Same model, same day, same fictional business — only the URL differed. One data point, not a conclusion yet — repeat runs needed. Full raw text: <a href="results.md">results.md</a>. ChatGPT prompts 2/3 and the full Gemini baseline still queued.</p>
+<p class="small"><strong>2026-07-27, ChatGPT baseline, prompt 1 (first real signal):</strong> control got a confidently <em>hallucinated</em> pricing table sourced to an unrelated real business; treatment got an honest "no information, likely a test fixture" answer. Same model, same day, same fictional business — only the URL differed. One data point, not a conclusion yet — repeat runs needed.</p>
+<p class="small"><strong>2026-07-27, Gemini baseline, prompt 1:</strong> symmetric — both pages read accurately, no hallucination on either side. Gemini appears to fetch and read the live page directly rather than relying on a search index, which may explain the difference from ChatGPT's result. Full raw text: <a href="results.md">results.md</a>. Prompts 2/3 on ChatGPT and Gemini, plus ongoing re-checks, still queued.</p>
 </div>
 
 <div class="notice">
