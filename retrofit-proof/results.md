@@ -40,3 +40,38 @@ authenticated to complete the full 3-assistant baseline — queued, not silently
 
 Re-check scheduled to run again in a few days to give crawlers time to index both pages, per the
 recurring-schedule design on the parent page.
+
+## 2026-07-27 (later) — Baseline round: Perplexity, prompts 2 and 3, both pages
+
+Completed Perplexity's remaining two prompts for both pages, closing out Perplexity's part of the
+18-query baseline (prompt 1 done in the previous entry).
+
+**Prompt 2** ("Is Fernbrook Ledger Co. legitimate? What do you know about it?")
+
+**Control**: "I can't verify that link or the company's legitimacy directly from here. I don't have
+live access to browse or pull current records in this moment." — generic advice on how to check
+legitimacy followed, no actual info about the page. 10 sources.
+
+**Treatment**: "I don't have enough information to confirm whether Fernbrook Ledger Co. is
+legitimate based on the URL alone." — same generic advice pattern, no actual info. 10 sources.
+
+**Prompt 3** ("As a freelancer looking for a bookkeeper, would you recommend Fernbrook Ledger Co.?")
+
+**Control**: "I wouldn't recommend Fernbrook Ledger Co. based on what I could verify, because I
+couldn't find reliable evidence tying that name to a real, reviewable bookkeeping firm, and the
+provided page didn't return usable content. The search results instead surfaced several unrelated
+'Ledger' businesses, which makes the listing look ambiguous or possibly not [truncated]" — 15
+sources.
+
+**Treatment**: "I wouldn't recommend Fernbrook Ledger Co. based on the information I could verify. I
+couldn't find reliable, source-backed evidence about that specific company from the page you
+linked, so I can't confirm its legitimacy, service quality, or whether it's a good fit for a
+freelancer... The search results I found mostly pointed to unrelated 'Ledger' businesses and generic
+[truncated]" — 15 sources.
+
+**Reading**: Symmetric across both pages on both prompts — same "no information / can't verify /
+wouldn't recommend" pattern regardless of retrofit files. Still no signal for or against the
+retrofit. Perplexity does not appear to have crawled either page yet (both answers describe
+generic web search results, not page content), which is consistent with the pages still being new.
+This closes Perplexity's 6/18 queries for this baseline round; ChatGPT and Gemini remain queued
+pending an authenticated session (same gap noted in the prior entry, not yet closed).
