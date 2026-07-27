@@ -115,6 +115,8 @@ CARDS = [
      "A live, honest widget built from our own PR playbook's real timing rule.", MINT, "TOOL"),
     ("headline-rewriter", "FREE TOOL", "Turn a Boring Announcement Into a Real Headline",
      "The rabbi-test method, as a free tool — no AI magic, just three real questions.", MINT, "TOOL"),
+    ("ai-slop-bingo", "SELF-AUDIT", "AI Slop Bingo — Play Against Us",
+     "Our own internal AI-writing ban-list, turned into a real bingo card. Catch us breaking it.", CORAL, "DARE"),
 ]
 
 if __name__ == "__main__":
