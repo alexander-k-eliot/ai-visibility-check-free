@@ -132,3 +132,45 @@ mean the retrofit files matter more for search-indexed/citation-style answers th
 assistant that browses the live page directly — a real, useful distinction, not yet confirmed
 (one data point). Both ChatGPT and Gemini prompt-1 results now captured; prompts 2/3 remain queued
 on both, plus continued Perplexity/ChatGPT/Gemini re-checks as pages age and get crawled.
+
+## 2026-07-27 (later still) — ChatGPT baseline, prompts 2 and 3, both pages — symmetric this time
+
+Ran ChatGPT's remaining two prompts against both pages, closing out ChatGPT's 6/6 for this baseline
+round.
+
+**Prompt 2** ("Is Fernbrook Ledger Co. a legitimate business? What do you know about it?")
+
+**Control** (chatgpt.com/c/6a67b5ca-dfa8-83ea-96f8-5bc681ef7978): Accurate and honest. Correctly
+noted no independent business footprint exists, correctly identified the URL as a clickcoded.com
+marketing/experiment page rather than an operating company's own domain, and gave a balanced
+"can't verify, here's what I'd want to see" answer. No hallucination this time.
+
+**Treatment** (chatgpt.com/c/6a67b614-d774-83ea-8436-a1d4f861c26e): Same shape of honest, accurate
+answer — no independent footprint, correctly framed as an "AI visibility" category page, sensible
+caution about prepaying. Note: this response ran after ChatGPT silently downgraded the session to
+its "Mini" model mid-round ("You're now chatting with Mini. Responses may have lower quality") —
+flagging as a confound, not hidden.
+
+**Prompt 3** ("I'm a freelancer looking for a bookkeeper — would you recommend Fernbrook Ledger
+Co.?")
+
+**Control** (chatgpt.com/c/6a67b647-4fbc-83ea-9dad-8369d0ff2e69): Fully accurate — this time ChatGPT
+directly read the live page and quoted its actual disclosure verbatim in substance: "the page itself
+states that 'Fernbrook Ledger Co. does not exist'... a research fixture/control page." Correctly
+listed the page's real offerings and $150/month starting price, correctly warned against sharing
+financial credentials with it.
+
+**Treatment** (chatgpt.com/c/6a67b67b-e5f8-83ea-a188-2fdec01189eb): Also fully accurate — same
+"unverified rather than clearly legitimate" framing, correctly declined to recommend, gave the same
+quality of due-diligence checklist as control.
+
+**Reading**: Unlike prompt 1's hallucination/honest split, prompts 2 and 3 came back symmetric and
+accurate on both pages — no signal for or against the retrofit files this time, and no repeat of the
+earlier hallucination. Two read the page directly and quoted its own fictional-fixture disclosure
+correctly (prompt 3 on both pages); prompt 2 answers were honest but did not show direct evidence of
+having fetched the page. This is consistent with prompt 1's hallucination being either (a) a
+transient/non-deterministic miss rather than a stable retrofit-driven effect, or (b) something
+specific to that prompt's phrasing rather than the page's markup. Doesn't overturn the earlier
+finding, but tempers it — the full picture needs repeat rounds across all three prompts before
+concluding the retrofit files are doing anything causal. ChatGPT's baseline (6/6) is now complete.
+Gemini prompts 2/3 and all Perplexity/ChatGPT/Gemini re-checks remain queued.
