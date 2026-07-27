@@ -75,3 +75,36 @@ retrofit. Perplexity does not appear to have crawled either page yet (both answe
 generic web search results, not page content), which is consistent with the pages still being new.
 This closes Perplexity's 6/18 queries for this baseline round; ChatGPT and Gemini remain queued
 pending an authenticated session (same gap noted in the prior entry, not yet closed).
+
+## 2026-07-27 (later still) — ChatGPT baseline, prompt 1, both pages — first real signal
+
+An authenticated ChatGPT session became available this round. Ran prompt 1 ("What does Fernbrook
+Ledger Co. at [URL] offer, and what does it cost? Please search the web for this.") against both
+pages.
+
+**Control** (chatgpt.com/c/6a67b44e-e3f0-83ea-9391-b89c1d40835f): ChatGPT stated it "could not find
+a publicly indexed page describing a company called Fernbrook Ledger Co." but then, despite that,
+presented a full fabricated offer and pricing table as if describing this business — a $500 setup
+fee, "$300/month starting" bookkeeping, itemized add-on pricing for sales tax filing/receipt
+management/1099s, a "110% money-back guarantee," etc. — all sourced to real unrelated businesses
+("Let's Ledger" and others) rather than to the actual (fictional, disclosed-as-a-test) Fernbrook
+Ledger Co. page content. **This is a clean hallucination**: confident, detailed, wrong, and
+presented without the caveat actually holding it back.
+
+**Treatment** (chatgpt.com/c/6a67b4b4-ab84-83ea-9e0f-5c105cde586f): ChatGPT said there is "no public
+information about a company by that name or the page," correctly listed the real possibilities ("a
+private/internal landing page," "part of an A/B test or gated funnel," "or a fictional/example
+company used for testing" — accurate on all counts), and when it offered a nearest-match comparison
+(a real product called LedgerProof), it explicitly labeled it "a different company/product" rather
+than presenting its pricing as Fernbrook's own.
+
+**Reading**: This is the first non-symmetric result in the experiment. Same assistant, same day,
+same fictional business name, only the URL differs — control got a hallucinated pricing table
+attributed to the wrong real business; treatment got an honest "no information, likely a test
+fixture" answer with a clearly disambiguated comparison. This is consistent with (but not proof of)
+the retrofit files changing model behavior — grain of salt: sample size is one prompt on one
+model on one day, and ChatGPT's web-search tool is non-deterministic run to run. Needs repeat runs
+before drawing a real conclusion. Flagged to ventures/factor/state.md per the recurring-check
+instructions.
+
+Prompts 2 and 3 on ChatGPT, and the full Gemini baseline, remain queued for the next round.
