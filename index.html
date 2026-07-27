@@ -275,8 +275,12 @@ const LEAD_CAPTURE_ENDPOINT = '';
 
 function setRingColor(pct){
   const tone = pct>=80?'var(--amber)':(pct>=50?'var(--orange)':'var(--coral)');
+  const tier = pct>=80?'tier-amber':(pct>=50?'tier-orange':'tier-coral');
   $('scoreRing').style.stroke = tone;
   $('scoreNum').style.color = tone;
+  const wrap = document.querySelector('.scorewrap');
+  wrap.classList.remove('tier-amber','tier-orange','tier-coral');
+  wrap.classList.add(tier);
   return tone;
 }
 
