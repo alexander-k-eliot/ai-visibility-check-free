@@ -7,17 +7,10 @@ card every other page was using.
 """
 import os, sys, textwrap
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, MINT, CORAL, AMBER, INK, DIM, CARD2
+from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, brand_lockup, MINT, CORAL, AMBER, INK, DIM, CARD2
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "og-cards")
 os.makedirs(OUT, exist_ok=True)
-
-
-def brand_mark(d, bx=42, by=58, bs=26):
-    d.rounded_rectangle([bx-bs, by-bs, bx+bs, by+bs], radius=9, fill=CARD2, outline=MINT, width=2)
-    d.line([(bx-6, by-14), (bx-18, by), (bx-6, by+14)], fill=MINT, width=5, joint="curve")
-    d.line([(bx+6, by-14), (bx+18, by), (bx+6, by+14)], fill=MINT, width=5, joint="curve")
-    d.ellipse([bx-3, by-3, bx+3, by+3], fill=MINT)
 
 
 def wrap_headline(text, width_chars):
@@ -28,8 +21,7 @@ def build_card(slug, kicker, headline, dek, tier_color=MINT, tier_label="BREAKIN
     W, H = 1200, 630
     img, d = new_canvas(W, H)
     top_bottom_bars(d, W, H, tier_color, thickness=7)
-    brand_mark(d)
-    d.text((94, 46), "CLICK CODED  ·  NEVER NOT WORKING", font=mono(18, True), fill=MINT)
+    brand_lockup(d, 42, 32)
 
     d.rounded_rectangle([60, 108, 60+len(tier_label)*13+34, 108+34], radius=8, outline=tier_color, width=2)
     d.text((78, 116), tier_label, font=mono(16, True), fill=tier_color)

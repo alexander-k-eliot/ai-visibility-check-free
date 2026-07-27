@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
 Shared AAA visual-system rendering helpers for static PNG assets
-(thumbnails, covers, promo images) across all Æ Studio product lanes.
+(thumbnails, covers, promo images) across all Click Coded product lanes.
 Mirrors the site's design tokens: dark teal bg, mint/amber/coral accents,
-serif display headlines (Georgia stand-in for Fraunces), mono kickers
-(Courier stand-in for IBM Plex Mono), dot-grid texture.
+real brand typefaces (Fraunces serif, IBM Plex Mono kickers, Inter sans),
+dot-grid texture.
 """
 import math
+import os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+FONTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fonts")
 
 BG    = (6,  55,  64)
 BG2   = (4,  38,  44)
@@ -22,21 +25,18 @@ GRID  = (60, 110, 105)
 
 
 def serif(size, bold=True):
-    p = "/System/Library/Fonts/Supplemental/Georgia Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Georgia.ttf"
+    p = os.path.join(FONTS, "Fraunces-Bold.ttf" if bold else "Fraunces-Regular.ttf")
     return ImageFont.truetype(p, size)
 
 
 def mono(size, bold=False):
-    try:
-        p = "/System/Library/Fonts/Supplemental/Courier New Bold.ttf" if bold else "/System/Library/Fonts/Supplemental/Courier New.ttf"
-        return ImageFont.truetype(p, size)
-    except Exception:
-        return ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", size)
+    p = os.path.join(FONTS, "IBMPlexMono-SemiBold.ttf" if bold else "IBMPlexMono-Regular.ttf")
+    return ImageFont.truetype(p, size)
 
 
 def sans(size, bold=False):
-    idx = 1 if bold else 0
-    return ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc", size, index=idx)
+    p = os.path.join(FONTS, "Inter-SemiBold.ttf" if bold else "Inter-Regular.ttf")
+    return ImageFont.truetype(p, size)
 
 
 def _radial_fade_mask(w, h, rx_frac=0.75, ry_frac=0.65, cx_frac=0.5, cy_frac=0.0, inner=0.40, outer=0.92, res=80):
@@ -130,6 +130,40 @@ def top_bottom_bars(d, w, h, color=MINT, thickness=8):
     d.rectangle([0, h - thickness, w, h], fill=color)
 
 
+def brand_icon(d, cx, cy, scale=1.0):
+    """The real site mark (index.html brand-icon svg): two bare chevrons + a
+    center dot, mint stroke, no surrounding box. viewBox 0 0 64 64 mapped to
+    a cx/cy center point. scale=1.0 matches the site's 22x22 nav rendering."""
+    s = scale * (22 / 64)
+    def pt(x, y):
+        return (cx + (x - 32) * s, cy + (y - 32) * s)
+    w = max(2, round(6 * s))
+    d.line([pt(24, 18), pt(12, 32), pt(24, 46)], fill=MINT, width=w, joint="curve")
+    d.line([pt(40, 18), pt(52, 32), pt(40, 46)], fill=MINT, width=w, joint="curve")
+    r = max(1, 4 * s)
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=MINT)
+
+
+def brand_lockup(d, x, y, icon_scale=2.0, name_size=30, tagline="NEVER NOT WORKING"):
+    """Matches the site header lockup exactly: bare chevron mark + 'Click Coded'
+    in Fraunces (the real logotype), optionally followed by a small mono tagline —
+    this is the canonical top-left brand mark for every generated asset."""
+    icon_r = 11 * icon_scale
+    cy = y + icon_r
+    brand_icon(d, x + icon_r, cy, scale=icon_scale)
+    tx = x + icon_r * 2 + 14
+    f_name = serif(name_size, bold=True)
+    bb = d.textbbox((0, 0), "Click Coded", font=f_name)
+    name_h = bb[3] - bb[1]
+    ty = cy - name_h / 2 - bb[1]
+    d.text((tx, ty), "Click Coded", font=f_name, fill=INK)
+    if tagline:
+        bb2 = d.textbbox((0, 0), "Click Coded", font=f_name)
+        nw = bb2[2] - bb2[0]
+        f_tag = mono(round(name_size * 0.5), bold=True)
+        d.text((tx + nw + 16, cy - round(name_size * 0.5 * 0.36)), "·  " + tagline, font=f_tag, fill=MINT)
+
+
 def kicker(d, x, y, text, color=MINT, size=24):
     d.text((x, y), text, font=mono(size, bold=True), fill=color)
 
@@ -172,7 +206,7 @@ def sku_card(fname, kicker_text, title_lines, sub_lines, tag_line, w=2667, h=200
         y += 76
     d.rounded_rectangle([150, 1620, 1250, 1740], radius=16, outline=MINT, width=5)
     d.text((190, 1650), tag_line, font=serif(44, True), fill=MINT)
-    d.text((150, 1850), "Æ STUDIO  ·  AI-operated, human-reviewed  ·  honest scope, no invented facts", font=sans(38), fill=DIM)
+    d.text((150, 1850), "CLICK CODED  ·  AI-operated, human-reviewed  ·  honest scope, no invented facts", font=sans(38), fill=DIM)
     img.save(fname, quality=95)
     print(f"saved {fname}")
 
@@ -210,7 +244,7 @@ def playbook_cover(out_path, kicker_text, headline_lines, price, body_lines, sta
         d.rounded_rectangle([bar_x, row_y, bar_x + int(bar_w * min(score, 100) / 100), row_y + bar_h], radius=4, fill=row_color)
         row_y += bar_h + 18
 
-    footer(d, 90, H - 46, "Æ STUDIO  ·  AI-operated, human-reviewed  ·  no invented facts, no guaranteed citations")
+    footer(d, 90, H - 46, "CLICK CODED  ·  AI-operated, human-reviewed  ·  no invented facts, no guaranteed citations")
     img.save(out_path, quality=95)
     print(f"saved {out_path}")
 
@@ -228,7 +262,7 @@ def playbook_thumb(out_path, headline_lines, price, kicker_text="THE PLAYBOOK",
     price_pill(d, 70, 500, price)
     if stamp_top and stamp_bottom:
         audited_stamp(d, W - 190, 640, 150, stamp_top, stamp_bottom, stamp_color or MINT)
-    footer(d, 70, H - 70, "Æ STUDIO", size=22)
+    footer(d, 70, H - 70, "CLICK CODED", size=22)
     img.save(out_path, quality=95)
     print(f"saved {out_path}")
 

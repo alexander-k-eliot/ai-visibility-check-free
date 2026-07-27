@@ -10,7 +10,7 @@ Score: 62/100 (below our own 158-homepage benchmark average of 65 — real, cite
 import os, sys, math
 from PIL import Image
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from aaa_render import new_canvas, serif, mono, sans, MINT, AMBER, CORAL, INK, DIM, CARD, CARD2
+from aaa_render import new_canvas, serif, mono, sans, brand_lockup, MINT, AMBER, CORAL, INK, DIM, CARD, CARD2
 
 SCORE = 62  # Below our own 158-homepage benchmark average (65/100, ../state-of-machine-readable-business/)
 
@@ -52,8 +52,8 @@ def build_gallery_1():
     # Accent bar top
     d.rectangle([0, 0, W, 7], fill=MINT)
 
-    # Kicker
-    d.text((60, 36), "Æ STUDIO  ·  FREE AI VISIBILITY CHECKER", font=font(20), fill=MINT)
+    # Brand lockup
+    brand_lockup(d, 60, 22, icon_scale=1.4, name_size=22, tagline="FREE AI VISIBILITY CHECKER")
 
     # Headline
     d.text((60, 76), "Will AI assistants find your website?", font=font(50, bold=True), fill=INK)
@@ -151,7 +151,7 @@ def build_gallery_2():
     img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 7], fill=CORAL)
-    d.text((60, 36), "Æ STUDIO  ·  YOUR FIX LIST", font=font(20), fill=CORAL)
+    brand_lockup(d, 60, 22, icon_scale=1.4, name_size=22, tagline="YOUR FIX LIST")
     d.text((60, 76), "Two missing signals. Here's exactly what to add.", font=font(46, bold=True), fill=INK)
     d.text((60, 142), f"Your score: {SCORE}/100  ·  Industry average: 65/100 (our own 158-site benchmark)", font=font(21), fill=DIM)
 
@@ -207,7 +207,7 @@ def build_gallery_3():
     img, d = new_canvas(W, H)
 
     d.rectangle([0, 0, W, 7], fill=MINT)
-    d.text((60, 36), "Æ STUDIO  ·  30+ FREE TOOLS", font=font(20), fill=MINT)
+    brand_lockup(d, 60, 22, icon_scale=1.4, name_size=22, tagline="30+ FREE TOOLS")
     d.text((60, 76), "Everything you need to fix your score.", font=font(46, bold=True), fill=INK)
     d.text((60, 140), "Free AI Visibility Check is part of a complete toolkit. All tools free, no signup.", font=font(21), fill=DIM)
 
@@ -291,11 +291,12 @@ def build_thumbnail():
     lw = bb3[2]-bb3[0]
     d.text((cx - lw//2, cy + r + 16), lbl, font=f_lbl, fill=DIM)
 
-    # Kicker at top
-    kicker = "Æ STUDIO"
-    bb4 = d.textbbox((0,0), kicker, font=font(22))
+    # Wordmark at top — real logotype face, matching the site
+    wordmark = "Click Coded"
+    f_wm = serif(26, True)
+    bb4 = d.textbbox((0,0), wordmark, font=f_wm)
     kw = bb4[2]-bb4[0]
-    d.text((cx - kw//2, 28), kicker, font=font(22), fill=MINT)
+    d.text((cx - kw//2, 24), wordmark, font=f_wm, fill=INK)
 
     d.rectangle([0, H-7, W, H], fill=MINT)
 

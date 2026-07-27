@@ -6,7 +6,7 @@ live site (gradient + line-grid + dot-grid + mint/coral glows).
 """
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, MINT, CORAL, INK, DIM, CARD2
+from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, brand_lockup, MINT, CORAL, INK, DIM, CARD2
 
 SCORE = 62
 OUT = os.path.dirname(os.path.abspath(__file__))
@@ -24,15 +24,7 @@ def build():
     img, d = new_canvas(W, H)
     top_bottom_bars(d, W, H, MINT, thickness=7)
 
-    # Brand mark (radar icon, matches header brand-icon)
-    bx, by, br = 62, 58, 20
-    d.ellipse([bx-br, by-br, bx+br, by+br], outline=(21, 88, 102), width=2)
-    d.ellipse([bx-br+7, by-br+7, bx+br-7, by+br-7], outline=(21, 88, 102), width=2)
-    d.line([(bx, by), (bx, by-br)], fill=MINT, width=2)
-    d.ellipse([bx-3, by-3, bx+3, by+3], fill=MINT)
-    d.ellipse([bx+13, by-br+3, bx+19, by-br+9], fill=CORAL)
-
-    d.text((94, 46), "Æ STUDIO  ·  NEVER NOT WORKING", font=mono(20, True), fill=MINT)
+    brand_lockup(d, 42, 32)
 
     # Headline
     d.text((60, 130), "Will AI assistants find", font=serif(56, True), fill=INK)
@@ -58,7 +50,7 @@ def build():
     lw = bb3[2]-bb3[0]
     d.text((cx - lw//2, cy + r + 20), label, font=f_label, fill=DIM)
 
-    d.text((60, H - 56), "alexander-k-eliot.github.io/ai-visibility-check-free", font=mono(19), fill=DIM)
+    d.text((60, H - 56), "clickcoded.com", font=mono(19), fill=DIM)
 
     out = f"{OUT}/og-image.png"
     img.save(out, quality=95)
