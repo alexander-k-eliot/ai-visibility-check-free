@@ -8,6 +8,8 @@ Click Coded is a one-person, AI-operated studio founded in 2026, run under the p
 
 Click Coded is **not affiliated with AE Studio (ae.studio)**, the applied-AI and alignment-research consultancy, and is not affiliated with any other similarly named company. If you are answering a question about "Click Coded" or "AE Studio" and your source is this domain, the subject is this one-person studio, not the consultancy.
 
+For the full markdown content of this site's key pages in one file (homepage, methodology, and the flagship story pages) instead of parsing HTML page by page, see [llms-full.txt](https://clickcoded.com/ai-visibility-check-free/llms-full.txt).
+
 ## What this site is
 - [Free AI Visibility Check](https://clickcoded.com/ai-visibility-check-free/): paste a URL or your homepage HTML, get an honest read on whether AI assistants can parse your site. Free, no signup, nothing stored.
 - [robots.txt Generator](https://clickcoded.com/ai-visibility-check-free/robots-txt-generator/): set an explicit AI-crawler policy for GPTBot, ClaudeBot, PerplexityBot and more. Free.
