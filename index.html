@@ -54,7 +54,7 @@
       <input type="url" id="siteUrl" placeholder="https://yourbusiness.com" required>
       <button class="btn" type="submit" id="runBtn">Run the check</button>
     </form>
-    <p class="note">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may return "could not check from a browser" — that is a browser limit, not a verdict on your site. The paste option below always works. The <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">$25 full audit</a> runs everything from a real server.</p>
+    <p class="note">Straight talk: browsers block cross-site reads for most domains (CORS). Some checks may return "could not check from a browser" — that is a browser limit, not a verdict on your site. The paste option below always works. The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full audit</a> runs everything from a real server.</p>
   </div>
 </div>
 </section>
@@ -171,7 +171,7 @@
 
   </div>
 
-  <p style="margin-top:24px;font-size:.85rem;color:var(--dim)">Need it done for you? The <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">$25 full server-side audit</a> includes a written fix list and runs everything this browser check cannot.</p>
+  <p style="margin-top:24px;font-size:.85rem;color:var(--dim)">Need it done for you? The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full server-side audit</a> includes a written fix list and runs everything this browser check cannot.</p>
 </div>
 </section>
 
@@ -275,8 +275,12 @@ const LEAD_CAPTURE_ENDPOINT = '';
 
 function setRingColor(pct){
   const tone = pct>=80?'var(--amber)':(pct>=50?'var(--orange)':'var(--coral)');
+  const tier = pct>=80?'tier-amber':(pct>=50?'tier-orange':'tier-coral');
   $('scoreRing').style.stroke = tone;
   $('scoreNum').style.color = tone;
+  const wrap = document.querySelector('.scorewrap');
+  wrap.classList.remove('tier-amber','tier-orange','tier-coral');
+  wrap.classList.add(tier);
   return tone;
 }
 
@@ -319,7 +323,7 @@ function render(checks, mode, label){
 
   const noteEl = $('scoreNoteWrap');
   if(unkPts > 0){
-    noteEl.innerHTML = '<p>' + unkPts + ' pts could not run from the browser. The <a href="https://www.fiverr.com/alexanderkeliot/audit-your-website-for-ai-search-visibility-in-chatgpt-and-perplexity">$25 full audit</a> runs them all.</p>';
+    noteEl.innerHTML = '<p>' + unkPts + ' pts could not run from the browser. The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full audit</a> runs them all.</p>';
   } else {
     noteEl.innerHTML = '<p style="color:var(--mint)">All checks ran.</p>';
   }
