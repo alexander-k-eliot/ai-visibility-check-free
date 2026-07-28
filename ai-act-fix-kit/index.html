@@ -91,8 +91,6 @@
 .buy-list li{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;color:var(--dim);margin-bottom:8px}
 .buy-list li::before{content:"✓";color:var(--mint);font-family:var(--mono);flex:0 0 auto}
 
-.share-row{display:flex;justify-content:center;gap:10px;margin-top:24px}
-
 /* ── Live personalize box ───────────────────────── */
 .personalize-box{background:var(--card);border:1px solid var(--mint);border-radius:12px;padding:20px 22px;max-width:600px;margin:20px auto 0;text-align:left}
 .personalize-box label{display:block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:8px}
@@ -108,7 +106,7 @@
 .copy-confirm.show{opacity:1}
 .free-note{font-size:.82rem;color:var(--dim);margin-top:10px}
 .platform-tip{font-size:.85rem;color:var(--dim);background:rgba(245,185,66,.06);border-left:3px solid var(--amber);padding:10px 14px;border-radius:6px;margin-top:14px}
-.unlock-cta{display:block;text-align:center;margin-top:14px;font-size:1rem;padding:14px 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ── Tier choice ─────────────────────────────────── */
 .tier-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
@@ -227,7 +225,7 @@ article and paragraph it comes from — <a href="#sources">check our sources</a>
 <p class="tree-reassure">No email, no account, no wrong answers — worst case, we tell you to talk to a lawyer instead of selling you anything.</p>
 
 <div class="progress-dots" id="dots"></div>
-<div id="treeStage"></div>
+<div id="treeStage" aria-live="polite"></div>
 
 </div>
 </section>
@@ -305,13 +303,15 @@ not in fine print.</div></div>
 <h3>Check our work</h3>
 <p>Article 50 text: <a href="https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50" target="_blank" rel="noopener">European Commission AI Act Service Desk, Article 50</a>. Penalty tier
 (Article 99(4)(g), €15M/3% turnover, lower of the two for SMEs under 99(6)):
-<a href="https://artificialintelligenceact.eu/article/99/" target="_blank" rel="noopener">artificialintelligenceact.eu, Article 99</a>. Readiness statistics: IAPP and Cloud Security
-Alliance-sourced 2026 industry survey summaries. This page is a decision-support tool, not a legal
-filing — verify anything load-bearing against the primary text yourself, same standard we hold
-everything else on this site to.</p>
+<a href="https://artificialintelligenceact.eu/article/99/" target="_blank" rel="noopener">artificialintelligenceact.eu, Article 99</a>. The $699 "cheapest paid alternative" figure:
+<a href="https://riskprofs.com/templates/eu-ai-act-document-kit-templates/" target="_blank" rel="noopener">riskprofs.com's 80+-document EU AI Act kit</a>, priced $699 at time of writing. Readiness
+statistics: IAPP and Cloud Security Alliance-sourced 2026 industry survey summaries. This page is a
+decision-support tool, not a legal filing — verify anything load-bearing against the primary text
+yourself, same standard we hold everything else on this site to.</p>
 </div>
-<p class="small">Built and run the same way as every other tool on this site: no tracking, no forced
-email capture, no login. Real, public commit history:
+<p class="small">Built and run the same way as every other tool on this site: no analytics, no forced
+email capture, no login — the Gumroad checkout script only loads if you reach a result with
+something to buy. Real, public commit history:
 <a href="https://github.com/alexander-k-eliot/ai-visibility-check-free/commits/main/">github.com/alexander-k-eliot/ai-visibility-check-free</a>.
 Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
 </div>
@@ -542,6 +542,28 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
   var history = ['q1'];
   var stage = document.getElementById('treeStage');
   var dotsEl = document.getElementById('dots');
+  var pendingUnlock = null; // set below if someone returns from checkout with no local purchase state
+
+  /* Masks a generated sentence for the locked preview: everything is replaced with a
+     block character EXCEPT the buyer's own typed name (which isn't the purchasable
+     part). Proves live personalization — the mask's shape and the name's position
+     still change as they type — without exposing usable text in the DOM. Real
+     content gating, not just a CSS filter a screen reader or view-source ignores. */
+  var gumroadScriptLoaded = false;
+  function ensureGumroadScript(){
+    if (gumroadScriptLoaded) return;
+    gumroadScriptLoaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://gumroad.com/js/gumroad.js';
+    document.body.appendChild(s);
+  }
+
+  function maskText(text, name){
+    if (!name) return text.replace(/[^\s]/g, '▓');
+    var idx = text.indexOf(name);
+    if (idx === -1) return text.replace(/[^\s]/g, '▓');
+    return text.slice(0, idx).replace(/[^\s]/g, '▓') + name + text.slice(idx + name.length).replace(/[^\s]/g, '▓');
+  }
 
   function renderDots(depth){
     dotsEl.innerHTML = '';
@@ -566,7 +588,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     Array.prototype.forEach.call(stage.querySelectorAll('.tree-opt'), function(btn){
       btn.addEventListener('click', function(){
         var next = btn.getAttribute('data-next');
-        if (RESULTS[next]) { renderResult(next); }
+        if (RESULTS[next]) { renderResult(next, (pendingUnlock && RESULTS[next].buy) ? pendingUnlock : undefined); }
         else { history.push(next); renderNode(next); }
       });
     });
@@ -640,17 +662,19 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         '<input type="text" id="bizName" placeholder="Acme Co." value="' + (savedName ? savedName.replace(/"/g,'&quot;') : '') + '">';
 
       if (!unlocked){
+        ensureGumroadScript();
         html += '<div class="lock-label locked">&#128274; Locked — unlock to copy and use</div>' +
-          '<div class="live-preview locked" id="livePreview_' + r.touchpoint + '"></div>' +
+          '<span class="sr-only">Preview is locked. Purchase to reveal the exact disclosure text for your business.</span>' +
+          '<div class="live-preview locked" id="livePreview_' + r.touchpoint + '" aria-hidden="true"></div>' +
           '<div class="platform-tip">' + primary.tip + '</div>' +
           '<div class="tier-row">' +
-            '<a class="tier-card" href="' + singleHref + '" data-tier="single">' +
+            '<a class="tier-card gumroad-button" href="' + singleHref + '" data-tier="single">' +
               '<div class="tier-badge">&nbsp;</div>' +
               '<div class="tier-name">Fix It</div>' +
               '<div class="tier-price">$39</div>' +
               '<div class="tier-desc">This touchpoint\'s exact text, unlocked</div>' +
             '</a>' +
-            '<a class="tier-card recommended" href="' + completeHref + '" data-tier="complete">' +
+            '<a class="tier-card recommended gumroad-button" href="' + completeHref + '" data-tier="complete">' +
               '<div class="tier-badge">Most businesses need this one</div>' +
               '<div class="tier-name">Fix It All</div>' +
               '<div class="tier-price">$69</div>' +
@@ -681,6 +705,10 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         }
       }
       html += '</div>';
+    } else if (!r.buy && pendingUnlock){
+      html += '<p class="reassure-line">Already unlocked something under different answers this time? ' +
+        '<a href="mailto:alexander.k.eliot@gmail.com?subject=Lost%20unlock%20-%20AI%20Act%20Fix%20Kit">Email us</a> ' +
+        'and we\'ll sort it out — no need to buy again.</p>';
     }
 
     html += '<div class="result-actions" style="margin-top:20px">' +
@@ -705,7 +733,8 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
       function updateAll(){
         var name = input.value.trim();
         activeKeys.forEach(function(k){
-          document.getElementById('livePreview_' + k).textContent = TOUCHPOINTS[k].generate(name);
+          var full = TOUCHPOINTS[k].generate(name);
+          document.getElementById('livePreview_' + k).textContent = unlocked ? full : maskText(full, name);
         });
         if (!unlocked) saveUnlockState(id, name);
       }
@@ -742,12 +771,25 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
   var params = new URLSearchParams(location.search);
   var unlockParam = params.get('unlocked');
   var saved = loadUnlockState();
-  if ((unlockParam === 'single' || unlockParam === 'complete') && saved && RESULTS[saved.resultId] && RESULTS[saved.resultId].buy){
+  var savedIsUsable = saved && RESULTS[saved.resultId] && RESULTS[saved.resultId].buy;
+
+  if ((unlockParam === 'single' || unlockParam === 'complete') && savedIsUsable){
     renderResult(saved.resultId, unlockParam, saved.bizName);
+  } else if (unlockParam === 'single' || unlockParam === 'complete'){
+    /* Purchase confirmed by the redirect, but this browser/device has no saved
+       diagnosis (different browser, private mode, storage cleared). Recover
+       instead of showing a cold quiz with no acknowledgment they paid. */
+    pendingUnlock = unlockParam;
+    renderNode('q1');
+    var banner = document.createElement('div');
+    banner.className = 'disclaimer';
+    banner.style.borderLeftColor = 'var(--mint)';
+    banner.innerHTML = '<strong>Purchase confirmed.</strong> This device just doesn\'t have your first answers saved — answer these 4 questions once more and your fix unlocks automatically the moment you reach your result. No charge, nothing to re-buy.';
+    var existingDisclaimer = document.querySelector('#tree .disclaimer');
+    if (existingDisclaimer) existingDisclaimer.insertAdjacentElement('afterend', banner);
   } else {
     renderNode('q1');
   }
 })();
 </script>
-<script src="https://gumroad.com/js/gumroad.js"></script>
 </body></html>
