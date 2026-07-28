@@ -95,13 +95,18 @@
 .personalize-box{background:var(--card);border:1px solid var(--mint);border-radius:12px;padding:20px 22px;max-width:600px;margin:20px auto 0;text-align:left}
 .personalize-box label{display:block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:8px}
 .personalize-box input[type=text]{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;background:rgba(4,38,44,.6);color:var(--ink);font-family:var(--sans);font-size:.95rem;margin-bottom:14px}
-.live-preview{background:rgba(4,38,44,.7);border:1px dashed var(--mint);border-radius:8px;padding:14px 16px;font-family:var(--sans);font-size:.95rem;color:var(--ink);line-height:1.55;margin-bottom:12px}
+.live-preview{background:rgba(4,38,44,.7);border:1px dashed var(--mint);border-radius:8px;padding:14px 16px;font-family:var(--sans);font-size:.95rem;color:var(--ink);line-height:1.55;margin-bottom:12px;transition:filter .2s}
+.live-preview.locked{filter:blur(6px);-webkit-filter:blur(6px);user-select:none;-webkit-user-select:none}
+.lock-label{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+.lock-label.locked{color:var(--amber)}
+.lock-label.unlocked{color:var(--mint)}
 .copy-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .copy-row .btn{font-size:.85rem;padding:10px 18px}
 .copy-confirm{font-family:var(--mono);font-size:.78rem;color:var(--mint);opacity:0;transition:opacity .2s}
 .copy-confirm.show{opacity:1}
 .free-note{font-size:.82rem;color:var(--dim);margin-top:10px}
 .platform-tip{font-size:.85rem;color:var(--dim);background:rgba(245,185,66,.06);border-left:3px solid var(--amber);padding:10px 14px;border-radius:6px;margin-top:14px}
+.unlock-cta{display:block;text-align:center;margin-top:14px;font-size:1rem;padding:14px 20px}
 
 /* ── Objection / comparison ─────────────────────── */
 .compare-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:8px}
@@ -212,15 +217,15 @@ compliance officer who doesn't exist at a 5-person business) solves the wrong ve
 problem. This solves the actual one: an honest yes/no, and the exact text if the answer is yes.</p>
 </div>
 <div class="step">
-<span class="num">WHAT THE $19 KIT ACTUALLY IS</span>
-<h3>The free text above is real and yours to use. The kit is everything around it.</h3>
-<p>The disclosure sentence the free check just wrote for you is genuinely enough for a single,
-simple case — take it, use it, no strings. The $19 kit exists for what a single sentence doesn't
-cover: every touchpoint you actually have (most businesses have more than one — a chatbot AND a
-blog AND some AI images), placement instructions for the specific platform you're on, a dated
-proof-of-review record for your files, the one-page policy doc, and free updates all year as
-guidance evolves. It's the difference between "I have a sentence" and "I handled this, and I can
-show I did."</p>
+<span class="num">WHAT $19 ACTUALLY UNLOCKS</span>
+<h3>The diagnosis is free. The finished, ready-to-paste fix is what you're buying.</h3>
+<p>The free check above tells you the truth for free, always — whether Article 50 applies to you,
+which paragraph, and why, with the citation to check it yourself. That's not a teaser; two of the
+five possible results say "you're fine, no purchase needed," and we mean it. When the answer is
+"you have a duty," $19 unlocks the actual sentence — written, personalized, ready to paste, plus
+every other touchpoint you might have, the platform placement guide, the machine-readable
+labeling snippet, and free updates all year if guidance changes. Not documentation of what you
+should do. The thing itself, done.</p>
 </div>
 </div>
 </section>
@@ -231,16 +236,16 @@ show I did."</p>
 <span class="num">THE OBJECTION, ANSWERED DIRECTLY</span>
 <h3>Why not just use a free 80-page kit, or ask ChatGPT to write this?</h3>
 <div class="overflow-wrap"><table class="compare-table">
-<tr><th></th><th>80-page compliance kit</th><th>Asking ChatGPT yourself</th><th>The AI Act Fix Kit</th></tr>
-<tr><td>Tells you if it even applies to you</td><td class="compare-no">Buried in page 40</td><td class="compare-no">Only as good as your prompt</td><td class="compare-yes">First question, 1 minute</td></tr>
-<tr><td>Gives you the exact text for your case</td><td class="compare-no">You assemble it yourself</td><td class="compare-no">No citations, can't verify</td><td class="compare-yes">Written and shown, free, before you pay</td></tr>
-<tr><td>Cites the actual article/paragraph</td><td class="compare-no">Sometimes</td><td class="compare-no">Rarely, often wrong</td><td class="compare-yes">Every result, every time</td></tr>
-<tr><td>Tells you honestly when it doesn't apply</td><td class="compare-no">No — sells you the full kit regardless</td><td class="compare-no">Won't tell you to stop</td><td class="compare-yes">Two of five results say "you're fine"</td></tr>
+<tr><th></th><th>80-page compliance kit</th><th>Asking ChatGPT yourself</th><th>This page</th></tr>
+<tr><td>Tells you if it even applies to you</td><td class="compare-no">Buried in page 40</td><td class="compare-no">Only as good as your prompt</td><td class="compare-yes">First question, 1 minute, free</td></tr>
+<tr><td>Cites the actual article/paragraph</td><td class="compare-no">Sometimes</td><td class="compare-no">Rarely, often wrong</td><td class="compare-yes">Every result, every time, free</td></tr>
+<tr><td>Tells you honestly when it doesn't apply</td><td class="compare-no">No — sells you the full kit regardless</td><td class="compare-no">Won't tell you to stop</td><td class="compare-yes">Two of five results say "you're fine," free</td></tr>
 <tr><td>Refuses to sell you something that won't help</td><td class="compare-no">No</td><td class="compare-no">No</td><td class="compare-yes">Yes — high-risk cases get "see a lawyer," not a sale</td></tr>
+<tr><td>Gives you the exact, ready-to-paste text</td><td class="compare-no">You assemble it yourself from templates</td><td class="compare-no">No citations, can't verify, easy to get subtly wrong</td><td class="compare-yes">$19 to unlock — written, personalized, done</td></tr>
 </table></div>
-<p class="free-note">Honest note: for a genuinely simple, single-touchpoint case, the free text above
-may be all you need. We'd rather you use it free than not disclose at all. The $19 kit is for when
-you want it fully handled, not because the free answer is deliberately incomplete.</p>
+<p class="free-note">Honest note: the diagnosis is free because it's the truth, not because it's the
+teaser. The $19 is for the finished result — we're not aware of anywhere else that gets you from
+"do I have a problem" to "here's the exact fix" in one flow, free until the fix itself.</p>
 </div>
 
 <div class="step">
@@ -343,6 +348,14 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
      1 scope (doesn't apply) · 2 exempt · 3 deployer-buy · 4 provider · 5 refuse-to-sell
   */
   var GUMROAD_URL = 'https://eliotwave01.gumroad.com/l/ai-act-fix-kit';
+  var UNLOCK_KEY = 'aiActFixKit_unlock_v1';
+
+  function saveUnlockState(resultId, bizName){
+    try { localStorage.setItem(UNLOCK_KEY, JSON.stringify({resultId: resultId, bizName: bizName})); } catch(e){}
+  }
+  function loadUnlockState(){
+    try { return JSON.parse(localStorage.getItem(UNLOCK_KEY) || 'null'); } catch(e){ return null; }
+  }
 
   var NODES = {
     q1: {
@@ -511,7 +524,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     });
   }
 
-  function renderResult(id){
+  function renderResult(id, unlocked, savedName){
     var r = RESULTS[id];
     renderDots(history.length + 1);
     var html = '<div class="result-card ' + r.cls + '">' +
@@ -521,32 +534,39 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
       '<div class="result-cite">' + r.cite + '</div>' +
       '</div>';
 
+    var gumroadHref = GUMROAD_URL + '?wanted=true';
+
     if (r.personalize){
       html += '<div class="personalize-box">' +
-        '<label for="bizName">Your business or product name (optional — makes this ready to paste)</label>' +
-        '<input type="text" id="bizName" placeholder="Acme Co.">' +
-        '<div class="live-preview" id="livePreview"></div>' +
-        '<div class="copy-row"><button class="btn btn-ghost" id="copyBtn" type="button">Copy this text</button>' +
-        '<span class="copy-confirm" id="copyConfirm">Copied.</span></div>' +
-        '<p class="free-note">This text is free and yours to use right now — no purchase required. It\'s live, it updates as you type.</p>' +
+        '<label for="bizName">Your business or product name (optional — sharpens the preview)</label>' +
+        '<input type="text" id="bizName" placeholder="Acme Co." value="' + (savedName ? savedName.replace(/"/g,'&quot;') : '') + '">' +
+        (unlocked
+          ? '<div class="lock-label unlocked">&#10003; Unlocked — yours to keep</div>'
+          : '<div class="lock-label locked">&#128274; Locked — unlock to copy and use</div>') +
+        '<div class="live-preview' + (unlocked ? '' : ' locked') + '" id="livePreview"></div>' +
+        (unlocked
+          ? '<div class="copy-row"><button class="btn btn-ghost" id="copyBtn" type="button">Copy this text</button>' +
+            '<span class="copy-confirm" id="copyConfirm">Copied.</span></div>'
+          : '<a class="btn gumroad-button unlock-cta" href="' + gumroadHref + '">Unlock my fix — $19</a>' +
+            '<p class="free-note">One click, done. No account, no wait — the exact text unlocks right here on this page.</p>') +
         '<div class="platform-tip">' + r.tip + '</div>' +
         '</div>';
     }
 
     html += '<div class="result-actions" style="margin-top:20px">' +
-        (r.buy ? '<a class="btn" href="' + GUMROAD_URL + '" target="_blank" rel="noopener">Get the full $19 Kit</a>' : '') +
+        (r.buy && !unlocked ? '<a class="btn gumroad-button" href="' + gumroadHref + '">Unlock my fix — $19</a>' : '') +
         '<button class="btn btn-ghost" id="restartBtn" type="button">Check a different case</button>' +
       '</div>';
 
-    if (r.buy){
-      html += '<div class="buy-card"><div class="buy-head"><span class="buy-title">The AI Act Fix Kit</span><span class="buy-price">$19</span></div>' +
-        '<p style="color:var(--dim);font-size:.88rem;margin-bottom:6px">You already have the text above, free. This is for everything around it:</p>' +
+    if (r.buy && !unlocked){
+      html += '<div class="buy-card"><div class="buy-head"><span class="buy-title">Your Disclosure Pack</span><span class="buy-price">$19</span></div>' +
+        '<p style="color:var(--dim);font-size:.88rem;margin-bottom:6px">The diagnosis above is free and always will be. This unlocks the finished fix:</p>' +
         '<ul class="buy-list">' +
-          '<li>Every touchpoint\'s disclosure text in one place — most businesses have more than one (chatbot AND blog AND images)</li>' +
+          '<li>The exact disclosure text for your case — personalized, ready to paste, right here on this page</li>' +
+          '<li>Every other touchpoint\'s text too, if you have more than one (chatbot AND blog AND images)</li>' +
           '<li>Platform-specific placement instructions beyond the tip above</li>' +
           '<li>Voluntary machine-readable labeling snippet (deployer good-practice, not a provider 50(2) substitute)</li>' +
-          '<li>One-page plain-English policy doc for your files, citations included</li>' +
-          '<li>A dated proof-of-review record — something to show you actually did this</li>' +
+          '<li>Your saved disclosures for your own reference, plain text, nothing official-looking</li>' +
           '<li>2026 Edition, publicly corrected if anything changes — free re-download, no re-purchase</li>' +
         '</ul></div>';
     }
@@ -555,30 +575,37 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     if (r.personalize){
       var input = document.getElementById('bizName');
       var preview = document.getElementById('livePreview');
-      var copyBtn = document.getElementById('copyBtn');
-      var confirm = document.getElementById('copyConfirm');
-      function update(){ preview.textContent = r.personalize(input.value.trim()); }
+
+      function update(){
+        preview.textContent = r.personalize(input.value.trim());
+        if (!unlocked) saveUnlockState(id, input.value.trim());
+      }
       input.addEventListener('input', update);
       update();
-      copyBtn.addEventListener('click', function(){
-        var text = preview.textContent;
-        function fallbackCopy(){
-          var ta = document.createElement('textarea');
-          ta.value = text; document.body.appendChild(ta); ta.select();
-          try { document.execCommand('copy'); } catch(e){}
-          document.body.removeChild(ta);
-          showCopied();
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(text).then(showCopied, fallbackCopy);
-        } else {
-          fallbackCopy();
-        }
-        function showCopied(){
-          confirm.classList.add('show');
-          setTimeout(function(){ confirm.classList.remove('show'); }, 2200);
-        }
-      });
+
+      if (unlocked){
+        var copyBtn = document.getElementById('copyBtn');
+        var confirm = document.getElementById('copyConfirm');
+        copyBtn.addEventListener('click', function(){
+          var text = preview.textContent;
+          function fallbackCopy(){
+            var ta = document.createElement('textarea');
+            ta.value = text; document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); } catch(e){}
+            document.body.removeChild(ta);
+            showCopied();
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText){
+            navigator.clipboard.writeText(text).then(showCopied, fallbackCopy);
+          } else {
+            fallbackCopy();
+          }
+          function showCopied(){
+            confirm.classList.add('show');
+            setTimeout(function(){ confirm.classList.remove('show'); }, 2200);
+          }
+        });
+      }
     }
 
     document.getElementById('restartBtn').addEventListener('click', function(){
@@ -587,7 +614,19 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     });
   }
 
-  renderNode('q1');
+  /* ── Unlock on return from checkout ─────────────────
+     The Gumroad product's "Redirect to URL after successful purchase" (advanced
+     settings) must point back here with ?unlocked=1 — set at listing-creation time.
+     Diagnosed case + typed name survive the round-trip via localStorage since Gumroad's
+     redirect doesn't carry that state itself. */
+  var params = new URLSearchParams(location.search);
+  var saved = loadUnlockState();
+  if (params.get('unlocked') === '1' && saved && RESULTS[saved.resultId] && RESULTS[saved.resultId].buy){
+    renderResult(saved.resultId, true, saved.bizName);
+  } else {
+    renderNode('q1');
+  }
 })();
 </script>
+<script src="https://gumroad.com/js/gumroad.js"></script>
 </body></html>
