@@ -387,6 +387,19 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     try { return JSON.parse(localStorage.getItem(UNLOCK_KEY) || 'null'); } catch(e){ return null; }
   }
 
+  /* Separate from UNLOCK_KEY (the in-progress diagnosis pointer): this is the actual
+     purchase record. Without it, "yours to keep" wasn't true beyond one URL's lifetime
+     -- a reload, a bookmark revisited tomorrow, or clicking "check a different case"
+     right after buying all re-locked a result the buyer already paid for. Found in the
+     2026-07-28 final audit (B1), fixed here. */
+  var ENTITLEMENT_KEY = 'aiActFixKit_entitlement_v1';
+  function saveEntitlement(tier){
+    try { localStorage.setItem(ENTITLEMENT_KEY, JSON.stringify({tier: tier})); } catch(e){}
+  }
+  function loadEntitlement(){
+    try { return JSON.parse(localStorage.getItem(ENTITLEMENT_KEY) || 'null'); } catch(e){ return null; }
+  }
+
   /* Shared per-touchpoint disclosure generators — reused across locked preview
      (primary touchpoint only) and the unlocked "Fix It All" view (all three). */
   var TOUCHPOINTS = {
@@ -641,6 +654,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
   function renderResult(id, unlockedTier, savedName){
     var r = RESULTS[id];
     var unlocked = !!unlockedTier;
+    if (unlocked) { saveEntitlement(unlockedTier); pendingUnlock = unlockedTier; }
     renderDots(history.length + 1);
     var html = '<div class="result-card ' + r.cls + '">' +
       '<div class="result-verdict">' + r.verdict + '</div>' +
@@ -772,6 +786,12 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
   var unlockParam = params.get('unlocked');
   var saved = loadUnlockState();
   var savedIsUsable = saved && RESULTS[saved.resultId] && RESULTS[saved.resultId].buy;
+  var entitlement = loadEntitlement();
+
+  /* Any real entitlement protects the rest of this session's tree walks the moment
+     the page loads, not just after a fresh purchase redirect -- covers "reload," a
+     bookmark revisited tomorrow, and "check a different case" all from one flag. */
+  if (entitlement) pendingUnlock = entitlement.tier;
 
   if ((unlockParam === 'single' || unlockParam === 'complete') && savedIsUsable){
     renderResult(saved.resultId, unlockParam, saved.bizName);
@@ -787,6 +807,11 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     banner.innerHTML = '<strong>Purchase confirmed.</strong> This device just doesn\'t have your first answers saved — answer these 4 questions once more and your fix unlocks automatically the moment you reach your result. No charge, nothing to re-buy.';
     var existingDisclaimer = document.querySelector('#tree .disclaimer');
     if (existingDisclaimer) existingDisclaimer.insertAdjacentElement('afterend', banner);
+  } else if (entitlement && savedIsUsable){
+    /* No fresh checkout redirect this visit -- a returning, already-paid buyer
+       (reload, bookmark, tomorrow). Render straight into their unlocked result,
+       no re-click-through needed. This is what makes "yours to keep" literally true. */
+    renderResult(saved.resultId, entitlement.tier, saved.bizName);
   } else {
     renderNode('q1');
   }
