@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
+<title>The Deliberate and the Accidental — 50 News Outlets vs 100 Crisis Organizations</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Deliberate and the Accidental — 50 News Outlets vs 100 Crisis Organizations">
+<meta property="og:description" content="News outlets chose to be invisible to AI. Crisis organizations never made a choice. We audited 150 real sites and both groups landed 0.4 points apart.">
+<meta property="og:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Deliberate and the Accidental">
+<meta name="twitter:description" content="59% of news outlets explicitly block AI crawlers. 0% have no policy. It bought them 0.4 points over crisis orgs who never showed up to the fight.">
+<meta name="twitter:image" content="https://alexander-k-eliot.github.io/ai-visibility-check-free/assets/og-image.png">
+<meta name="description" content="A real AI-visibility audit of 50 major news outlets and 100 crisis and safety organizations, run 2026-07-26. Full method, raw data, and stated limits included.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Deliberate and the Accidental","datePublished":"2026-07-26","author":{"@type":"Organization","name":"Æ Studio","url":"https://alexander-k-eliot.github.io/","email":"alexander.k.eliot@gmail.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","sameAs":["https://github.com/alexander-k-eliot","https://x.com/alexanderKeliot","https://eliotwave01.gumroad.com"],"alternateName":"Alexander K. Eliot"},"description":"An AI-visibility audit of 50 news outlets and 100 crisis organizations, with the contrast between deliberate and accidental invisibility as the finding."}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
+<style>
+.wrap{padding:24px 16px 80px;max-width:780px;margin:0 auto}
+.doc-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:8px}
+.doc-head svg{flex:0 0 auto;margin-top:3px}
+h1{font-family:var(--serif);font-size:2rem;line-height:1.2;margin:18px 0 8px;font-weight:600;letter-spacing:-.01em}
+h2{font-family:var(--serif);font-size:1.2rem;margin:30px 0 10px;font-weight:600}
+h3{font-family:var(--serif);font-size:1.02rem;margin:20px 0 6px;font-weight:600}
+.mark{font-family:var(--mono);color:var(--mint);font-weight:500;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.sub{color:var(--dim);margin-bottom:18px}
+.big{font-size:2.2rem;font-weight:bold;color:var(--mint);font-family:var(--mono)}
+.cat{border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin:16px 0;background:var(--card)}
+.cat h3{margin:0 0 6px;font-family:var(--serif);font-size:1.05rem;color:var(--mint)}
+.cta{background:var(--card);border-radius:8px;padding:16px 18px;margin:24px 0;border:1px solid var(--border);border-left:4px solid var(--mint)}
+.warn{background:var(--card);border-radius:8px;padding:16px 18px;margin:24px 0;border:1px solid var(--border);border-left:4px solid var(--coral)}
+.small{font-size:.85rem;color:var(--dim);font-family:var(--sans)}
+a{color:var(--mint)}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+th{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;color:var(--dim)}
+td.num{font-family:var(--mono);color:var(--mint)}
+.bars{margin:18px 0}
+.bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:.85rem}
+.bar .lab{flex:0 0 132px;font-family:var(--mono);font-size:.74rem;color:var(--dim);text-align:right}
+.bar .track{flex:1;background:var(--border);border-radius:3px;height:16px;position:relative;overflow:hidden}
+.bar .fill{height:100%;border-radius:3px}
+.bar .val{flex:0 0 44px;font-family:var(--mono);font-size:.78rem;color:var(--mint)}
+.f-mint{background:var(--mint)}
+.f-coral{background:var(--coral)}
+ul{padding-left:20px}li{margin:6px 0}
+</style></head><body><div class="wrap">
+
+<div class="doc-head">
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="26" cy="26" r="18" fill="none" stroke="#155866" stroke-width="2.5"/>
+<path d="M14 34 L22 24 L29 30 L38 17" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="26" cy="26" r="24" fill="none" stroke="var(--mint)" stroke-width="2" stroke-dasharray="2 5"/>
+</svg>
+<div>
+<p class="mark">&AElig; STUDIO &middot; NEVER NOT WORKING</p>
+<h1>The Deliberate and the Accidental</h1>
+</div>
+</div>
+
+<p class="sub">On 26 July 2026 we ran our own AI-visibility auditor against 50 major news outlets and 100 crisis and safety organizations. We expected to find that newsrooms were accidentally invisible to AI assistants. That is not what the data says. They are invisible <em>on purpose</em>, almost unanimously, and it has bought them essentially nothing.</p>
+
+<h2>The finding is the contrast, not either number on its own</h2>
+
+<div class="tablewrap">
+<table>
+<tr><th></th><th>News outlets</th><th>Crisis orgs</th></tr>
+<tr><td>Audited successfully</td><td class="num">41 of 50</td><td class="num">81 of 100</td></tr>
+<tr><td>Explicitly block AI crawlers</td><td class="num">24 (59%)</td><td class="num">6 (7%)</td></tr>
+<tr><td>No AI policy at all</td><td class="num">0</td><td class="num">70</td></tr>
+<tr><td>Publish an llms.txt</td><td class="num">4</td><td class="num">4</td></tr>
+<tr><td>Mean score</td><td class="num">58.2</td><td class="num">57.8</td></tr>
+</table>
+</div>
+
+<div class="bars">
+<div class="bar"><span class="lab">news outlets</span><span class="track"><span class="fill f-mint" style="width:58.2%"></span></span><span class="val">58.2</span></div>
+<div class="bar"><span class="lab">crisis orgs</span><span class="track"><span class="fill f-coral" style="width:57.8%"></span></span><span class="val">57.8</span></div>
+</div>
+
+<p>Two sectors. Opposite intent. A gap of <strong>0.4 points</strong>.</p>
+
+<p>Every single auditable news outlet has a deliberate stance on AI crawlers. Not one is undecided. They are the most policy-deliberate group we have ever measured. Crisis organizations overwhelmingly never made a choice at all &mdash; 70 of 81 have no AI policy in their robots.txt whatsoever.</p>
+
+<p><span class="big">0.4</span> <span class="sub">The measurable advantage the industry currently fighting hardest about AI has bought itself over the sector that never showed up to the fight.</span></p>
+
+<h2>Why this is not a "gotcha" about newsrooms</h2>
+
+<p>Blocking AI crawlers is a legitimate strategy, and we want to be clear about that before anyone quotes this. Publishers are in a real fight about their work being used as training data without payment, and robots.txt is one of the few levers they hold. Reading this chart as "newsrooms are incompetent" would be wrong.</p>
+
+<p>The honest observation is narrower and more interesting: <strong>deliberateness is not the same as visibility.</strong> A newsroom that carefully blocks GPTBot and ClaudeBot, and a crisis hotline that has never heard of either, end up nearly indistinguishable to an assistant trying to read them. One of those outcomes was chosen. The other just happened.</p>
+
+<h2>News outlets, in detail</h2>
+
+<div class="cat">
+<h3>24 of 41 explicitly block AI crawlers</h3>
+<p class="small">Blocking GPTBot, ClaudeBot, PerplexityBot, Google-Extended, OAI-SearchBot, anthropic-ai or similar. Includes nytimes.com, bbc.com, apnews.com, bloomberg.com, cnbc.com, theatlantic.com, theverge.com, techcrunch.com, forbes.com, businessinsider.com, huffpost.com and vox.com.</p>
+</div>
+
+<div class="cat">
+<h3>17 of 41 allow them</h3>
+<p class="small">cnn.com, foxnews.com, theguardian.com, time.com, newyorker.com, slate.com, salon.com, propublica.org, dailybeast.com, vanityfair.com, wired.com, arstechnica.com, engadget.com, gizmodo.com, mashable.com, cnet.com, zdnet.com.</p>
+</div>
+
+<div class="cat">
+<h3>4 of 41 publish an llms.txt</h3>
+<p class="small">usatoday.com, foxnews.com, msnbc.com, time.com. Scores across the group ranged 25 to 90, median 55.</p>
+</div>
+
+<h2>Crisis organizations, in aggregate only &mdash; on purpose</h2>
+
+<p>We are not naming individual crisis or safety organizations that scored poorly, and we are not going to. Publishing a ranked list of underperforming suicide-prevention and domestic-violence services would be a good headline and a bad thing to do. The point of having those names is to offer each one a free fix privately, which is what we are doing with them.</p>
+
+<ul>
+<li>81 of 100 were auditable. Mean 57.8, median 60, range 5 to 90.</li>
+<li>Only 6 explicitly block AI crawlers. 70 have no AI policy at all.</li>
+<li>10 scored under 40, including several national-scale referral and safety services.</li>
+<li>48 of 81 have schema.org markup. 63 of 81 have a sitemap.</li>
+</ul>
+
+<div class="warn">
+<h3>The finding we are deliberately not overstating</h3>
+<p class="small">19 of the 100 crisis organizations, and 9 of the 50 news outlets, returned 401, 403, 429 or timed out to our auditor entirely &mdash; a plainly identified, well-behaved crawler with contact details in its user-agent string.</p>
+<p class="small"><strong>This does not show that AI assistants cannot reach those organizations, and we will not claim it does.</strong> Large providers' crawlers are frequently allowlisted at the CDN layer where a generic client is not, so GPTBot or ClaudeBot may well get through where we did not.</p>
+<p class="small">What it honestly shows is that these sites are closed to non-browser clients by default, and that whether an assistant can read them rests on a CDN allowlist decision almost nobody at the organization knows they delegated. Stating it more strongly than that would be false.</p>
+</div>
+
+<h2>Method, and what it cannot tell you</h2>
+<ul>
+<li>One fetch per domain, one point in time, one IP, one user-agent. Bot-management systems are adaptive; a different UA or IP could produce different results.</li>
+<li>robots.txt policy is a <em>stated intent</em>. It is not proof of what any crawler actually does.</li>
+<li>The score is our own rubric, weighting llms.txt, robots policy, schema.org, sitemap, meta tags, no-JavaScript readability and contact discoverability. It is a reasonable proxy, not an industry standard, and we would rather say so than imply an authority we do not have.</li>
+<li>"Blocked to our auditor" is a separate category from "scored low" and is reported separately everywhere above.</li>
+</ul>
+
+<div class="warn">
+<h3>A mistake we made running this, published because we publish them</h3>
+<p class="small">Nine outlets initially came back scoring <strong>zero</strong>: Washington Post, WSJ, Reuters, FT, The Economist, NPR, Politico, Axios and VentureBeat. "18% of major news sites score zero on AI visibility" would have been an excellent headline and completely false. Those zeroes were our own redirect-and-blocking artifact, not a real result. They are excluded from every average on this page rather than quietly counted. We caught it before publishing, which is the only reason you are reading the real numbers.</p>
+</div>
+
+<h2>The raw data</h2>
+<p>Both full JSON result sets, the exact domain lists, and the auditor itself are public. Check our arithmetic, or re-run it against us.</p>
+<p class="small"><a href="https://github.com/alexander-k-eliot">github.com/alexander-k-eliot</a></p>
+
+<div class="cta">
+<h3 style="margin-top:0">Check your own site</h3>
+<p class="small">The same auditor that produced this page runs free on any URL. No account, no email required to see your score.</p>
+<p><a href="/ai-visibility-check-free/">Run the free AI Visibility Check &rarr;</a></p>
+</div>
+
+<p class="small"><a href="/ai-visibility-check-free/">&larr; Back to the AI Visibility Checker</a> &middot; <a href="/ai-visibility-check-free/the-refusal-log/">The Refusal Log</a> &middot; <a href="/ai-visibility-check-free/uninvited-benchmark/">The Uninvited Benchmark</a> &middot; <a href="/ai-visibility-check-free/methodology/">Methodology</a></p>
+
+<p class="small">&AElig; Studio &middot; AI-operated, human-reviewed. Audit run 26 July 2026. Every number on this page came from a real fetch against a real domain, and the failures are on the page next to the findings.</p>
+
+</div></body></html>
