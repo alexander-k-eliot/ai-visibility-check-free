@@ -82,15 +82,6 @@
 .result-cite{font-family:var(--mono);font-size:.74rem;color:var(--dim);background:rgba(4,38,44,.5);border-radius:6px;padding:8px 12px;text-align:left;margin-bottom:18px}
 .result-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
-/* ── Product card ───────────────────────────────── */
-.buy-card{background:var(--card);border:1px solid var(--mint);border-radius:14px;padding:26px 24px;max-width:600px;margin:36px auto 0}
-.buy-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.buy-title{font-family:var(--serif);font-size:1.2rem;font-weight:600}
-.buy-price{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:var(--mint)}
-.buy-list{list-style:none;margin:14px 0;padding:0}
-.buy-list li{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;color:var(--dim);margin-bottom:8px}
-.buy-list li::before{content:"✓";color:var(--mint);font-family:var(--mono);flex:0 0 auto}
-
 /* ── Live personalize box ───────────────────────── */
 .personalize-box{background:var(--card);border:1px solid var(--mint);border-radius:12px;padding:20px 22px;max-width:600px;margin:20px auto 0;text-align:left}
 .personalize-box label{display:block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:8px}
@@ -402,20 +393,38 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
 
   /* Shared per-touchpoint disclosure generators — reused across locked preview
      (primary touchpoint only) and the unlocked "Fix It All" view (all three). */
+  /* generate() returns {text, start, length} instead of a plain string: start/length
+     is the real, template-known position of the name inside text, so maskText() never
+     has to search for it. (Was text.indexOf(name), which found the *first* match, not
+     necessarily the *inserted* one -- a typed name sharing letters with boilerplate like
+     "AI" or "This" masked the wrong span. Found in the 2026-07-28 final audit, B3.) */
   var TOUCHPOINTS = {
     chat: {
       label: "Chatbot / voice AI disclosure",
-      generate: function(name){ var n = name || '[Your Business]'; return "You're chatting with " + n + "'s AI assistant, not a human team member. Reach a person any time by [emailing/calling us]."; },
+      generate: function(name){
+        var n = name || '[Your Business]';
+        var prefix = "You're chatting with ";
+        var suffix = "'s AI assistant, not a human team member. Reach a person any time by [emailing/calling us].";
+        return { text: prefix + n + suffix, start: prefix.length, length: n.length };
+      },
       tip: "Where to paste it: Intercom → Messenger Settings > Chatbot > Introduction. Zendesk → Answer Bot > Greeting message. Custom-built widget → your bot's opening/welcome message."
     },
     media: {
       label: "AI-generated image/video/audio disclosure",
-      generate: function(name){ var n = name || '[Your Business]'; return "This image/video/audio was created or modified using AI. — " + n; },
+      generate: function(name){
+        var n = name || '[Your Business]';
+        var prefix = "This image/video/audio was created or modified using AI. — ";
+        return { text: prefix + n, start: prefix.length, length: n.length };
+      },
       tip: "Where to paste it: as a caption or overlay on the content itself, not just a footer link. Instagram/TikTok → first line of the caption. Website → directly under the image or video."
     },
     text: {
       label: "AI-generated public-interest text disclosure",
-      generate: function(name){ var n = name || '[Your Business]'; return "This article was generated or substantially written using AI, without human editorial review. — " + n; },
+      generate: function(name){
+        var n = name || '[Your Business]';
+        var prefix = "This article was generated or substantially written using AI, without human editorial review. — ";
+        return { text: prefix + n, start: prefix.length, length: n.length };
+      },
       tip: "Where to paste it: one line directly above the headline, not buried at the bottom. WordPress → add via a reusable block. Substack/Ghost → first line before your content."
     }
   };
@@ -571,11 +580,10 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     document.body.appendChild(s);
   }
 
-  function maskText(text, name){
-    if (!name) return text.replace(/[^\s]/g, '▓');
-    var idx = text.indexOf(name);
-    if (idx === -1) return text.replace(/[^\s]/g, '▓');
-    return text.slice(0, idx).replace(/[^\s]/g, '▓') + name + text.slice(idx + name.length).replace(/[^\s]/g, '▓');
+  function maskText(full, name){
+    if (!name) return full.text.replace(/[^\s]/g, '▓');
+    var start = full.start, end = start + full.length;
+    return full.text.slice(0, start).replace(/[^\s]/g, '▓') + full.text.slice(start, end) + full.text.slice(end).replace(/[^\s]/g, '▓');
   }
 
   function renderDots(depth){
@@ -748,7 +756,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         var name = input.value.trim();
         activeKeys.forEach(function(k){
           var full = TOUCHPOINTS[k].generate(name);
-          document.getElementById('livePreview_' + k).textContent = unlocked ? full : maskText(full, name);
+          document.getElementById('livePreview_' + k).textContent = unlocked ? full.text : maskText(full, name);
         });
         if (!unlocked) saveUnlockState(id, name);
       }
