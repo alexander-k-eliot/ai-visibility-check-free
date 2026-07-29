@@ -86,6 +86,8 @@
 .personalize-box{background:var(--card);border:1px solid var(--mint);border-radius:12px;padding:20px 22px;max-width:600px;margin:20px auto 0;text-align:left}
 .personalize-box label{display:block;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--dim);margin-bottom:8px}
 .personalize-box input[type=text]{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;background:rgba(4,38,44,.6);color:var(--ink);font-family:var(--sans);font-size:.95rem;margin-bottom:14px}
+.personalize-box select{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:8px;background:rgba(4,38,44,.6);color:var(--ink);font-family:var(--sans);font-size:.95rem;margin-bottom:6px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232ee6a8' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.platform-select-note{font-size:.78rem;color:var(--dim);margin-bottom:14px}
 .live-preview{background:rgba(4,38,44,.7);border:1px dashed var(--mint);border-radius:8px;padding:14px 16px;font-family:var(--sans);font-size:.95rem;color:var(--ink);line-height:1.55;margin-bottom:12px;transition:filter .2s}
 .live-preview.locked{filter:blur(6px);-webkit-filter:blur(6px);user-select:none;-webkit-user-select:none}
 .lock-label{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
@@ -398,6 +400,13 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
      has to search for it. (Was text.indexOf(name), which found the *first* match, not
      necessarily the *inserted* one -- a typed name sharing letters with boilerplate like
      "AI" or "This" masked the wrong span. Found in the 2026-07-28 final audit, B3.) */
+  /* Real, platform-specific paste instructions -- not just "which platform,"
+     the actual settings path or code, so the buyer's last step is copy-paste,
+     not a support-doc hunt. This is the concrete difference a generic 80-page
+     kit can't offer: it doesn't know the buyer's platform, this tool does
+     (from the diagnosis), so it branches. Kept as an optional select, not a
+     new tree question -- doesn't add friction for anyone who'd rather just
+     read the generic tip. */
   var TOUCHPOINTS = {
     chat: {
       label: "Chatbot / voice AI disclosure",
@@ -407,7 +416,16 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         var suffix = "'s AI assistant, not a human team member. Reach a person any time by [emailing/calling us].";
         return { text: prefix + n + suffix, start: prefix.length, length: n.length };
       },
-      tip: "Where to paste it: Intercom → Messenger Settings > Chatbot > Introduction. Zendesk → Answer Bot > Greeting message. Custom-built widget → your bot's opening/welcome message."
+      tip: "Where to paste it: Intercom → Messenger Settings > Chatbot > Introduction. Zendesk → Answer Bot > Greeting message. Custom-built widget → your bot's opening/welcome message.",
+      platforms: [
+        {key: 'intercom', label: 'Intercom', tip: "Messenger Settings → Chatbot → Introduction message. Paste it as the first message shown, before any menu buttons or quick replies."},
+        {key: 'zendesk', label: 'Zendesk', tip: "Admin Center → Channels → Widget → Widget content → Greeting message. Set it as the opening line before Answer Bot or any automated flow responds."},
+        {key: 'drift', label: 'Drift', tip: "Playbooks → your live-chat playbook → first message step. Make it the literal first message a visitor sees, not a delayed follow-up."},
+        {key: 'crisp', label: 'Crisp', tip: "Chatbot → Scenario builder → opening message node, before any menu or auto-reply logic runs."},
+        {key: 'shopify', label: 'Shopify (Inbox / chat app)', tip: "Shopify Inbox → Settings → Automations → Welcome message. Using a different chat app instead — its equivalent greeting/welcome field."},
+        {key: 'wordpress_chat', label: 'WordPress chat plugin', tip: "Your chat plugin's settings (Tidio, WP Live Chat, etc.) → widget → Welcome/greeting message field."},
+        {key: 'custom_chat', label: 'Custom-built widget', tip: "Hardcode it as the very first message your widget renders — the same line every visitor sees before they type anything."}
+      ]
     },
     media: {
       label: "AI-generated image/video/audio disclosure",
@@ -416,7 +434,13 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         var prefix = "This image/video/audio was created or modified using AI. — ";
         return { text: prefix + n, start: prefix.length, length: n.length };
       },
-      tip: "Where to paste it: as a caption or overlay on the content itself, not just a footer link. Instagram/TikTok → first line of the caption. Website → directly under the image or video."
+      tip: "Where to paste it: as a caption or overlay on the content itself, not just a footer link. Instagram/TikTok → first line of the caption. Website → directly under the image or video.",
+      platforms: [
+        {key: 'instagram_tiktok', label: 'Instagram / TikTok', tip: "First line of the caption, before any hashtags — not buried in a comment, and not only in alt text (alt text alone doesn't satisfy this)."},
+        {key: 'youtube', label: 'YouTube', tip: "First 1-2 lines of the video description, above the \"Show more\" fold. If the content could be mistaken for real footage, add an on-screen text overlay in the first few seconds too."},
+        {key: 'website_media', label: 'Website (image/video embed)', tip: "Directly under the image or video in visible body text — not just an alt attribute or a separate media-credits page nobody reads."},
+        {key: 'email_media', label: 'Email newsletter', tip: "In the body copy immediately next to the image, not tucked into a footer disclaimer block most readers skip."}
+      ]
     },
     text: {
       label: "AI-generated public-interest text disclosure",
@@ -425,7 +449,13 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         var prefix = "This article was generated or substantially written using AI, without human editorial review. — ";
         return { text: prefix + n, start: prefix.length, length: n.length };
       },
-      tip: "Where to paste it: one line directly above the headline, not buried at the bottom. WordPress → add via a reusable block. Substack/Ghost → first line before your content."
+      tip: "Where to paste it: one line directly above the headline, not buried at the bottom. WordPress → add via a reusable block. Substack/Ghost → first line before your content.",
+      platforms: [
+        {key: 'wordpress_text', label: 'WordPress', tip: "Add via a reusable block, or paste it as the first line directly above the post's headline/byline — not in the footer."},
+        {key: 'substack_ghost', label: 'Substack / Ghost', tip: "First line of the post body, before your first paragraph of actual content."},
+        {key: 'medium', label: 'Medium', tip: "First line, before your introduction paragraph — Medium doesn't have a dedicated field for this, so it has to live in the body itself."},
+        {key: 'custom_cms', label: 'Custom CMS / static site', tip: "Wherever your template renders the byline/dateline — add it as a visible line immediately after the headline, not in a comment or meta tag only."}
+      ]
     }
   };
 
@@ -586,6 +616,29 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     return full.text.slice(0, start).replace(/[^\s]/g, '▓') + full.text.slice(start, end) + full.text.slice(end).replace(/[^\s]/g, '▓');
   }
 
+  /* Real per-platform implementation, not just the generic tip -- optional,
+     defaults to the generic tip if left on "Select your platform," so it adds
+     zero friction for anyone who skips it. */
+  function platformPickerHtml(key){
+    var t = TOUCHPOINTS[key];
+    var opts = '<option value="">Select your platform (optional)</option>';
+    t.platforms.forEach(function(p){ opts += '<option value="' + p.key + '">' + p.label + '</option>'; });
+    return '<label for="platformSelect_' + key + '">Which platform? (optional — swaps the tip below for exact steps)</label>' +
+      '<select id="platformSelect_' + key + '">' + opts + '</select>' +
+      '<div class="platform-tip" id="platformTip_' + key + '">' + t.tip + '</div>';
+  }
+
+  function wirePlatformPicker(key){
+    var sel = document.getElementById('platformSelect_' + key);
+    var tipEl = document.getElementById('platformTip_' + key);
+    if (!sel || !tipEl) return;
+    var t = TOUCHPOINTS[key];
+    sel.addEventListener('change', function(){
+      var p = t.platforms.filter(function(p){ return p.key === sel.value; })[0];
+      tipEl.textContent = p ? p.tip : t.tip;
+    });
+  }
+
   function renderDots(depth){
     dotsEl.innerHTML = '';
     var total = Math.max(depth, 4);
@@ -688,7 +741,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         html += '<div class="lock-label locked">&#128274; Locked — unlock to copy and use</div>' +
           '<span class="sr-only">Preview is locked. Purchase to reveal the exact disclosure text for your business.</span>' +
           '<div class="live-preview locked" id="livePreview_' + r.touchpoint + '" aria-hidden="true"></div>' +
-          '<div class="platform-tip">' + primary.tip + '</div>' +
+          platformPickerHtml(r.touchpoint) +
           '<div class="tier-row">' +
             '<a class="tier-card gumroad-button" href="' + singleHref + '" data-tier="single">' +
               '<div class="tier-badge">&nbsp;</div>' +
@@ -711,7 +764,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
           '<div class="live-preview" id="livePreview_' + r.touchpoint + '"></div>' +
           '<div class="copy-row"><button class="btn btn-ghost" id="copyBtn_' + r.touchpoint + '" type="button">Copy this text</button>' +
           '<span class="copy-confirm" id="copyConfirm_' + r.touchpoint + '">Copied.</span></div>' +
-          '<div class="platform-tip">' + primary.tip + '</div>' +
+          platformPickerHtml(r.touchpoint) +
           '<p class="reassure-line" style="color:var(--mint)">Done. Paste it in and this is handled.</p>';
 
         if (unlockedTier === 'complete'){
@@ -722,7 +775,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
               '<div class="live-preview" id="livePreview_' + k + '"></div>' +
               '<div class="copy-row"><button class="btn btn-ghost" id="copyBtn_' + k + '" type="button">Copy this text</button>' +
               '<span class="copy-confirm" id="copyConfirm_' + k + '">Copied.</span></div>' +
-              '<div class="platform-tip">' + t.tip + '</div>';
+              platformPickerHtml(k);
           });
         }
       }
@@ -751,6 +804,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
     if (r.touchpoint){
       var input = document.getElementById('bizName');
       var activeKeys = (unlocked && unlockedTier === 'complete') ? Object.keys(TOUCHPOINTS) : [r.touchpoint];
+      activeKeys.forEach(wirePlatformPicker);
 
       function updateAll(){
         var name = input.value.trim();
