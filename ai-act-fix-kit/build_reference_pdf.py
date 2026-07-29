@@ -132,6 +132,11 @@ def render_line(pdf, line):
 
 def strip_md(s):
     s = re.sub(r"\*\*(.+?)\*\*", r"\1", s)
+    # Single-asterisk *emphasis* -- must run after **bold** is already stripped,
+    # or "**bold**" would partially match here first. Found live in the shipped
+    # PDF (2026-07-29 pre-promotion audit, E10): "a *provider* duty" printed with
+    # the literal asterisks still in place, page 1.
+    s = re.sub(r"\*(.+?)\*", r"\1", s)
     s = re.sub(r"`(.+?)`", r"\1", s)
     s = re.sub(r"\[(.+?)\]\(.+?\)", r"\1", s)
     return s

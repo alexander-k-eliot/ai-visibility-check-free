@@ -7,37 +7,65 @@ was specifically built to earn was rendering with a broken image.
 1200x630, the standard OG/Twitter card size (not the site's usual 1600x900 SKU
 card -- this one needs to read correctly in a link-preview strip, not a full page).
 
-Real drawn element per the iconographic canon: an hourglass, matching the live
-page's own SVG icon exactly in shape, not a stock icon or text-on-block. Deadline
-date is static text ("AUGUST 2, 2026"), not a live day-count -- a "3 days left"
-image would be stale and wrong within a week of being generated.
+v2, 2026-07-29 pre-promotion audit (B3): the hourglass hero was replaced. Brandon
+rejected the hourglass for the Gumroad listing art ("looks bad... doesn't
+communicate much of anything"), and the listings were redesigned around a
+crossed-out-80-page-stack -> real-answer-card visual metaphor -- but this og-card
+was approved before that pivot (for its copy, not its art) and never re-reviewed
+after. Every social share was leading with the exact visual language Brandon
+killed, one click removed from Gumroad art that no longer matched. Reuses the
+same iconography from build_gumroad_covers.py, scaled down to an icon-only badge
+(no internal text -- illegible at social-preview thumbnail scale anyway; the
+silhouette carries the "villain vs. resolution" story on its own).
 """
 import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "assets_lib"))
-from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, MINT, AMBER, INK, DIM
+from aaa_render import new_canvas, top_bottom_bars, mono, serif, sans, MINT, AMBER, INK, DIM, CARD, CARD2, CORAL
 
 W, H = 1200, 630
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "og-cards", "ai-act-fix-kit.png")
 
 
-def hourglass(d, cx, cy, size, color=AMBER):
-    """Same shape as the live page's inline SVG hourglass, redrawn at card scale."""
-    half = size / 2
-    bar_h = size * 0.06
-    d.rounded_rectangle([cx - half, cy - half, cx + half, cy - half + bar_h], radius=3, fill=color)
-    d.rounded_rectangle([cx - half, cy + half - bar_h, cx + half, cy + half], radius=3, fill=color)
-    top_tri = [(cx - half * 0.75, cy - half + bar_h), (cx + half * 0.75, cy - half + bar_h), (cx, cy)]
-    bot_tri = [(cx - half * 0.55, cy + half - bar_h), (cx + half * 0.55, cy + half - bar_h), (cx, cy + half * 0.15)]
-    d.polygon(top_tri, outline=color, width=4)
-    d.polygon(bot_tri, outline=color, width=4)
-    # sand: mostly settled at the bottom, a little still in the top -- matches the
-    # live page's mid-cycle animation frame rather than a static full/empty state
-    sand_top = [(cx - half * 0.42, cy - half + bar_h + 10), (cx + half * 0.42, cy - half + bar_h + 10), (cx, cy - half * 0.15)]
-    sand_bot = [(cx - half * 0.5, cy + half - bar_h - 6), (cx + half * 0.5, cy + half - bar_h - 6), (cx, cy + half * 0.35)]
-    d.polygon(sand_top, fill=color)
-    d.polygon(sand_bot, fill=color)
+def paper_stack(d, cx, cy, w, h, color=DIM, pages=3):
+    step = w * 0.1
+    for i in range(pages - 1, -1, -1):
+        ox, oy = -step * i * 0.6, -step * i * 0.9
+        x0, y0 = cx - w / 2 + ox, cy - h / 2 + oy
+        x1, y1 = x0 + w, y0 + h
+        d.rounded_rectangle([x0, y0, x1, y1], radius=5, fill=CARD2 if i else CARD, outline=color, width=2)
+        if i == 0:
+            ly = y0 + h * 0.18
+            while ly < y1 - h * 0.12:
+                d.rectangle([x0 + w * 0.12, ly, x0 + w * 0.78, ly + h * 0.045], fill=color)
+                ly += h * 0.14
+
+
+def no_slash(d, cx, cy, r, color=CORAL, width=8):
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], outline=color, width=width)
+    off = r * 0.68
+    d.line([cx - off, cy - off, cx + off, cy + off], fill=color, width=width)
+
+
+def check_badge(d, cx, cy, r, color=MINT):
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=color)
+    d.line([cx - r * 0.45, cy, cx - r * 0.1, cy + r * 0.4], fill=CARD, width=max(3, int(r * 0.22)))
+    d.line([cx - r * 0.1, cy + r * 0.4, cx + r * 0.5, cy - r * 0.35], fill=CARD, width=max(3, int(r * 0.22)))
+
+
+def answer_card(d, cx, cy, w, h, color=MINT):
+    d.rounded_rectangle([cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2], radius=8, fill=CARD, outline=color, width=3)
+    ly = cy - h * 0.15
+    for frac in (0.7, 0.5):
+        d.rectangle([cx - w * 0.38, ly, cx - w * 0.38 + w * 0.76 * frac, ly + h * 0.09], fill=color)
+        ly += h * 0.24
+    check_badge(d, cx + w / 2 - 16, cy + h / 2 - 16, 13, color)
+
+
+def arrow(d, x1, x2, y, color=MINT, width=5, head=12):
+    d.line([x1, y, x2 - head, y], fill=color, width=width)
+    d.polygon([(x2, y), (x2 - head, y - head), (x2 - head, y + head)], fill=color)
 
 
 def build():
@@ -51,7 +79,14 @@ def build():
 
     d.text((70, 56), "CLICK CODED · AI-OPERATED, HUMAN-REVIEWED", font=mono(24, True), fill=MINT)
 
-    hourglass(d, 995, 130, 130)
+    # Compact icon-only version of the listing art's hero metaphor: crossed-out
+    # stack (the 80-page kit) -> arrow -> a real answer, checked. Kept well
+    # inside the 1200px canvas -- the first version clipped the card off the
+    # right edge, caught by re-reading the actual rendered PNG, not the code.
+    paper_stack(d, 895, 130, 115, 140)
+    no_slash(d, 895, 130, 85)
+    arrow(d, 995, 1060, 130)
+    answer_card(d, 1110, 130, 80, 135)
 
     # The hook, as headline -- StoryBrand villain (the law) named through irony,
     # not description; the same line this session identified as the strongest

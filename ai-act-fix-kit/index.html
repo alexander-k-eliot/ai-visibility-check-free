@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
-<title>The AI Act Fix Kit — is your business covered? Find out before Aug 2.</title>
+<title>The AI Act Fix Kit — Article 50 fix in 3 clicks</title>
 <link rel="canonical" href="https://clickcoded.com/ai-visibility-check-free/ai-act-fix-kit/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="An AI built the fix for a law about disclosing AI">
@@ -11,8 +11,8 @@
 <meta name="twitter:title" content="An AI built the fix for a law about disclosing AI">
 <meta name="twitter:description" content="93% of businesses say they're not ready for the EU AI Act's transparency rules. Free 1-minute check, then unlock the exact fix — not an 80-page kit.">
 <meta name="twitter:image" content="https://clickcoded.com/ai-visibility-check-free/assets/og-cards/ai-act-fix-kit.png">
-<meta name="description" content="The EU AI Act's Article 50 transparency rules become enforceable August 2, 2026. Free 1-minute check: does it even apply to your business? If it does, unlock the exact fix in one click — not an 80-page compliance kit. Built by an AI-run company that had to answer this for itself first.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Click Coded","url":"https://clickcoded.com/","email":"alexander.k.eliot@gmail.com","alternateName":"Alexander K. Eliot","disambiguatingDescription":"A one-person, AI-operated studio founded in 2026 by Alexander K. Eliot, publishing AI-visibility audits, benchmarks and free tools at clickcoded.com."},{"@type":"WebApplication","name":"The AI Act Fix Kit — free check","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":[{"@type":"Offer","name":"Fix It","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Fix It All","price":"69","priceCurrency":"USD"}],"description":"A free, client-side decision tree that tells a business whether EU AI Act Article 50 transparency obligations apply to them, with citations, and a paid unlock for the disclosure text if it does."}]}</script>
+<meta name="description" content="The EU AI Act's Article 50 rules are enforceable Aug 2, 2026. Free 1-minute check: does it apply to you? Unlock the exact fix, not an 80-page kit.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Click Coded","url":"https://clickcoded.com/","email":"alexander.k.eliot@gmail.com","alternateName":"Alexander K. Eliot","disambiguatingDescription":"A one-person, AI-operated studio founded in 2026 by Alexander K. Eliot, publishing AI-visibility audits, benchmarks and free tools at clickcoded.com."},{"@type":"WebApplication","name":"The AI Act Fix Kit — free check","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"AggregateOffer","lowPrice":"39","highPrice":"69","priceCurrency":"USD","offerCount":"2"},"description":"A free, client-side decision tree that tells a business whether EU AI Act Article 50 transparency obligations apply to them, with citations, and a paid unlock for the disclosure text if it does."}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -171,7 +171,7 @@
 </div>
 
 <p class="kicker">An AI company. A law about disclosing AI use. We had to answer this for ourselves first — so we're giving away the answer.</p>
-<h1>The EU AI Act's disclosure rules go live in</h1>
+<h1 id="deadlineH1">The EU AI Act's disclosure rules go live in</h1>
 <p class="deadline-label">Article 50 · enforceable 00:00 CEST, Brussels · August 2, 2026</p>
 
 <div class="countdown" id="countdown">
@@ -333,8 +333,11 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
   function tick(){
     var diff = target - Date.now();
     if (diff <= 0){
-      els.d.textContent = els.h.textContent = els.m.textContent = els.s.textContent = '00';
+      var countdownEl = document.getElementById('countdown');
+      if (countdownEl) countdownEl.style.display = 'none';
       document.querySelector('.deadline-label').textContent = 'Article 50 is now enforceable.';
+      var h1 = document.getElementById('deadlineH1');
+      if (h1) h1.textContent = "The EU AI Act's disclosure rules are now in force — are you covered?";
       return;
     }
     var totalSec = Math.floor(diff / 1000);
@@ -363,7 +366,10 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
 
   /* ── Share ───────────────────────────────────────── */
   function shareText(){
-    var diff = Math.max(0, target - Date.now());
+    var diff = target - Date.now();
+    if (diff <= 0){
+      return "The EU AI Act's transparency rules are now in force. 93% of affected businesses said they weren't ready. Free 1-minute check, no email:";
+    }
     var days = Math.floor(diff / 86400000);
     var hours = Math.floor((diff % 86400000) / 3600000);
     return "The EU AI Act's transparency rules go live in " + days + "d " + hours + "h. 93% of affected businesses say they're not ready. Free 1-minute check, no email:";
@@ -424,10 +430,10 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
         var suffix = "'s AI assistant, not a human team member. Reach a person any time by [emailing/calling us].";
         return { text: prefix + n + suffix, start: prefix.length, length: n.length };
       },
-      tip: "Where to paste it: Intercom → Messenger Settings > Chatbot > Introduction. Zendesk → Answer Bot > Greeting message. Custom-built widget → your bot's opening/welcome message.",
+      tip: "Where to paste it: Intercom → Messenger Settings > Chatbot > Introduction. Zendesk → AI agents > Greeting message. Custom-built widget → your bot's opening/welcome message.",
       platforms: [
         {key: 'intercom', label: 'Intercom', tip: "Messenger Settings → Chatbot → Introduction message. Paste it as the first message shown, before any menu buttons or quick replies."},
-        {key: 'zendesk', label: 'Zendesk', tip: "Admin Center → Channels → Widget → Widget content → Greeting message. Set it as the opening line before Answer Bot or any automated flow responds."},
+        {key: 'zendesk', label: 'Zendesk', tip: "Admin Center → Channels → Widget → Widget content → Greeting message. Set it as the opening line before Zendesk's AI agents (formerly Answer Bot) respond."},
         {key: 'drift', label: 'Drift', tip: "Playbooks → your live-chat playbook → first message step. Make it the literal first message a visitor sees, not a delayed follow-up."},
         {key: 'crisp', label: 'Crisp', tip: "Chatbot → Scenario builder → opening message node, before any menu or auto-reply logic runs."},
         {key: 'shopify', label: 'Shopify (Inbox / chat app)', tip: "Shopify Inbox → Settings → Automations → Welcome message. Using a different chat app instead — its equivalent greeting/welcome field."},
@@ -444,8 +450,8 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
       },
       tip: "Where to paste it: as a caption or overlay on the content itself, not just a footer link. Instagram/TikTok → first line of the caption. Website → directly under the image or video.",
       platforms: [
-        {key: 'instagram_tiktok', label: 'Instagram / TikTok', tip: "First line of the caption, before any hashtags — not buried in a comment, and not only in alt text (alt text alone doesn't satisfy this)."},
-        {key: 'youtube', label: 'YouTube', tip: "First 1-2 lines of the video description, above the \"Show more\" fold. If the content could be mistaken for real footage, add an on-screen text overlay in the first few seconds too."},
+        {key: 'instagram_tiktok', label: 'Instagram / TikTok', tip: "First line of the caption, before any hashtags — not buried in a comment, and not only in alt text (alt text alone doesn't satisfy this). Also apply the platform's own AI-content label where available (Instagram's \"AI info\" label; TikTok's AI-generated content toggle, mandatory there for realistic synthetic media) — the caption is the backup, the native label is the platform's actual mechanism."},
+        {key: 'youtube', label: 'YouTube', tip: "First 1-2 lines of the video description, above the \"Show more\" fold — plus YouTube Studio's own \"Altered or synthetic content\" disclosure toggle if the footage could be mistaken for real. That toggle is YouTube's actual disclosure mechanism; the description line alone may not satisfy their policy."},
         {key: 'website_media', label: 'Website (image/video embed)', tip: "Directly under the image or video in visible body text — not just an alt attribute or a separate media-credits page nobody reads."},
         {key: 'email_media', label: 'Email newsletter', tip: "In the body copy immediately next to the image, not tucked into a footer disclaimer block most readers skip."}
       ]
@@ -746,7 +752,7 @@ Click Coded — AI-operated, human-reviewed, disclosed everywhere.</p>
 
       if (!unlocked){
         ensureGumroadScript();
-        html += '<div class="lock-label locked">&#128274; Locked — unlock to copy and use</div>' +
+        html += '<div class="lock-label locked">&#128274; Your exact sentence is written — unlock to copy it</div>' +
           '<span class="sr-only">Preview is locked. Purchase to reveal the exact disclosure text for your business.</span>' +
           '<div class="live-preview locked" id="livePreview_' + r.touchpoint + '" aria-hidden="true"></div>' +
           platformPickerHtml(r.touchpoint) +
