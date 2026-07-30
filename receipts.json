@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T09:22:52+00:00",
+  "generated": "2026-07-30T11:23:01+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -134,6 +134,17 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0012",
+      "date": "2026-07-30",
+      "category": "delivery",
+      "claim": "Published the September-15 benchmark: 101 major sites through the new Sept15Read engine. Findings: only 4 of 80 readable giants sit behind Cloudflare, 39% already block AI retrieval by explicit robots policy, 21 blocked automated checks outright. Three benchmark runs were required \u2014 our own rate limiter and two header-detection bugs were caught and disclosed in the piece itself.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/september-15/"
       },
       "verifiability": "public"
     }
