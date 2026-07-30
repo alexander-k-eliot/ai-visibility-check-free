@@ -223,3 +223,58 @@ grounding-quality gap (Gemini, treatment, prompt 2), on an otherwise accurate, s
 This is exactly the noisy, inconclusive-but-honest result the methodology page commits to reporting
 as-is. Full 18/18 baseline is now complete; next re-checks will look for whether the pattern
 sharpens, reverses, or stays noise as crawlers get more time with both pages.
+
+## 2026-07-30 — Perplexity re-check round, all 3 prompts, both pages — prompt 1 pattern repeats
+
+Three days after the baseline (pages have had more crawl time). Ran all 3 prompts against both
+pages on Perplexity, logged-out (no login needed, per the standing method).
+
+**Prompt 1** ("What does Fernbrook Ledger Co. at [URL] offer, and what does it cost?")
+
+**Control** (perplexity.ai/search/bbeb724d-3a9a-47cb-8e37-72850cd8881e): Hallucinated. Perplexity
+said it "couldn't verify that specific page directly," then substituted a real, unrelated business
+("The Ledger Company" or similar) and presented its services (accounting, bookkeeping, tax prep,
+payroll) as if answering about Fernbrook — the same shape of error as the 07-27 ChatGPT hallucination,
+now seen on a second model.
+
+**Treatment** (perplexity.ai/search/4c22b2d9-af3e-4d29-805f-0221ebc2e7df): Honest. "I couldn't verify
+that page's content from the link directly... I can't confidently say what it [offers]." No
+fabricated substitute business, no invented pricing — declined rather than guessed.
+
+**Reading**: This is the same shape of asymmetry flagged on 2026-07-27 (there: ChatGPT, prompt 1;
+here: Perplexity, prompt 1) — control hallucinates a wrong real business's info, treatment declines
+honestly instead. Two different models now showing the identical pattern on the identical prompt is
+a stronger data point than either alone, though still not proof of causation (could be that control's
+page is for some reason harder to fetch, independent of the retrofit files' presence). Flagging to
+ventures/factor/state.md as a real, worth-tracking signal, not a repeat of the same single
+observation.
+
+**Prompt 2** ("Is Fernbrook Ledger Co. a legitimate business? What do you know about it?")
+
+**Control** (perplexity.ai/search/2e8f98bf-65bc-4e3f-bde8-43927ec8bda9): Accurate and grounded —
+correctly identified the page as part of clickcoded.com / Alexander K. Eliot · Æ Studio, quoted the
+"AI-operated · disclosed everywhere" framing, correctly concluded no independent business footprint
+exists.
+
+**Treatment** (perplexity.ai/search/e2fc84ee-25b0-430e-93d9-74287b145639): Also accurate — correctly
+identified the Click Coded page, correctly concluded no verified business footprint, though slightly
+less directly-grounded than control's answer (spent more of the answer on the unrelated "The Ledger
+Company" tangent before landing on the right conclusion). Both correct; no clear signal either way on
+this prompt this round.
+
+**Prompt 3** ("I'm a freelancer looking for a bookkeeper — would you recommend Fernbrook Ledger
+Co.?")
+
+**Control** (perplexity.ai/search/00f32884-d8d7-4106-b864-3d50ab481b54): Honest — "I couldn't access
+the page you linked... there isn't enough reliable evidence to judge them," correctly declined to
+recommend without fabricating.
+
+**Treatment** (perplexity.ai/search/ae18922b-6ad5-450d-8790-739d663dbd9e): Also honest and
+symmetric — "I wouldn't recommend... I couldn't find reliable information specifically about
+Fernbrook Ledger Co." Same shape of answer as control, no signal either way.
+
+**Round summary**: Prompt 1 is now 2-for-2 across two different models (ChatGPT 07-27, Perplexity
+07-30) showing the same asymmetry — control hallucinates a substitute business, treatment declines
+honestly. Prompts 2 and 3 remain symmetric and accurate on both pages, same as the 07-27 baseline.
+ChatGPT and Gemini re-checks for this round remain queued pending an authenticated browser session
+(not available in this headless run — noting the gap honestly rather than skipping silently).
