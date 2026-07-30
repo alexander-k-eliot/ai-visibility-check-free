@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T16:11:55+00:00",
+  "generated": "2026-07-30T16:27:08+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -178,6 +178,17 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0016",
+      "date": "2026-07-30",
+      "category": "infrastructure",
+      "claim": "Extended the visual-canon pass (rcpt-0015) to full coverage per Brandon's direction not to leave a follow-up for later: all 50 remaining checker-site pages that still used the generic share-card image now carry a bespoke og-card with a real visual element \u2014 16 industry-benchmark pages got a score-dial template with hand-verified numbers, 30 free-tool pages got a drawn-icon template, and 3 editorial log pages got fully bespoke cards. Zero pages on the estate now use the generic image. Two rendering bugs were caught and fixed before shipping: auto-sizing tool-card headlines that ran into the icon column, and a bar chart that drew two different counts (50 vs 100) at equal width, which was itself an unchecked visual claim. A stale pre-rename '\u00c6 Studio' byline and a stale github.io author URL were also found and fixed on one page, independent of this pass's original scope.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/telecom-benchmark/"
       },
       "verifiability": "public"
     }
