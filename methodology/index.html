@@ -99,7 +99,7 @@ h1,h2{font-family:var(--serif)}
 <tbody>
 <tr><td>llms.txt present</td><td class="w">18</td><td>The one file that tells an agent what a site is and sells without parsing HTML. Nothing else does this job.</td></tr>
 <tr><td>Structured data (schema.org)</td><td class="w">18</td><td>JSON-LD or microdata turns prose into facts a machine can extract without guessing.</td></tr>
-<tr><td>robots.txt allows AI agents</td><td class="w">15</td><td>An explicit block on GPTBot, ClaudeBot, PerplexityBot or similar makes a site invisible to that ecosystem by choice, not accident.</td></tr>
+<tr><td>robots.txt allows AI agents</td><td class="w">15</td><td>A block on the retrieval crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-User) makes a site invisible to those assistants even when someone asks about you. Blocking training crawlers only is a legitimate opt-out and does not fail this check.</td></tr>
 <tr><td>Readable without JavaScript</td><td class="w">13</td><td>Many agents never execute scripts. A JS-only app shell is a blank page to them.</td></tr>
 <tr><td>Title + meta description</td><td class="w">9</td><td>Agents use these for routing decisions before they read anything else.</td></tr>
 <tr><td>llms-full.txt (expanded content)</td><td class="w">5</td><td>Optional but strong: full markdown of key pages, no HTML parsing required at all.</td></tr>
@@ -112,7 +112,7 @@ h1,h2{font-family:var(--serif)}
 </tbody>
 </table>
 </div>
-<p class="small">Weights sum to 100. Score = (sum of weights passed) / 100, rounded. One server-side fetch per site, a clearly identifying User-Agent, public data only, no personal data collected.</p>
+<p class="small">Weights sum to 100. Score = (sum of weights passed) / 100, rounded. One short server-side visit per site: six requests total (the homepage plus robots.txt, sitemap.xml, llms.txt, llms-full.txt, and agents.md), with a clearly identifying User-Agent, public data only, no personal data collected. The Cloudflare posture read adds one DNS-over-HTTPS lookup to a public resolver, not to your site. Corrected 2026-07-30: this line previously said "one fetch per site," which undercounted. See <a href="../corrections/">corrections</a>.</p>
 
 <h2>Grade bands</h2>
 <div class="grade"><span><strong>A</strong>: 80-100</span><span class="small">agent-ready</span></div>
