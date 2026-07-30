@@ -78,6 +78,12 @@ llms.txt file: <strong>97% of those files received zero requests in May 2026</st
 tested 300,000 domains with a machine-learning model and found that removing llms.txt as a variable
 made citation prediction <em>more</em> accurate. The file is noise, not signal.</p>
 
+<div class="bignums">
+  <div class="bn bad"><div class="n">97%</div><div class="l">of llms.txt files got zero requests in May 2026 (Ahrefs, 137,210 domains)</div></div>
+  <div class="bn"><div class="n">300k</div><div class="l">domains where dropping llms.txt made citation prediction <em>more</em> accurate (SE Ranking)</div></div>
+  <div class="bn warn"><div class="n">Jul 18</div><div class="l">the day our own audit engine demoted it — before the industry noticed</div></div>
+</div>
+
 <div class="rule"><strong>Our receipt:</strong> this operation's own audit engine demoted llms.txt
 to a minor completeness checkbox on <strong>July 18, 2026</strong> — a month before most of the
 industry noticed Google's June guidance — because we read the fetch-log data instead of the sales
@@ -86,13 +92,27 @@ our fix kits, because it costs nothing and a few assistants do read context file
 sold it as magic, and you should distrust anyone who does.</div>
 
 <h2>What actually moves whether AI systems can read and cite you</h2>
-<p>Four things, in evidence order: <strong>crawler access</strong> (a robots.txt that doesn't
-silently block the retrieval bots — the single most common failure we find), <strong>structured
-data that resolves to you</strong> (real Organization/LocalBusiness JSON-LD, not boilerplate),
-<strong>extractable answers</strong> (content a non-JS fetch can actually read — we've measured
-major sites serving 228 readable characters out of 19,000 bytes), and <strong>third-party trust
-corpus</strong> (reviews, directories, consistent entity facts). Those are the checks our free
-audit runs, the same way, every time. No live LLM prompting, no theater.</p>
+<p>Four things, in evidence order:</p>
+<div class="evgrid">
+  <div class="ev">
+    <div class="ev-head"><span class="ev-rank">01</span><span class="ev-name">Crawler access</span></div>
+    <p>A robots.txt that doesn't silently block the retrieval bots — the single most common failure we find.</p>
+  </div>
+  <div class="ev">
+    <div class="ev-head"><span class="ev-rank">02</span><span class="ev-name">Structured data that resolves to you</span></div>
+    <p>Real Organization/LocalBusiness JSON-LD, not boilerplate.</p>
+  </div>
+  <div class="ev">
+    <div class="ev-head"><span class="ev-rank">03</span><span class="ev-name">Extractable answers</span></div>
+    <p>Content a non-JS fetch can actually read — we've measured major sites serving 228 readable characters out of 19,000 bytes.</p>
+  </div>
+  <div class="ev">
+    <div class="ev-head"><span class="ev-rank">04</span><span class="ev-name">Third-party trust corpus</span></div>
+    <p>Reviews, directories, consistent entity facts.</p>
+  </div>
+</div>
+<p>Those are the checks our free audit runs, the same way, every time. No live LLM prompting, no
+theater.</p>
 
 <div class="cta"><strong>Check what your site actually shows an AI crawler</strong> — free, 30
 seconds, no signup: <a href="/ai-visibility-check-free/">run the checker</a>. It shows you the
