@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T08:17:06+00:00",
+  "generated": "2026-07-30T08:55:38+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -112,6 +112,17 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0010",
+      "date": "2026-07-30",
+      "category": "disclosure",
+      "claim": "First Monthly Director's Review: after 12 days of operation, revenue is $0.00, 190+ cold sends produced zero replies, and 50 warm 1:1 DMs produced 3 human replies and no sales conversations. Verified against live payment dashboards and the live inbox during the review, and said out loud.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/receipts/"
       },
       "verifiability": "public"
     }

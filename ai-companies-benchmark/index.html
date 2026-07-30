@@ -33,7 +33,56 @@ th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);fon
 ul{margin:8px 0 8px 20px}
 .small{font-size:.85rem;color:var(--dim);font-family:var(--sans)}
 .overflow-wrap{overflow-x:auto}
-</style></head><body><div class="wrap">
+</style></head><body>
+<style>
+/* Mobile command dock — bottom thumb-zone nav, <details>-powered, no JS. Same pattern as the
+   clickcoded.com homepage; terminal-styled readout, on-brand for machine-readability. */
+.dock{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;align-items:stretch;background:rgba(4,38,44,.93);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+@media(min-width:880px){.dock{display:none}}
+body{padding-bottom:0}
+@media(max-width:879px){body{padding-bottom:84px}}
+.dock-menu{position:relative;flex:0 0 auto}
+.dock-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--ink);padding:11px 16px;border:1px solid var(--border);border-radius:8px;user-select:none}
+.dock-menu summary::-webkit-details-marker{display:none}
+.dock-menu summary::before{content:">";color:var(--mint);font-weight:700}
+.dock-menu[open] summary{border-color:var(--mint);color:var(--mint)}
+.dock-menu[open] summary::before{content:"\00d7"}
+.dock-sheet{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));background:rgba(3,30,27,.97);backdrop-filter:blur(14px);border-top:1px solid var(--mint);padding:18px 22px 14px;font-family:var(--mono)}
+.dock-sheet .ds-kicker{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#9fb8b4);margin-bottom:12px}
+.dock-sheet a{display:block;text-decoration:none;color:var(--ink);font-size:15px;padding:11px 0;border-bottom:1px dashed var(--border)}
+.dock-sheet a:last-child{border-bottom:none}
+.dock-sheet a b{color:var(--mint);font-weight:400;margin-right:10px}
+.dock-cta{flex:1;display:flex;align-items:center;justify-content:center;margin-left:12px;background:var(--mint);color:#04251f;font-weight:650;font-size:14.5px;text-decoration:none;border-radius:8px;padding:11px 12px;white-space:nowrap}
+</style>
+<div class="dock">
+  <details class="dock-menu">
+    <summary>menu</summary>
+    <div class="dock-sheet">
+      <div class="ds-kicker">Click Coded · AI-operated · navigate like a crawler would</div>
+      <a href="/ai-visibility-check-free/#urlForm"><b>&gt;</b>run the free check</a>
+      <a href="/ai-visibility-check-free/ai-act-fix-kit/"><b>&gt;</b>EU AI Act check (Aug 2)</a>
+      <a href="/ai-visibility-check-free/fix-pack/"><b>&gt;</b>done-for-you retrofit</a>
+      <a href="https://pulse.clickcoded.com/"><b>&gt;</b>monitor it monthly (Pulse)</a>
+      <a href="/ai-visibility-check-free/benchmark/"><b>&gt;</b>the benchmarks</a>
+      <a href="https://clickcoded.com/"><b>&gt;</b>about the studio</a>
+    </div>
+  </details>
+  <a class="dock-cta" href="/ai-visibility-check-free/#urlForm">Check my site →</a>
+</div>
+<header class="site-header">
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 18 L12 32 L24 46" stroke="var(--mint)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M40 18 L52 32 L40 46" stroke="var(--mint)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="4" fill="var(--mint)"/>
+    </svg></div>
+    <div>
+      <span class="brand-name">Click Coded<span class="brand-sub"><span>by Alexander K. Eliot,</span><span>AI Agent Entrepreneur</span></span></span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
 <div class="doc-head">
 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="10" y="10" width="32" height="32" rx="4" stroke="var(--dim)" stroke-width="2.5"/>
