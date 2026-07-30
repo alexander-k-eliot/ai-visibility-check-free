@@ -97,7 +97,7 @@ h1,h2{font-family:var(--serif)}
 </div>
 
 <h2>How this is scored</h2>
-<p class="small">Nine checks, weighted 0-100: title/meta, structured data, headings, answer-shaped content, no-JS legibility, contact path, llms.txt, robots.txt reachability, sitemap. Identical engine to the main checker, so a score here means the same thing there. Built by Click Coded, AI-operated and human-reviewed.</p>
+<p class="small">URL mode runs the same 12-check server-side engine as the <a href="../">main checker</a> (see <a href="../methodology/">methodology</a>), so a score here means the same thing there. Paste mode runs a smaller, different 6-check client-only comparison instead. Built by Click Coded, AI-operated and human-reviewed.</p>
 </div>
 
 <div class="cta"><strong>Want to hear when we ship something new?</strong><p>We add new free tools and benchmarks periodically. <a href="https://eliotwave01.gumroad.com/subscribe">Get an email when we do</a>, no spam, unsubscribe anytime.</p></div>
@@ -123,10 +123,10 @@ h1,h2{font-family:var(--serif)}
     return checks;
   }
 
-  async function tryFetch(url){
-    try{const r=await fetch(url,{mode:'cors'});if(!r.ok)return{ok:false};return{ok:true,text:await r.text()};}
-    catch(e){return{ok:false,cors:true};}
-  }
+  // URL mode now calls the same server-side Worker the main checker uses -- this tool had
+  // the exact CORS-broken client-side fetch() bug the main checker was rebuilt to fix
+  // (final-pass-report-2026-07-30.md item 14). Paste mode (analyzeHtml) is untouched.
+  const CHECK_API = 'https://checker.clickcoded.com/api/check';
 
   async function fullCheck(urlVal, htmlVal){
     if(htmlVal && htmlVal.trim().length>50){
@@ -136,14 +136,13 @@ h1,h2{font-family:var(--serif)}
     if(!urlVal) return {checks:null, mode:'empty'};
     let u=urlVal.trim();
     if(!/^https?:\/\//i.test(u)) u='https://'+u;
-    const origin=new URL(u).origin;
-    const [home,llms,robots,sitemap]=await Promise.all([tryFetch(u),tryFetch(origin+'/llms.txt'),tryFetch(origin+'/robots.txt'),tryFetch(origin+'/sitemap.xml')]);
-    if(!home.ok) return {checks:null, mode: home.cors?'blocked':'error'};
-    const c=analyzeHtml(home.text);
-    c.push({name:'llms.txt',weight:10,pass:llms.ok?(llms.text.trim().length>20&&!/<html/i.test(llms.text)):(llms.cors?null:false)});
-    c.push({name:'robots.txt reachable',weight:5,pass:robots.ok?true:(robots.cors?null:false)});
-    c.push({name:'XML sitemap',weight:5,pass:sitemap.ok?/<(urlset|sitemapindex)/i.test(sitemap.text):(sitemap.cors?null:false)});
-    return {checks:c, mode:'url'};
+    let data;
+    try{
+      const r=await fetch(CHECK_API+'?url='+encodeURIComponent(u));
+      data=await r.json();
+    } catch(e){ return {checks:null, mode:'error'}; }
+    if(data.fatal || data.error) return {checks:null, mode:'error'};
+    return {checks:data.checks, mode:'url'};
   }
 
   function score(checks){
@@ -167,8 +166,8 @@ h1,h2{font-family:var(--serif)}
     }
     box.innerHTML = `
       <div class="cols">
-        <div class="col"><h3>A</h3><div class="bignum">${sa===null?'—':sa}</div>${A.mode==='blocked'?'<p class="small">Site blocked cross-site reads. Paste its HTML instead.</p>':''}</div>
-        <div class="col"><h3>B</h3><div class="bignum">${sb===null?'—':sb}</div>${B.mode==='blocked'?'<p class="small">Site blocked cross-site reads. Paste its HTML instead.</p>':''}</div>
+        <div class="col"><h3>A</h3><div class="bignum">${sa===null?'—':sa}</div>${A.mode==='error'?'<p class="small">Couldn\'t check that site right now -- try again, or paste its HTML instead.</p>':''}</div>
+        <div class="col"><h3>B</h3><div class="bignum">${sb===null?'—':sb}</div>${B.mode==='error'?'<p class="small">Couldn\'t check that site right now -- try again, or paste its HTML instead.</p>':''}</div>
       </div>` + deltaHtml;
 
     if(A.checks || B.checks){

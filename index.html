@@ -32,10 +32,17 @@
 .xray-expand{margin-top:8px}
 .bot-table{margin-top:12px;display:grid;gap:6px}
 .bot-row{display:grid;grid-template-columns:1fr auto 2fr;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--border);font-size:.85rem}
+@media (max-width:720px){.bot-row{grid-template-columns:1fr;gap:2px;padding:10px 0}}
 .bot-row .bot-name{color:var(--ink)}
 .bot-row .bot-status--ok{color:var(--mint)}
 .bot-row .bot-status--blocked{color:var(--coral)}
-.bot-row .bot-evidence{color:var(--dim);font-family:var(--mono);font-size:.78rem}
+.bot-row .bot-evidence{color:var(--dim);font-family:var(--mono);font-size:.78rem;overflow-wrap:anywhere}
+.bot-company{margin-top:10px;font-size:.78rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}
+.bot-company:first-child{margin-top:0}
+.xray-text.xray-empty{border-color:var(--coral);background:rgba(232,106,90,.08)}
+.xray-empty-flag{color:var(--coral);font-weight:600;margin-top:6px}
+.panel-cta{margin-top:10px;font-size:.85rem;color:var(--dim)}
+.payoff-line{margin-top:10px;font-size:.85rem;color:var(--dim)}
 .fix-pack-items{display:grid;gap:14px;margin-top:12px}
 .fix-pack-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
 .fix-pack-item h4{margin:0 0 4px}
@@ -48,8 +55,13 @@
    rather than editing the shared stylesheet used across the rest of the site. */
 #siteUrl{flex:1;min-width:260px;padding:13px 16px;border:1px solid var(--border);border-radius:8px;background:rgba(4,38,44,.6);color:var(--ink);font-family:var(--sans);font-size:1rem}
 #siteUrl:focus{outline:2px solid var(--mint);border-color:transparent}
+/* .tier-mint: new top score tier (>=80). Added here rather than system.css, since that
+   file's .tier-amber/.tier-orange/.tier-coral glow rules are shared across other pages that
+   still use the old amber-top scheme -- this page alone now treats mint as "strong". */
+.scorewrap.tier-mint::before{--glow-color:rgba(46,230,168,.5);opacity:1}
+.scorewrap.tier-mint .ring{filter:drop-shadow(0 0 3px var(--mint)) drop-shadow(0 0 10px rgba(46,230,168,.6)) drop-shadow(0 0 22px rgba(46,230,168,.35))}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Click Coded","url":"https://clickcoded.com/","email":"alexander.k.eliot@gmail.com","slogan":"Never Not Working","description":"AI-operated, human-reviewed studio. AI visibility audits, GEO content and agent-ready retrofits.","sameAs":["https://github.com/alexander-k-eliot","https://x.com/alexanderKeliot","https://www.instagram.com/alexander.k.eliot/","https://www.reddit.com/user/alexander-k-eliot/","https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://eliotwave01.gumroad.com"],"alternateName":"Alexander K. Eliot","disambiguatingDescription":"A one-person, AI-operated studio founded in 2026 by Alexander K. Eliot, publishing AI-visibility audits, benchmarks and free tools at clickcoded.com."},{"@type":"WebApplication","name":"AI Visibility Checker","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free check of what an AI crawler can actually read on a website: a scored technical audit, a per-bot access map, and generated fix files."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Click Coded","url":"https://clickcoded.com/","email":"run@clickcoded.com","slogan":"Never Not Working","description":"AI-operated, human-reviewed studio. AI visibility audits, GEO content and agent-ready retrofits.","sameAs":["https://github.com/alexander-k-eliot","https://x.com/alexanderKeliot","https://www.instagram.com/alexander.k.eliot/","https://www.reddit.com/user/alexander-k-eliot/","https://www.etsy.com/shop/AlexanderKonigEliot","https://www.fiverr.com/alexanderkeliot","https://eliotwave01.gumroad.com"],"alternateName":"Alexander K. Eliot","disambiguatingDescription":"A one-person, AI-operated studio founded in 2026 by Alexander K. Eliot, publishing AI-visibility audits, benchmarks and free tools at clickcoded.com."},{"@type":"WebApplication","name":"AI Visibility Checker","applicationCategory":"SEO tool","operatingSystem":"Web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free check of what an AI crawler can actually read on a website: a scored technical audit, a per-bot access map, and generated fix files."}]}</script>
 </head>
 <body>
 
@@ -74,7 +86,7 @@
 <div class="wrap">
   <h1>See your site the way an AI crawler sees it</h1>
   <p class="hero-sub">ChatGPT, Claude, Perplexity, and every other AI assistant answer questions by reading websites. If they can't read yours, they cite someone else. This free check shows you the literal text a crawler extracts from your page, a per-bot access map, and generated fix files — not just a score.</p>
-  <p class="hero-sub">We don't ask an AI what it thinks of your site — that answer changes by the hour and we'd have to pay per check, which means it can't stay free. We check the real technical facts that decide whether AI can read your site at all, and we show our work.</p>
+  <p class="hero-sub">We don't ask an AI what it thinks of your site — tools that do that start at $29/mo. We check the real technical facts that decide whether AI can read your site at all, and we show our work, for free.</p>
 
   <div class="check-box">
     <p class="checks-heading">Check your site</p>
@@ -82,7 +94,7 @@
       <input type="text" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" id="siteUrl" placeholder="https://yourbusiness.com" required>
       <button class="btn" type="submit" id="runBtn">Run the check</button>
     </form>
-    <p class="note">Runs server-side now, so it works on real sites (not just ones that allow cross-origin browser reads). Nothing is stored. Prefer not to send us your URL at all? The paste-your-HTML option below runs entirely in your browser, zero network requests. The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full audit</a> adds a human-reviewed written fix list.</p>
+    <p class="note">Works on real sites — checked server-side, not limited by what your browser can fetch. Nothing is stored. Prefer not to send us your URL at all? The paste-your-HTML option below runs entirely in your browser, zero network requests. The <a href="mailto:run@clickcoded.com?subject=%2425%20AI-visibility%20audit%20request">$25 full audit</a> adds a human-reviewed written fix list.</p>
   </div>
 </div>
 </section>
@@ -110,6 +122,7 @@
       </div>
       <!-- Label is BELOW the ring, never inside it -->
       <p class="score-label" id="scoreLabelText">AI visibility score</p>
+      <p class="payoff-line">Score: what's fixable. X-ray: what AI actually sees. Fix Pack: the files that change both.</p>
 
       <!-- Industry benchmark -->
       <div class="benchmark">
@@ -123,6 +136,7 @@
           <span><span class="dot" style="background:var(--amber)"></span>Avg: 65</span>
           <span><span class="dot" style="background:var(--orange)"></span>Your site</span>
         </div>
+        <p class="note" id="benchGapNote"></p>
       </div>
 
       <div id="scoreNoteWrap"></div>
@@ -132,12 +146,14 @@
         <button id="shareScore" class="btn btn-ghost" type="button">Share on X</button>
       </div>
 
-      <!-- Optional, skippable. Never gates the score above -- it has already rendered. -->
-      <div id="leadCapture" class="lead-capture hidden">
-        <p class="lead-capture-text">Want your score emailed, plus a free monthly re-check? Drop your email. No spam, unsubscribe any time.</p>
+      <!-- Never gates the score above -- it has already rendered. Posts to our own Worker
+           (checker.clickcoded.com/api/lead), not the fleet-wide Apps Script endpoint -- see
+           free-checker-final-pass-report-2026-07-30.md item 33 for why. -->
+      <div id="leadCapture" class="lead-capture">
+        <p class="lead-capture-text" id="leadCaptureText">Want this Fix Pack emailed to you, plus a one-time re-check next quarter? Drop your email. No spam, unsubscribe any time.</p>
         <form id="leadCaptureForm" class="lead-capture-form">
           <input type="email" id="leadEmail" placeholder="you@example.com" required>
-          <button class="btn btn-ghost" type="submit" id="leadCaptureBtn">Email me my score</button>
+          <button class="btn btn-ghost" type="submit" id="leadCaptureBtn">Email me the Fix Pack</button>
         </form>
         <p id="leadCaptureNote" class="lead-capture-note"></p>
       </div>
@@ -158,20 +174,23 @@
       <div class="xray-col">
         <p class="xray-label">Your homepage</p>
         <p class="xray-stat" id="xrayCharCount"></p>
+        <p id="xrayEmptyFlag" class="xray-empty-flag hidden">This is everything a training crawler can read on your site.</p>
       </div>
       <div class="xray-col">
         <p class="xray-label">What's readable without running JavaScript</p>
         <pre id="xrayText" class="xray-text"></pre>
-        <button type="button" id="xrayExpand" class="btn btn-ghost xray-expand hidden">Show full extract</button>
+        <button type="button" id="xrayExpand" class="btn btn-ghost xray-expand hidden">Show first 2,000 characters</button>
       </div>
     </div>
     <p class="note">This is what a non-JS-executing crawler sees (most training crawlers; some answer-engine crawlers do execute JavaScript). If the box above looks nearly empty, that's not a bug in this checker — it's the actual gap.</p>
+    <p class="panel-cta" id="xrayCta"></p>
   </div>
 
   <!-- Per-bot access map -->
   <div id="botPanel" class="bot-panel hidden">
     <p class="checks-heading">Per-crawler access map</p>
     <div id="botTable" class="bot-table"></div>
+    <p class="panel-cta" id="botCta"></p>
   </div>
 
   <!-- Fix Pack: generated artifacts from this site's own real data -->
@@ -185,7 +204,7 @@
 
   <!-- Show our work -->
   <div class="trust-block">
-    <p><strong>Every check above cites its evidence</strong> — the actual matched robots.txt line, the JSON-LD types found, the character count of readable text. Nothing here is a black-box score. <a href="methodology/">Read the versioned methodology</a> · <a href="correction-feed/">see every mistake we've published and fixed</a>.</p>
+    <p><strong>Every check above cites its evidence</strong> — the actual matched robots.txt line, the JSON-LD types found, the character count of readable text. Nothing here is a black-box score. <a href="methodology/">Read the versioned methodology</a> · <a href="correction-feed/">see every mistake we've published and fixed</a>. The same checks are merged into other people's open-source SEO tools, in the open, under our own name — <a href="#receipts">receipts below</a>.</p>
   </div>
 </div>
 </section>
@@ -194,8 +213,8 @@
 <section class="paste-section">
 <div class="wrap">
   <div class="inner">
-    <h2>Or paste your homepage HTML</h2>
-    <p class="note">Right-click your homepage → View Page Source → select all → paste here. Runs all content checks with zero network limits.</p>
+    <h2>Or paste your homepage HTML — the privacy option</h2>
+    <p class="note">Nothing leaves your browser: no URL is sent anywhere, no network request happens. Right-click your homepage → View Page Source → select all → paste here. Runs the content checks (title/meta, structured data, readability, contact); the per-bot access map and Fix Pack need a live URL (robots.txt lives on your server), so use the check above for those.</p>
     <textarea id="htmlPaste" placeholder="&lt;!doctype html&gt; ..."></textarea>
     <button class="btn" id="pasteBtn">Check the pasted HTML</button>
   </div>
@@ -236,7 +255,7 @@
 
   </div>
 
-  <p style="margin-top:24px;font-size:.85rem;color:var(--dim)">Need it done for you? The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full server-side audit</a> includes a written fix list and runs everything this browser check cannot. Run an agency and manage multiple client sites? See <a href="your-agencys-clients-are-invisible/">Agency Pack, and Pulse's Agency tier</a> instead — built for a roster, not a single site.</p>
+  <p style="margin-top:24px;font-size:.85rem;color:var(--dim)">Need it done for you? The <a href="mailto:run@clickcoded.com?subject=%2425%20AI-visibility%20audit%20request">$25 full server-side audit</a> includes a written fix list and human review. Run an agency and manage multiple client sites? See <a href="your-agencys-clients-are-invisible/">Agency Pack, and Pulse's Agency tier</a> instead — built for a roster, not a single site.</p>
 </div>
 </section>
 
@@ -296,7 +315,7 @@
 </section>
 
 <!-- In the wild -->
-<section class="wrap" style="padding:0 16px 32px">
+<section class="wrap" style="padding:0 16px 32px" id="receipts">
 <div class="cta" style="background:var(--card);border-radius:8px;padding:16px 18px;border:1px solid var(--border);border-left:4px solid var(--mint)">
 <strong>Not just talk — this checker's logic is merged into real, unrelated open-source tools</strong>
 <p style="margin-top:6px">We contribute the same AI-crawler / llms.txt checks this site runs for free to other people's open-source SEO tools, in the open, under our own name:</p>
@@ -317,15 +336,17 @@
 <p style="margin-top:6px">This badge re-checks your site (cached up to 24h) every time someone loads it — so it always
 shows your current score, not the day you grabbed it. No sign-up, no tracking.</p>
 <p style="margin-top:10px"><img src="https://checker.clickcoded.com/badge/clickcoded.com.svg" width="138" height="20" alt="AI visibility score badge example"></p>
-<p class="small" style="margin-top:10px;color:var(--dim);font-size:.85rem">Copy-paste (replace <code>yourdomain.com</code> with your own):</p>
+<p class="small" style="margin-top:10px;color:var(--dim);font-size:.85rem">HTML (replace <code>yourdomain.com</code> with your own):</p>
 <pre style="background:rgba(4,38,44,.6);border:1px solid var(--border);border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:var(--mono);font-size:.78rem;color:var(--ink);white-space:pre-wrap;word-break:break-all">&lt;a href="https://clickcoded.com/ai-visibility-check-free/"&gt;&lt;img src="https://checker.clickcoded.com/badge/yourdomain.com.svg" alt="AI visibility score"&gt;&lt;/a&gt;</pre>
+<p class="small" style="margin-top:10px;color:var(--dim);font-size:.85rem">Markdown (READMEs):</p>
+<pre style="background:rgba(4,38,44,.6);border:1px solid var(--border);border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:var(--mono);font-size:.78rem;color:var(--ink);white-space:pre-wrap;word-break:break-all">[![AI visibility](https://checker.clickcoded.com/badge/yourdomain.com.svg)](https://clickcoded.com/ai-visibility-check-free/)</pre>
 </div>
 </section>
 
 <!-- Footer -->
 <footer class="site-footer">
 <div class="wrap">
-  <p class="footer-note">Click Coded is AI-operated and human-reviewed, and runs on one principle: never not working. <a href="never-not-working-day-3/">We publish the receipts, every day</a> — latest: <a href="hey-chatgpt-am-i-real/">we asked ChatGPT, Perplexity, and Copilot if they could find us</a> (unedited results). Earlier: <a href="deadpool-proof/">we ran this exact checker on every company Ryan Reynolds owns</a> (a 47% bounce rate, a wrong domain caught mid-diagnosis, a second launch built and scheduled the same day: <a href="never-not-working/">Day 1</a>, <a href="never-not-working-day-2/">Day 2</a>, <a href="never-not-working-day-3/">Day 3</a>). Real, current numbers, updating live: <a href="the-honest-clock/">The Honest Clock</a> — $0.00 revenue so far, and counting. Every real thing it's said no to: <a href="the-refusal-log/">The Refusal Log</a>. We audited all 50 major news outlets for AI visibility: <a href="newsroom-ai-blocklist/">Every Major Newsroom Has Made Up Its Mind About AI</a>. And 100 crisis organizations: <a href="can-ai-find-help/">Crisis Lines Are Closing. Almost None of the Ones Left Have Told AI Who They Are.</a> Nobody asked us to check a real chamber of commerce's member businesses, so we did: <a href="uninvited-benchmark/">The Uninvited Benchmark</a>. Five real mistakes, presented like a museum exhibit: <a href="studio-as-museum/">The Museum of Honest Mistakes</a>. Three real platform walls, told deadpan: <a href="same-walls-you-do/">AI Hits the Same Walls You Do</a>. The honest case against trusting us, written by us: <a href="reasons-not-to-trust-us/">Reasons Not to Trust This AI</a>. A real press release, correctly formatted, with nothing to report: <a href="press-release-about-nothing/">The Press Release About Nothing</a>. A standing offer to journalists — send a real premise, get real data back in 2 hours, free: <a href="two-hour-source-desk/">The Two-Hour Source Desk</a>. The same offer for agencies and consultants — send 5 client URLs, get real reports back: <a href="agency-desk/">The Agency Desk</a>. We rounded up the real benchmark averages across 15 industries in one place: <a href="your-agencys-clients-are-invisible/">some of your agency's clients are almost certainly invisible to AI assistants</a>. Want the actual fix, not just the report? <a href="fix-pack/">The AI-Readiness Retrofit</a> — $49 founding price (first 3 customers), real llms.txt/agents.md/robots.txt/JSON-LD installed and verified on your site, money-back if the score doesn't improve. A live tool built from our own PR playbook's timing rule: <a href="deadline-clock/">The Deadline Clock</a> — is right now a good time to pitch? Another free tool, same playbook: <a href="headline-rewriter/">The Headline Rewriter</a> — the rabbi-test method, no AI magic, just three real questions. Our own internal ban-list on AI writing tells, published as a real dare: <a href="ai-slop-bingo/">AI Slop Bingo — Play Against Us</a>. Verified live today: <a href="your-doctors-website-wont-talk-to-ai/">Mayo Clinic and Johns Hopkins both block AI from reading their own sites</a>. This page practices what it measures: view source and you will find JSON-LD, an llms.txt beside this file, and full no-JS legibility. Fee-free, tracker-free. Methodology: <a href="methodology/">published and versioned</a>. Contact: alexander.k.eliot@gmail.com</p>
+  <p class="footer-note">Click Coded is AI-operated and human-reviewed, and runs on one principle: never not working. <a href="never-not-working-day-3/">We publish the receipts, every day</a> — latest: <a href="hey-chatgpt-am-i-real/">we asked ChatGPT, Perplexity, and Copilot if they could find us</a> (unedited results). Earlier: <a href="deadpool-proof/">we ran this exact checker on every company Ryan Reynolds owns</a> (a 47% bounce rate, a wrong domain caught mid-diagnosis, a second launch built and scheduled the same day: <a href="never-not-working/">Day 1</a>, <a href="never-not-working-day-2/">Day 2</a>, <a href="never-not-working-day-3/">Day 3</a>). Real, current numbers, updating live: <a href="the-honest-clock/">The Honest Clock</a> — $0.00 revenue so far, and counting. Every real thing it's said no to: <a href="the-refusal-log/">The Refusal Log</a>. We audited all 50 major news outlets for AI visibility: <a href="newsroom-ai-blocklist/">Every Major Newsroom Has Made Up Its Mind About AI</a>. And 100 crisis organizations: <a href="can-ai-find-help/">Crisis Lines Are Closing. Almost None of the Ones Left Have Told AI Who They Are.</a> Nobody asked us to check a real chamber of commerce's member businesses, so we did: <a href="uninvited-benchmark/">The Uninvited Benchmark</a>. Five real mistakes, presented like a museum exhibit: <a href="studio-as-museum/">The Museum of Honest Mistakes</a>. Three real platform walls, told deadpan: <a href="same-walls-you-do/">AI Hits the Same Walls You Do</a>. The honest case against trusting us, written by us: <a href="reasons-not-to-trust-us/">Reasons Not to Trust This AI</a>. A real press release, correctly formatted, with nothing to report: <a href="press-release-about-nothing/">The Press Release About Nothing</a>. A standing offer to journalists — send a real premise, get real data back in 2 hours, free: <a href="two-hour-source-desk/">The Two-Hour Source Desk</a>. The same offer for agencies and consultants — send 5 client URLs, get real reports back: <a href="agency-desk/">The Agency Desk</a>. We rounded up the real benchmark averages across 15 industries in one place: <a href="your-agencys-clients-are-invisible/">some of your agency's clients are almost certainly invisible to AI assistants</a>. Want the actual fix, not just the report? <a href="fix-pack/">The AI-Readiness Retrofit</a> — $49 founding price (first 3 customers), real llms.txt/agents.md/robots.txt/JSON-LD installed and verified on your site, money-back if the score doesn't improve. A live tool built from our own PR playbook's timing rule: <a href="deadline-clock/">The Deadline Clock</a> — is right now a good time to pitch? Another free tool, same playbook: <a href="headline-rewriter/">The Headline Rewriter</a> — the rabbi-test method, no AI magic, just three real questions. Our own internal ban-list on AI writing tells, published as a real dare: <a href="ai-slop-bingo/">AI Slop Bingo — Play Against Us</a>. Verified live today: <a href="your-doctors-website-wont-talk-to-ai/">Mayo Clinic and Johns Hopkins both block AI from reading their own sites</a>. This page practices what it measures: view source and you will find JSON-LD, an llms.txt beside this file, and full no-JS legibility. Fee-free, tracker-free. Methodology: <a href="methodology/">published and versioned</a>. Contact: run@clickcoded.com</p>
   <p style="margin-top:16px;font-size:.78rem;color:var(--dim)">© Click Coded · <a href="https://eliotwave01.gumroad.com/subscribe">Email updates</a> · <a href="https://x.com/alexanderKeliot">@alexanderKeliot</a></p>
 </div>
 </footer>
@@ -335,9 +356,11 @@ shows your current score, not the day you grabbed it. No sign-up, no tracking.</
 const $=id=>document.getElementById(id);
 let lastScore=0,lastLabel='a homepage';
 
-// Optional lead-capture endpoint (Apps Script Web App, see ops/lead-capture-api/Code.gs).
-// Empty string = feature stays fully hidden, zero behavior change until this is set.
-const LEAD_CAPTURE_ENDPOINT = '';
+// Lead capture posts directly to our own Worker (KV-backed) rather than the fleet-wide Apps
+// Script endpoint (ops/lead-capture-api/Code.gs), which is still stuck pending Brandon's own
+// deploy step -- see free-checker-final-pass-report-2026-07-30.md item 33. Unblocks this
+// page's capture layer today; export/merge into the canonical sheet later if needed.
+const LEAD_API = 'https://checker.clickcoded.com/api/lead';
 
 // Server-side check endpoint (Cloudflare Worker, ventures/agentready/free-checker-worker/).
 // Runs the fetch on the server so it isn't blocked by browser CORS -- see
@@ -347,13 +370,15 @@ const CHECK_API = 'https://checker.clickcoded.com/api/check';
 
 let lastCheckData = null; // full API/paste-mode result, kept for the Fix Pack + X-ray panel
 
+// >=80 renders mint -- the brand's actual success color, not gold, so a strong score reads as
+// coherent with every other "good" state on the page (checkmarks, CTAs, etc).
 function setRingColor(pct){
-  const tone = pct>=80?'var(--amber)':(pct>=50?'var(--orange)':'var(--coral)');
-  const tier = pct>=80?'tier-amber':(pct>=50?'tier-orange':'tier-coral');
+  const tone = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
+  const tier = pct>=80?'tier-mint':(pct>=50?'tier-amber':'tier-coral');
   $('scoreRing').style.stroke = tone;
   $('scoreNum').style.color = tone;
   const wrap = document.querySelector('.scorewrap');
-  wrap.classList.remove('tier-amber','tier-orange','tier-coral');
+  wrap.classList.remove('tier-mint','tier-amber','tier-orange','tier-coral');
   wrap.classList.add(tier);
   return tone;
 }
@@ -392,25 +417,27 @@ function render(checks, mode, label){
 
   // Benchmark position
   $('benchYou').style.left = Math.min(pct, 99) + '%';
+  const gap = pct - 65;
+  $('benchGapNote').textContent = gap === 0 ? 'Exactly at the 65/100 average across 158 real homepages we audited.' :
+    (gap > 0 ? '+' + gap : gap) + ' points vs. the 65/100 average across the 158 real homepages we audited (methodology below).';
 
   $('scoreLabelText').textContent = mode === 'paste' ? 'score on pasted HTML' : 'AI visibility score';
 
-  const noteEl = $('scoreNoteWrap');
-  if(unkPts > 0){
-    noteEl.innerHTML = '<p>' + unkPts + ' pts could not run from the browser. The <a href="mailto:alexander.k.eliot@gmail.com?subject=%2425%20AI-visibility%20audit%20request">$25 full audit</a> runs them all.</p>';
-  } else {
-    noteEl.innerHTML = '<p style="color:var(--mint)">All checks ran.</p>';
-  }
+  // unkPts (pass:null) never actually fires -- both the Worker's audit() and the client-side
+  // paste-mode analyzeHtml() always return a definite true/false, never null. Streamlined:
+  // no more dead "some checks couldn't run from a browser" branch.
+  $('scoreNoteWrap').innerHTML = '<p style="color:var(--mint)">All checks ran.</p>';
 
-  // Optional, skippable lead capture -- only shown if an endpoint is configured.
-  // The score above has already rendered in full; this never gates it.
-  if(LEAD_CAPTURE_ENDPOINT){
-    $('leadCapture').classList.remove('hidden');
-    $('leadCaptureNote').textContent = '';
-    $('leadEmail').value = '';
-    $('leadCaptureBtn').disabled = false;
-    $('leadCaptureBtn').textContent = 'Email me my score';
-  }
+  // Lead capture is always visible -- the score above has already rendered in full, this
+  // never gates it. Copy adapts: URL-mode visitors get a Fix Pack to look forward to; paste
+  // mode has no Fix Pack (needs a live domain), so the ask is just the re-check.
+  $('leadCaptureText').textContent = mode === 'paste'
+    ? 'Want a one-time re-check next quarter? Drop your email. No spam, unsubscribe any time.'
+    : 'Want this Fix Pack emailed to you, plus a one-time re-check next quarter? Drop your email. No spam, unsubscribe any time.';
+  $('leadCaptureNote').textContent = '';
+  $('leadEmail').value = '';
+  $('leadCaptureBtn').disabled = false;
+  $('leadCaptureBtn').textContent = mode === 'paste' ? 'Email me' : 'Email me the Fix Pack';
 
   updateScoreRecommendation(pct);
 
@@ -426,7 +453,7 @@ function updateScoreRecommendation(pct){
   if(pct < 40){
     msg = 'Your score of ' + pct + ' is well below the 65/100 benchmark average -- an AI assistant is mostly guessing about your business right now. The GEO Playbook or a done-for-you Retrofit are the fastest real fixes.';
   } else if(pct < 65){
-    msg = 'Your score of ' + pct + ' is below the 65/100 benchmark average -- real, fixable gaps remain. The GEO Playbook walks through exactly what\'s missing.';
+    msg = 'Your score of ' + pct + ' is below the 65/100 benchmark average -- real, fixable gaps remain. The GEO Playbook walks through exactly what\'s missing, or the $25 audit tells you which gaps actually matter for your business.';
   } else if(pct < 85){
     msg = 'Your score of ' + pct + ' is above the 65/100 benchmark average, but not airtight yet. The GEO Playbook closes the remaining gaps.';
   } else {
@@ -438,24 +465,23 @@ function updateScoreRecommendation(pct){
 if($('leadCaptureForm')){
   $('leadCaptureForm').addEventListener('submit', async function(ev){
     ev.preventDefault();
-    if(!LEAD_CAPTURE_ENDPOINT) return;
     const email = $('leadEmail').value.trim();
     if(!email) return;
     $('leadCaptureBtn').disabled = true;
     $('leadCaptureBtn').textContent = 'Sending...';
     try{
-      await fetch(LEAD_CAPTURE_ENDPOINT, {
+      const r = await fetch(LEAD_API, {
         method: 'POST',
-        mode: 'no-cors', // Apps Script Web Apps don't return CORS headers; fire-and-forget
-        headers: {'Content-Type': 'text/plain'},
-        body: JSON.stringify({email, url: lastLabel, score: lastScore, timestamp: new Date().toISOString()})
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, url: lastLabel, score: lastScore})
       });
-      $('leadCaptureNote').textContent = "Sent. We'll email your score and check back in a month.";
+      if(!r.ok) throw new Error('lead endpoint returned ' + r.status);
+      $('leadCaptureNote').textContent = "Sent -- we'll follow up at that address.";
       $('leadCaptureBtn').textContent = 'Sent';
     } catch(err){
       $('leadCaptureNote').textContent = "Couldn't reach the capture service -- your score above is unaffected.";
       $('leadCaptureBtn').disabled = false;
-      $('leadCaptureBtn').textContent = 'Email me my score';
+      $('leadCaptureBtn').textContent = 'Email me';
     }
   });
 }
@@ -467,7 +493,7 @@ function drawScoreCard(pct, label){
   const ctx = cvs.getContext('2d');
   const mint='#2ee6a8', amber='#f5b942', orange='#e8863f', coral='#e86a5a',
         bg='#063740', card='#0a4552', ink='#eef6f4', dim='#9fbcba';
-  const tone = pct>=80 ? amber : (pct>=50 ? orange : coral);
+  const tone = pct>=80 ? mint : (pct>=50 ? amber : coral);
 
   ctx.fillStyle = bg; ctx.fillRect(0, 0, 1200, 630);
   // Top bar
@@ -478,7 +504,7 @@ function drawScoreCard(pct, label){
 
   // Kicker
   ctx.fillStyle = mint; ctx.font = 'bold 22px Georgia';
-  ctx.fillText('CLICK CODED  ·  AI VISIBILITY SCORE', 80, 105);
+  ctx.fillText('CLICK CODED  ·  AI VISIBILITY CHECKER', 80, 105);
   // Site label
   ctx.fillStyle = ink; ctx.font = 'bold 36px Georgia';
   const siteLine = label.length > 42 ? label.slice(0, 42) + '…' : label;
@@ -528,10 +554,11 @@ $('downloadCard').addEventListener('click', () => {
 });
 
 $('shareScore').addEventListener('click', () => {
+  const gap = lastScore - 65;
   const text = lastScore >= 80
-    ? 'My site scored ' + lastScore + '/100 on the free AI Visibility Check. ChatGPT, Claude and Perplexity can read it. Check yours:'
-    : 'My site scored ' + lastScore + '/100 on the free AI Visibility Check — below the 65/100 industry average. Fixing it now. Check yours:';
-  const url = 'https://clickcoded.com/ai-visibility-check-free/';
+    ? 'My site scored ' + lastScore + '/100 on the free AI Visibility Checker (' + (gap>=0?'+':'') + gap + ' vs. the 65/100 average across 158 real homepages). Check yours:'
+    : 'My site scored ' + lastScore + '/100 on the free AI Visibility Checker -- below the 65/100 average across 158 real homepages. Fixing it now. Check yours:';
+  const url = 'https://clickcoded.com/ai-visibility-check-free/?url=' + encodeURIComponent(lastLabel);
   window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(url), '_blank', 'noopener');
 });
 
@@ -572,14 +599,15 @@ function analyzeHtml(html){
   return checks;
 }
 
-$('urlForm').addEventListener('submit', async ev => {
-  ev.preventDefault();
-  let u = $('siteUrl').value.trim();
-  if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
-  u = u.replace(/\/+$/, '');
+const CHECKING_MESSAGES = ['Fetching your homepage…', 'Reading robots.txt per crawler…', 'Parsing structured data…', 'Checking llms.txt and agents.md…'];
+
+async function runCheck(u){
   const btn = $('runBtn');
-  btn.textContent = 'Checking…'; btn.disabled = true;
+  btn.disabled = true;
   hideExtraPanels();
+  let msgIndex = 0;
+  btn.textContent = CHECKING_MESSAGES[0];
+  const rotator = setInterval(() => { msgIndex = (msgIndex + 1) % CHECKING_MESSAGES.length; btn.textContent = CHECKING_MESSAGES[msgIndex]; }, 1200);
 
   let data;
   try {
@@ -588,18 +616,43 @@ $('urlForm').addEventListener('submit', async ev => {
   } catch(e) {
     data = {fatal: "Couldn't reach the check service -- try again in a moment, or use the paste option below."};
   }
+  clearInterval(rotator);
 
-  if (data.fatal) {
-    render([{name:'Check failed', weight:100, pass:null, detail: data.fatal, fix:''}], 'url', new URL(u).hostname);
+  // Both `fatal` (a legitimate, explained result -- SSRF-blocked, target refused us) and
+  // `error` (rate-limited, malformed request, server error) need the same honest-failure
+  // rendering -- previously only `fatal` was handled, so a rate-limited visitor saw nothing
+  // happen at all (item 1, free-checker-final-pass-report-2026-07-30.md).
+  const problem = data.fatal || data.error;
+  let hostname; try { hostname = new URL(u).hostname; } catch { hostname = u; }
+  if (problem) {
+    render([{name:'Check failed', weight:100, pass:null, detail: problem, fix:''}], 'url', hostname);
   } else {
     lastCheckData = data;
-    render(data.checks.map(c => ({name:c.name, weight:c.weight, pass:c.pass, detail:c.detail, fix:c.fix})), 'url', new URL(u).hostname);
+    render(data.checks.map(c => ({name:c.name, weight:c.weight, pass:c.pass, detail:c.detail, fix:c.fix})), 'url', hostname);
     renderXray(data.textOnly);
     renderBots(data.bots);
     renderFixPack(data);
   }
   btn.textContent = 'Run the check'; btn.disabled = false;
+}
+
+$('urlForm').addEventListener('submit', ev => {
+  ev.preventDefault();
+  let u = $('siteUrl').value.trim();
+  if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+  u = u.replace(/\/+$/, '');
+  runCheck(u);
 });
+
+// Deep link: ?url=stripe.com auto-runs the check on load -- every result becomes a sendable
+// link (agencies to clients, outreach DMs, this tool's own share button), and the Worker's
+// 45-min cache absorbs repeat loads for free.
+(function(){
+  const deepLink = new URLSearchParams(location.search).get('url');
+  if(!deepLink) return;
+  $('siteUrl').value = deepLink;
+  runCheck(/^https?:\/\//i.test(deepLink) ? deepLink : 'https://' + deepLink);
+})();
 
 function hideExtraPanels(){
   $('xrayPanel').classList.add('hidden');
@@ -610,12 +663,21 @@ function hideExtraPanels(){
 function renderXray(textOnly){
   if(!textOnly){ $('xrayPanel').classList.add('hidden'); return; }
   $('xrayPanel').classList.remove('hidden');
-  $('xrayCharCount').textContent = textOnly.length + ' readable characters found (no JavaScript executed)' + (textOnly.length < 400 ? ' -- likely a near-empty page to a non-JS crawler.' : '.');
-  const preview = textOnly.length > 500 ? textOnly.slice(0, 500) + '…' : textOnly;
+  const nearEmpty = textOnly.length < 400;
+  $('xrayCharCount').textContent = textOnly.length + ' readable characters found (no JavaScript executed)' + (nearEmpty ? ' -- likely a near-empty page to a non-JS crawler.' : '.');
+  $('xrayEmptyFlag').classList.toggle('hidden', !nearEmpty);
+  const previewCap = 500;
+  const preview = textOnly.length > previewCap ? textOnly.slice(0, previewCap) + '…' : textOnly;
   $('xrayText').textContent = preview || '(nothing readable found)';
+  $('xrayText').classList.toggle('xray-empty', nearEmpty);
+  $('xrayText').classList.remove('expanded');
   const expandBtn = $('xrayExpand');
-  if(textOnly.length > 500){
+  if(textOnly.length > previewCap){
     expandBtn.classList.remove('hidden');
+    // Honest label: the Worker itself caps at 4,000 characters, so this is "everything we
+    // received," not necessarily the whole page -- item 17's relabel, avoiding the same
+    // overclaim class the meta-tag rewrite already fixed once.
+    expandBtn.textContent = 'Show all ' + textOnly.length.toLocaleString() + ' received characters';
     expandBtn.onclick = () => {
       $('xrayText').textContent = textOnly;
       $('xrayText').classList.add('expanded');
@@ -624,22 +686,59 @@ function renderXray(textOnly){
   } else {
     expandBtn.classList.add('hidden');
   }
+  $('xrayCta').textContent = nearEmpty
+    ? 'A crawler sees almost nothing here -- the Retrofit installs server-rendered content, done for you: see the product cards below.'
+    : '';
 }
+
+// Grouped by AI company (not our internal training/retrieval taxonomy) -- reads faster to a
+// non-technical visitor. A fully-open robots.txt collapses into one line instead of 13
+// identical "Allowed" rows.
+const BOT_COMPANIES = [
+  {label:'OpenAI', bots:['GPTBot','OAI-SearchBot','ChatGPT-User']},
+  {label:'Anthropic', bots:['ClaudeBot','anthropic-ai','Claude-User']},
+  {label:'Google', bots:['Google-Extended']},
+  {label:'Perplexity', bots:['PerplexityBot']},
+  {label:'Meta', bots:['Meta-ExternalAgent']},
+  {label:'Apple', bots:['Applebot-Extended']},
+  {label:'ByteDance', bots:['Bytespider']},
+  {label:'Common Crawl (training dataset used by many AI labs)', bots:['CCBot']},
+  {label:'Amazon', bots:['Amazonbot']},
+];
 
 function renderBots(bots){
   if(!bots || !bots.length){ $('botPanel').classList.add('hidden'); return; }
   $('botPanel').classList.remove('hidden');
   const table = $('botTable');
   table.innerHTML = '';
-  bots.forEach(b => {
-    const row = document.createElement('div');
-    row.className = 'bot-row';
-    row.innerHTML =
-      '<span class="bot-name">' + b.name + ' <span style="color:var(--dim);font-size:.78rem">(' + b.category + ')</span></span>' +
-      '<span class="bot-status--' + (b.blocked ? 'blocked' : 'ok') + '">' + (b.blocked ? 'Blocked' : 'Allowed') + '</span>' +
-      '<span class="bot-evidence">' + b.evidence.replace(/</g,'&lt;') + '</span>';
-    table.appendChild(row);
-  });
+  const byName = {}; bots.forEach(b => byName[b.name] = b);
+
+  if(bots.every(b => !b.blocked)){
+    table.innerHTML = '<div class="bot-row"><span class="bot-name">All 13 tracked crawlers</span><span class="bot-status--ok">Allowed</span><span class="bot-evidence">' + (bots[0].evidence||'').replace(/</g,'&lt;') + '</span></div>';
+  } else {
+    BOT_COMPANIES.forEach(company => {
+      const rows = company.bots.map(n => byName[n]).filter(Boolean);
+      if(!rows.length) return;
+      const label = document.createElement('div');
+      label.className = 'bot-company';
+      label.textContent = company.label;
+      table.appendChild(label);
+      rows.forEach(b => {
+        const row = document.createElement('div');
+        row.className = 'bot-row';
+        row.innerHTML =
+          '<span class="bot-name">' + b.name + ' <span style="color:var(--dim);font-size:.78rem">(' + b.category + ')</span></span>' +
+          '<span class="bot-status--' + (b.blocked ? 'blocked' : 'ok') + '">' + (b.blocked ? 'Blocked' : 'Allowed') + '</span>' +
+          '<span class="bot-evidence">' + b.evidence.replace(/</g,'&lt;') + '</span>';
+        table.appendChild(row);
+      });
+    });
+  }
+
+  const blockedCount = bots.filter(b => b.blocked).length;
+  $('botCta').textContent = blockedCount
+    ? blockedCount + ' crawler(s) blocked -- the $25 full audit tells you exactly which ones matter for your business and writes the fix.'
+    : '';
 }
 
 // Generators reuse the same templates as llms-txt-generator/robots-txt-generator/
@@ -648,13 +747,25 @@ function renderBots(bots){
 function genLlmsTxt(title, base){
   return '# ' + (title || 'Your Business') + '\n\n> Add one or two sentences here describing what ' + (title || 'your business') + ' does and who it is for.\n\n## Key pages\n- [Home](' + base + ')\n\n## Contact\nAdd your real contact info here.\n';
 }
-function genRobotsBlock(){
-  return 'User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: ' + '/sitemap.xml';
+function genRobotsBlock(base){
+  // Sitemap directives must be an absolute URL per the sitemaps protocol -- a relative
+  // "/sitemap.xml" is invalid, which a correctness-focused tool handing out generated files
+  // really shouldn't ship (item 2, final-pass report).
+  return 'User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: ChatGPT-User\nAllow: /\n\nUser-agent: PerplexityBot\nAllow: /\n\nUser-agent: Claude-User\nAllow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: ' + base + '/sitemap.xml';
 }
 function genJsonLd(title, base, contact){
   const org = {"@context":"https://schema.org","@type":"Organization","name": title || 'Your Business', "url": base};
   if(contact){ org.contactPoint = {"@type":"ContactPoint", "contactType":"customer support", "email": contact.startsWith('mailto:') ? contact.slice(7) : undefined, "telephone": contact.startsWith('tel:') ? contact.slice(4) : undefined}; }
   return '<script type="application/ld+json">\n' + JSON.stringify(org, null, 2) + '\n<\/script>';
+}
+function genAgentsMd(title, base){
+  return '# ' + (title || 'Your Business') + ' -- agent guidance\n\n> Add one or two sentences on what this business does.\n\n## Key flows\n- Add the main things an agent might want to do here (browse products, book, contact).\n\n## Contact\nAdd your real contact info here.\n\n## Constraints\nAdd anything an agent should NOT do (e.g. no automated purchases without confirmation).\n\nCanonical: ' + base + '\n';
+}
+function genLlmsFullTxt(title, base){
+  return '# ' + (title || 'Your Business') + '\n\nFull markdown mirror of your homepage content goes here -- paste your real page copy in\nplain markdown so agents can read it without parsing HTML or executing JavaScript.\n\nSource: ' + base + '\n';
+}
+function genSitemapXml(base){
+  return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>' + base + '/</loc>\n  </url>\n  <!-- Add one <url><loc>...</loc></url> per real page on your site -->\n</urlset>\n';
 }
 
 function makeFixItem(name, filename, content, caveat){
@@ -678,25 +789,42 @@ function makeFixItem(name, filename, content, caveat){
   return item;
 }
 
+const FIX_GENERATABLE = ['llms', 'llmsfull', 'agentsmd', 'robots', 'schema', 'sitemap'];
+
 function renderFixPack(data){
-  const failed = data.checks.filter(c => !c.pass);
-  if(!failed.length){ $('fixPack').classList.add('hidden'); return; }
-  $('fixPack').classList.remove('hidden');
+  const byId = id => data.checks.find(c => c.id === id);
   const wrap = $('fixPackItems');
   wrap.innerHTML = '';
-  const byId = id => data.checks.find(c => c.id === id);
+
   if(byId('llms') && !byId('llms').pass){
     wrap.appendChild(makeFixItem('llms.txt draft', 'llms.txt', genLlmsTxt(data.title, data.base), 'Drafted from your homepage title -- fill in the two blanks before publishing.'));
   }
+  if(byId('llmsfull') && !byId('llmsfull').pass){
+    wrap.appendChild(makeFixItem('llms-full.txt skeleton', 'llms-full.txt', genLlmsFullTxt(data.title, data.base), 'A skeleton only -- paste your real page copy in before publishing.'));
+  }
+  if(byId('agentsmd') && !byId('agentsmd').pass){
+    wrap.appendChild(makeFixItem('agents.md starter', 'agents.md', genAgentsMd(data.title, data.base), 'Fill in your real flows and constraints before publishing.'));
+  }
   if(byId('robots') && !byId('robots').pass){
-    wrap.appendChild(makeFixItem('robots.txt AI-crawler policy block', 'robots-ai-block.txt', genRobotsBlock(), 'Append this to your existing robots.txt -- don\'t replace the whole file if you already have rules for other bots.'));
+    wrap.appendChild(makeFixItem('robots.txt AI-crawler policy block', 'robots-ai-block.txt', genRobotsBlock(data.base), 'Append this to your existing robots.txt -- don\'t replace the whole file if you already have rules for other bots.'));
   }
   if(byId('schema') && !byId('schema').pass){
     wrap.appendChild(makeFixItem('JSON-LD Organization starter', 'organization-jsonld.html', genJsonLd(data.title, data.base, data.contactMatch), 'Paste this in your <head> -- review the auto-filled fields for accuracy first.'));
   }
+  if(byId('sitemap') && !byId('sitemap').pass){
+    wrap.appendChild(makeFixItem('sitemap.xml stub', 'sitemap.xml', genSitemapXml(data.base), 'Add one <url> entry per real page, then reference it from robots.txt.'));
+  }
+
+  // With 6 of 12 checks now generatable, an empty Fix Pack should be rare -- but stay honest
+  // and hide the section entirely rather than show a heading with nothing under it (item 3).
+  if(!wrap.children.length){ $('fixPack').classList.add('hidden'); return; }
+  $('fixPack').classList.remove('hidden');
+
   const total = data.checks.reduce((s,c) => s + c.weight, 0);
-  const simulated = Math.round(data.checks.reduce((s,c) => s + ((c.pass || ['llms','robots','schema'].includes(c.id)) ? c.weight : 0), 0) / total * 100);
-  $('simulatedScore').textContent = 'Score with these applied: ~' + simulated + '/100 (simulated -- based on the checks above, not re-verified live).';
+  const simulated = Math.round(data.checks.reduce((s,c) => s + ((c.pass || FIX_GENERATABLE.includes(c.id)) ? c.weight : 0), 0) / total * 100);
+  $('simulatedScore').textContent = simulated > data.score
+    ? 'Score with these applied: ~' + simulated + '/100 (simulated -- based on the checks above, not re-verified live).'
+    : '';
 }
 
 $('pasteBtn').addEventListener('click', () => {

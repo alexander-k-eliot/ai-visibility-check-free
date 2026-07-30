@@ -27,9 +27,9 @@ def build():
     brand_lockup(d, 42, 32)
 
     # Headline
-    d.text((60, 130), "Will AI assistants find", font=serif(56, True), fill=INK)
-    d.text((60, 196), "your website?", font=serif(56, True), fill=INK)
-    d.text((60, 274), "Free 60-second check. No signup. Instant score.", font=sans(24), fill=DIM)
+    d.text((60, 130), "See your site the way", font=serif(56, True), fill=INK)
+    d.text((60, 196), "an AI crawler sees it", font=serif(56, True), fill=INK)
+    d.text((60, 274), "Free. No signup. Real fix files, not just a score.", font=sans(24), fill=DIM)
 
     # Score ring, right side
     cx, cy, r = 950, 340, 130
