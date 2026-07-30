@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
-<title>The Retrofit Proof — does llms.txt/agents.md/schema actually change what AI says about you?</title>
+<title>The Retrofit Proof : does llms.txt/agents.md/schema actually change what AI says about you?</title>
 <link rel="canonical" href="https://clickcoded.com/ai-visibility-check-free/retrofit-proof/">
 <meta name="description" content="A live, disclosed A/B test: two identical small-business pages, one with llms.txt/agents.md/schema.org markup, one without. We ask ChatGPT, Perplexity and Gemini about both, on a schedule, and publish every answer.">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Click Coded","url":"https://clickcoded.com/","email":"run@clickcoded.com","description":"AI-operated, human-reviewed studio. Honest tools, no fake guarantees.","alternateName":"Alexander K. Eliot"},{"@type":"TechArticle","headline":"The Retrofit Proof","datePublished":"2026-07-27","description":"A live, disclosed A/B test measuring whether llms.txt/agents.md/schema.org markup changes how AI assistants describe an otherwise-identical business page."}]}</script>
@@ -59,7 +59,7 @@ th{color:var(--dim);font-weight:normal;font-size:.8rem;text-transform:uppercase}
 <div class="wrap">
 <p class="sub" style="font-family:var(--mono)">CLICK CODED · live experiment, started 2026-07-27</p>
 <h1>The Retrofit Proof</h1>
-<p>Every AI-visibility score this studio publishes — including the one we sell — is a static, verifiable technical check: does <code>llms.txt</code> exist, is there structured data, and so on. As the <a href="../methodology/">methodology page</a> says plainly: <em>"we never ask ChatGPT or Claude what they think of a site and report the answer as a score."</em></p>
+<p>Every AI-visibility score this studio publishes, including the one we sell, is a static, verifiable technical check: does <code>llms.txt</code> exist, is there structured data, and so on. As the <a href="../methodology/">methodology page</a> says plainly: <em>"we never ask ChatGPT or Claude what they think of a site and report the answer as a score."</em></p>
 <p>That's honest. It's also a gap: we've never actually verified that fixing those technical checks changes what a real AI assistant <em>says</em> when asked about a business. This page is that verification, run in public, with every answer published as we get it.</p>
 
 <h2>The setup</h2>
@@ -67,14 +67,14 @@ th{color:var(--dim);font-weight:normal;font-size:.8rem;text-transform:uppercase}
 <div class="card"><h3>Control</h3><p class="small">Identical business page. No llms.txt, no agents.md, no schema.org markup.</p><p><a href="control/">View control page →</a></p></div>
 <div class="card"><h3>Treatment</h3><p class="small">Byte-for-byte identical visible content. Adds llms.txt, agents.md, and LocalBusiness/FAQ schema.org JSON-LD.</p><p><a href="treatment/">View treatment page →</a></p></div>
 </div>
-<p>Both describe "Fernbrook Ledger Co.," a fictional bookkeeping business — clearly disclosed as a research fixture on both pages, not a real business and not for real customer contact. Using a fictional subject means any answer an assistant gives can only come from what it read on these two pages (or that it has no information at all), not from prior real-world knowledge about an actual company.</p>
+<p>Both describe "Fernbrook Ledger Co.," a fictional bookkeeping business. Clearly disclosed as a research fixture on both pages, not a real business and not for real customer contact. Using a fictional subject means any answer an assistant gives can only come from what it read on these two pages (or that it has no information at all), not from prior real-world knowledge about an actual company.</p>
 
 <h2>The questions we ask</h2>
 <p>On a recurring schedule, we ask each assistant (ChatGPT, Perplexity, Gemini) the same three prompts, once naming the control URL and once naming the treatment URL:</p>
 <ol>
 <li>"What does [business name] at [URL] offer, and what does it cost?"</li>
 <li>"Is [business name] a legitimate business? What do you know about it?"</li>
-<li>"I'm a freelancer looking for a bookkeeper — would you recommend [business name]?"</li>
+<li>"I'm a freelancer looking for a bookkeeper. Would you recommend [business name]?"</li>
 </ol>
 <p>We log the raw answer, whether it accurately reflects the page content, and whether the assistant appears to have read the page at all (vs. declining to answer / hallucinating / finding nothing).</p>
 
@@ -82,17 +82,17 @@ th{color:var(--dim);font-weight:normal;font-size:.8rem;text-transform:uppercase}
 <ul>
 <li><strong>llms.txt/agents.md are normally domain-root files.</strong> Ours are published at the page's own subpath (a documented fallback pattern our own audit tool already checks for GitHub Pages-style project sites), which may or may not be honored by real assistant crawlers. That itself is part of what this test will show.</li>
 <li><strong>This is one page pair, not a statistically powered study.</strong> It's a transparent case study, not a claim of statistical significance.</li>
-<li><strong>Crawl/index latency is real.</strong> A brand-new page may not be picked up by any assistant for days regardless of markup — early "no information" results from both pages are expected and don't yet mean anything.</li>
+<li><strong>Crawl/index latency is real.</strong> A brand-new page may not be picked up by any assistant for days regardless of markup. Early "no information" results from both pages are expected and don't yet mean anything.</li>
 </ul>
 
 <h2>Results log</h2>
 <div id="results">
-<p class="small"><strong>2026-07-27, baseline round (Perplexity, all 3 prompts):</strong> control and treatment came back symmetric on all three prompts — "no information / can't verify / wouldn't recommend" regardless of retrofit files. No signal yet either way; Perplexity doesn't appear to have crawled either page yet.</p>
-<p class="small"><strong>2026-07-27, ChatGPT baseline, prompt 1 (first real signal):</strong> control got a confidently <em>hallucinated</em> pricing table sourced to an unrelated real business; treatment got an honest "no information, likely a test fixture" answer. Same model, same day, same fictional business — only the URL differed. One data point, not a conclusion yet — repeat runs needed.</p>
-<p class="small"><strong>2026-07-27, Gemini baseline, prompt 1:</strong> symmetric — both pages read accurately, no hallucination on either side. Gemini appears to fetch and read the live page directly rather than relying on a search index, which may explain the difference from ChatGPT's result.</p>
-<p class="small"><strong>2026-07-27, ChatGPT baseline, prompts 2 and 3 (ChatGPT's 6/6 complete):</strong> symmetric and accurate on both pages this round — no repeat of prompt 1's hallucination. Tempers, but doesn't overturn, the earlier finding: needs repeat rounds before concluding anything causal.</p>
-<p class="small"><strong>2026-07-27, Gemini baseline, prompts 2 and 3 (full 18/18 baseline complete):</strong> mostly symmetric and accurate, with one exception — on prompt 2, control's answer directly quoted the page while treatment's answer reasoned speculatively (still landed on the right conclusion, just less grounded). Honest overall read after the full round: no consistent directional effect yet across all 18 queries — one hallucination (ChatGPT/control/prompt 1) and one grounding-quality gap (Gemini/treatment/prompt 2) on an otherwise clean, symmetric baseline. Full raw text: <a href="results.md">results.md</a>. Ongoing re-checks continue as the pages age and get more crawl time.</p>
-<p class="small"><strong>2026-07-30, Perplexity re-check (3 days later, all 3 prompts):</strong> prompt 1's asymmetry repeated — control hallucinated a substitute real business's pricing again, treatment declined honestly again. That's the same pattern now seen on two different models (ChatGPT 07-27, Perplexity 07-30) on the same prompt. Prompts 2 and 3 stayed symmetric and accurate on both pages. Still not proof of causation, but a second data point worth tracking. ChatGPT/Gemini re-checks queued for next authenticated run.</p>
+<p class="small"><strong>2026-07-27, baseline round (Perplexity, all 3 prompts):</strong> control and treatment came back symmetric on all three prompts. "no information / can't verify / wouldn't recommend" regardless of retrofit files. No signal yet either way. Perplexity doesn't appear to have crawled either page yet.</p>
+<p class="small"><strong>2026-07-27, ChatGPT baseline, prompt 1 (first real signal):</strong> control got a confidently <em>hallucinated</em> pricing table sourced to an unrelated real business. Treatment got an honest "no information, likely a test fixture" answer. Same model, same day, same fictional business. Only the URL differed. One data point, not a conclusion yet. Repeat runs needed.</p>
+<p class="small"><strong>2026-07-27, Gemini baseline, prompt 1:</strong> symmetric. Both pages read accurately, no hallucination on either side. Gemini appears to fetch and read the live page directly rather than relying on a search index, which may explain the difference from ChatGPT's result.</p>
+<p class="small"><strong>2026-07-27, ChatGPT baseline, prompts 2 and 3 (ChatGPT's 6/6 complete):</strong> symmetric and accurate on both pages this round. No repeat of prompt 1's hallucination. Tempers, but doesn't overturn, the earlier finding: needs repeat rounds before concluding anything causal.</p>
+<p class="small"><strong>2026-07-27, Gemini baseline, prompts 2 and 3 (full 18/18 baseline complete):</strong> mostly symmetric and accurate, with one exception, on prompt 2, control's answer directly quoted the page while treatment's answer reasoned speculatively (still landed on the right conclusion, just less grounded). Honest overall read after the full round: no consistent directional effect yet across all 18 queries. One hallucination (ChatGPT/control/prompt 1) and one grounding-quality gap (Gemini/treatment/prompt 2) on an otherwise clean, symmetric baseline. Full raw text: <a href="results.md">results.md</a>. Ongoing re-checks continue as the pages age and get more crawl time.</p>
+<p class="small"><strong>2026-07-30, Perplexity re-check (3 days later, all 3 prompts):</strong> prompt 1's asymmetry repeated. Control hallucinated a substitute real business's pricing again, treatment declined honestly again. That's the same pattern now seen on two different models (ChatGPT 07-27, Perplexity 07-30) on the same prompt. Prompts 2 and 3 stayed symmetric and accurate on both pages. Still not proof of causation, but a second data point worth tracking. ChatGPT/Gemini re-checks queued for next authenticated run.</p>
 </div>
 
 <div class="notice">

@@ -77,7 +77,7 @@ code{background:var(--card2);padding:1px 5px;border-radius:3px;font-size:.85em}
 <h1>Who Watches the Watchmen?</h1>
 </div>
 </div>
-<p class="sub">Eight companies sell AI-visibility tracking: Otterly, Profound, Peec AI, Scrunch AI, and AthenaHQ build pure-play AI-visibility monitoring products; Semrush bundles it into a broader SEO suite; Fokal's core product is AI-written content generation with visibility tracking attached; Nightwatch is a legacy SEO rank-tracker with AI visibility added on. All eight sell a way to measure whether AI is aware of a business. So we ran our free, published 9-check rubric — the same one behind <a href="../">the free checker</a> and <a href="../">Pulse</a> — against their own homepages. No live LLM prompting, no opinion, no cherry-picking. Same input, same result every time. Here's what came back.</p>
+<p class="sub">Eight companies sell AI-visibility tracking: Otterly, Profound, Peec AI, Scrunch AI, and AthenaHQ build pure-play AI-visibility monitoring products. Semrush bundles it into a broader SEO suite. Fokal's core product is AI-written content generation with visibility tracking attached. Nightwatch is a legacy SEO rank-tracker with AI visibility added on. All eight sell a way to measure whether AI is aware of a business. So we ran our free, published 9-check rubric. The same one behind <a href="../">the free checker</a> and <a href="../">Pulse</a>. Against their own homepages. No live LLM prompting, no opinion, no cherry-picking. Same input, same result every time. Here's what came back.</p>
 
 <p><span class="big">67/100</span> <span class="sub">average score across the 7 sites we could reach (470 total ÷ 7). Two scored below 50. One blocked our audit fetcher entirely.</span></p>
 
@@ -92,7 +92,7 @@ code{background:var(--card2);padding:1px 5px;border-radius:3px;font-size:.85em}
 <tr><td>5</td><td>Scrunch AI</td><td class="sc">60</td><td>No structured data, no sitemap, no findable contact path</td></tr>
 <tr><td>6</td><td>Profound</td><td class="sd">50</td><td>No llms.txt, no structured data</td></tr>
 <tr><td>7</td><td>Peec AI</td><td class="sd">45</td><td>No llms.txt, no structured data, no findable contact path</td></tr>
-<tr><td>—</td><td>Otterly AI</td><td class="sd">unreachable</td><td>Blocked our audit fetcher (403) — itself a data point</td></tr>
+<tr><td>—</td><td>Otterly AI</td><td class="sd">unreachable</td><td>Blocked our audit fetcher (403). Itself a data point</td></tr>
 </tbody></table>
 </div>
 <p class="small">Same rubric, same 9 checks, same weights as <a href="../methodology/">the published methodology</a>. Full per-check results for every site below.</p>
@@ -110,31 +110,31 @@ code{background:var(--card2);padding:1px 5px;border-radius:3px;font-size:.85em}
 <tr><td>Findable contact</td><td class="sa">✓</td><td class="sa">✓</td><td class="sa">✓</td><td class="sa">✓</td><td class="sa">✓</td><td class="sd">✗</td><td class="sa">✓</td><td class="sd">✗</td></tr>
 </tbody></table>
 </div>
-<p class="small">Otterly AI omitted from this table — unreachable, not scored. CC = Click Coded (us).</p>
+<p class="small">Otterly AI omitted from this table. Unreachable, not scored. CC = Click Coded (us).</p>
 
 <h2>The part that's actually the headline</h2>
-<p><strong>Profound and Peec AI — two companies whose entire product is measuring whether AI can find and cite a business — have zero valid structured data and no llms.txt on their own websites.</strong> Structured data and llms.txt are worth 40 of the rubric's 100 points combined; both companies fail both. That verdict is a fetch and a parse against the <a href="../methodology/">published rubric</a> above, the same one behind every score on this page. One honest caveat: <a href="../">the free browser checker</a> runs 6 of these 9 checks (robots.txt, llms-full.txt and agents.md can't be fetched cross-site from a browser — a browser limit, not a rubric change, per the methodology page's own FAQ), so a browser re-check won't reproduce the exact numbers above; the full 9-check server-side run is what these scores are.</p>
+<p><strong>Profound and Peec AI, two companies whose entire product is measuring whether AI can find and cite a business, have zero valid structured data and no llms.txt on their own websites.</strong> Structured data and llms.txt are worth 40 of the rubric's 100 points combined. Both companies fail both. That verdict is a fetch and a parse against the <a href="../methodology/">published rubric</a> above, the same one behind every score on this page. One honest caveat: <a href="../">the free browser checker</a> runs 6 of these 9 checks (robots.txt, llms-full.txt and agents.md can't be fetched cross-site from a browser. A browser limit, not a rubric change, per the methodology page's own FAQ), so a browser re-check won't reproduce the exact numbers above. The full 9-check server-side run is what these scores are.</p>
 
 <h2>What almost everyone in this group gets wrong</h2>
 <ul>
-<li><strong>agents.md guidance</strong> — 0 of 7 pass. Nobody in the AI-visibility industry has adopted the standard they'd presumably tell a client to adopt.</li>
-<li><strong>llms-full.txt</strong> — 1 of 7 pass (AthenaHQ).</li>
-<li><strong>Structured data (schema.org)</strong> — 3 of 7 pass. The highest-weight check besides llms.txt, and the one most directly relevant to what these companies sell, fails more often than not.</li>
-<li><strong>Every site passed</strong> robots.txt access, meta/title, and no-JS legibility — the basics are fine industry-wide. It's the specifically AI-agent-era signals (llms.txt, structured data, agents.md) that lag, even here.</li>
+<li><strong>agents.md guidance</strong>: 0 of 7 pass. Nobody in the AI-visibility industry has adopted the standard they'd presumably tell a client to adopt.</li>
+<li><strong>llms-full.txt</strong>: 1 of 7 pass (AthenaHQ).</li>
+<li><strong>Structured data (schema.org)</strong>: 3 of 7 pass. The highest-weight check besides llms.txt, and the one most directly relevant to what these companies sell, fails more often than not.</li>
+<li><strong>Every site passed</strong> robots.txt access, meta/title, and no-JS legibility. The basics are fine industry-wide. It's the specifically AI-agent-era signals (llms.txt, structured data, agents.md) that lag, even here.</li>
 </ul>
 
 <h2>Why we're including ourselves</h2>
-<p>The same "State of AI Visibility" benchmark this studio published in 2026-07 scored our own Gumroad sales link 45/100, last place out of 20 major SaaS sites, on the same page selling through it. We're not going to run a rubric against competitors and quietly skip the mirror. One more disclosure in that spirit: building this page is what caught that Pulse's own product domain (pulse.clickcoded.com) had no homepage at all and would have scored 0 — fixed before this page published, not after. Click Coded's own site scores 100/100 on this exact rubric today — verify it yourself, same tool, same weights, no exception made.</p>
+<p>The same "State of AI Visibility" benchmark this studio published in 2026-07 scored our own Gumroad sales link 45/100, last place out of 20 major SaaS sites, on the same page selling through it. We're not going to run a rubric against competitors and quietly skip the mirror. One more disclosure in that spirit: building this page is what caught that Pulse's own product domain (pulse.clickcoded.com) had no homepage at all and would have scored 0. Fixed before this page published, not after. Click Coded's own site scores 100/100 on this exact rubric today. Verify it yourself, same tool, same weights, no exception made.</p>
 
 <h2>What this doesn't mean</h2>
-<p>A low score here doesn't mean these are bad products — Otterly, Profound, Peec, Scrunch, AthenaHQ, Semrush, Fokal, and Nightwatch all do something real: live-prompting ChatGPT, Perplexity, Gemini, and others to track brand mentions and sentiment. That's a different, legitimate measurement from what this rubric checks. What it does mean: the companies selling "is AI aware of your business" haven't all applied that same lens to their own front door. Structured data and llms.txt aren't obscure — they're the first two checks on the rubric these companies would presumably tell a customer to fix.</p>
+<p>A low score here doesn't mean these are bad products. Otterly, Profound, Peec, Scrunch, AthenaHQ, Semrush, Fokal, and Nightwatch all do something real: live-prompting ChatGPT, Perplexity, Gemini, and others to track brand mentions and sentiment. That's a different, legitimate measurement from what this rubric checks. What it does mean: the companies selling "is AI aware of your business" haven't all applied that same lens to their own front door. Structured data and llms.txt aren't obscure. They're the first two checks on the rubric these companies would presumably tell a customer to fix.</p>
 
 <div class="cta"><strong>Check any site yourself</strong>
 <p>Free, 60 seconds, no signup, the exact same rubric used above: <a href="../">run the checker</a>. Full rubric and weights: <a href="../methodology/">the published methodology</a>. Want ongoing monitoring instead of a one-time check, at $9-99/mo instead of $29-$500+/mo: <a href="https://eliotwave01.gumroad.com/l/pulse">Pulse</a>.</p></div>
 
 <div class="cta"><strong>Want to hear when we ship something new?</strong><p>We add new free tools and benchmarks periodically. <a href="https://eliotwave01.gumroad.com/subscribe">Get an email when we do</a>, no spam, unsubscribe anytime.</p></div>
 
-<p class="small">Audited 2026-07-29 with the same engine behind <a href="../">the free checker</a>, <a href="../benchmark/">the SaaS benchmark</a>, and Pulse — full rubric and weights published at <a href="../methodology/">the methodology page</a>. One server-side fetch per site, a clearly identifying User-Agent, public data only. Otterly.ai returned HTTP 403 to our fetcher at both the apex and www subdomain — we're reporting that as unreachable, not as a score, since we can't verify what we can't fetch. Built by Click Coded, AI-operated and human-reviewed. Contact: run@clickcoded.com</p>
+<p class="small">Audited 2026-07-29 with the same engine behind <a href="../">the free checker</a>, <a href="../benchmark/">the SaaS benchmark</a>, and Pulse. Full rubric and weights published at <a href="../methodology/">the methodology page</a>. One server-side fetch per site, a clearly identifying User-Agent, public data only. Otterly.ai returned HTTP 403 to our fetcher at both the apex and www subdomain. We're reporting that as unreachable, not as a score, since we can't verify what we can't fetch. Built by Click Coded, AI-operated and human-reviewed. Contact: run@clickcoded.com</p>
 
 <p class="small">More from Click Coded: <a href="../">AI visibility checker</a> &middot; <a href="../ai-visibility-tools-compared/">AI Visibility Tools in 2026: An Honest Comparison</a> &middot; <a href="../benchmark/">State of AI Visibility 2026</a> &middot; <a href="../methodology/">Full methodology</a>.</p>
 </div>

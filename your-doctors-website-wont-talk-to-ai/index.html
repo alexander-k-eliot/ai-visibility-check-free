@@ -75,22 +75,22 @@ th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);fon
 </div>
 </div>
 
-<p class="sub">People already ask ChatGPT and other AI assistants real health questions. Verified live today, not pulled from an old dataset: two of the most trusted hospital brands in the country return a hard HTTP 403 to a plainly-identified AI fetcher &mdash; including OpenAI's own <code>GPTBot</code> user-agent, the exact one their own published crawler-access documentation tells webmasters to look for. When an assistant tries to read either site directly, it gets nothing. It answers from somewhere else instead.</p>
+<p class="sub">People already ask ChatGPT and other AI assistants real health questions. Verified live today, not pulled from an old dataset: two of the most trusted hospital brands in the country return a hard HTTP 403 to a plainly-identified AI fetcher, including OpenAI's own <code>GPTBot</code> user-agent, the exact one their own published crawler-access documentation tells webmasters to look for. When an assistant tries to read either site directly, it gets nothing. It answers from somewhere else instead.</p>
 
 <div class="verified">Re-verified live at time of publication, 2026-07-26:<br>
 curl -A "GPTBot" https://www.mayoclinic.org/ → <span class="sc">HTTP 403</span><br>
 curl -A "GPTBot" https://www.hopkinsmedicine.org/ → <span class="sc">HTTP 403</span></div>
 
 <h2>What this actually is, and isn't</h2>
-<p>This isn't necessarily a robots.txt rule written specifically to target AI &mdash; neither site's robots.txt even mentions GPTBot or the other named AI crawlers by name. It's almost certainly a bot-protection service (a WAF or CDN-level filter) rejecting anything that doesn't look like a real browser, which incidentally blocks the same respectful, identified AI crawlers that OpenAI, Anthropic, and Perplexity explicitly ask sites to allow. The effect is the same either way: an assistant trying to read the page in real time gets a wall, not an answer.</p>
+<p>This isn't necessarily a robots.txt rule written specifically to target AI. Neither site's robots.txt even mentions GPTBot or the other named AI crawlers by name. It's almost certainly a bot-protection service (a WAF or CDN-level filter) rejecting anything that doesn't look like a real browser, which incidentally blocks the same respectful, identified AI crawlers that OpenAI, Anthropic, and Perplexity explicitly ask sites to allow. The effect is the same either way: an assistant trying to read the page in real time gets a wall, not an answer.</p>
 
 <h2>Part of a wider pattern, not a one-off</h2>
-<p>This is 2 of 14 major U.S. hospital systems audited for <a href="../healthcare-benchmark/">The State of AI Visibility 2026 &mdash; Healthcare Systems Edition</a>, this studio's own real benchmark. In that same audit, Kaiser Permanente and Cedars-Sinai also failed to return a usable homepage under the benchmark's own methodology and were excluded from scoring rather than counted as a 0 &mdash; the same honest-scope rule used across every benchmark this site publishes. Cleveland Clinic, the one system that let the fetcher straight in, was also the only one in the entire 14-system sample with a published <code>llms.txt</code>, and led the reachable field at 90/100.</p>
+<p>This is 2 of 14 major U.S. hospital systems audited for <a href="../healthcare-benchmark/">The State of AI Visibility 2026. Healthcare Systems Edition</a>, this studio's own real benchmark. In that same audit, Kaiser Permanente and Cedars-Sinai also failed to return a usable homepage under the benchmark's own methodology and were excluded from scoring rather than counted as a 0. The same honest-scope rule used across every benchmark this site publishes. Cleveland Clinic, the one system that let the fetcher straight in, was also the only one in the entire 14-system sample with a published <code>llms.txt</code>, and led the reachable field at 90/100.</p>
 
 <div class="overflow-wrap">
 <table><thead><tr><th>Hospital system</th><th>What happened</th></tr></thead><tbody>
-<tr><td>Mayo Clinic</td><td class="sc">HTTP 403 to an identified fetcher &mdash; re-verified live today</td></tr>
-<tr><td>Johns Hopkins Medicine</td><td class="sc">HTTP 403 to an identified fetcher &mdash; re-verified live today</td></tr>
+<tr><td>Mayo Clinic</td><td class="sc">HTTP 403 to an identified fetcher. Re-verified live today</td></tr>
+<tr><td>Johns Hopkins Medicine</td><td class="sc">HTTP 403 to an identified fetcher. Re-verified live today</td></tr>
 <tr><td>Kaiser Permanente</td><td class="sc">Failed to return a usable homepage, per the healthcare benchmark's own dated methodology</td></tr>
 <tr><td>Cedars-Sinai</td><td class="sc">Failed to return a usable homepage, per the healthcare benchmark's own dated methodology</td></tr>
 <tr><td>Cleveland Clinic</td><td class="sa">Reachable, scored 90/100, the only system with a published llms.txt</td></tr>
@@ -98,7 +98,7 @@ curl -A "GPTBot" https://www.hopkinsmedicine.org/ → <span class="sc">HTTP 403<
 </div>
 
 <h2>Why this matters right now</h2>
-<p>Nobody is claiming an AI assistant should replace a doctor. The real issue is narrower and more mechanical: when someone asks an AI a real question about, say, Mayo Clinic's own actual guidance on a condition, and Mayo's own site won't let the assistant in, the assistant doesn't just say nothing &mdash; it answers from whatever source it <em>can</em> reach, which may be a forum post, a less careful competitor, or a stale cache. The institution with the most credibility on the exact question being asked is, mechanically, the one least likely to be the source of the answer.</p>
+<p>Nobody is claiming an AI assistant should replace a doctor. The real issue is narrower and more mechanical: when someone asks an AI a real question about, say, Mayo Clinic's own actual guidance on a condition, and Mayo's own site won't let the assistant in, the assistant doesn't just say nothing. It answers from whatever source it <em>can</em> reach, which may be a forum post, a less careful competitor, or a stale cache. The institution with the most credibility on the exact question being asked is, mechanically, the one least likely to be the source of the answer.</p>
 
 <div class="cta"><strong>Check your own site the same way</strong>
 <p style="margin-top:6px">Free, 30 seconds, no signup: <a href="../">the AI visibility checker</a>. Full healthcare industry data: <a href="../healthcare-benchmark/">the complete 14-system benchmark</a>.</p></div>

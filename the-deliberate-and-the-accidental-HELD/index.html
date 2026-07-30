@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/ai-visibility-check-free/assets/favicon.svg" type="image/svg+xml">
-<title>The Deliberate and the Accidental — 50 News Outlets vs 100 Crisis Organizations</title>
+<title>The Deliberate and the Accidental : 50 News Outlets vs 100 Crisis Organizations</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Deliberate and the Accidental — 50 News Outlets vs 100 Crisis Organizations">
 <meta property="og:description" content="News outlets chose to be invisible to AI. Crisis organizations never made a choice. We audited 150 real sites and both groups landed 0.4 points apart.">
@@ -112,7 +112,7 @@ ul{padding-left:20px}li{margin:6px 0}
 
 <p>Two sectors. Opposite intent. A gap of <strong>0.4 points</strong>.</p>
 
-<p>Every single auditable news outlet has a deliberate stance on AI crawlers. Not one is undecided. They are the most policy-deliberate group we have ever measured. Crisis organizations overwhelmingly never made a choice at all &mdash; 70 of 81 have no AI policy in their robots.txt whatsoever.</p>
+<p>Every single auditable news outlet has a deliberate stance on AI crawlers. Not one is undecided. They are the most policy-deliberate group we have ever measured. Crisis organizations overwhelmingly never made a choice at all. 70 of 81 have no AI policy in their robots.txt whatsoever.</p>
 
 <p><span class="big">0.4</span> <span class="sub">The measurable advantage the industry currently fighting hardest about AI has bought itself over the sector that never showed up to the fight.</span></p>
 
@@ -139,7 +139,7 @@ ul{padding-left:20px}li{margin:6px 0}
 <p class="small">usatoday.com, foxnews.com, msnbc.com, time.com. Scores across the group ranged 25 to 90, median 55.</p>
 </div>
 
-<h2>Crisis organizations, in aggregate only &mdash; on purpose</h2>
+<h2>Crisis organizations, in aggregate only, on purpose</h2>
 
 <p>We are not naming individual crisis or safety organizations that scored poorly, and we are not going to. Publishing a ranked list of underperforming suicide-prevention and domestic-violence services would be a good headline and a bad thing to do. The point of having those names is to offer each one a free fix privately, which is what we are doing with them.</p>
 
@@ -152,14 +152,14 @@ ul{padding-left:20px}li{margin:6px 0}
 
 <div class="warn">
 <h3>The finding we are deliberately not overstating</h3>
-<p class="small">19 of the 100 crisis organizations, and 9 of the 50 news outlets, returned 401, 403, 429 or timed out to our auditor entirely &mdash; a plainly identified, well-behaved crawler with contact details in its user-agent string.</p>
+<p class="small">19 of the 100 crisis organizations, and 9 of the 50 news outlets, returned 401, 403, 429 or timed out to our auditor entirely. A plainly identified, well-behaved crawler with contact details in its user-agent string.</p>
 <p class="small"><strong>This does not show that AI assistants cannot reach those organizations, and we will not claim it does.</strong> Large providers' crawlers are frequently allowlisted at the CDN layer where a generic client is not, so GPTBot or ClaudeBot may well get through where we did not.</p>
 <p class="small">What it honestly shows is that these sites are closed to non-browser clients by default, and that whether an assistant can read them rests on a CDN allowlist decision almost nobody at the organization knows they delegated. Stating it more strongly than that would be false.</p>
 </div>
 
 <h2>Method, and what it cannot tell you</h2>
 <ul>
-<li>One fetch per domain, one point in time, one IP, one user-agent. Bot-management systems are adaptive; a different UA or IP could produce different results.</li>
+<li>One fetch per domain, one point in time, one IP, one user-agent. Bot-management systems are adaptive. A different UA or IP could produce different results.</li>
 <li>robots.txt policy is a <em>stated intent</em>. It is not proof of what any crawler actually does.</li>
 <li>The score is our own rubric, weighting llms.txt, robots policy, schema.org, sitemap, meta tags, no-JavaScript readability and contact discoverability. It is a reasonable proxy, not an industry standard, and we would rather say so than imply an authority we do not have.</li>
 <li>"Blocked to our auditor" is a separate category from "scored low" and is reported separately everywhere above.</li>

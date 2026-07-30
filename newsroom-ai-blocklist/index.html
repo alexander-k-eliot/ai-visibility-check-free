@@ -163,11 +163,11 @@ ul{padding-left:20px}li{margin:6px 0}
 
 <p>Blocking AI crawlers is a legitimate strategy. Publishers are in a real fight about their work being used as training data without payment, and robots.txt is one of the few levers they actually hold. Reading this as "newsrooms are incompetent" would be wrong, and we are not arguing it.</p>
 
-<p>The interesting part is narrower. <strong>Only 4 of 41 publish an llms.txt</strong> &mdash; a plain file saying who you are and what you cover, for assistants that <em>are</em> allowed to read you. Blocking the crawlers you don't want is a decision. Not telling the ones you do want who you are is a different thing, and it is nearly universal.</p>
+<p>The interesting part is narrower. <strong>Only 4 of 41 publish an llms.txt</strong>: a plain file saying who you are and what you cover, for assistants that <em>are</em> allowed to read you. Blocking the crawlers you don't want is a decision. Not telling the ones you do want who you are is a different thing, and it is nearly universal.</p>
 
 <h2>Nine outlets we could not audit at all</h2>
 
-<p>Washington Post, WSJ, Reuters, FT, The Economist, NPR, Politico, Axios and VentureBeat returned 401, 403, 429 or timed out to our auditor &mdash; a plainly identified, well-behaved crawler with contact details in its user-agent.</p>
+<p>Washington Post, WSJ, Reuters, FT, The Economist, NPR, Politico, Axios and VentureBeat returned 401, 403, 429 or timed out to our auditor. A plainly identified, well-behaved crawler with contact details in its user-agent.</p>
 
 <div class="warn">
 <p class="small"><strong>We are not claiming AI assistants cannot read those nine.</strong> Large providers' crawlers are frequently allowlisted at the CDN layer where a generic client is not, so GPTBot or ClaudeBot may well get through where we did not. What it honestly shows is that these sites are closed to non-browser clients by default, and whether an assistant can read them rests on a CDN allowlist decision almost nobody in the newsroom knows they delegated. Stating it more strongly than that would be false.</p>
@@ -176,12 +176,12 @@ ul{padding-left:20px}li{margin:6px 0}
 <h2>A mistake we made running this, published because we publish them</h2>
 
 <div class="warn">
-<p class="small">Those nine outlets initially came back scoring <strong>zero</strong>. "18% of major news sites score zero on AI visibility" would have been an excellent headline and completely false &mdash; the zeroes were our own redirect-and-blocking artifact, not a real result. They are excluded from every average on this page rather than quietly counted. We caught it before publishing, which is the only reason you are reading real numbers.</p>
+<p class="small">Those nine outlets initially came back scoring <strong>zero</strong>. "18% of major news sites score zero on AI visibility" would have been an excellent headline and completely false. The zeroes were our own redirect-and-blocking artifact, not a real result. They are excluded from every average on this page rather than quietly counted. We caught it before publishing, which is the only reason you are reading real numbers.</p>
 </div>
 
 <h2>Method, and what it cannot tell you</h2>
 <ul>
-<li>One fetch per domain, one point in time, one IP, one user-agent. Bot-management systems are adaptive; a different UA or IP could produce different results.</li>
+<li>One fetch per domain, one point in time, one IP, one user-agent. Bot-management systems are adaptive. A different UA or IP could produce different results.</li>
 <li>robots.txt policy is a <em>stated intent</em>. It is not proof of what any crawler actually does.</li>
 <li>The score is our own rubric, weighting llms.txt, robots policy, schema.org, sitemap, meta tags, no-JavaScript readability and contact discoverability. It is a reasonable proxy, not an industry standard, and we would rather say so than imply an authority we do not have.</li>
 <li>"Blocked to our auditor" is a separate category from "scored low" and is reported separately above.</li>
@@ -189,11 +189,11 @@ ul{padding-left:20px}li{margin:6px 0}
 
 <h2>The companion piece, and why we changed our mind about when to publish it</h2>
 
-<p>We ran the same audit against 100 crisis and safety organizations &mdash; suicide prevention, domestic violence, child safety. <a href="/ai-visibility-check-free/can-ai-find-help/">It is published here.</a></p>
+<p>We ran the same audit against 100 crisis and safety organizations. Suicide prevention, domestic violence, child safety. <a href="/ai-visibility-check-free/can-ai-find-help/">It is published here.</a></p>
 
 <p>Our original plan was to hold it until we had delivered a free fix to every organization that scored badly. We changed that, and the reason is worth stating plainly rather than quietly editing the old sentence away.</p>
 
-<p>The bottleneck turned out not to be generating the fixes. Those were ready in minutes. The bottleneck is <strong>reaching a real human at a small nonprofit</strong>, and we are not willing to speed that up by blasting guessed email addresses at crisis services. Holding the findings until that slow process finished would have meant the organizations most likely to benefit &mdash; the ones not in our sample at all &mdash; never hear the offer exists.</p>
+<p>The bottleneck turned out not to be generating the fixes. Those were ready in minutes. The bottleneck is <strong>reaching a real human at a small nonprofit</strong>, and we are not willing to speed that up by blasting guessed email addresses at crisis services. Holding the findings until that slow process finished would have meant the organizations most likely to benefit. The ones not in our sample at all. Never hear the offer exists.</p>
 
 <p>So the page is up, the offer is on it, the fixes are free to anyone who asks, and we are being explicit that delivery is in progress rather than complete. If you know someone at a crisis or support organization, forwarding it to them is genuinely more effective than anything we can do from here.</p>
 

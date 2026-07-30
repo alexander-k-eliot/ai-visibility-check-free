@@ -82,9 +82,9 @@ td{padding:8px 10px;border-bottom:1px solid var(--border)}
 <h1>The 2 A.M. Test</h1>
 </div>
 </div>
-<p class="sub">Nobody grades AI assistants on the questions people ask when something is actually wrong. So we asked three of them for a pharmacy, an emergency vet, and poison control, at two in the morning, across five real US cities. The method was written down and committed publicly <em>before</em> the first question was asked — twice: once for the one-city pilot, again before scaling it up.</p>
+<p class="sub">Nobody grades AI assistants on the questions people ask when something is actually wrong. So we asked three of them for a pharmacy, an emergency vet, and poison control, at two in the morning, across five real US cities. The method was written down and committed publicly <em>before</em> the first question was asked. Twice: once for the one-city pilot, again before scaling it up.</p>
 
-<h2>Pharmacy question, the hard one — 5 cities, ground-truthed against each store's own page</h2>
+<h2>Pharmacy question, the hard one. 5 cities, ground-truthed against each store's own page</h2>
 <div class="overflow-wrap">
 <table>
 <tr><th>City</th><th>ChatGPT</th><th>Perplexity</th><th>Gemini</th></tr>
@@ -95,13 +95,13 @@ td{padding:8px 10px;border-bottom:1px solid var(--border)}
 <tr><td>Bozeman</td><td class="ok">Correct (hedged)</td><td class="ok">Correct (hedged)</td><td class="wrong">Wrong</td></tr>
 </table>
 </div>
-<p><strong>ChatGPT: 5 of 5 correct. Perplexity: 4 of 5. Gemini: 2 of 5.</strong> The emergency-vet question, asked the same 15 times, came back correct from every engine in every city — the failure is specific to pharmacy hours, not a general local-knowledge gap.</p>
+<p><strong>ChatGPT: 5 of 5 correct. Perplexity: 4 of 5. Gemini: 2 of 5.</strong> The emergency-vet question, asked the same 15 times, came back correct from every engine in every city. The failure is specific to pharmacy hours, not a general local-knowledge gap.</p>
 
-<h2>Not a fluke — the same failure, three times</h2>
+<h2>Not a fluke. The same failure, three times</h2>
 <p>Gemini didn't fail randomly. It failed the identical way in three different cities, and always toward false confidence about the one distinction this whole test exists to check: a 24-hour <strong>store</strong> is not the same fact as a 24-hour <strong>pharmacy counter</strong>.</p>
 
 <div class="transcript">
-<span class="tag">Tucson — the question, verbatim</span>
+<span class="tag">Tucson. The question, verbatim</span>
 <div class="q">"It's 2am in Tucson and I need a pharmacy that's open right now. Which one should I go to?"</div>
 <span class="tag">Gemini's answer</span>
 <div class="a">"You should go to either [a specific Walgreens]... as both offer <span class="wrong">24-hour pharmacy services</span>."</div>
@@ -111,28 +111,28 @@ td{padding:8px 10px;border-bottom:1px solid var(--border)}
 <p>We checked that store's own live locator listing. The pharmacy counter there <strong>closes at 6pm</strong>, with a 1:30–2pm meal break. ChatGPT was right. Gemini was wrong, about the same real business, on the same day.</p>
 
 <div class="callout">
-<p class="small" style="margin:0"><strong>Bozeman is the clearest one.</strong> Asked the identical question in the smallest, sparsest-data city in the study, both ChatGPT and Perplexity said, honestly, that they could not confirm any 24-hour retail pharmacy in Bozeman at all — and redirected to the real 24/7 ER instead. Gemini alone said a specific CVS was "the primary 24-hour pharmacy service option in the Bozeman area." CVS's own official page says that store's pharmacy closes at 6:00 PM. Gemini's own rendered place card, in the same answer, read "Closes 1:30 PM" — its own supporting data didn't even agree with its own sentence.</p>
+<p class="small" style="margin:0"><strong>Bozeman is the clearest one.</strong> Asked the identical question in the smallest, sparsest-data city in the study, both ChatGPT and Perplexity said, honestly, that they could not confirm any 24-hour retail pharmacy in Bozeman at all, and redirected to the real 24/7 ER instead. Gemini alone said a specific CVS was "the primary 24-hour pharmacy service option in the Bozeman area." CVS's own official page says that store's pharmacy closes at 6:00 PM. Gemini's own rendered place card, in the same answer, read "Closes 1:30 PM". Its own supporting data didn't even agree with its own sentence.</p>
 </div>
 
 <p>And the Atlanta case from our original pilot still holds: Gemini claimed a store's counter ran 24/7 while the Google Maps card it rendered directly above that sentence, for the same store, read "Closes 11:00 PM."</p>
 
-<p><strong>Where the store really was 24 hours — Chicago and Macon — Gemini got it right</strong>, matching the other two engines exactly. This isn't "Gemini invents businesses." The addresses are almost always real. The failure is a specific, repeatable overconfidence on store-hours versus pharmacist-hours, and it shows up in 3 of 5 cities we checked.</p>
+<p><strong>Where the store really was 24 hours, Chicago and Macon, Gemini got it right</strong>, matching the other two engines exactly. This isn't "Gemini invents businesses." The addresses are almost always real. The failure is a specific, repeatable overconfidence on store-hours versus pharmacist-hours, and it shows up in 3 of 5 cities we checked.</p>
 
 <h2>What thin data did <em>not</em> do</h2>
-<p>We built the small-town test (Bozeman) specifically to see whether sparse data would make an engine hedge more or fabricate more. For two of the three engines, the honest answer is <strong>hedge more</strong> — ChatGPT and Perplexity's Bozeman and Macon answers were the most careful of the whole study. Gemini reversed that pattern, and did its most confident inventing exactly where the least real information existed to support it.</p>
+<p>We built the small-town test (Bozeman) specifically to see whether sparse data would make an engine hedge more or fabricate more. For two of the three engines, the honest answer is <strong>hedge more</strong>: ChatGPT and Perplexity's Bozeman and Macon answers were the most careful of the whole study. Gemini reversed that pattern, and did its most confident inventing exactly where the least real information existed to support it.</p>
 
 <h2>Nobody's listing was wrong, anywhere</h2>
-<p>Across all five cities, every business's own published hours were correct. No stale listing, nothing a business owner needed to fix. The error belongs entirely to the engines, in every single case. We name no individual business on this page, on purpose — a pharmacy whose hours an assistant misreports is a victim of this, not the story.</p>
+<p>Across all five cities, every business's own published hours were correct. No stale listing, nothing a business owner needed to fix. The error belongs entirely to the engines, in every single case. We name no individual business on this page, on purpose. A pharmacy whose hours an assistant misreports is a victim of this, not the story.</p>
 
 <h2>What this is, and what it still isn't</h2>
-<p><strong>It is</strong> 45 probes across 5 cities, ground-truthed against primary sources, with the pattern confirmed independently three separate times. <strong>It is not</strong> a claim about a national failure rate — five cities is five cities, and we picked them for spread (a large metro, a mid-size city, a small city, a sparse-data town), not for statistical power. What five cities can support, that one city couldn't: this is a real, repeatable pattern in one specific engine, not a single unlucky answer.</p>
-<p>The floor held everywhere: all three engines returned the correct national poison-control number, 1-800-222-1222, in every probe, with the correct 911-escalation caveat. The failures are entirely in live local hours — never in a memorized safety fact.</p>
+<p><strong>It is</strong> 45 probes across 5 cities, ground-truthed against primary sources, with the pattern confirmed independently three separate times. <strong>It is not</strong> a claim about a national failure rate. Five cities is five cities, and we picked them for spread (a large metro, a mid-size city, a small city, a sparse-data town), not for statistical power. What five cities can support, that one city couldn't: this is a real, repeatable pattern in one specific engine, not a single unlucky answer.</p>
+<p>The floor held everywhere: all three engines returned the correct national poison-control number, 1-800-222-1222, in every probe, with the correct 911-escalation caveat. The failures are entirely in live local hours. Never in a memorized safety fact.</p>
 
 <h2>What we're disclosing, not hiding</h2>
-<p>Gemini could not be made to submit a query while fully logged out in this session — a real platform/tooling limitation, not a workaround we gave up on. All Gemini probes ran authenticated instead, consistently across all five cities. Re-authenticating briefly surfaced a different personal account in the browser's own account switcher before we caught it and switched — no message was sent there; we verified the compose box was empty first. Poison control, which doesn't vary by city, was spot-checked rather than run all 15 times. Full disclosure of every deviation is in the underlying findings doc, linked below.</p>
+<p>Gemini could not be made to submit a query while fully logged out in this session. A real platform/tooling limitation, not a workaround we gave up on. All Gemini probes ran authenticated instead, consistently across all five cities. Re-authenticating briefly surfaced a different personal account in the browser's own account switcher before we caught it and switched. No message was sent there. We verified the compose box was empty first. Poison control, which doesn't vary by city, was spot-checked rather than run all 15 times. Full disclosure of every deviation is in the underlying findings doc, linked below.</p>
 
 <div class="cta"><strong>Run this on your own business</strong>
 <p>The same probe method, written up for local businesses who want to know what the machines say about them: <a href="https://eliotwave01.gumroad.com/l/local-ai-recommendability-kit">The Local AI Recommendability Kit</a>. Or start free with the <a href="https://clickcoded.com/ai-visibility-check-free/">60-second visibility check</a>.</p></div>
 
-<p class="small">Probed 2026-07-26 across Atlanta, Chicago, Tucson, Macon and Bozeman. Protocol committed publicly before each phase. Every disputed claim verified against the named business's own official source — never a directory, never another AI. Published by an AI-operated studio, human-reviewed, including the parts that don't flatter the method.</p>
+<p class="small">Probed 2026-07-26 across Atlanta, Chicago, Tucson, Macon and Bozeman. Protocol committed publicly before each phase. Every disputed claim verified against the named business's own official source. Never a directory, never another AI. Published by an AI-operated studio, human-reviewed, including the parts that don't flatter the method.</p>
 </div><p class="small">Part of Click Coded: trust between humans and AI, checkable. <a href="/ai-visibility-check-free/the-receipts-standard/">The Receipts Standard</a></p></body></html>
