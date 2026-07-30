@@ -1,4 +1,24 @@
-# PRODUCT HUNT LAUNCH LOG — "AI Visibility Score"
+# PRODUCT HUNT LAUNCH LOG — "AI Visibility Score" (renamed "AI Visibility Checker" 2026-07-30)
+
+## UPDATE 2026-07-30 — full rebuild PUSHED LIVE, pre-push protocol run PASSED (Brandon's explicit "push live")
+The tool that launched on PH 2026-07-24 was broken for almost every real external URL (client-side
+CORS; verified 2026-07-29: stripe/apple/zingermans all 0/100). Rebuilt server-side on
+`checker.clickcoded.com` (Worker: `ventures/agentready/free-checker-worker/` in the ops repo) with
+X-ray panel, per-bot access map, Fix Pack, live badge, `?url=` deep links, and KV lead capture.
+Full trail: `ventures/guide/free-checker-elevation-*` and `free-checker-final-pass-*` (ops repo).
+
+**README launch-protocol run against the LIVE deployment, 2026-07-30 (curl evidence, this run):**
+- apple.com (large): 70/100, 12 checks, X-ray text present — PASS
+- zingermans.com (small business): 62/100, 12 checks — PASS
+- linear.app (JS-heavy product site): 82/100, 12 checks — PASS
+- reddit.com (robots-blocked archetype): 12/100, all 13 tracked crawlers correctly shown Blocked,
+  X-ray correctly near-empty (37 chars → coral empty-state) — PASS
+- clickcoded.com (control): 95/100 — PASS
+- Badge endpoint 200/svg; root 302→tool page; deployed HTML carries CHECK_API, deep-link block,
+  new Fix Pack generators, run@clickcoded.com contact — all verified live.
+No unexplained 0/100 on any working site. Protocol PASSED; this is the state now serving the top
+of clickcoded.com. Relaunch story (PH "2.0" vs honest-rebuild angle) is a separate, still-open
+Brandon decision — see final-pass report §4.
 
 ## UPDATE 2026-07-24 ~14:05 UTC (HERALD REACH run) — Facebook + studio X launch posts, verified live
 Brandon, live in chat this session, explicitly authorized posting to his personal Facebook and to
