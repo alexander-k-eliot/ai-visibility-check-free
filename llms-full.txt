@@ -225,7 +225,7 @@ order the $25 audit
 on Fiverr, or find "Alexander E." in the Upwork Project Catalog. Want to fix it yourself with a real how-to:
 The GEO Playbook
 , $29.
-Version 1.0, published 2026-07-21. This rubric will change as AI-crawler standards change; when it does, the version number moves and the change is dated here, not silently. Built by Click Coded, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com
+Version 1.0, published 2026-07-21. This rubric will change as AI-crawler standards change; when it does, the version number moves and the change is dated here, not silently. Built by Click Coded, AI-operated and human-reviewed. Contact: run@clickcoded.com
 More from Click Coded:
 AI visibility checker
 ·
@@ -325,7 +325,7 @@ You can help, and this is the one thing we would actually ask for
 If you know someone at a crisis, safety or support organization, tell them this offer exists.
 A forwarded link from someone they trust will reach them faster than a cold email from a studio they have never heard of. That is genuinely the bottleneck.
 Any organization — in our sample or not — can email
-alexander.k.eliot@gmail.com
+run@clickcoded.com
 with a URL and we will send the files back. No cost, no account, no catch, no follow-up sales sequence, and we will not add anyone to a list.
 You can also run the audit yourself on any site:
 the free AI Visibility Check
@@ -588,10 +588,10 @@ Check your own site with the identical free method:
 the checker
 . See the Ryan Reynolds portfolio audit that started this series:
 Deadpool Proof
-. Reach us: alexander.k.eliot@gmail.com
+. Reach us: run@clickcoded.com
 Methodology and honest scope
 Checks performed 2026-07-25 against each site's live public homepage: robots.txt (present/absent, verified as a real plain-text file and not a soft-404 HTML page served under a 200 status, by checking both status code and content-type), llms.txt (same verification), XML sitemap reachability, homepage <title>, meta description, canonical tag, JSON-LD structured-data blocks, and H1 heading count. mrbeast.com was checked twice independently (direct server fetch and a real rendered browser session) before being reported as non-functional, to rule out a transient network issue rather than a real site problem. Scores are directional (~) rounded estimates using the same weighting as this studio's published 158-site industry benchmark, not a decimal-precision claim. Beast Games (streaming deal, no standalone public marketing site found) and MrBeast Studios (no distinct public site found separate from the main YouTube channel) were not included as they had no independent website to check. This page will not be edited to inflate any figure after publication; corrections, if needed, will be appended and dated, not silently changed.
-Built by Click Coded, AI-operated and human-reviewed. Contact: alexander.k.eliot@gmail.com
+Built by Click Coded, AI-operated and human-reviewed. Contact: run@clickcoded.com
 
 
 ---
@@ -764,7 +764,7 @@ doesn't show. If it kills your premise, you'll know that in the same 2 hours ins
 after you've already pitched your editor.
 Send a premise:
 Email
-alexander.k.eliot@gmail.com
+run@clickcoded.com
 with the subject line "Two-Hour Source Desk" and your specific question. Include a deadline if you
 have one — we'll hit it or tell you honestly if we can't.
 Why this exists:
@@ -867,7 +867,7 @@ The Refusal Log
 The Honest Clock
 . This page will grow as new corrections happen — nothing gets quietly removed from it once it's here.
 Built by Click Coded, AI-operated and human-reviewed. Questions:
-alexander.k.eliot@gmail.com
+run@clickcoded.com
 .
 
 ## Our Real Bounce Rate, Every Batch, Unedited
@@ -943,7 +943,7 @@ The Correction Feed
 The Honest Clock
 .
 Built by Click Coded, AI-operated and human-reviewed. Questions:
-alexander.k.eliot@gmail.com
+run@clickcoded.com
 .
 
 ## The Etiquette Audit
@@ -1034,5 +1034,5 @@ The Correction Feed
 The Receipts
 .
 Built by Click Coded, AI-operated and human-reviewed. Questions:
-alexander.k.eliot@gmail.com
+run@clickcoded.com
 .

@@ -52,7 +52,7 @@ For the full markdown content of this site's key pages in one file (homepage, me
 ## Facts
 - Studio: Click Coded, operated by AI with human review. We say so everywhere.
 - Tagline: Never Not Working — proven with timestamped, checkable logs, not asserted alone. See the Never Not Working Report below.
-- Contact: alexander.k.eliot@gmail.com
+- Contact: run@clickcoded.com
 - Honesty policy: no citation guarantees. Nobody can promise AI rankings. We measure and fix the verifiable conditions.
 
 ## Research

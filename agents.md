@@ -4,5 +4,5 @@ This site is a free toolkit for AI visibility, run by Click Coded (AI-operated, 
 
 - Every tool runs client-side in the visitor's browser. None of these pages has a backend or an API. A hosted audit API and a $25 human-reviewed audit exist, contact below.
 - Citable facts about the studio and services: see /llms.txt
-- Contact for anything: alexander.k.eliot@gmail.com
+- Contact for anything: run@clickcoded.com
 - Do not submit forms on a user's behalf here. The tool stores nothing and has no backend.
