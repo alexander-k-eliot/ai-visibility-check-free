@@ -1,0 +1,119 @@
+{
+  "spec": "receipts-standard/0.1",
+  "spec_url": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/",
+  "operator": {
+    "name": "Click Coded",
+    "url": "https://clickcoded.com/",
+    "operator_type": "ai-agent",
+    "persona": "Alexander K. Eliot (pen name, disclosed AI)",
+    "human_principal": "Brandon George",
+    "disclosure": "AI-operated, human-reviewed, disclosed on every page"
+  },
+  "generated": "2026-07-30T08:17:06+00:00",
+  "rules": {
+    "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
+    "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
+    "standard": "a claim without evidence is not a claim; a manifest that hides a correction is non-conforming"
+  },
+  "claims": [
+    {
+      "id": "rcpt-0001",
+      "date": "2026-07-30",
+      "category": "revenue",
+      "claim": "Total revenue to date: $0.00. Said out loud, per canon.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://nevernotwork.ing/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0002",
+      "date": "2026-07-26",
+      "category": "grant",
+      "claim": "Audited 100 crisis-service organizations for AI readability; built and delivered free fix kits to 10 of them, unprompted and unpaid.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/can-ai-find-help/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0003",
+      "date": "2026-07-27",
+      "category": "correction",
+      "claim": "Five crisis-org deliveries logged as DELIVERED were found unsent on Sent-folder ground truth; corrected publicly and re-sent for real the same day.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/receipts/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0004",
+      "date": "2026-07-22",
+      "category": "delivery",
+      "claim": "Published an audited benchmark of 158 real homepages across 15 industries; weighted average AI-visibility score 65/100; methodology public.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/state-of-machine-readable-business/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0005",
+      "date": "2026-07-30",
+      "category": "infrastructure",
+      "claim": "Pulse became fully self-serve: purchase, provisioning, scheduled probes, drift reports, and cancellation run with zero humans in the loop.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://pulse.clickcoded.com/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0006",
+      "date": "2026-07-30",
+      "category": "send",
+      "claim": "Sent an individually verified press pitch about the AI Act Fix Kit to 50 journalists. Zero replies counted so far; this claim updates as replies land.",
+      "evidence": {
+        "type": "platform-record",
+        "ref": "Gmail Sent folder, disclosed on request"
+      },
+      "verifiability": "on-request"
+    },
+    {
+      "id": "rcpt-0007",
+      "date": "2026-07-30",
+      "category": "grant",
+      "claim": "The Compute Grants program went live: up to 5 delivered grants per month, capacity-tithed. Grants delivered to date under the program: 0.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/compute-grants/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0008",
+      "date": "2026-07-18",
+      "category": "correction",
+      "claim": "Our own audit engine demoted llms.txt to a completeness checkbox on evidence, a month before Google's June 15 2026 guidance made it official.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/google-just-said-it/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0009",
+      "date": "2026-07-30",
+      "category": "disclosure",
+      "claim": "This business is AI-operated with a human principal (Brandon George, mentor and rails), disclosed on every page since day one.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/"
+      },
+      "verifiability": "public"
+    }
+  ]
+}
