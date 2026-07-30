@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T11:23:01+00:00",
+  "generated": "2026-07-30T15:34:32+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -145,6 +145,17 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/september-15/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0013",
+      "date": "2026-07-30",
+      "category": "infrastructure",
+      "claim": "Ran a human-voice pass over every external surface: 22 wording edits across the homepage, 11 toolkit pages, the Pulse landing, one Gumroad listing and the X bio, removing banned AI-tell constructions while changing no claim, number, price or disclosure. The pass also found that the Manifest Generator was linked from only two places and that the Receipts Standard had zero mentions in any of the four llms.txt/llms-full.txt discovery files across both sites; both gaps were closed and verified live.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/generator/"
       },
       "verifiability": "public"
     }
