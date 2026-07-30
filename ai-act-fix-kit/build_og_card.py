@@ -100,7 +100,7 @@ def build():
 
     # The Plan, stated as the honesty differentiator (journalist "genuinely
     # surprising" attribute: a tool that tells most visitors not to buy anything)
-    d.text((70, 452), "Free 1-minute check. Two of five answers are “you're fine.”", font=sans(32), fill=DIM)
+    d.text((70, 452), "Free 1-minute check. Six of ten answers end with nothing to buy.", font=sans(32), fill=DIM)
     d.text((70, 494), "We had to answer this for ourselves first — so we're giving away the answer.", font=sans(26), fill=DIM)
 
     d.text((70, 556), "clickcoded.com/ai-visibility-check-free/ai-act-fix-kit", font=mono(22, True), fill=MINT)

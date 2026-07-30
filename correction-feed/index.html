@@ -90,6 +90,12 @@ h2{font-family:var(--serif);font-size:1.2rem;margin:0 0 6px;font-weight:600}
 
 <div class="correction">
 <span class="date">2026-07-30</span>
+<h2>The newsroom blocklist table was wrong for 10 of 41 outlets</h2>
+<p>The 2026-07-26 newsroom audit showed <span class="wrong">24 outlets blocking AI crawlers and 17 allowing</span>. The parser that produced it only saw a block when a Disallow sat within 80 characters of the bot's User-agent line, which missed the long multi-bot groups most newsrooms actually use. Re-measured with the corrected parser: <span class="right">34 of 41 block (83%)</span>. Ten outlets listed as "allowed" actually block: CNN, The Guardian, The New Yorker, Wired, Ars Technica, Vanity Fair, Slate, Gizmodo, CNET, ZDNet. <strong>Fixed</strong>: table, chart and copy corrected with an on-page correction note, raw re-measured robots data published alongside.</p>
+</div>
+
+<div class="correction">
+<span class="date">2026-07-30</span>
 <h2>The self-audit: we ran our own accuracy standard against every published claim</h2>
 <p>A full big-model audit of the published record: the instrument first, then every load-bearing claim, against primary sources and live re-measurement. The entries below are what it found. The raw re-measurement results are public: <a href="/ai-visibility-check-free/benchmark-data/accuracy-audit-remeasure-2026-07-30.jsonl">accuracy-audit-remeasure-2026-07-30.jsonl</a> (168 sites, one JSON row each). This is the product working on itself: don't trust AI, check it, including us.</p>
 </div>

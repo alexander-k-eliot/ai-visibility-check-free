@@ -1,0 +1,689 @@
+{
+ "nytimes.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "bbc.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "apnews.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Applebot-Extended",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "bloomberg.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "cnbc.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "forbes.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "theatlantic.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "theverge.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "techcrunch.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ChatGPT-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "businessinsider.com": {
+  "ok": true,
+  "named_blocked": [
+   "ClaudeBot",
+   "anthropic-ai",
+   "Bytespider",
+   "CCBot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "huffpost.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "vox.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "usatoday.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "latimes.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "Bytespider"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "nypost.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "nbcnews.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "cbsnews.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "abcnews.go.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "anthropic-ai",
+   "Bytespider",
+   "CCBot",
+   "ChatGPT-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "msnbc.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "thehill.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "newsweek.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "motherjones.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "theintercept.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "anthropic-ai",
+   "CCBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "buzzfeednews.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "cnn.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "foxnews.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "theguardian.com": {
+  "ok": true,
+  "named_blocked": [
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "time.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "newyorker.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "propublica.org": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "wired.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "arstechnica.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "vanityfair.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "slate.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "salon.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "dailybeast.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "engadget.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": false,
+  "verdict": "allowed"
+ },
+ "gizmodo.com": {
+  "ok": true,
+  "named_blocked": [
+   "Meta-ExternalAgent",
+   "Bytespider",
+   "CCBot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "mashable.com": {
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "cnet.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "zdnet.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "washingtonpost.com": {
+  "ok": true,
+  "named_blocked": [
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "wsj.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": true,
+  "verdict": "blocked"
+ },
+ "reuters.com": {
+  "ok": true,
+  "named_blocked": [],
+  "wildcard_full": true,
+  "verdict": "blocked"
+ },
+ "ft.com": {
+  "ok": true,
+  "named_blocked": [
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Meta-ExternalAgent",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "PerplexityBot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "economist.com": {
+  "ok": true,
+  "named_blocked": [
+   "GPTBot",
+   "Google-Extended",
+   "ClaudeBot",
+   "anthropic-ai",
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "OAI-SearchBot",
+   "ChatGPT-User",
+   "PerplexityBot",
+   "Claude-User"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "npr.org": {
+  "ok": false,
+  "error": "The read operation timed out"
+ },
+ "politico.com": {
+  "ok": false,
+  "error": "HTTP Error 403: Forbidden"
+ },
+ "axios.com": {
+  "ok": true,
+  "named_blocked": [
+   "Bytespider",
+   "CCBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ },
+ "venturebeat.com": {
+  "ok": true,
+  "named_blocked": [
+   "Applebot-Extended",
+   "Bytespider",
+   "CCBot",
+   "Amazonbot"
+  ],
+  "wildcard_full": false,
+  "verdict": "blocked"
+ }
+}
