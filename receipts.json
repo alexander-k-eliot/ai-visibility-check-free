@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T15:39:22+00:00",
+  "generated": "2026-07-30T16:11:55+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -167,6 +167,17 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://github.com/alexander-k-eliot/receipts-standard"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0015",
+      "date": "2026-07-30",
+      "category": "infrastructure",
+      "claim": "Ran a full visual-canon audit and rectification across every customer-facing surface. Found and fixed a site-wide structural defect: the site-header element was never closed on 86 of 94 pages, so each page's entire body parsed as header content. Also caught two live share-card bugs \u2014 the clickcoded.com homepage's og-image was a press-kit card, and pulse.clickcoded.com carried no og or twitter tags at all \u2014 elevated five lean pages to full canon using only pre-existing approved copy, built nine bespoke og-cards each carrying one real visual element, and re-shelled Pulse's transactional email from unstyled default HTML into the house design system. All changes verified live by fetch.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/"
       },
       "verifiability": "public"
     }
