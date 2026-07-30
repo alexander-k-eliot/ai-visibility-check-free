@@ -316,9 +316,9 @@
 <strong>Checked your site? Show a live score, not a static badge.</strong>
 <p style="margin-top:6px">This badge re-checks your site (cached up to 24h) every time someone loads it — so it always
 shows your current score, not the day you grabbed it. No sign-up, no tracking.</p>
-<p style="margin-top:10px"><img src="https://free-checker-api.alexander-k-eliot.workers.dev/badge/clickcoded.com.svg" width="138" height="20" alt="AI visibility score badge example"></p>
+<p style="margin-top:10px"><img src="https://checker.clickcoded.com/badge/clickcoded.com.svg" width="138" height="20" alt="AI visibility score badge example"></p>
 <p class="small" style="margin-top:10px;color:var(--dim);font-size:.85rem">Copy-paste (replace <code>yourdomain.com</code> with your own):</p>
-<pre style="background:rgba(4,38,44,.6);border:1px solid var(--border);border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:var(--mono);font-size:.78rem;color:var(--ink);white-space:pre-wrap;word-break:break-all">&lt;a href="https://clickcoded.com/ai-visibility-check-free/"&gt;&lt;img src="https://free-checker-api.alexander-k-eliot.workers.dev/badge/yourdomain.com.svg" alt="AI visibility score"&gt;&lt;/a&gt;</pre>
+<pre style="background:rgba(4,38,44,.6);border:1px solid var(--border);border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:var(--mono);font-size:.78rem;color:var(--ink);white-space:pre-wrap;word-break:break-all">&lt;a href="https://clickcoded.com/ai-visibility-check-free/"&gt;&lt;img src="https://checker.clickcoded.com/badge/yourdomain.com.svg" alt="AI visibility score"&gt;&lt;/a&gt;</pre>
 </div>
 </section>
 
@@ -343,7 +343,7 @@ const LEAD_CAPTURE_ENDPOINT = '';
 // Runs the fetch on the server so it isn't blocked by browser CORS -- see
 // ventures/guide/free-checker-elevation-report-2026-07-29.md for why the old client-side
 // fetch()-based check failed for almost every real external site.
-const CHECK_API = 'https://free-checker-api.alexander-k-eliot.workers.dev/api/check';
+const CHECK_API = 'https://checker.clickcoded.com/api/check';
 
 let lastCheckData = null; // full API/paste-mode result, kept for the Fix Pack + X-ray panel
 
