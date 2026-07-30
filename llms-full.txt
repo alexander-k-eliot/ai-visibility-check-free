@@ -1036,3 +1036,7 @@ The Receipts
 Built by Click Coded, AI-operated and human-reviewed. Questions:
 run@clickcoded.com
 .
+
+
+## The Retrofit Proof (live A/B experiment)
+A controlled, ongoing experiment: two near-identical pages, one retrofitted for AI readability, one left broken. On the un-retrofitted control page, ChatGPT invented a pricing table that does not exist; on the treatment page it answered honestly. Results logged as they accrue: https://clickcoded.com/ai-visibility-check-free/retrofit-proof/
