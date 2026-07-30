@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-30T16:27:08+00:00",
+  "generated": "2026-07-30T17:25:00+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -141,7 +141,7 @@
       "id": "rcpt-0012",
       "date": "2026-07-30",
       "category": "delivery",
-      "claim": "Published the September-15 benchmark: 101 major sites through the new Sept15Read engine. Findings: only 4 of 80 readable giants sit behind Cloudflare, 39% already block AI retrieval by explicit robots policy, 21 blocked automated checks outright. Three benchmark runs were required \u2014 our own rate limiter and two header-detection bugs were caught and disclosed in the piece itself.",
+      "claim": "Published the September-15 benchmark: 101 major sites through the new Sept15Read engine. Findings: only 4 of 80 readable giants sit behind Cloudflare, 39% already block AI retrieval by explicit robots policy, 21 blocked automated checks outright. Three benchmark runs were required — our own rate limiter and two header-detection bugs were caught and disclosed in the piece itself.",
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/september-15/"
@@ -174,7 +174,7 @@
       "id": "rcpt-0015",
       "date": "2026-07-30",
       "category": "infrastructure",
-      "claim": "Ran a full visual-canon audit and rectification across every customer-facing surface. Found and fixed a site-wide structural defect: the site-header element was never closed on 86 of 94 pages, so each page's entire body parsed as header content. Also caught two live share-card bugs \u2014 the clickcoded.com homepage's og-image was a press-kit card, and pulse.clickcoded.com carried no og or twitter tags at all \u2014 elevated five lean pages to full canon using only pre-existing approved copy, built nine bespoke og-cards each carrying one real visual element, and re-shelled Pulse's transactional email from unstyled default HTML into the house design system. All changes verified live by fetch.",
+      "claim": "Ran a full visual-canon audit and rectification across every customer-facing surface. Found and fixed a site-wide structural defect: the site-header element was never closed on 86 of 94 pages, so each page's entire body parsed as header content. Also caught two live share-card bugs — the clickcoded.com homepage's og-image was a press-kit card, and pulse.clickcoded.com carried no og or twitter tags at all — elevated five lean pages to full canon using only pre-existing approved copy, built nine bespoke og-cards each carrying one real visual element, and re-shelled Pulse's transactional email from unstyled default HTML into the house design system. All changes verified live by fetch.",
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/"
@@ -185,10 +185,46 @@
       "id": "rcpt-0016",
       "date": "2026-07-30",
       "category": "infrastructure",
-      "claim": "Extended the visual-canon pass (rcpt-0015) to full coverage per Brandon's direction not to leave a follow-up for later: all 50 remaining checker-site pages that still used the generic share-card image now carry a bespoke og-card with a real visual element \u2014 16 industry-benchmark pages got a score-dial template with hand-verified numbers, 30 free-tool pages got a drawn-icon template, and 3 editorial log pages got fully bespoke cards. Zero pages on the estate now use the generic image. Two rendering bugs were caught and fixed before shipping: auto-sizing tool-card headlines that ran into the icon column, and a bar chart that drew two different counts (50 vs 100) at equal width, which was itself an unchecked visual claim. A stale pre-rename '\u00c6 Studio' byline and a stale github.io author URL were also found and fixed on one page, independent of this pass's original scope.",
+      "claim": "Extended the visual-canon pass (rcpt-0015) to full coverage per Brandon's direction not to leave a follow-up for later: all 50 remaining checker-site pages that still used the generic share-card image now carry a bespoke og-card with a real visual element — 16 industry-benchmark pages got a score-dial template with hand-verified numbers, 30 free-tool pages got a drawn-icon template, and 3 editorial log pages got fully bespoke cards. Zero pages on the estate now use the generic image. Two rendering bugs were caught and fixed before shipping: auto-sizing tool-card headlines that ran into the icon column, and a bar chart that drew two different counts (50 vs 100) at equal width, which was itself an unchecked visual claim. A stale pre-rename 'Æ Studio' byline and a stale github.io author URL were also found and fixed on one page, independent of this pass's original scope.",
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/telecom-benchmark/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0017",
+      "date": "2026-07-30",
+      "category": "correction",
+      "corrects": "rcpt-0008",
+      "claim": "Correction to rcpt-0008: our audit engine never demoted llms.txt to 'a completeness checkbox,' and no demotion predates Google's June 15 2026 guidance. The public methodology weights llms.txt at 18 of 100 (20 of 100 before v1.1), near the top of the rubric, and the git history (first commit 2026-07-19) shows no such change. What is true: we check the file as an index, generate it free in fix kits, and have never sold it as a citation lever. The claim and the page it pointed to flattered us and were wrong. The page now carries an inline correction.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/google-just-said-it/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0018",
+      "date": "2026-07-30",
+      "category": "correction",
+      "corrects": "rcpt-0016",
+      "claim": "Correction to rcpt-0016: the og-card category split published there (16 benchmark + 30 tool + 3 editorial) sums to 49, not the claimed 50. The commit-verified truth: exactly 50 cards shipped, 17 of them sector-benchmark cards by filename plus the flagship state-of card. The total was right, the breakdown was miscounted.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://github.com/alexander-k-eliot/ai-visibility-check-free/commit/1b12570"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0019",
+      "date": "2026-07-30",
+      "category": "correction",
+      "corrects": "rcpt-0004",
+      "claim": "Instrument disclosure for rcpt-0004 and every sector benchmark published 2026-07-20..22: the engine version used had three defective checks, fixed 2026-07-28. Its robots parser flagged a bot as blocked when ANY Disallow path sat within 80 characters of the bot's User-agent line (over-reported blocking); its structured-data check counted JSON-LD script tags without parsing them (over-credited broken data); its contact check matched the bare word 'contact' anywhere in HTML (over-credited). Published scores from that window, including the 65/100 average over 158 homepages, are dated snapshots from a defective instrument and now carry that label where they appear. A full re-benchmark on the corrected engine, with the corpus and raw results committed, is queued. Named fetch-refusal and single-company claims were individually re-measured on 2026-07-30 with the corrected engine; results in the corrections log.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/corrections/"
       },
       "verifiability": "public"
     }

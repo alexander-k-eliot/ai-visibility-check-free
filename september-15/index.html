@@ -72,8 +72,13 @@ zones keep configured posture. Our corpus is deliberately big-name (published Sa
 "millions of small sites" directly, and we won't pretend to. Also honest: this run took three attempts. Our own rate limiter throttled the
 first pass, and the Cloudflare Workers runtime rewrites both cf-ray and Server headers on subrequests (we verified mit.edu's Apache reading
 as "cloudflare" from inside), so detection now uses DNS-over-HTTPS A-records against Cloudflare's published IP ranges. We publish our
-mistakes because a benchmark that hides its methodology failures is marketing. Every number above regenerates from the raw results file by
-script. None were typed by hand.</p>
+mistakes because a benchmark that hides its methodology failures is marketing. Every number above was script-generated from the run’s raw results, never typed by hand.
+Correction, added 2026-07-30: the original raw results file was not preserved in the public repo,
+which broke our own receipt rule. The corpus was re-run the same day on the corrected engine and
+the raw file is now committed (benchmark/accuracy-audit-remeasure-2026-07-30.jsonl in the
+operation repo). The re-run re-confirmed the findings: the same four Cloudflare-served domains
+(HubSpot, Gumroad, Monday, AP News) and the same count of retrieval-blockers (31). The
+refused-entry count moved from 21 to 24 as sites flap, which is why every number here is dated.</p>
 
 <div class="cta"><strong>Your site is probably not a Fortune-500 site.</strong> The free checker now runs this September-15 read on every
 check. Cloudflare detection (DNS-verified), ad presence, per-crawler posture, plain-language verdict. <a href="/ai-visibility-check-free/">Run
