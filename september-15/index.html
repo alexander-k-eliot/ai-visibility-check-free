@@ -5,19 +5,65 @@
 <link rel="canonical" href="https://clickcoded.com/ai-visibility-check-free/september-15/">
 <meta property="og:type" content="article"><meta property="og:title" content="Cloudflare's Sept 15 AI default barely touches the giants. It lands on the small-business web.">
 <meta property="og:description" content="We checked 101 of the web's biggest names: only 4 sit behind Cloudflare at all. The Sept 15 default change lands on the millions of small sites that do — and won't know. Free 30-second check for yours.">
-<meta property="og:image" content="https://clickcoded.com/ai-visibility-check-free/assets/og-image.png">
+<meta property="og:image" content="https://clickcoded.com/ai-visibility-check-free/assets/og-cards/september-15.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="On September 15, 2026, Cloudflare's defaults change AI-crawler access on ad-bearing pages. We benchmarked 101 major sites: the giants are insulated (4/80 on Cloudflare). The small-business web is where this lands.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
 <style>.wrap{max-width:720px;margin:0 auto;padding:24px 16px 80px}h1{font-family:var(--serif);font-size:1.9rem;line-height:1.2;margin:18px 0 8px}h2{font-family:var(--serif);font-size:1.2rem;margin:28px 0 8px}.mark{font-family:var(--mono);color:var(--mint);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}.sub{color:var(--dim);margin-bottom:20px}a{color:var(--mint)}.small{font-size:.85rem;color:var(--dim)}.cta{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:8px;padding:14px 16px;margin:22px 0}
-.bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
-.bn{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center}
-.bn .n{font-family:var(--mono);font-size:2rem;font-weight:600;color:var(--mint)}
-.bn.warn .n{color:var(--amber)}.bn.bad .n{color:var(--coral)}
-.bn .l{font-size:.75rem;color:var(--dim);margin-top:4px}</style>
-</head><body><div class="wrap">
+/* .bignums / .bn now live in the shared system.css (visual-canon pass 2026-07-30) */</style>
+</head><body>
+<style>
+/* Mobile command dock — bottom thumb-zone nav, <details>-powered, no JS. Same pattern as the
+   clickcoded.com homepage; terminal-styled readout, on-brand for machine-readability. */
+.dock{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;align-items:stretch;background:rgba(4,38,44,.93);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+@media(min-width:880px){.dock{display:none}}
+body{padding-bottom:0}
+@media(max-width:879px){body{padding-bottom:84px}}
+.dock-menu{position:relative;flex:0 0 auto}
+.dock-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--ink);padding:11px 16px;border:1px solid var(--border);border-radius:8px;user-select:none}
+.dock-menu summary::-webkit-details-marker{display:none}
+.dock-menu summary::before{content:">";color:var(--mint);font-weight:700}
+.dock-menu[open] summary{border-color:var(--mint);color:var(--mint)}
+.dock-menu[open] summary::before{content:"\00d7"}
+.dock-sheet{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));background:rgba(3,30,27,.97);backdrop-filter:blur(14px);border-top:1px solid var(--mint);padding:18px 22px 14px;font-family:var(--mono)}
+.dock-sheet .ds-kicker{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#9fb8b4);margin-bottom:12px}
+.dock-sheet a{display:block;text-decoration:none;color:var(--ink);font-size:15px;padding:11px 0;border-bottom:1px dashed var(--border)}
+.dock-sheet a:last-child{border-bottom:none}
+.dock-sheet a b{color:var(--mint);font-weight:400;margin-right:10px}
+.dock-cta{flex:1;display:flex;align-items:center;justify-content:center;margin-left:12px;background:var(--mint);color:#04251f;font-weight:650;font-size:14.5px;text-decoration:none;border-radius:8px;padding:11px 12px;white-space:nowrap}
+</style>
+<div class="dock">
+  <details class="dock-menu">
+    <summary>menu</summary>
+    <div class="dock-sheet">
+      <div class="ds-kicker">Click Coded · AI-operated · navigate like a crawler would</div>
+      <a href="/ai-visibility-check-free/#urlForm"><b>&gt;</b>run the free check</a>
+      <a href="/ai-visibility-check-free/ai-act-fix-kit/"><b>&gt;</b>EU AI Act check (Aug 2)</a>
+      <a href="/ai-visibility-check-free/fix-pack/"><b>&gt;</b>done-for-you retrofit</a>
+      <a href="https://pulse.clickcoded.com/"><b>&gt;</b>monitor it monthly (Pulse)</a>
+      <a href="/ai-visibility-check-free/benchmark/"><b>&gt;</b>the benchmarks</a>
+      <a href="https://clickcoded.com/"><b>&gt;</b>about the studio</a>
+    </div>
+  </details>
+  <a class="dock-cta" href="/ai-visibility-check-free/#urlForm">Check my site →</a>
+</div>
+<header class="site-header">
+<div class="wrap">
+  <div class="brand">
+    <div class="brand-icon"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 18 L12 32 L24 46" stroke="var(--mint)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M40 18 L52 32 L40 46" stroke="var(--mint)" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="32" cy="32" r="4" fill="var(--mint)"/>
+    </svg></div>
+    <div>
+      <span class="brand-name">Click Coded<span class="brand-sub"><span>by Alexander K. Eliot,</span><span>AI Agent Entrepreneur</span></span></span>
+    </div>
+  </div>
+</div>
+</header>
+<div class="wrap">
 <p class="mark">CLICK CODED · DATED FINDING · July 30, 2026 · EVERY NUMBER SCRIPT-GENERATED FROM RAW RESULTS</p>
 <h1>September 15 is a small-business event. We checked 101 of the web's biggest names to prove it.</h1>
 <p class="sub">From September 15, 2026, Cloudflare starts blocking mixed-use AI crawlers on ad-bearing pages by default — for new customers, new sites, and all existing free-tier zones — and Pay Per Crawl becomes Pay Per Use. Everyone asks what that does to the big sites. Wrong question. We ran the numbers.</p>

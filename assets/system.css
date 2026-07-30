@@ -213,3 +213,64 @@ textarea:focus{outline:2px solid var(--mint);border-color:transparent}
 
 /* ── Score note ─────────────────────────────────── */
 #scoreNoteWrap{margin-top:10px;font-family:var(--mono);font-size:.78rem;color:var(--dim)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ARTICLE COMPONENTS (added 2026-07-30, visual-canon pass)
+   Shared structures so an article page never has to ship as a wall of prose.
+   Every one of these is a scannability device: the words are unchanged, the
+   shape carries the hierarchy. Lifted from the homepage reference build.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Big-number stat row — for a page's headline findings */
+.bignums{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:24px 0}
+.bn{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 14px;text-align:center}
+.bn .n{font-family:var(--mono);font-size:2rem;font-weight:600;color:var(--mint);line-height:1.1}
+.bn.warn .n{color:var(--amber)}
+.bn.bad .n{color:var(--coral)}
+.bn .l{font-size:.75rem;color:var(--dim);margin-top:4px;line-height:1.4}
+
+/* Protocol/trust stack — layered rows with one highlighted gap layer */
+.stack-wrap{max-width:640px;margin:24px 0 30px;display:flex;flex-direction:column;gap:10px}
+.stack-layer{display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-radius:10px;padding:13px 18px;background:rgba(4,38,44,.45);font-family:var(--mono)}
+.stack-layer .sl-name{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);min-width:96px}
+.stack-layer .sl-what{font-size:.75rem;color:var(--dim);flex:1}
+.stack-layer .sl-state{font-size:.7rem;color:var(--mint);white-space:nowrap}
+.stack-layer.gap{border:1.5px dashed var(--mint);background:rgba(46,230,168,.06);position:relative;box-shadow:0 0 24px -6px rgba(46,230,168,.35)}
+.stack-layer.gap .sl-state{color:var(--amber)}
+.gap-badge{position:absolute;top:-11px;right:14px;background:var(--mint);color:#04251f;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:3px 9px;border-radius:20px}
+@media(max-width:520px){
+  .stack-layer{flex-wrap:wrap;gap:6px 12px}
+  .stack-layer .sl-what{flex:1 1 100%}
+}
+
+/* Numbered rule cards — for a spec, a checklist, a ranked list */
+.rulegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:18px 0 24px}
+.rulecard{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px 18px 14px;position:relative}
+.rulecard .rc-n{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.1em;color:var(--mint);display:block;margin-bottom:7px}
+.rulecard p{font-size:.88rem;line-height:1.55;margin:0}
+.rulecard h3{font-family:var(--sans);font-size:.95rem;font-weight:600;margin:0 0 5px}
+
+/* Known-holes / caveat cards — an amber-keyed variant, for what we got wrong */
+.holes{display:grid;gap:12px;margin:18px 0 24px}
+.hole{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:10px;padding:15px 18px}
+.hole .h-n{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--amber);display:block;margin-bottom:6px}
+.hole h3{font-family:var(--sans);font-size:.98rem;font-weight:600;margin:0 0 6px}
+.hole p{font-size:.88rem;line-height:1.6;margin:0;color:var(--dim)}
+.hole p strong,.hole p em{color:var(--ink)}
+
+/* Evidence-ordered list — ranked items with a weight bar, for "what matters most" */
+.evgrid{display:grid;gap:10px;margin:18px 0 24px}
+.ev{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px}
+.ev-head{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
+.ev-rank{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--mint);letter-spacing:.1em}
+.ev-name{font-family:var(--sans);font-size:.95rem;font-weight:600}
+.ev p{font-size:.86rem;color:var(--dim);line-height:1.55;margin:0}
+.ev-bar{height:6px;border-radius:3px;background:var(--card2);margin-top:9px;overflow:hidden}
+.ev-bar i{display:block;height:100%;border-radius:3px;background:var(--mint)}
+
+/* Two-tone split bar — one number against its complement */
+.splitbar{display:flex;border-radius:8px;overflow:hidden;margin:20px 0 8px;font-family:var(--mono);font-size:.74rem;font-weight:600}
+.splitbar span{padding:12px 14px;color:#04251f;line-height:1.3}
+.splitbar .sp-a{background:var(--amber)}
+.splitbar .sp-b{background:var(--mint)}
+@media(max-width:480px){.splitbar{flex-direction:column}}
