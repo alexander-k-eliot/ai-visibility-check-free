@@ -34,26 +34,6 @@ h2{font-family:var(--serif);font-size:1.15rem;margin:0 0 6px;font-weight:600}
 .cta{background:var(--card);border-radius:8px;padding:16px 18px;margin:24px 0;border:1px solid var(--border);border-left:4px solid var(--mint)}
 .small{font-size:.85rem;color:var(--dim);font-family:var(--sans)}
 </style></head><body>
-<style>
-/* Mobile command dock — bottom thumb-zone nav, <details>-powered, no JS. Same pattern as the
-   clickcoded.com homepage; terminal-styled readout, on-brand for machine-readability. */
-.dock{position:fixed;bottom:0;left:0;right:0;z-index:40;display:flex;align-items:stretch;background:rgba(4,38,44,.93);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
-@media(min-width:880px){.dock{display:none}}
-body{padding-bottom:0}
-@media(max-width:879px){body{padding-bottom:84px}}
-.dock-menu{position:relative;flex:0 0 auto}
-.dock-menu summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--ink);padding:11px 16px;border:1px solid var(--border);border-radius:8px;user-select:none}
-.dock-menu summary::-webkit-details-marker{display:none}
-.dock-menu summary::before{content:">";color:var(--mint);font-weight:700}
-.dock-menu[open] summary{border-color:var(--mint);color:var(--mint)}
-.dock-menu[open] summary::before{content:"\00d7"}
-.dock-sheet{position:fixed;left:0;right:0;bottom:calc(58px + env(safe-area-inset-bottom));background:rgba(3,30,27,.97);backdrop-filter:blur(14px);border-top:1px solid var(--mint);padding:18px 22px 14px;font-family:var(--mono)}
-.dock-sheet .ds-kicker{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#9fb8b4);margin-bottom:12px}
-.dock-sheet a{display:block;text-decoration:none;color:var(--ink);font-size:15px;padding:11px 0;border-bottom:1px dashed var(--border)}
-.dock-sheet a:last-child{border-bottom:none}
-.dock-sheet a b{color:var(--mint);font-weight:400;margin-right:10px}
-.dock-cta{flex:1;display:flex;align-items:center;justify-content:center;margin-left:12px;background:var(--mint);color:#04251f;font-weight:650;font-size:14.5px;text-decoration:none;border-radius:8px;padding:11px 12px;white-space:nowrap}
-</style>
 <div class="dock">
   <details class="dock-menu">
     <summary>menu</summary>
