@@ -228,6 +228,14 @@ body{padding-bottom:0}
     <p class="panel-cta" id="botCta"></p>
   </div>
 
+  <!-- Sept 15 read (PL-5): Cloudflare's mixed-crawler default flips 2026-09-15 -->
+  <div id="sept15Panel" class="bot-panel hidden">
+    <p class="checks-heading">September 15 — will this site's AI access change?</p>
+    <p style="font-size:.85rem;color:var(--dim);margin:0 0 8px">From Sept 15, 2026, Cloudflare (serving ~20% of the web) blocks mixed-use AI crawlers on ad-bearing pages by default, and per-crawl pricing generalizes. AI readability becomes a setting owners may never have chosen.</p>
+    <div id="sept15Verdict" style="border:1px solid var(--border);border-left:4px solid var(--amber);border-radius:8px;padding:12px 14px;font-size:.9rem"></div>
+    <p class="panel-cta">Want to know the day your posture changes? That's exactly what <a href="https://pulse.clickcoded.com/">Pulse</a> watches.</p>
+  </div>
+
   <!-- Fix Pack: generated artifacts from this site's own real data -->
   <div id="fixPack" class="fix-pack hidden">
     <p class="checks-heading">Fix Pack — generated from your real data</p>
@@ -666,6 +674,7 @@ async function runCheck(u){
     render(data.checks.map(c => ({name:c.name, weight:c.weight, pass:c.pass, detail:c.detail, fix:c.fix})), 'url', hostname);
     renderXray(data.textOnly);
     renderBots(data.bots);
+    renderSept15(data.sept15);
     renderFixPack(data);
   }
   btn.textContent = 'Run the check'; btn.disabled = false;
@@ -692,6 +701,7 @@ $('urlForm').addEventListener('submit', ev => {
 function hideExtraPanels(){
   $('xrayPanel').classList.add('hidden');
   $('botPanel').classList.add('hidden');
+  $('sept15Panel').classList.add('hidden');
   $('fixPack').classList.add('hidden');
 }
 
@@ -741,6 +751,15 @@ const BOT_COMPANIES = [
   {label:'Amazon', bots:['Amazonbot']},
 ];
 
+function renderSept15(s){
+  const panel=$('sept15Panel'); if(!s){ panel.classList.add('hidden'); return; }
+  const colors={'flips-sept-15':'var(--coral)','already-dark':'var(--coral)','posture-choice':'var(--amber)','unaffected':'var(--mint)'};
+  const labels={'flips-sept-15':'LIKELY FLIPS ON SEPT 15','already-dark':'ALREADY DARK TO AI','posture-choice':'A SETTING, NOT A CHOICE (YET)','unaffected':'UNAFFECTED BY THE SEPT 15 DEFAULT'};
+  const v=$('sept15Verdict');
+  v.style.borderLeftColor=colors[s.verdict]||'var(--amber)';
+  v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">'+(labels[s.verdict]||s.verdict)+'</strong><br>'+s.detail;
+  panel.classList.remove('hidden');
+}
 function renderBots(bots){
   if(!bots || !bots.length){ $('botPanel').classList.add('hidden'); return; }
   $('botPanel').classList.remove('hidden');
