@@ -1,0 +1,232 @@
+sector,company,domain,ambiguous,source_page
+automotive,Hyundai,hyundaiusa.com,false,automotive-benchmark
+automotive,Kia,kia.com,false,automotive-benchmark
+automotive,Nissan,nissanusa.com,false,automotive-benchmark
+automotive,Volkswagen,vw.com,false,automotive-benchmark
+automotive,Ford,ford.com,false,automotive-benchmark
+automotive,Subaru,subaru.com,false,automotive-benchmark
+automotive,Toyota,toyota.com,false,automotive-benchmark
+automotive,Mazda,mazdausa.com,false,automotive-benchmark
+automotive,Honda,honda.com,false,automotive-benchmark
+automotive,GM,gm.com,false,automotive-benchmark
+automotive,Tesla,tesla.com,false,automotive-benchmark
+automotive,Mercedes-Benz,mercedes-benz.com,true,automotive-benchmark
+automotive,Mercedes-Benz,mbusa.com,true,automotive-benchmark
+automotive,Audi,audiusa.com,true,automotive-benchmark
+automotive,Audi,audi.com,true,automotive-benchmark
+automotive,BMW,bmwusa.com,true,automotive-benchmark
+automotive,BMW,bmw.com,true,automotive-benchmark
+banking,usbank.com,usbank.com,false,banking-benchmark
+banking,capitalone.com,capitalone.com,false,banking-benchmark
+banking,ally.com,ally.com,false,banking-benchmark
+banking,bankofamerica.com,bankofamerica.com,false,banking-benchmark
+banking,wellsfargo.com,wellsfargo.com,false,banking-benchmark
+banking,pnc.com,pnc.com,false,banking-benchmark
+banking,discover.com,discover.com,false,banking-benchmark
+banking,chase.com,chase.com,false,banking-benchmark
+banking,truist.com,truist.com,false,banking-benchmark
+banking,citi.com,citi.com,false,banking-benchmark
+banking,regions.com,regions.com,false,banking-benchmark
+banking,tdbank.com,tdbank.com,false,banking-benchmark
+banking,fifththird.com,fifththird.com,false,banking-benchmark
+banking,keybank.com,keybank.com,false,banking-benchmark
+financial,Ameriprise,ameriprise.com,false,financial-benchmark
+financial,Betterment,betterment.com,false,financial-benchmark
+financial,Hightower,hightoweradvisors.com,false,financial-benchmark
+financial,Edward Jones,edwardjones.com,false,financial-benchmark
+financial,Creative Planning,creativeplanning.com,false,financial-benchmark
+financial,Farther,farther.com,false,financial-benchmark
+financial,Facet,facet.com,false,financial-benchmark
+financial,Mariner Wealth Advisors,marinerwealthadvisors.com,false,financial-benchmark
+financial,Mercer,mercer.com,false,financial-benchmark
+financial,Wealthfront,wealthfront.com,false,financial-benchmark
+financial,CAPTRUST,captrust.com,false,financial-benchmark
+financial,Empower (Personal Capital),empower.com,true,financial-benchmark
+financial,Empower (Personal Capital),personalcapital.com,true,financial-benchmark
+financial,Merrill,ml.com,true,financial-benchmark
+financial,Merrill,merrilledge.com,true,financial-benchmark
+financial,Vanguard,vanguard.com,false,financial-benchmark
+financial,Charles Schwab,schwab.com,false,financial-benchmark
+financial,Northwestern Mutual,northwesternmutual.com,false,financial-benchmark
+financial,Fisher Investments,fisherinvestments.com,false,financial-benchmark
+financial,Raymond James,raymondjames.com,false,financial-benchmark
+financial,LPL Financial,lpl.com,false,financial-benchmark
+dental,1-800-DENTIST,1800dentist.com,false,dental-benchmark
+dental,Gentle Dental,gentledental.com,false,dental-benchmark
+dental,SmileDirectClub,smiledirectclub.com,false,dental-benchmark
+dental,Heartland Dental,heartland.com,false,dental-benchmark
+dental,Bright Now! Dental,brightnow.com,false,dental-benchmark
+dental,Comfort Dental,comfortdental.com,false,dental-benchmark
+dental,Smile Generation (Pacific Dental),smilegeneration.com,false,dental-benchmark
+dental,Affordable Dentures & Implants,affordabledentures.com,false,dental-benchmark
+dental,Western Dental,westerndental.com,false,dental-benchmark
+dental,Sonrava Health,sonravahealth.com,false,dental-benchmark
+dental,ClearChoice,clearchoice.com,false,dental-benchmark
+dental,Kool Smiles,mykoolsmiles.com,false,dental-benchmark
+dental,Aspen Dental,aspendental.com,false,dental-benchmark
+dental,Pacific Dental Services (corporate),pacificdentalservices.com,true,dental-benchmark
+dental,Pacific Dental Services (corporate),mypacificdental.com,true,dental-benchmark
+dental,mydentalcare.com,mydentalcare.com,false,dental-benchmark
+dental,Dental Care Alliance,dentalcarealliance.com,false,dental-benchmark
+ecommerce,brooklinen.com,brooklinen.com,false,ecommerce-benchmark
+ecommerce,glossier.com,glossier.com,false,ecommerce-benchmark
+ecommerce,casper.com,casper.com,false,ecommerce-benchmark
+ecommerce,fashionnova.com,fashionnova.com,false,ecommerce-benchmark
+ecommerce,allbirds.com,allbirds.com,false,ecommerce-benchmark
+ecommerce,chubbiesshorts.com,chubbiesshorts.com,false,ecommerce-benchmark
+ecommerce,gymshark.com,gymshark.com,false,ecommerce-benchmark
+ecommerce,harrys.com,harrys.com,false,ecommerce-benchmark
+ecommerce,bombas.com,bombas.com,false,ecommerce-benchmark
+ecommerce,away.com,away.com,false,ecommerce-benchmark
+ecommerce,mvmtwatches.com,mvmtwatches.com,false,ecommerce-benchmark
+ecommerce,warbyparker.com,warbyparker.com,false,ecommerce-benchmark
+healthcare,Cleveland Clinic,clevelandclinic.org,false,healthcare-benchmark
+healthcare,Massachusetts General Hospital,massgeneral.org,false,healthcare-benchmark
+healthcare,CommonSpirit Health,commonspirit.org,false,healthcare-benchmark
+healthcare,HCA Healthcare,hcahealthcare.com,false,healthcare-benchmark
+healthcare,Stanford Health Care,stanfordhealthcare.org,false,healthcare-benchmark
+healthcare,UCLA Health,uclahealth.org,false,healthcare-benchmark
+healthcare,Mount Sinai Health System,mountsinai.org,false,healthcare-benchmark
+healthcare,Providence,providence.org,false,healthcare-benchmark
+healthcare,Houston Methodist,houstonmethodist.org,false,healthcare-benchmark
+healthcare,NYU Langone Health,nyulangone.org,false,healthcare-benchmark
+healthcare,Mayo Clinic,mayoclinic.org,false,healthcare-benchmark
+healthcare,Johns Hopkins Medicine,hopkinsmedicine.org,false,healthcare-benchmark
+healthcare,Kaiser Permanente,kp.org,true,healthcare-benchmark
+healthcare,Kaiser Permanente,kaiserpermanente.org,true,healthcare-benchmark
+healthcare,Cedars-Sinai,cedars-sinai.org,false,healthcare-benchmark
+higher-ed,Boston University,bu.edu,false,higher-ed-benchmark
+higher-ed,Carnegie Mellon University,cmu.edu,false,higher-ed-benchmark
+higher-ed,Harvard University,harvard.edu,false,higher-ed-benchmark
+higher-ed,"University of California, Berkeley",berkeley.edu,false,higher-ed-benchmark
+higher-ed,New York University,nyu.edu,false,higher-ed-benchmark
+higher-ed,Yale University,yale.edu,false,higher-ed-benchmark
+higher-ed,Arizona State University,asu.edu,false,higher-ed-benchmark
+higher-ed,Georgia Institute of Technology,gatech.edu,false,higher-ed-benchmark
+higher-ed,Princeton University,princeton.edu,false,higher-ed-benchmark
+higher-ed,Stanford University,stanford.edu,false,higher-ed-benchmark
+higher-ed,The University of Texas at Austin,utexas.edu,false,higher-ed-benchmark
+higher-ed,MIT,mit.edu,false,higher-ed-benchmark
+higher-ed,Columbia University,columbia.edu,false,higher-ed-benchmark
+higher-ed,University of Michigan,umich.edu,false,higher-ed-benchmark
+legal,Cooley,cooley.com,false,legal-benchmark
+legal,Ashurst,ashurst.com,true,legal-benchmark
+legal,Perkins Coie,perkinscoie.com,true,legal-benchmark
+legal,Sidley Austin,sidley.com,false,legal-benchmark
+legal,"Skadden, Arps, Slate, Meagher & Flom",skadden.com,false,legal-benchmark
+legal,Baker McKenzie,bakermckenzie.com,false,legal-benchmark
+legal,Gibson Dunn,gibsondunn.com,false,legal-benchmark
+legal,Morrison & Foerster,mofo.com,false,legal-benchmark
+legal,Kirkland & Ellis,kirkland.com,false,legal-benchmark
+legal,Latham & Watkins,lw.com,false,legal-benchmark
+legal,Greenberg Traurig,gtlaw.com,false,legal-benchmark
+legal,Jones Day,jonesday.com,false,legal-benchmark
+legal,DLA Piper,dlapiper.com,false,legal-benchmark
+legal,Wilson Sonsini Goodrich & Rosati,wsgr.com,false,legal-benchmark
+legal,White & Case,whitecase.com,false,legal-benchmark
+hospitality,Wyndham,wyndhamhotels.com,false,hospitality-benchmark
+hospitality,Accor,accor.com,false,hospitality-benchmark
+hospitality,Ritz-Carlton,ritzcarlton.com,false,hospitality-benchmark
+hospitality,Fairmont,fairmont.com,false,hospitality-benchmark
+hospitality,Marriott,marriott.com,false,hospitality-benchmark
+hospitality,Hilton,hilton.com,false,hospitality-benchmark
+hospitality,IHG,ihg.com,false,hospitality-benchmark
+hospitality,Hyatt,hyatt.com,false,hospitality-benchmark
+hospitality,Four Seasons,fourseasons.com,false,hospitality-benchmark
+hospitality,Best Western,bestwestern.com,false,hospitality-benchmark
+hospitality,Radisson,radissonhotels.com,false,hospitality-benchmark
+hospitality,Omni,omnihotels.com,false,hospitality-benchmark
+hospitality,Kimpton,kimptonhotels.com,false,hospitality-benchmark
+hospitality,Choice Hotels,choicehotels.com,false,hospitality-benchmark
+insurance,Aflac,aflac.com,false,insurance-benchmark
+insurance,Liberty Mutual,libertymutual.com,false,insurance-benchmark
+insurance,MetLife,metlife.com,false,insurance-benchmark
+insurance,American Family,amfam.com,false,insurance-benchmark
+insurance,State Farm,statefarm.com,false,insurance-benchmark
+insurance,Travelers,travelers.com,false,insurance-benchmark
+insurance,Progressive,progressive.com,false,insurance-benchmark
+insurance,Erie Insurance,erieinsurance.com,false,insurance-benchmark
+insurance,Geico,geico.com,false,insurance-benchmark
+insurance,Allstate,allstate.com,false,insurance-benchmark
+insurance,Farmers,farmers.com,false,insurance-benchmark
+insurance,Nationwide,nationwide.com,false,insurance-benchmark
+insurance,The Hartford,thehartford.com,false,insurance-benchmark
+insurance,USAA,usaa.com,false,insurance-benchmark
+government,usa.gov,usa.gov,false,government-benchmark
+government,medicare.gov,medicare.gov,false,government-benchmark
+government,nasa.gov,nasa.gov,false,government-benchmark
+government,texas.gov,texas.gov,false,government-benchmark
+government,va.gov,va.gov,false,government-benchmark
+government,login.gov,login.gov,false,government-benchmark
+government,ny.gov,ny.gov,false,government-benchmark
+government,healthcare.gov,healthcare.gov,false,government-benchmark
+government,cdc.gov,cdc.gov,false,government-benchmark
+government,sec.gov,sec.gov,false,government-benchmark
+government,weather.gov,weather.gov,false,government-benchmark
+government,irs.gov,irs.gov,false,government-benchmark
+government,ssa.gov,ssa.gov,false,government-benchmark
+government,studentaid.gov,studentaid.gov,false,government-benchmark
+airline,spirit.com,spirit.com,false,airline-benchmark
+airline,sun-country.com,sun-country.com,false,airline-benchmark
+airline,alaskaair.com,alaskaair.com,false,airline-benchmark
+airline,frontierairlines.com,frontierairlines.com,false,airline-benchmark
+airline,hawaiianairlines.com,hawaiianairlines.com,false,airline-benchmark
+airline,virginatlantic.com,virginatlantic.com,false,airline-benchmark
+airline,southwest.com,southwest.com,false,airline-benchmark
+airline,united.com,united.com,false,airline-benchmark
+airline,delta.com,delta.com,false,airline-benchmark
+airline,aa.com,aa.com,false,airline-benchmark
+airline,jetblue.com,jetblue.com,false,airline-benchmark
+airline,allegiantair.com,allegiantair.com,false,airline-benchmark
+airline,breezeairways.com,breezeairways.com,false,airline-benchmark
+airline,copaair.com,copaair.com,false,airline-benchmark
+telecom,visible.com,visible.com,false,telecom-benchmark
+telecom,att.com,att.com,false,telecom-benchmark
+telecom,boostmobile.com,boostmobile.com,false,telecom-benchmark
+telecom,cox.com,cox.com,false,telecom-benchmark
+telecom,cricketwireless.com,cricketwireless.com,false,telecom-benchmark
+telecom,straighttalk.com,straighttalk.com,false,telecom-benchmark
+telecom,uscellular.com,uscellular.com,false,telecom-benchmark
+telecom,verizon.com,verizon.com,false,telecom-benchmark
+telecom,t-mobile.com,t-mobile.com,false,telecom-benchmark
+telecom,consumercellular.com,consumercellular.com,false,telecom-benchmark
+telecom,xfinity.com,xfinity.com,false,telecom-benchmark
+telecom,spectrum.com,spectrum.com,false,telecom-benchmark
+telecom,googlefi.com,googlefi.com,false,telecom-benchmark
+telecom,tello.com,tello.com,false,telecom-benchmark
+real-estate,Opendoor,opendoor.com,false,real-estate-benchmark
+real-estate,Compass,compass.com,false,real-estate-benchmark
+real-estate,Coldwell Banker,coldwellbanker.com,false,real-estate-benchmark
+real-estate,Corcoran,corcoran.com,false,real-estate-benchmark
+real-estate,eXp Realty,exprealty.com,false,real-estate-benchmark
+real-estate,RE/MAX,remax.com,false,real-estate-benchmark
+real-estate,Redfin,redfin.com,false,real-estate-benchmark
+real-estate,Douglas Elliman,elliman.com,false,real-estate-benchmark
+real-estate,Century 21,century21.com,false,real-estate-benchmark
+real-estate,Sotheby's International Realty,sothebysrealty.com,false,real-estate-benchmark
+real-estate,Zillow,zillow.com,false,real-estate-benchmark
+real-estate,Realtor.com,realtor.com,false,real-estate-benchmark
+real-estate,Keller Williams,kw.com,false,real-estate-benchmark
+real-estate,Berkshire Hathaway HomeServices,bhhs.com,false,real-estate-benchmark
+benchmark,vercel.com,vercel.com,false,benchmark
+benchmark,zapier.com,zapier.com,false,benchmark
+benchmark,hubspot.com,hubspot.com,false,benchmark
+benchmark,shopify.com,shopify.com,false,benchmark
+benchmark,squarespace.com,squarespace.com,false,benchmark
+benchmark,mailchimp.com,mailchimp.com,false,benchmark
+benchmark,asana.com,asana.com,false,benchmark
+benchmark,stripe.com,stripe.com,false,benchmark
+benchmark,calendly.com,calendly.com,false,benchmark
+benchmark,clickup.com,clickup.com,false,benchmark
+benchmark,webflow.com,webflow.com,false,benchmark
+benchmark,teachable.com,teachable.com,false,benchmark
+benchmark,linear.app,linear.app,false,benchmark
+benchmark,notion.so,notion.so,false,benchmark
+benchmark,ghost.org,ghost.org,false,benchmark
+benchmark,monday.com,monday.com,false,benchmark
+benchmark,figma.com,figma.com,false,benchmark
+benchmark,airtable.com,airtable.com,false,benchmark
+benchmark,substack.com,substack.com,false,benchmark
+benchmark,gumroad.com,gumroad.com,false,benchmark
+benchmark,canva.com,canva.com,false,benchmark
+benchmark,gusto.com,gusto.com,false,benchmark
