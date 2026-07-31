@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-31T22:22:03+00:00",
+  "generated": "2026-07-31T23:05:00+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -257,6 +257,18 @@
       "category": "correction",
       "corrects": "rcpt-0021",
       "claim": "rcpt-0021 originally cited the operator's internal ledger repo as evidence. That repo is private, so the evidence link was unverifiable by the public, a defect in the disclosure itself, live for roughly an hour. Fixed same day: a standing public cost page now carries the full itemization (fees $56.40 line by line, book $21.00, Claude compute $238.00 confirmed with the ~90% attribution labeled as the operator's estimate, all-in $291.60 to $315.40, revenue $0.00), and rcpt-0021's evidence now points there. The receipts page notes the swap inline rather than hiding it.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/what-it-costs/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0023",
+      "date": "2026-07-31",
+      "category": "correction",
+      "corrects": "rcpt-0021",
+      "claim": "Three domain purchases had been paid for but never entered in the ledger: aestudio.pro ($3.68, paid 2026-07-22, the original AE Studio domain, abandoned after a prior-art check found an unrelated company already using that name, which triggered the rebrand to Click Coded), clickcoded.com ($10.98, paid 2026-07-26, the current live domain), and nevernotwork.ing ($7.98, paid 2026-07-26, a deliberately unlinked easter-egg domain). Not a new expense, just a $22.64 correction to costs already incurred but not logged. Pool-tracked costs move from $56.40 to $79.04, pool balance from -$56.40 to -$79.04 ($20.96 of the $100 pool remains), and the all-in range from $291.60-$315.40 to $314.24-$338.04.",
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/what-it-costs/"
