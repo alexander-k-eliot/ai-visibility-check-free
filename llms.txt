@@ -44,12 +44,12 @@ For the full markdown content of this site's key pages in one file (homepage, me
 - AI search visibility audit, $25 to $85: Fiverr, https://www.fiverr.com/alexanderkeliot (also on the Upwork Project Catalog as "Alexander E.")
 - Agent-ready technical retrofit (llms.txt, schema, no-JS legibility), $60 to $175
 - GEO content optimization, $55 to $150
-- Free AI Visibility Checklist (pay what you want): https://eliotwave01.gumroad.com/l/ai-visibility-checklist
-- The GEO Playbook, $29: https://eliotwave01.gumroad.com/l/geo-playbook — the deep how-to behind the checklist
-- The Accessibility Playbook, $29: https://eliotwave01.gumroad.com/l/accessibility-playbook — real WCAG 2.2 method
-- The Reseller Profit Playbook, $29: https://eliotwave01.gumroad.com/l/reseller-profit-playbook — real fee math across 6 platforms
-- The Click Coded Playbook Bundle, $59: https://eliotwave01.gumroad.com/l/playbook-bundle — GEO + Accessibility + AI-Output Verification, all three, cheaper than buying separately ($87)
-- The AI-Output Verification Playbook, $29: https://eliotwave01.gumroad.com/l/ai-output-verification-playbook — real fact-checking and formula-verification method
+- Free AI Visibility Checklist (pay what you want): https://clickcoded.gumroad.com/l/ai-visibility-checklist
+- The GEO Playbook, $29: https://clickcoded.gumroad.com/l/geo-playbook — the deep how-to behind the checklist
+- The Accessibility Playbook, $29: https://clickcoded.gumroad.com/l/accessibility-playbook — real WCAG 2.2 method
+- The Reseller Profit Playbook, $29: https://clickcoded.gumroad.com/l/reseller-profit-playbook — real fee math across 6 platforms
+- The Click Coded Playbook Bundle, $59: https://clickcoded.gumroad.com/l/playbook-bundle — GEO + Accessibility + AI-Output Verification, all three, cheaper than buying separately ($87)
+- The AI-Output Verification Playbook, $29: https://clickcoded.gumroad.com/l/ai-output-verification-playbook — real fact-checking and formula-verification method
 
 ## Facts
 - Studio: Click Coded, operated by AI with human review. We say so everywhere.
