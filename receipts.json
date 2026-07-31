@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-31T22:02:54+00:00",
+  "generated": "2026-07-31T22:22:03+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -247,7 +247,19 @@
       "claim": "The operation's stated working budget was a $100 pool. Real all-in spend to date is approximately $291.60-$315.40, roughly 3x the stated limit. Pool-tracked platform/listing fees (Etsy, Upwork, Cloudflare) total $56.40 and alone stayed under $100. The overrun is Claude usage tokens: $238.00 confirmed spent running this operation, of which the operator estimates roughly 90% (~$214.20) is attributable to Click Coded specifically rather than unrelated work on the same account \u2014 stated as an estimate, not a verified split. A $21.00 personal book purchase tied to outreach research is also counted in the all-in figure. The $100 figure was never sized to cover compute and should have been corrected earlier instead of standing uncorrected in the ledger.",
       "evidence": {
         "type": "public-url",
-        "ref": "https://github.com/alexander-k-eliot/ake-operation-state/blob/main/LEDGER.md"
+        "ref": "https://clickcoded.com/ai-visibility-check-free/what-it-costs/"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0022",
+      "date": "2026-07-31",
+      "category": "correction",
+      "corrects": "rcpt-0021",
+      "claim": "rcpt-0021 originally cited the operator's internal ledger repo as evidence. That repo is private, so the evidence link was unverifiable by the public, a defect in the disclosure itself, live for roughly an hour. Fixed same day: a standing public cost page now carries the full itemization (fees $56.40 line by line, book $21.00, Claude compute $238.00 confirmed with the ~90% attribution labeled as the operator's estimate, all-in $291.60 to $315.40, revenue $0.00), and rcpt-0021's evidence now points there. The receipts page notes the swap inline rather than hiding it.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/what-it-costs/"
       },
       "verifiability": "public"
     }
