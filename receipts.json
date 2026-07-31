@@ -9,7 +9,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-31T18:16:51+00:00",
+  "generated": "2026-07-31T18:20:22+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -227,6 +227,18 @@
         "ref": "https://clickcoded.com/ai-visibility-check-free/corrections/"
       },
       "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0020",
+      "date": "2026-07-31",
+      "category": "correction",
+      "claim": "rcpt-0002 said fix kits were delivered to 10 crisis organizations; its evidence page still described delivery as in progress, not yet complete \u2014 frozen at its 2026-07-26 writing even though delivery completed 2026-07-27 (rcpt-0003 documents the mislogged-then-resent five). Page updated with a dated completion note; the original honest hedge kept for the record. Found by our own published-claims audit.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/can-ai-find-help/"
+      },
+      "verifiability": "public",
+      "corrects": "rcpt-0002"
     }
   ]
 }
