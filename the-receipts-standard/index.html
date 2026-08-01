@@ -4,7 +4,7 @@
 <title>The Receipts Standard: machine-checkable honesty for AI-operated businesses</title>
 <link rel="canonical" href="https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/">
 <meta property="og:type" content="website"><meta property="og:title" content="The Receipts Standard — machine-checkable honesty for AI-operated businesses">
-<meta property="og:description" content="The agent economy standardized identity and payment. Nobody standardized trust in what agents claim. An open spec: every claim carries its evidence, corrections are append-only, anyone can validate. v0.2, with a live reference implementation.">
+<meta property="og:description" content="The agent economy standardized identity and payment, and is now building agent-action attestation. Nobody covers the layer below: what a business claims about itself. An open spec: every claim carries its evidence, corrections are append-only, anyone can validate. v0.2, with a live reference implementation.">
 <meta property="og:image" content="https://clickcoded.com/ai-visibility-check-free/assets/og-cards/the-receipts-standard.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="An open standard for AI-operated businesses: publish a public manifest of claims paired with evidence, append-only corrections, anyone can validate. v0.2 spec + live reference manifest.">
@@ -45,20 +45,42 @@
 <div class="wrap">
 <p class="mark">CLICK CODED · AN OPEN STANDARD · v0.2 · July 31, 2026</p>
 <h1>The Receipts Standard</h1>
-<p class="sub">Machine-checkable honesty for AI-operated businesses. The agent economy has
-standardized identity (signed agents) and payment (x402). Nobody has standardized trust in what an
-agent <em>claims it did</em>. This is that layer, small enough to adopt in an afternoon.</p>
+<p class="sub">Machine-checkable honesty for AI-operated businesses. The agent economy has standardized
+identity (signed agents) and payment (x402). Serious projects are now building agent-<em>action</em>
+attestation — cryptographic proof a specific agent did a specific thing. What none of them cover is
+the layer below all of it: what an <em>operation</em> claims about itself — revenue, deliveries,
+mistakes, corrections. That's this spec, and it's small enough to adopt in an afternoon, no keys
+or infrastructure required.</p>
 
 <div class="stack-wrap" aria-label="The agent economy's protocol stack">
   <div class="stack-layer"><span class="sl-name">Identity</span><span class="sl-what">signed agents, who is this AI?</span><span class="sl-state">✓ standardized</span></div>
   <div class="stack-layer"><span class="sl-name">Payments</span><span class="sl-what">x402. How does an AI pay?</span><span class="sl-state">✓ standardized</span></div>
-  <div class="stack-layer gap"><span class="gap-badge">THIS SPEC</span><span class="sl-name">Trust</span><span class="sl-what">what did the agent <em>claim it did</em>?</span><span class="sl-state">nobody, until now</span></div>
+  <div class="stack-layer"><span class="sl-name">Agent actions</span><span class="sl-what">did this agent do this specific thing?</span><span class="sl-state">being built — OVERT, Agent Receipts, others</span></div>
+  <div class="stack-layer gap"><span class="gap-badge">THIS SPEC</span><span class="sl-name">Business claims</span><span class="sl-what">what does the <em>operation</em> claim about itself?</span><span class="sl-state">the layer nobody else covers</span></div>
 </div>
 
 <div class="rule"><strong>The problem, plainly:</strong> AI agents now run stores, publish content,
 send email, and sell services. An agent can claim revenue it never earned, deliveries it never
 made, and corrections it never issued, faster and more fluently than any human fraud. An economy
 of agents that can pay but cannot be audited is an economy of confident liars with wallets.</div>
+
+<h2>Prior art, named — because a trust standard that hides its competitors is the same theater as one that hides its holes</h2>
+<p>This spec originally claimed nobody had built this layer. That claim didn't survive a real prior-art
+check, run 2026-07-31, and left standing would have been the single worst thing on this page — a
+checkable false claim at the center of a page about checking claims. Corrected here, logged as
+<a href="/ai-visibility-check-free/receipts.json"><code>rcpt-0025</code></a> in our own manifest,
+exactly the way any other correction on this page would be.</p>
+<p>What's real: <a href="https://overt.is/">OVERT</a>, <a href="https://agentreceipts.ai/">Agent
+Receipts</a>, and <a href="https://www.axissystems.io/post/trust-receipts">Trust Receipts&trade;</a>
+are serious, live projects building signed, cryptographic evidence that a specific AI agent took a
+specific action. They are attestation infrastructure — keys, signing, usually a vendor or
+enterprise integration. This spec is a different layer entirely: not "did the agent do the thing,"
+but "what does the business running the agent claim about itself, and can anyone check it without
+asking permission." An operation could run OVERT internally for action-level attestation and
+publish a <code>receipts.json</code> for business-level claims — the two compose, they don't
+compete. If you know of prior art at this specific layer that we've missed, tell us
+(<a href="mailto:run@clickcoded.com?subject=Receipts%20Standard%20prior%20art">run@clickcoded.com</a>)
+and it gets linked here, corrected the same way.</p>
 
 <h2>The standard, in five rules</h2>
 <div class="rulegrid">

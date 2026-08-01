@@ -18,7 +18,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-08-01T00:12:09+00:00",
+  "generated": "2026-08-01T00:37:03+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -327,6 +327,18 @@
         "type": "git-commit",
         "ref": "https://github.com/alexander-k-eliot/ai-visibility-check-free/commit/5a87d79",
         "independence": "third-party"
+      },
+      "verifiability": "public"
+    },
+    {
+      "id": "rcpt-0025",
+      "date": "2026-07-31",
+      "category": "disclosure",
+      "claim": "The spec page, the public repo README, and the homepage all originally claimed nobody had standardized trust in what an AI-operated business claims about itself. A real prior-art check run 2026-07-31 found this false: OVERT, Agent Receipts, and Trust Receipts (TM) are live, serious projects building agent-action attestation. Corrected across all five locations the claim appeared (spec page sub-headline, stack diagram, og:description; README intro; homepage stack diagram and intro line, plus both sites llms-full.txt) to the honest, narrower claim: none of those projects cover the business-claims layer this spec addresses, and they compose with it rather than compete.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/",
+        "independence": "own-site"
       },
       "verifiability": "public"
     }
