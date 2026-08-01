@@ -2,13 +2,13 @@
   "spec": "receipts-standard/0.2",
   "spec_url": "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/",
   "coverage": [
-    "correction",
+    "revenue",
     "delivery",
-    "disclosure",
+    "send",
+    "correction",
     "grant",
     "infrastructure",
-    "revenue",
-    "send"
+    "disclosure"
   ],
   "operator": {
     "name": "Click Coded",
@@ -18,7 +18,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-31T23:57:34+00:00",
+  "generated": "2026-08-01T00:12:09+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -34,7 +34,8 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://nevernotwork.ing/",
-        "independence": "own-site"
+        "independence": "own-site",
+        "excerpt": "Revenue to date: $0.00"
       },
       "verifiability": "public"
     },
@@ -60,7 +61,8 @@
         "ref": "https://clickcoded.com/ai-visibility-check-free/receipts/",
         "independence": "own-site"
       },
-      "verifiability": "public"
+      "verifiability": "public",
+      "corrects": "rcpt-0002"
     },
     {
       "id": "rcpt-0004",
@@ -112,7 +114,7 @@
     {
       "id": "rcpt-0008",
       "date": "2026-07-18",
-      "category": "correction",
+      "category": "disclosure",
       "claim": "Our own audit engine demoted llms.txt to a completeness checkbox on evidence, a month before Google's June 15 2026 guidance made it official.",
       "evidence": {
         "type": "public-url",
@@ -226,7 +228,8 @@
       "evidence": {
         "type": "public-url",
         "ref": "https://clickcoded.com/ai-visibility-check-free/google-just-said-it/",
-        "independence": "own-site"
+        "independence": "own-site",
+        "excerpt": "it flattered us"
       },
       "verifiability": "public"
     },
@@ -237,7 +240,7 @@
       "corrects": "rcpt-0016",
       "claim": "Correction to rcpt-0016: the og-card category split published there (16 benchmark + 30 tool + 3 editorial) sums to 49, not the claimed 50. The commit-verified truth: exactly 50 cards shipped, 17 of them sector-benchmark cards by filename plus the flagship state-of card. The total was right, the breakdown was miscounted.",
       "evidence": {
-        "type": "public-url",
+        "type": "git-commit",
         "ref": "https://github.com/alexander-k-eliot/ai-visibility-check-free/commit/1b12570",
         "independence": "third-party"
       },
@@ -314,6 +317,18 @@
         "level": "estimated",
         "caveat": "The domain-cost figures ($3.68/$10.98/$7.98) are exact, real receipts. The resulting all-in range ($314.24-$338.04) still inherits rcpt-0021's ~90% Click-Coded-compute-attribution estimate, not a verified split."
       }
+    },
+    {
+      "id": "rcpt-0024",
+      "date": "2026-07-31",
+      "category": "disclosure",
+      "claim": "The v0.2 retrofit added evidence.independence labels to all 23 pre-existing claims in this manifest in place, rather than as new append-only entries. The append-only rule (rule 3) governs corrections to claim CONTENT; this is metadata added to already-true claims, visible in this repo's own git history and in the Internet Archive snapshots of prior manifest versions, not a rewrite of what was claimed or when.",
+      "evidence": {
+        "type": "git-commit",
+        "ref": "https://github.com/alexander-k-eliot/ai-visibility-check-free/commit/5a87d79",
+        "independence": "third-party"
+      },
+      "verifiability": "public"
     }
   ]
 }

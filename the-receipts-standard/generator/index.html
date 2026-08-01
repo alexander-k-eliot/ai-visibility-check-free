@@ -213,7 +213,7 @@ resolve. <a href="/ai-visibility-check-free/the-receipts-standard/">Full spec</a
     var evTypeWrap = el("div");
     evTypeWrap.appendChild(el("label", {text:"Evidence type"}));
     var evTypeSel = el("select");
-    [["public-url","public-url"],["platform-record","platform-record"]].forEach(function(pair){
+    [["public-url","public-url"],["platform-record","platform-record"],["git-commit","git-commit"],["ledger","ledger"]].forEach(function(pair){
       var o = el("option", {value:pair[0], text:pair[1]});
       if (pair[0] === c.evType) o.setAttribute("selected","selected");
       evTypeSel.appendChild(o);
