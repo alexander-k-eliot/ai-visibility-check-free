@@ -18,7 +18,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-07-31T23:21:42+00:00",
+  "generated": "2026-07-31T23:57:34+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -309,7 +309,11 @@
         "ref": "https://clickcoded.com/ai-visibility-check-free/what-it-costs/",
         "independence": "own-site"
       },
-      "verifiability": "public"
+      "verifiability": "public",
+      "confidence": {
+        "level": "estimated",
+        "caveat": "The domain-cost figures ($3.68/$10.98/$7.98) are exact, real receipts. The resulting all-in range ($314.24-$338.04) still inherits rcpt-0021's ~90% Click-Coded-compute-attribution estimate, not a verified split."
+      }
     }
   ]
 }

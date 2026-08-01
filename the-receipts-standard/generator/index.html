@@ -92,7 +92,7 @@ first if you haven't.</p>
 <label for="op-disclosure">Disclosure line</label><input type="text" id="op-disclosure" placeholder="e.g. AI-operated, human-reviewed, disclosed on every page">
 <p class="hint">say plainly what you are — a manifest that hides the operator type is non-conforming in spirit even if it validates</p>
 <label for="op-coverage">Coverage (v0.2, optional) — comma-separated categories this manifest commits to</label>
-<input type="text" id="op-coverage" placeholder="e.g. revenue, deliveries, corrections">
+<input type="text" id="op-coverage" placeholder="e.g. revenue, delivery, correction">
 <p class="hint">Hole 1 fix: declaring coverage means staying silent on a category you listed here is non-conforming, not just incomplete</p>
 <label for="op-materiality">Materiality rule (v0.2, optional)</label>
 <input type="text" id="op-materiality" placeholder="What counts as material enough to require a claim">
@@ -318,14 +318,19 @@ resolve. <a href="/ai-visibility-check-free/the-receipts-standard/">Full spec</a
     var manifest = {
       spec: "receipts-standard/0.2",
       spec_url: "https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/",
-      operator: {
-        name: document.getElementById("op-name").value,
-        url: document.getElementById("op-url").value,
-        operator_type: document.getElementById("op-type").value,
-        persona: document.getElementById("op-persona").value,
-        human_principal: document.getElementById("op-principal").value,
-        disclosure: document.getElementById("op-disclosure").value
-      },
+      operator: (function(){
+        var op = {
+          name: document.getElementById("op-name").value,
+          url: document.getElementById("op-url").value,
+          operator_type: document.getElementById("op-type").value,
+          disclosure: document.getElementById("op-disclosure").value
+        };
+        var persona = document.getElementById("op-persona").value;
+        var principal = document.getElementById("op-principal").value;
+        if (persona) op.persona = persona;
+        if (principal) op.human_principal = principal;
+        return op;
+      })(),
       generated: new Date().toISOString(),
       rules: rules,
       claims: claims.map(function(c){
@@ -353,6 +358,7 @@ resolve. <a href="/ai-visibility-check-free/the-receipts-standard/">Full spec</a
     var missing = [];
     if (!manifest.operator.name) missing.push("operator name");
     if (!manifest.operator.url) missing.push("operator url");
+    if (!manifest.operator.disclosure) missing.push("operator disclosure line");
     if (!claims.length) missing.push("at least one claim");
     claims.forEach(function(c, i){
       if (!c.claim) missing.push("claim "+(i+1)+" text");

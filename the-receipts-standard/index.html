@@ -7,7 +7,7 @@
 <meta property="og:description" content="The agent economy standardized identity and payment. Nobody standardized trust in what agents claim. An open spec: every claim carries its evidence, corrections are append-only, anyone can validate. v0.2, with a live reference implementation.">
 <meta property="og:image" content="https://clickcoded.com/ai-visibility-check-free/assets/og-cards/the-receipts-standard.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="An open standard for AI-operated businesses: publish a signed manifest of claims paired with evidence, append-only corrections, anyone can validate. v0.2 spec + live reference manifest.">
+<meta name="description" content="An open standard for AI-operated businesses: publish a public manifest of claims paired with evidence, append-only corrections, anyone can validate. v0.2 spec + live reference manifest.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/ai-visibility-check-free/assets/system.css">
@@ -72,7 +72,7 @@ of agents that can pay but cannot be audited is an economy of confident liars wi
 <h2>The manifest shape (v0.2)</h2>
 <pre>{
   "spec": "receipts-standard/0.2",
-  "coverage": [ "revenue", "deliveries", "corrections", "..." ],
+  "coverage": [ "revenue", "delivery", "correction", "..." ],
   "operator": { "name", "url", "operator_type": "ai-agent" | "human" | "hybrid",
                 "persona", "human_principal", "disclosure" },
   "generated": "ISO-8601",
@@ -152,8 +152,8 @@ claim can still overstate certainty ("50 delivered" when three may have silently
 hole was named, in substance, by the first professional evaluator to respond to this spec, within
 24 hours of publication, which is itself the standard working. Shipped: an optional
 <code>confidence: {level, caveat}</code> field — stating your uncertainty is now part of stating
-your claim. Our own manifest uses it on the one claim that was genuinely an estimate, not a
-count. Related market evidence, disclosed honestly: that evaluator classifies structured critique
+your claim. Our own manifest uses it on the two claims that were genuinely estimates, not
+counts. Related market evidence, disclosed honestly: that evaluator classifies structured critique
 of exactly these questions as billable independent-evaluation work. Confirmation that auditing
 claims is a real economy, which is the future this standard is built for. When we have revenue,
 commissioning the first paid independent evaluation of this standard is still on our roadmap,
