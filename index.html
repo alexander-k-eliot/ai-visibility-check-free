@@ -101,7 +101,7 @@
 <div class="wrap">
   <h1>See your site the way an AI crawler sees it</h1>
   <p class="hero-sub">ChatGPT, Claude, Perplexity, and every other AI assistant answer questions by reading websites. If they can't read yours, they cite someone else. This free check shows you the literal text a crawler extracts from your page, a per-bot access map, and generated fix files you can drop straight in.</p>
-  <p class="hero-sub">We don't ask an AI what it thinks of your site — tools that do that start at $29/mo. We check the technical facts that decide whether AI can read your site at all, and we show our work, for free. It's one piece of the thing this studio actually builds: trust between humans and AI you can check instead of take on faith — we hold ourselves to the same bar under <a href="https://receipts.clickcoded.com/">The Receipts Standard</a>, the open spec we authored and live under.</p>
+  <p class="hero-sub">We don't ask an AI what it thinks of your site — tools that do that start at $29/mo. We check the technical facts that decide whether AI can read your site at all, and we show our work, for free. It's one piece of the thing this studio actually builds: trust between humans and AI you can check instead of take on faith — we hold ourselves to the same bar under <a href="https://receipts.clickcoded.com/">The Checkable Standard</a>, the open spec we authored and live under.</p>
 
   <div class="check-box">
     <p class="checks-heading">Check your site</p>
@@ -216,12 +216,12 @@
     <p class="panel-cta">Want to know the day your posture changes? That's exactly what <a href="https://pulse.clickcoded.com/">Pulse</a> watches.</p>
   </div>
 
-  <!-- Receipts Standard trust signal (Priority Goal 1B, Phase 0): reported separately from the
-       score above on purpose -- publishing a manifest is a trust signal, not an AI-visibility
-       signal, and folding it into the score would be exactly the Goodharting the standard itself
-       warns against. -->
+  <!-- Checkable Standard trust signal (Priority Goal 1B, Phase 0; formerly "Receipts Standard"):
+       reported separately from the score above on purpose -- publishing a manifest is a trust
+       signal, not an AI-visibility signal, and folding it into the score would be exactly the
+       Goodharting the standard itself warns against. -->
   <div id="receiptsPanel" class="bot-panel hidden">
-    <p class="checks-heading">Receipts Standard — does this business publish checkable claims?</p>
+    <p class="checks-heading">Checkable Standard — does this business publish checkable claims?</p>
     <div id="receiptsVerdict" style="border:1px solid var(--border);border-left:4px solid var(--mint);border-radius:8px;padding:12px 14px;font-size:.9rem"></div>
     <p class="panel-cta">This is separate from the score above on purpose — it's a trust signal, not an AI-visibility one. <a href="https://receipts.clickcoded.com/">What this is, and how to publish your own →</a></p>
   </div>
@@ -759,7 +759,7 @@ function renderReceiptsSignal(rs){
     v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">PUBLISHES A STRUCTURALLY VALID MANIFEST</strong><br>'+(rs.claimCount||0)+' claim(s) found at <a href="'+safeUrl+'">'+safeUrl+'</a>. This checks shape only, not evidence -- <a href="https://receipts.clickcoded.com/renderer/?url='+encodeURIComponent(rs.url)+'">run the real validator</a> for a full conformance check.';
   } else {
     v.style.borderLeftColor='var(--amber)';
-    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">MANIFEST FOUND, MALFORMED</strong><br>Something\'s at <a href="'+safeUrl+'">'+safeUrl+'</a>, but it doesn\'t parse as a valid Receipts Standard manifest.';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">MANIFEST FOUND, MALFORMED</strong><br>Something\'s at <a href="'+safeUrl+'">'+safeUrl+'</a>, but it doesn\'t parse as a valid Checkable Standard manifest.';
   }
   panel.classList.remove('hidden');
 }
