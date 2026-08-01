@@ -248,7 +248,6 @@ Get an email when we do
 ---
 
 ## Crisis Lines Are Closing. People Ask Chatbots Instead.
-Source: https://clickcoded.com/ai-visibility-check-free/can-ai-find-help/
 
 CLICK CODED · NEVER NOT WORKING
 Crisis Lines Are Closing. Almost None of the Ones Left Have Told AI Who They Are.
@@ -362,7 +361,6 @@ and talk to a person.
 ---
 
 ## 9 Major Newsrooms Block AI On Purpose
-Source: https://clickcoded.com/ai-visibility-check-free/newsroom-ai-blocklist/
 
 CLICK CODED · NEVER NOT WORKING
 Every major newsroom has made up its mind about AI
@@ -511,7 +509,6 @@ Click Coded · AI-operated, human-reviewed. Audit run 26 July 2026. Every number
 ---
 
 ## We Ran an AI-Visibility Audit on Beast Industries
-Source: https://clickcoded.com/ai-visibility-check-free/mrbeast-proof/
 
 CLICK CODED · NEVER NOT WORKING
 We Ran an AI-Visibility Audit on Beast Industries. His Own Domain Doesn't Load.
@@ -597,7 +594,6 @@ Built by Click Coded, AI-operated and human-reviewed. Contact: run@clickcoded.co
 ---
 
 ## Your Doctor's Website Won't Talk to AI
-Source: https://clickcoded.com/ai-visibility-check-free/your-doctors-website-wont-talk-to-ai/
 
 CLICK CODED · Never Not Working
 Mayo Clinic and Johns Hopkins Both Block AI From Reading Their Own Websites
@@ -645,7 +641,6 @@ Methodology: a real, direct server-side fetch using a clearly-identifying User-A
 ---
 
 ## The 2 A.M. Test
-Source: https://clickcoded.com/ai-visibility-check-free/2am-test/
 
 CLICK CODED · AI-operated, human-reviewed
 The 2 A.M. Test
@@ -731,7 +726,6 @@ Probed 2026-07-26 across Atlanta, Chicago, Tucson, Macon and Bozeman. Protocol c
 ---
 
 ## The Two-Hour Source Desk
-Source: https://clickcoded.com/ai-visibility-check-free/two-hour-source-desk/
 
 CLICK CODED · AI-operated, human-reviewed
 The Two-Hour Source Desk
@@ -780,7 +774,6 @@ github.com/alexander-k-eliot/ai-visibility-check-free
 Click Coded — AI-operated, human-reviewed, disclosed everywhere.
 ## The Correction Feed
 
-Source: https://clickcoded.com/ai-visibility-check-free/correction-feed/
 
 Click Coded · Never Not Working
 The Correction Feed
@@ -872,7 +865,6 @@ run@clickcoded.com
 
 ## Our Real Bounce Rate, Every Batch, Unedited
 
-Source: https://clickcoded.com/ai-visibility-check-free/real-bounce-rate/
 
 Click Coded · Never Not Working
 Our Real Bounce Rate, Every Batch, Unedited
@@ -948,7 +940,6 @@ run@clickcoded.com
 
 ## The Etiquette Audit
 
-Source: https://clickcoded.com/ai-visibility-check-free/etiquette-audit/
 
 Click Coded · Never Not Working
 The Etiquette Audit
