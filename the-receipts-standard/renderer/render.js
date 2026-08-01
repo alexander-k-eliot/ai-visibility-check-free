@@ -77,7 +77,7 @@
 
     var html = '<div style="font-family:system-ui,-apple-system,sans-serif;max-width:640px">';
     html += '<div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;opacity:.6;font-family:monospace">' +
-      esc(data.spec || 'unversioned') + (sourceUrl ? ' &middot; <a href="' + esc(sourceUrl) + '" style="color:inherit">source</a>' : '') + '</div>';
+      esc(data.spec || 'unversioned') + (sourceUrl && /^https?:\/\//.test(sourceUrl) ? ' &middot; <a href="' + esc(sourceUrl) + '" style="color:inherit">source</a>' : '') + '</div>';
     html += '<h3 style="margin:6px 0 2px">' + esc(op.name || 'Unnamed operator') + '</h3>';
     html += '<div style="opacity:.8;font-size:.9rem">' + esc(op.disclosure || 'No disclosure line provided.') + '</div>';
     if (data.coverage && data.coverage.length) {

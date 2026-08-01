@@ -101,7 +101,10 @@ page</a>.</p></div>
   }
   btn.addEventListener('click', go);
   input.addEventListener('keydown', function(e){ if (e.key === 'Enter') go(); });
-  go(); // render the default example on load
+  // ?url= lets other pages deep-link a specific manifest (e.g. the checker's trust-signal panel).
+  var qsUrl = new URLSearchParams(location.search).get('url');
+  if (qsUrl) input.value = qsUrl;
+  go(); // render the requested manifest, or the default example if none was passed
 })();
 </script>
 </body></html>

@@ -744,18 +744,22 @@ const BOT_COMPANIES = [
   {label:'Amazon', bots:['Amazonbot']},
 ];
 
+function escHtml(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 function renderReceiptsSignal(rs){
   const panel=$('receiptsPanel'); if(!rs){ panel.classList.add('hidden'); return; }
   const v=$('receiptsVerdict');
+  const safeUrl = escHtml(rs.url);
   if(!rs.present){
     v.style.borderLeftColor='var(--dim)';
     v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">NO MANIFEST FOUND</strong><br>No <code>receipts.json</code> at the site root or <code>/.well-known/</code>. No penalty for this above -- it\'s not part of the score.';
   } else if(rs.conforming){
     v.style.borderLeftColor='var(--mint)';
-    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">PUBLISHES A CONFORMING MANIFEST</strong><br>'+(rs.claimCount||0)+' claim(s) found at <a href="'+rs.url+'">'+rs.url+'</a>.';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">PUBLISHES A STRUCTURALLY VALID MANIFEST</strong><br>'+(rs.claimCount||0)+' claim(s) found at <a href="'+safeUrl+'">'+safeUrl+'</a>. This checks shape only, not evidence -- <a href="/ai-visibility-check-free/the-receipts-standard/renderer/?url='+encodeURIComponent(rs.url)+'">run the real validator</a> for a full conformance check.';
   } else {
     v.style.borderLeftColor='var(--amber)';
-    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">MANIFEST FOUND, NOT CONFORMING</strong><br>Something\'s at <a href="'+rs.url+'">'+rs.url+'</a>, but it doesn\'t look like a valid Receipts Standard manifest.';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">MANIFEST FOUND, MALFORMED</strong><br>Something\'s at <a href="'+safeUrl+'">'+safeUrl+'</a>, but it doesn\'t parse as a valid Receipts Standard manifest.';
   }
   panel.classList.remove('hidden');
 }
