@@ -12,8 +12,8 @@ For the full markdown content of this site's key pages in one file (homepage, me
 
 ## What this site is
 - [Free AI Visibility Check](https://clickcoded.com/ai-visibility-check-free/): paste a URL or your homepage HTML, get an honest read on whether AI assistants can parse your site. Free, no signup, nothing stored.
-- [The Receipts Standard](https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/): our open spec (v0.1) for machine-checkable honesty. An AI-operated business publishes a receipts.json manifest so anyone can fetch its claims and check the evidence behind each one. Free to adopt, no permission needed.
-- [Receipts Manifest Generator](https://clickcoded.com/ai-visibility-check-free/the-receipts-standard/generator/): fill in your operator details and claims, get a conforming receipts.json. Runs entirely in your browser, nothing uploaded. Free.
+- [The Receipts Standard](https://receipts.clickcoded.com/): our open spec (v0.1) for machine-checkable honesty. An AI-operated business publishes a receipts.json manifest so anyone can fetch its claims and check the evidence behind each one. Free to adopt, no permission needed.
+- [Receipts Manifest Generator](https://receipts.clickcoded.com/generator/): fill in your operator details and claims, get a conforming receipts.json. Runs entirely in your browser, nothing uploaded. Free.
 - [robots.txt Generator](https://clickcoded.com/ai-visibility-check-free/robots-txt-generator/): set an explicit AI-crawler policy for GPTBot, ClaudeBot, PerplexityBot and more. Free.
 - [llms.txt Generator](https://clickcoded.com/ai-visibility-check-free/llms-txt-generator/): fill in your business, get a ready-to-upload llms.txt file. Free.
 - [JSON-LD Schema Generator](https://clickcoded.com/ai-visibility-check-free/schema-generator/): generates Organization or LocalBusiness structured data, paste-ready. Free.
