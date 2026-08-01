@@ -216,6 +216,16 @@
     <p class="panel-cta">Want to know the day your posture changes? That's exactly what <a href="https://pulse.clickcoded.com/">Pulse</a> watches.</p>
   </div>
 
+  <!-- Receipts Standard trust signal (Priority Goal 1B, Phase 0): reported separately from the
+       score above on purpose -- publishing a manifest is a trust signal, not an AI-visibility
+       signal, and folding it into the score would be exactly the Goodharting the standard itself
+       warns against. -->
+  <div id="receiptsPanel" class="bot-panel hidden">
+    <p class="checks-heading">Receipts Standard — does this business publish checkable claims?</p>
+    <div id="receiptsVerdict" style="border:1px solid var(--border);border-left:4px solid var(--mint);border-radius:8px;padding:12px 14px;font-size:.9rem"></div>
+    <p class="panel-cta">This is separate from the score above on purpose — it's a trust signal, not an AI-visibility one. <a href="/ai-visibility-check-free/the-receipts-standard/">What this is, and how to publish your own →</a></p>
+  </div>
+
   <!-- Fix Pack: generated artifacts from this site's own real data -->
   <div id="fixPack" class="fix-pack hidden">
     <p class="checks-heading">Fix Pack — generated from your real data</p>
@@ -656,6 +666,7 @@ async function runCheck(u){
     renderXray(data.textOnly);
     renderBots(data.bots);
     renderSept15(data.sept15);
+    renderReceiptsSignal(data.receiptsSignal);
     renderFixPack(data);
   }
   btn.textContent = 'Run the check'; btn.disabled = false;
@@ -683,6 +694,7 @@ function hideExtraPanels(){
   $('xrayPanel').classList.add('hidden');
   $('botPanel').classList.add('hidden');
   $('sept15Panel').classList.add('hidden');
+  $('receiptsPanel').classList.add('hidden');
   $('fixPack').classList.add('hidden');
 }
 
@@ -732,6 +744,21 @@ const BOT_COMPANIES = [
   {label:'Amazon', bots:['Amazonbot']},
 ];
 
+function renderReceiptsSignal(rs){
+  const panel=$('receiptsPanel'); if(!rs){ panel.classList.add('hidden'); return; }
+  const v=$('receiptsVerdict');
+  if(!rs.present){
+    v.style.borderLeftColor='var(--dim)';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">NO MANIFEST FOUND</strong><br>No <code>receipts.json</code> at the site root or <code>/.well-known/</code>. No penalty for this above -- it\'s not part of the score.';
+  } else if(rs.conforming){
+    v.style.borderLeftColor='var(--mint)';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">PUBLISHES A CONFORMING MANIFEST</strong><br>'+(rs.claimCount||0)+' claim(s) found at <a href="'+rs.url+'">'+rs.url+'</a>.';
+  } else {
+    v.style.borderLeftColor='var(--amber)';
+    v.innerHTML='<strong style="font-family:var(--mono);font-size:.78rem;letter-spacing:.05em">MANIFEST FOUND, NOT CONFORMING</strong><br>Something\'s at <a href="'+rs.url+'">'+rs.url+'</a>, but it doesn\'t look like a valid Receipts Standard manifest.';
+  }
+  panel.classList.remove('hidden');
+}
 function renderSept15(s){
   const panel=$('sept15Panel'); if(!s){ panel.classList.add('hidden'); return; }
   const colors={'flips-sept-15':'var(--coral)','already-dark':'var(--coral)','posture-choice':'var(--amber)','unaffected':'var(--mint)'};
