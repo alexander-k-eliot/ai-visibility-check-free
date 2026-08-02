@@ -391,3 +391,10 @@ answers, though the same caveat holds: sample size is still small, "The Ledger C
 stable nearest-neighbor match is itself a confound (a smaller/differently-named substitute business
 might not trigger the same conflation), and one full round (08-01 Perplexity) contains a
 counter-example. Flagged to ventures/factor/state.md per the recurring-check instructions.
+
+**Queued, not yet closed**: ChatGPT and Gemini prompts 2 and 3 (both pages) were not re-run this
+round — only prompt 1 was closed for those two models earlier today (see the entry above). Given
+prompt 1 is exactly the prompt that just reversed on Perplexity, and prompts 2/3 are exactly where
+today's strongest signal showed up, the next authenticated-browser round should prioritize closing
+ChatGPT/Gemini prompts 2 and 3 on both pages (8 queries) rather than defaulting back to prompt 1
+only — that's the real gap now, not a repeat-baseline exercise.
