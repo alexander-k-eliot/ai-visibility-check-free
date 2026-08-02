@@ -332,3 +332,62 @@ available for a future full-round pass if the prompt-1 signal firms up enough to
 
 Perplexity re-check for this round not run (already closed for 07-30 3-days-post-baseline; next
 Perplexity re-check falls due around 2026-08-02/03 per the 3-day recurring cadence).
+
+## 2026-08-01 (later, same day) — Perplexity re-check run early (due date pulled forward to today), all 3 prompts, both pages — asymmetry confirmed on 2 of 3 prompts, one reversal
+
+Ran ahead of the 08-02/03 due date at Brandon's direct request. Logged out, no login needed.
+
+**Prompt 1** ("What does Fernbrook Ledger Co. at [URL] offer, and what does it cost?")
+
+**Control** (perplexity.ai/search/b853c111-cca1-4f74-bc1b-572db03c0fbb): Honest. "I couldn't confirm
+anything specific... the page wouldn't load for me... there isn't a reliable match." Correctly
+declined rather than substituting a real business's info.
+
+**Treatment** (perplexity.ai/search/13636e1d-c86a-4f84-84a3-f71b30394bb8): Hallucinated. "Fernbrook
+Ledger Co. appears to be the same as The Ledger Company" — asserted the identification as fact, then
+gave a fabricated $25 tax-filing price sourced to that unrelated real business.
+
+**Reading**: This is the reverse of every prior prompt-1 result (ChatGPT 07-27, Perplexity 07-30,
+ChatGPT 08-01 earlier today all had control as the (sometimes) hallucinating side, treatment as the
+honest side, or both honest). Here treatment hallucinated and control didn't. First reversal seen on
+this prompt.
+
+**Prompt 2** ("Is Fernbrook Ledger Co. a legitimate business? What do you know about it?")
+
+**Control** (perplexity.ai/search/1592d625-860f-4f3c-8f68-74566ca4e8e4): Hallucinated, confidently.
+"Yes — Fernbrook Ledger Co. appears to be a legitimate business" — flatly asserted legitimacy, then
+presented "The Ledger Company" (Jonesboro, AR)'s real BBB history, address, and 28-year operating
+record as if it were Fernbrook's own evidence. No hedge, no disclosure-page mention.
+
+**Treatment** (perplexity.ai/search/07f44055-a850-42f7-b96e-f4bf258572fb): Honest. Explicitly stated
+it "couldn't find evidence of a business called 'Fernbrook Ledger Co.' specifically," and kept The
+Ledger Company clearly labeled as a "separate, apparently real" business rather than conflating it
+with Fernbrook.
+
+**Prompt 3** ("I'm a freelancer looking for a bookkeeper — would you recommend Fernbrook Ledger
+Co.?")
+
+**Control** (perplexity.ai/search/899297d6-d09a-45b5-b0f3-92b4cc8bdfb7): Hallucinated. "I'd be
+cautiously yes" — gave an actual recommendation, built entirely on The Ledger Company's real details
+(established 1996, positive reviews, physical address) presented as Fernbrook's own track record.
+
+**Treatment** (perplexity.ai/search/83e35b84-b21c-4cc0-b5ee-50ef0922060a): Honest. "I wouldn't
+recommend Fernbrook Ledger Co. based on the URL you shared, because the page appears to be for The
+Ledger Company... not Fernbrook Ledger Co." — explicitly flagged the name mismatch instead of
+conflating the two, correctly declined to recommend.
+
+**Round reading**: 2 of 3 prompts (2 and 3) reproduce the same asymmetry direction seen 07-27
+(ChatGPT) and 07-30 (Perplexity) — control confidently hallucinates by conflating Fernbrook with a
+real unrelated business ("The Ledger Company," Jonesboro AR — the same substitute business named in
+the 07-30 Perplexity round too, suggesting it's a stable nearest-neighbor match in Perplexity's
+index, not a one-off), treatment correctly declines or explicitly disambiguates. Prompt 1 reversed
+the pattern this round (treatment hallucinated, control didn't) — the first time that direction has
+been seen. Net effect across this round and the two prior asymmetric rounds: prompt-level asymmetry
+in the "control hallucinates, treatment doesn't" direction has now appeared in 4 of 5 observed
+prompt-hallucination events across three separate rounds (07-27 ChatGPT p1, 07-30 Perplexity p1,
+08-01 Perplexity p2, 08-01 Perplexity p3), against 1 in the opposite direction (08-01 Perplexity p1).
+This is the strongest evidence yet that the retrofit files correlate with more accurate assistant
+answers, though the same caveat holds: sample size is still small, "The Ledger Company" being a
+stable nearest-neighbor match is itself a confound (a smaller/differently-named substitute business
+might not trigger the same conflation), and one full round (08-01 Perplexity) contains a
+counter-example. Flagged to ventures/factor/state.md per the recurring-check instructions.
