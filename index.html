@@ -407,6 +407,34 @@ let lastCheckData = null; // full API/paste-mode result, kept for the Fix Pack +
 
 // >=80 renders mint -- the brand's actual success color, not gold, so a strong score reads as
 // coherent with every other "good" state on the page (checkmarks, CTAs, etc).
+// O4: counts 0->pct instead of snapping. Skips straight to the final number
+// under prefers-reduced-motion. App output, not page copy -- this number
+// never exists in crawlable static markup either way.
+function animateCount(el, to, duration){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    el.textContent = to; return;
+  }
+  const start = performance.now();
+  function step(now){
+    const t = Math.min((now - start) / duration, 1);
+    el.textContent = Math.round(to * t);
+    if(t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// C1: resets the ring to 0 and forces a reflow before setting the real value,
+// so the CSS transition on #scoreRing (system.css) has a genuine from-state
+// to sweep from on every check, including the very first one -- without this,
+// the display:none->block reveal and the attribute change land in the same
+// frame and the transition has nothing to interpolate.
+function setRingSweep(pct){
+  const ring = $('scoreRing');
+  ring.setAttribute('stroke-dasharray', '0 565.5');
+  ring.getBoundingClientRect();
+  ring.setAttribute('stroke-dasharray', (pct / 100 * 565.5) + ' 565.5');
+}
+
 function setRingColor(pct){
   const tone = pct>=80?'var(--mint)':(pct>=50?'var(--amber)':'var(--coral)');
   const tier = pct>=80?'tier-mint':(pct>=50?'tier-amber':'tier-coral');
@@ -445,9 +473,9 @@ function render(checks, mode, label){
   const pct = tot ? Math.round(got / tot * 100) : 0;
   lastScore = pct; lastLabel = label || 'a pasted homepage';
 
-  $('scoreNum').textContent = pct;
+  animateCount($('scoreNum'), pct, 900);
   // Circumference for r=90: 2π*90 ≈ 565.5
-  $('scoreRing').setAttribute('stroke-dasharray', (pct / 100 * 565.5) + ' 565.5');
+  setRingSweep(pct);
   setRingColor(pct);
 
   // Benchmark position
