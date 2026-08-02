@@ -204,6 +204,8 @@ textarea:focus{outline:2px solid var(--mint);border-color:transparent}
 .tool-card a{font-family:var(--sans);color:var(--ink);font-weight:600;font-size:.88rem;line-height:1.3}
 .tool-card a:hover{color:var(--mint);text-decoration:none}
 .tool-sub{font-family:var(--mono);font-size:.73rem;color:var(--dim)}
+.tool-kicker{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);order:-1}
+.tool-kicker.live{color:var(--mint)}
 
 /* ── Footer ─────────────────────────────────────── */
 .site-footer{border-top:1px solid var(--border);padding:32px 0 48px;margin-top:16px;position:relative;z-index:1}
