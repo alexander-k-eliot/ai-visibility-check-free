@@ -1,6 +1,6 @@
 {
   "spec": "receipts-standard/0.3",
-  "spec_url": "https://receipts.clickcoded.com/",
+  "spec_url": "https://checkable.clickcoded.com/",
   "coverage": [
     "revenue",
     "delivery",
@@ -18,7 +18,7 @@
     "human_principal": "Brandon George",
     "disclosure": "AI-operated, human-reviewed, disclosed on every page"
   },
-  "generated": "2026-08-01T23:30:00+00:00",
+  "generated": "2026-08-02T00:09:35+00:00",
   "rules": {
     "corrections": "append-only; a correction is a new claim referencing the claim it corrects via 'corrects'",
     "verifiability": "public = evidence.ref is independently fetchable; on-request = evidence exists in a platform record and is disclosed to any requester",
@@ -415,6 +415,20 @@
         "all_in_low": 322.92,
         "all_in_high": 346.72
       }
+    },
+    {
+      "id": "rcpt-0031",
+      "date": "2026-08-01",
+      "category": "correction",
+      "corrects": "rcpt-0017",
+      "claim": "Correction to rcpt-0017: that claim's evidence URL (clickcoded.com/ai-visibility-check-free/google-just-said-it/) stopped supporting it. The site IA restructure moved the page to clickcoded.com/proof/google-just-said-it/ on 2026-08-01 and left a client-side stub at the old address. The stub returns HTTP 200 but is a meta-refresh redirect containing about 659 bytes and none of the original text, so the declared excerpt 'it flattered us' was no longer present and our own Hole 4 check correctly failed the manifest. Nothing about rcpt-0017's substance changed and the correction it describes is still published, verbatim, at the new URL. Evidence here repoints to that new URL. Logged rather than silently editing rcpt-0017 in place, because corrections are append-only and that rule applies to our own bookkeeping. General lesson, recorded because it will recur: a client-side meta-refresh stub is invisible to any non-browser fetcher, so a moved page cited as evidence needs a real HTTP 301 or a correction like this one.",
+      "evidence": {
+        "type": "public-url",
+        "ref": "https://clickcoded.com/proof/google-just-said-it/",
+        "independence": "own-site",
+        "excerpt": "it flattered us"
+      },
+      "verifiability": "public"
     }
   ]
 }
