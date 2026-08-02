@@ -278,3 +278,57 @@ Fernbrook Ledger Co." Same shape of answer as control, no signal either way.
 honestly. Prompts 2 and 3 remain symmetric and accurate on both pages, same as the 07-27 baseline.
 ChatGPT and Gemini re-checks for this round remain queued pending an authenticated browser session
 (not available in this headless run — noting the gap honestly rather than skipping silently).
+
+## 2026-08-01 — ChatGPT + Gemini re-check, prompt 1 only, both pages — earlier hallucination pattern did NOT repeat
+
+Closed the ChatGPT/Gemini gap left open from the 07-30 Perplexity round (authenticated sessions for
+both were available this run). Ran prompt 1 only ("What does Fernbrook Ledger Co. at [URL] offer,
+and what does it cost?") against both pages on ChatGPT and Gemini — scoped to prompt 1 since that's
+the prompt carrying the 2-for-2 asymmetry signal from 07-27/07-30, to check whether it holds on a
+third model/round rather than re-running the already-symmetric prompts 2/3.
+
+**ChatGPT, control** (chatgpt.com/c/6a6e9837-265c-83ea-a667-b6fd4e1026b0): Accurate and honest this
+time — no hallucination. Correctly listed plausible bookkeeping offerings but explicitly stated
+"I could not find pricing specific to the Fernbrook Ledger Co. page you linked," correctly flagged
+the page as part of a Click Coded AI-visibility test rather than an operating business, and
+explicitly declined to recommend hiring them without independent verification. Cited letsledger.com
+as a source but did **not** attribute its pricing to Fernbrook this time (contrast with the 07-27
+run, which did).
+
+**ChatGPT, treatment** (chatgpt.com/c/6a6e9887-5970-83ea-abff-54e0a923e414): Same shape of honest,
+accurate answer — correctly identified the URL structure as Click Coded's AI-visibility testing
+framework, listed the same plausible service categories, explicitly stated no published pricing
+was found, same due-diligence recommendation. Symmetric with control.
+
+**Reading (ChatGPT)**: The prompt-1 hallucination-on-control pattern seen 07-27 and repeated 07-30
+(on a different model, Perplexity) did **not** repeat here — both pages got the same honest,
+non-hallucinated treatment this round. This tempers rather than confirms the earlier signal: it was
+2-for-2 across two models before this round, now 2-for-3 including this one. Consistent with the
+07-27 finding that ChatGPT's own hallucination behavior is non-deterministic run to run (that
+session flagged a mid-round silent downgrade to "Mini" as a confound) — still not enough rounds to
+call this a stable retrofit-driven effect either way.
+
+**Gemini, control** (gemini.google.com/app/551bb347c35a9b3b): Fully accurate and directly grounded —
+correct offerings, correct pricing ($150/month under $75k revenue), explicitly quoted the page's own
+disclosure that Fernbrook Ledger Co. is a dummy control page in a Click Coded research experiment.
+
+**Gemini, treatment** (gemini.google.com/app/0994068f01369109): Also fully accurate and directly
+grounded — same offerings, same pricing, same explicit disclosure quote, additionally named the
+specific test variables (llms.txt, agents.md, Schema.org).
+
+**Reading (Gemini)**: Symmetric and accurate on both pages again, consistent with every prior Gemini
+round (07-27 prompt 1 and prompt 3) — Gemini continues to show no hallucination and no consistent
+treatment/control gap, reinforcing the standing hypothesis that it fetches the live page directly
+rather than depending on a lagging search index.
+
+**Overall reading after this round**: No consistent directional effect has yet survived three full
+models' worth of repeat testing. The clearest asymmetry to date (ChatGPT 07-27, Perplexity 07-30)
+did not reproduce on ChatGPT this round. Honest running tally on prompt 1 specifically: 2 rounds
+showed the hallucinate-control/honest-treatment asymmetry, 1 round (this one) showed no asymmetry at
+all. Continuing to log as-is per the methodology's commitment to reporting noise honestly rather than
+cherry-picking the earlier signal. Prompts 2/3 on ChatGPT/Gemini were not re-run this round (already
+symmetric/accurate in every prior round, and this was scoped as a small bounded check) — remain
+available for a future full-round pass if the prompt-1 signal firms up enough to warrant it.
+
+Perplexity re-check for this round not run (already closed for 07-30 3-days-post-baseline; next
+Perplexity re-check falls due around 2026-08-02/03 per the 3-day recurring cadence).
