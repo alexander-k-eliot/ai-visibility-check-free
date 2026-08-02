@@ -89,6 +89,7 @@ input[type=url]:focus{outline:2px solid var(--mint);border-color:transparent}
 .btn{padding:13px 24px;border:0;border-radius:8px;background:var(--mint);color:#04251f;font-family:var(--sans);font-weight:700;font-size:1rem;cursor:pointer;white-space:nowrap;transition:filter .15s,box-shadow .15s,transform .15s;box-shadow:0 8px 24px -8px rgba(46,230,168,.45)}
 .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .btn:disabled{opacity:.6;cursor:wait}
+.btn:disabled:hover{filter:none;transform:none}
 .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--mint);box-shadow:none}
 .btn-ghost:hover{background:rgba(238,246,244,.05)}
 .note{font-size:.82rem;color:var(--dim);margin-top:8px;font-family:var(--sans)}

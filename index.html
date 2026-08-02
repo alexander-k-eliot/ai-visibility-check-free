@@ -410,17 +410,26 @@ let lastCheckData = null; // full API/paste-mode result, kept for the Fix Pack +
 // O4: counts 0->pct instead of snapping. Skips straight to the final number
 // under prefers-reduced-motion. App output, not page copy -- this number
 // never exists in crawlable static markup either way.
+// M2 fix (2026-08-02): rAF never fires in a hidden/backgrounded tab, which
+// left the number stuck at 0 until the tab regained focus. Now short-circuits
+// to the final value whenever the tab is hidden (at call time or mid-count),
+// and cancels any in-flight loop from a previous render() so two checks in
+// quick succession can't race each other's animations.
+let countRAF = null;
 function animateCount(el, to, duration){
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    el.textContent = to; return;
+  if(countRAF) cancelAnimationFrame(countRAF);
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced || document.hidden){
+    el.textContent = to; countRAF = null; return;
   }
   const start = performance.now();
   function step(now){
+    if(document.hidden){ el.textContent = to; countRAF = null; return; }
     const t = Math.min((now - start) / duration, 1);
     el.textContent = Math.round(to * t);
-    if(t < 1) requestAnimationFrame(step);
+    countRAF = t < 1 ? requestAnimationFrame(step) : null;
   }
-  requestAnimationFrame(step);
+  countRAF = requestAnimationFrame(step);
 }
 
 // C1: resets the ring to 0 and forces a reflow before setting the real value,
@@ -504,7 +513,10 @@ function render(checks, mode, label){
 
   updateScoreRecommendation(pct);
 
-  $('results').scrollIntoView({behavior:'smooth'});
+  // M5 fix (2026-08-02): this JS-driven scroll bypassed the CSS
+  // prefers-reduced-motion gate entirely -- check it directly here.
+  const wantsReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('results').scrollIntoView({behavior: wantsReducedMotion ? 'auto' : 'smooth'});
 }
 
 // Honest, score-driven routing -- same three real products every time, just a different
@@ -664,6 +676,25 @@ function analyzeHtml(html){
 
 const CHECKING_MESSAGES = ['Fetching your homepage…', 'Reading robots.txt per crawler…', 'Parsing structured data…', 'Checking llms.txt and agents.md…'];
 
+// M3 fix (2026-08-02): one silent retry on a transient network failure before
+// giving up and rendering the failure item -- observed live, the check API
+// itself was healthy (200 in ~60ms via direct fetch) while the in-page call
+// failed once outright. Only retries the network-level failure path; a
+// legitimate `fatal`/`error` response from the API itself (SSRF-blocked,
+// rate-limited) is not retried since it's a real, deterministic answer.
+async function fetchCheckWithRetry(u, attempt){
+  try {
+    const r = await fetch(CHECK_API + '?url=' + encodeURIComponent(u));
+    return await r.json();
+  } catch(e) {
+    if(attempt === 0){
+      await new Promise(res => setTimeout(res, 800));
+      return fetchCheckWithRetry(u, 1);
+    }
+    return {fatal: "Couldn't reach the check service -- try again in a moment, or use the paste option below."};
+  }
+}
+
 async function runCheck(u){
   const btn = $('runBtn');
   btn.disabled = true;
@@ -672,13 +703,7 @@ async function runCheck(u){
   btn.textContent = CHECKING_MESSAGES[0];
   const rotator = setInterval(() => { msgIndex = (msgIndex + 1) % CHECKING_MESSAGES.length; btn.textContent = CHECKING_MESSAGES[msgIndex]; }, 1200);
 
-  let data;
-  try {
-    const r = await fetch(CHECK_API + '?url=' + encodeURIComponent(u));
-    data = await r.json();
-  } catch(e) {
-    data = {fatal: "Couldn't reach the check service -- try again in a moment, or use the paste option below."};
-  }
+  const data = await fetchCheckWithRetry(u, 0);
   clearInterval(rotator);
 
   // Both `fatal` (a legitimate, explained result -- SSRF-blocked, target refused us) and
