@@ -279,16 +279,22 @@ body{padding-bottom:0}
 
 /* Protocol/trust stack — layered rows with one highlighted gap layer */
 .stack-wrap{max-width:640px;margin:24px 0 30px;display:flex;flex-direction:column;gap:10px}
-.stack-layer{display:flex;align-items:center;gap:14px;border:1px solid var(--border);border-radius:10px;padding:13px 18px;background:rgba(4,38,44,.45);font-family:var(--mono)}
-.stack-layer .sl-name{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);min-width:96px}
-.stack-layer .sl-what{font-size:.75rem;color:var(--dim);flex:1}
-.stack-layer .sl-state{font-size:.7rem;color:var(--mint);white-space:nowrap}
+/* Layout model (fixed for good 2026-08-02, matching the homepage's copy of this
+   component): the row wraps. A short state rides inline, pushed right by
+   margin-left:auto; a long state wraps AS A UNIT to its own full-width line and
+   wraps internally there. Do not reintroduce white-space:nowrap (long states
+   overflowed the row) or flex:1 on .sl-what (crushed to one word per line). */
+.stack-layer{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;border:1px solid var(--border);border-radius:10px;padding:13px 18px;background:rgba(4,38,44,.45);font-family:var(--mono)}
+.stack-layer .sl-name{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);min-width:96px;flex:0 0 auto}
+.stack-layer .sl-what{font-size:.75rem;color:var(--dim);flex:0 1 auto;min-width:0}
+.stack-layer .sl-state{font-size:.7rem;color:var(--mint);margin-left:auto;min-width:0}
 .stack-layer.gap{border:1.5px dashed var(--mint);background:rgba(46,230,168,.06);position:relative;box-shadow:0 0 24px -6px rgba(46,230,168,.35)}
 .stack-layer.gap .sl-state{color:var(--amber)}
 .gap-badge{position:absolute;top:-11px;right:14px;background:var(--mint);color:#04251f;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:3px 9px;border-radius:20px}
 @media(max-width:520px){
-  .stack-layer{flex-wrap:wrap;gap:6px 12px}
+  .stack-layer{gap:6px 12px}
   .stack-layer .sl-what{flex:1 1 100%}
+  .stack-layer .sl-state{margin-left:0}
 }
 
 /* Numbered rule cards — for a spec, a checklist, a ranked list */
