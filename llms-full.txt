@@ -58,7 +58,7 @@ $25 full server-side audit
 includes a written fix list and runs everything this browser check cannot.
 Benchmark data
 How does your industry score?
-We audited 158 homepages across 10 industries. Average score: 65/100. See exactly where your competitors stand.
+We audited 158 homepages across 15 industries. Average score: 65/100. See exactly where your competitors stand.
 State of Machine-Readable Business 2026
 158 homepages ·
 avg 65/100
@@ -75,25 +75,25 @@ Financial Services
 16 firms ·
 avg 67/100
 Real Estate
-14 brokerages ·
-avg 59/100
+4 of 14 scorable ·
+avg 58.5/100
 Legal Services
-14 top firms ·
-avg 57/100
+11 of 14 scorable ·
+avg 56.8/100
 Hospitality
-14 hotel brands ·
-avg 56/100
+4 of 14 scorable ·
+avg 56.3/100
 Automotive
-14 manufacturers ·
-avg 76/100
+8 of 14 scorable ·
+avg 75.6/100
 Higher Education
-14 universities ·
-avg 59/100
+12 of 14 scorable ·
+avg 58.8/100
 Healthcare Systems
-14 hospital systems ·
-avg 68/100
+10 of 14 scorable ·
+avg 67.5/100
 AI Industry
-AI companies audited ·
+7 of 10 scorable ·
 avg 66/100
 Free tools
 Everything to fix your score
